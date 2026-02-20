@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bcteyb3cn041j"]
+
+[node name="Node3D" type="Node3D" unique_id=946005891]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=950106236]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="player1screen" type="SubViewportContainer" parent="HBoxContainer" unique_id=1117159721]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/player1screen" unique_id=1853581293]
+handle_input_locally = false
+size = Vector2i(574, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600]
+
+[node name="player2screen" type="SubViewportContainer" parent="HBoxContainer" unique_id=1149187065]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/player2screen" unique_id=1234907876]
+handle_input_locally = false
+size = Vector2i(574, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298]

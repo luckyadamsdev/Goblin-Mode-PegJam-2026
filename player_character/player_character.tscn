@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://q5n8lo7wgo38"]
+
+[ext_resource type="Script" uid="uid://dbq532uplrdfd" path="res://player_character/goblin.gd" id="1_qlps6"]
+[ext_resource type="ArrayMesh" uid="uid://c8cb8s16exado" path="res://GoblinHead.obj" id="2_1ty04"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ty04"]
+size = Vector3(0.665, 0.23, 1)
+
+[node name="Goblin" type="Node3D" unique_id=1640529471]
+script = ExtResource("1_qlps6")
+
+[node name="GoblinHead" type="MeshInstance3D" parent="." unique_id=402768739]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.021558166, 1.134594, 0.01982826)
+mesh = ExtResource("2_1ty04")
+
+[node name="board" type="MeshInstance3D" parent="." unique_id=847986993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021558166, 0.11528242, 0.01982826)
+mesh = SubResource("BoxMesh_1ty04")
