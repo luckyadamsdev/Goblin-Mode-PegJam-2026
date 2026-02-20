@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bt02xft5cy32n"]
+
+[ext_resource type="ArrayMesh" uid="uid://sapb8hnxyyxg" path="res://player_character/GoblinHand.obj" id="1_i21wo"]
+
+[node name="GoblinHand" type="Node3D" unique_id=1970537479]
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=62235855]
+mesh = ExtResource("1_i21wo")
