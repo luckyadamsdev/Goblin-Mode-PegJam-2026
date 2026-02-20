@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Goblin Mode"
-run/main_scene="uid://bcteyb3cn041j"
+run/main_scene="uid://y0l0hha6sqin"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
