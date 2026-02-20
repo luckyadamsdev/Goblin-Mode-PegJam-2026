@@ -8,7 +8,7 @@ class_name CameraMovement
 
 @export var goblin : Node3D
 
-@export var starting_offset:Vector3 = Vector3(0.0, 2.0, 4.0)
+@export var starting_offset:Vector3 = Vector3(0.0, 2.0, -4.0)
 
 @export var look_curve:Curve
 
