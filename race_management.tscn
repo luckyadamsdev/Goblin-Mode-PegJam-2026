@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://cyuth76wtnipy" path="res://player_character/goblin_controller.gd" id="2_wjqdx"]
 [ext_resource type="Script" uid="uid://cqpwou5hciv81" path="res://player_character/goblin_control_definition.gd" id="3_srorr"]
-[ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
+[ext_resource type="Script" path="res://timer_label.gd" id="6_g82c4"]
 
 [sub_resource type="Resource" id="Resource_0wqfw"]
 script = ExtResource("3_srorr")
