@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	# self.look_at(self.global_position + Vector3(0.5,0.3,0.9))
 
 func set_start_pos(new_pos:Node3D) -> void:
+	visible = true
 	global_position = new_pos.global_position
 	global_rotation = new_pos.global_rotation
 	
