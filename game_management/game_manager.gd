@@ -9,7 +9,7 @@ var current_map:Map
 
 @export var cameras:Array[CameraMovement]
 
-@export var timer_label:Label
+@export var timer_label:TimerLabel
 
 func _ready() -> void:
 	instance = self
@@ -34,9 +34,21 @@ func _load_map(map_name:String) -> void:
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
 		print("is goblin! ", (body as Goblin).player_id)
+		timer_label.counting = false # we can stop counting
+		# TODO show winner
+		# open a menu to play again?
 
 func start_timer() -> void:
-	pass
+	# TODO play a start light
+	print("ready")
+	print("set")
+	print("go")
+	# TODO unpause goblins
+	for goblin in goblins:
+		pass
+		#goblin.unpause()
+	timer_label.start()
+	
 	
 func clean_up_old_map() -> void:
 	current_map.end_zone.body_entered.disconnect(_on_check_player_finished_race)
