@@ -28,4 +28,4 @@ func _load_map(map_name:String) -> void:
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race)
 
 func _on_check_player_finished_race(body: Node3D) -> void:
-	
+	pass
