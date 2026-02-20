@@ -6,7 +6,7 @@
 Goblins are escaping down hill! They've stolen a valuable staff from a wizard, there is only one staff and they don't want to share. Whoever reaches the bottom of the hill with the staff gets too keep it! But watch out, the mountain is full of hazards, and the wizard is not pleased!
 
 ## Inspiration
-![[snowboard-kids.png]]
+![Snowboard Kids 2 gameplay screenshot](./assets/snowboard-kids.png)
 
 ## Minimum Viable Product
 - Two goblins going down hill
