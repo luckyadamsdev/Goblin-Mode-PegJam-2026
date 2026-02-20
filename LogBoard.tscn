@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bsmdjr8ppc0tl"]
+
+[ext_resource type="ArrayMesh" uid="uid://v2pwlugqqast" path="res://LogBoard.obj" id="1_cmjnk"]
+
+[node name="Node3D" type="Node3D" unique_id=1714975431]
+
+[node name="LogBoard" type="MeshInstance3D" parent="." unique_id=1758670855]
+mesh = ExtResource("1_cmjnk")
