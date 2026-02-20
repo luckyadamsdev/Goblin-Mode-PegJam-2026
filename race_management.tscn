@@ -16,10 +16,11 @@ metadata/_custom_type_script = "uid://cqpwou5hciv81"
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "timer_label")]
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
 cameras = [NodePath("../HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../HBoxContainer/player2screen/SubViewport/Camera3D")]
+timer_label = NodePath("../Control/Timer")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
 [node name="Goblin1" parent="." unique_id=697638060 node_paths=PackedStringArray("controller") instance=ExtResource("2_srorr")]
@@ -72,3 +73,25 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298]
 script = ExtResource("1_olp4a")
+
+[node name="Control" type="Control" parent="." unique_id=1049987464]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Timer" type="Label" parent="Control" unique_id=1507618113]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
