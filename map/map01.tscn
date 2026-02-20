@@ -38,9 +38,10 @@ script = ExtResource("1_2g46u")
 environment = SubResource("Environment_2g46u")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=724154080]
-transform = Transform3D(0.36910197, -0.38532656, -0.84574664, 0.49741828, -0.6867933, 0.5299907, -0.78507245, -0.6163105, -0.06182822, -11.379129, 18.014938, -0.3470688)
+transform = Transform3D(0.7850723, 0.61631054, 0.061828256, 0.49741828, -0.6867932, 0.5299906, 0.36910194, -0.3853264, -0.84574676, -3.703802, 18.014938, -7.7496643)
 
 [node name="wedge" type="MeshInstance3D" parent="." unique_id=333930635]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.0508714, 0, 3.629465)
 mesh = SubResource("PrismMesh_ucggl")
 surface_material_override/0 = SubResource("StandardMaterial3D_rh2f5")
 
@@ -50,7 +51,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rh2f5")
 shape = SubResource("ConcavePolygonShape3D_ucggl")
 
 [node name="box" type="MeshInstance3D" parent="." unique_id=1189101532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.673162, -9.7259655, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.0508723, -9.7259655, 26.302628)
 mesh = SubResource("BoxMesh_ucggl")
 surface_material_override/0 = SubResource("StandardMaterial3D_rh2f5")
 
@@ -60,7 +61,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rh2f5")
 shape = SubResource("ConcavePolygonShape3D_2g46u")
 
 [node name="box2" type="MeshInstance3D" parent="." unique_id=265135547]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.0508704, 0, -21.370535)
 mesh = SubResource("BoxMesh_ucggl")
 surface_material_override/0 = SubResource("StandardMaterial3D_rh2f5")
 
@@ -70,13 +71,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rh2f5")
 shape = SubResource("ConcavePolygonShape3D_fsl5s")
 
 [node name="goblin_1_start" type="Node3D" parent="." unique_id=1501022478]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.26634, 5, -6.3579893)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3071187, 5, -15.636875)
 
 [node name="goblin_2_start" type="Node3D" parent="." unique_id=1940118030]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.587679, 5, 5.311247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.362118, 5, -15.958214)
 
 [node name="end_zone" type="Area3D" parent="." unique_id=999484125]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25.678804, -4.182275, -0.08111048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.969762, -4.182275, 29.30827)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="end_zone" unique_id=867850013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24041748, 0, 0)
