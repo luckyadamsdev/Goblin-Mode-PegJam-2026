@@ -42,8 +42,6 @@ func _physics_process(_delta : float):
 		
 		last_target_position = target_position
 		target_position = goblin.global_position + delta_v
-		var velo_target_postion = last_target_position + last_target_velocity
-		#target_position = lerp(velo_target_postion, target_position, 0.01)
 		
 		global_position = target_position
 		
