@@ -9,7 +9,11 @@ var current_map:Map
 
 @export var cameras:Array[CameraMovement]
 
+@export var win_screens:Array[Label]
+
 @export var timer_label:TimerLabel
+
+var winner:int = 0
 
 func _ready() -> void:
 	instance = self
@@ -33,15 +37,22 @@ func _load_map(map_name:String) -> void:
 
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
-		print("is goblin! ", (body as Goblin).player_id)
-		timer_label.counting = false # we can stop counting
-		# TODO show winner
-		# open a menu to play again?
+		if winner == 0: # no winner yet
+			winner = (body as Goblin).player_id
+			print("is goblin! ", winner)
+			win_screens[winner - 1].visible = true
+			timer_label.counting = false # we can stop counting
+			# open a menu to play again?
 
 func start_timer() -> void:
 	# TODO play a start light
 	print("ready")
+	timer_label.show_message("ready")
+	await get_tree().create_timer(1.0).timeout
 	print("set")
+	timer_label.show_message("set")
+	await get_tree().create_timer(1.0).timeout
+	
 	print("go")
 	# TODO unpause goblins
 	for goblin in goblins:
