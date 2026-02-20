@@ -9,6 +9,8 @@ var current_map:Map
 
 @export var cameras:Array[CameraMovement]
 
+
+
 func _ready() -> void:
 	instance = self
 	_load_map("res://map/map01.tscn")
