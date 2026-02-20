@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://cyuth76wtnipy" path="res://player_character/goblin_controller.gd" id="2_wjqdx"]
 [ext_resource type="Script" uid="uid://cqpwou5hciv81" path="res://player_character/goblin_control_definition.gd" id="3_srorr"]
-[ext_resource type="Script" path="res://timer_label.gd" id="6_g82c4"]
+[ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
 
 [sub_resource type="Resource" id="Resource_0wqfw"]
 script = ExtResource("3_srorr")
@@ -17,10 +17,11 @@ metadata/_custom_type_script = "uid://cqpwou5hciv81"
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "timer_label")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "timer_label")]
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
 cameras = [NodePath("../HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../HBoxContainer/player2screen/SubViewport/Camera3D")]
+win_screens = [NodePath("../Goblin1Wins"), NodePath("../Goblin2Wins")]
 timer_label = NodePath("../Control/Timer")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 

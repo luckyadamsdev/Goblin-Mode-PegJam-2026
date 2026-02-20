@@ -25,3 +25,7 @@ func _process(delta: float) -> void:
 	if countdown < 0.0:
 		countdown += 1
 		seconds = seconds + 1
+
+func show_message(message:String) -> void:
+	visible = true
+	text = message
