@@ -13,7 +13,6 @@ func _ready() -> void:
 	instance = self
 	_load_map("res://map/map01.tscn")
 
-
 func _load_map(map_name:String) -> void:
 	current_map = load(map_name).instantiate() as Map
 	# move two goblins to starting positions

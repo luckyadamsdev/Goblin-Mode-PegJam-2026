@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_2g46u"]
 
+[sub_resource type="Environment" id="Environment_2g46u"]
+
 [sub_resource type="PrismMesh" id="PrismMesh_ucggl"]
 left_to_right = 0.0
 size = Vector3(30, 10, 20)
@@ -31,6 +33,9 @@ size = Vector3(18.135864, 5, 5)
 
 [node name="Map01" type="Node3D" unique_id=317521660]
 script = ExtResource("1_2g46u")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=359927576]
+environment = SubResource("Environment_2g46u")
 
 [node name="wedge" type="MeshInstance3D" parent="." unique_id=333930635]
 mesh = SubResource("PrismMesh_ucggl")

@@ -1,13 +1,40 @@
 [gd_scene format=3 uid="uid://bcteyb3cn041j"]
 
+[ext_resource type="PackedScene" uid="uid://q5n8lo7wgo38" path="res://player_character/goblin_template.tscn" id="1_b8fwa"]
 [ext_resource type="Script" uid="uid://d1tx7u565xame" path="res://game_management/game_manager.gd" id="1_cawbs"]
 [ext_resource type="Script" uid="uid://ca8jh3bihcqqa" path="res://camera/camera_movement.gd" id="1_olp4a"]
+[ext_resource type="Script" uid="uid://cyuth76wtnipy" path="res://player_character/goblin_controller.gd" id="2_wjqdx"]
+[ext_resource type="Script" uid="uid://cqpwou5hciv81" path="res://player_character/goblin_control_definition.gd" id="3_srorr"]
+
+[sub_resource type="Resource" id="Resource_0wqfw"]
+script = ExtResource("3_srorr")
+metadata/_custom_type_script = "uid://cqpwou5hciv81"
+
+[sub_resource type="Resource" id="Resource_bh7c3"]
+script = ExtResource("3_srorr")
+metadata/_custom_type_script = "uid://cqpwou5hciv81"
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras")]
 script = ExtResource("1_cawbs")
+goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
+cameras = [NodePath("../HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../HBoxContainer/player2screen/SubViewport/Camera3D")]
 metadata/_custom_type_script = "uid://d1tx7u565xame"
+
+[node name="Goblin1" parent="." unique_id=1640529471 instance=ExtResource("1_b8fwa")]
+
+[node name="GoblinController" type="Node" parent="Goblin1" unique_id=1718639665]
+script = ExtResource("2_wjqdx")
+control_def = SubResource("Resource_0wqfw")
+metadata/_custom_type_script = "uid://cyuth76wtnipy"
+
+[node name="Goblin2" parent="." unique_id=1243427956 instance=ExtResource("1_b8fwa")]
+
+[node name="GoblinController" type="Node" parent="Goblin2" unique_id=1628125151]
+script = ExtResource("2_wjqdx")
+control_def = SubResource("Resource_bh7c3")
+metadata/_custom_type_script = "uid://cyuth76wtnipy"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=950106236]
 anchors_preset = 15
