@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjjfjeu5w6e7b"]
+[gd_scene format=3 uid="uid://bjjfjeu5w6e7b"]
 
 [ext_resource type="ArrayMesh" uid="uid://c8cb8s16exado" path="res://GoblinHead.obj" id="1_hjffh"]
+[ext_resource type="Texture2D" uid="uid://dx8tieyu0ul84" path="res://EyeUV.png" id="2_do5k8"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjffh"]
+albedo_texture = ExtResource("2_do5k8")
 
-[node name="GoblinHead" type="MeshInstance3D" parent="."]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnex7"]
+albedo_texture = ExtResource("2_do5k8")
+
+[node name="Node3D" type="Node3D" unique_id=1738023353]
+
+[node name="GoblinHead" type="MeshInstance3D" parent="." unique_id=1399409821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.241163, 0, -0.502438)
 mesh = ExtResource("1_hjffh")
+surface_material_override/0 = SubResource("StandardMaterial3D_hjffh")
+surface_material_override/2 = SubResource("StandardMaterial3D_mnex7")
