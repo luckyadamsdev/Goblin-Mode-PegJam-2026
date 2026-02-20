@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://cqpwou5hciv81"
 
 [node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras")]
 script = ExtResource("1_cawbs")
-goblins = [NodePath(""), NodePath("")]
+goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
 cameras = [NodePath("../HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../HBoxContainer/player2screen/SubViewport/Camera3D")]
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
