@@ -1,5 +1,7 @@
-extends Node3D
+extends CharacterBody3D
 class_name Goblin
+
+@export var player_id:int = 1
 
 # movement 
 
@@ -7,7 +9,8 @@ class_name Goblin
 
 func _physics_process(_delta: float) -> void:
 	#poll status from controller
-	
+	if controller != null:
+		pass
 	# apply physics
 	
 	

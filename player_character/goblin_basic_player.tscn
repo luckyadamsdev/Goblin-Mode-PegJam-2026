@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ddmx25meh75ix"]
+
+[ext_resource type="Script" uid="uid://dbq532uplrdfd" path="res://player_character/goblin.gd" id="1_rpmrw"]
+[ext_resource type="PackedScene" uid="uid://bjjfjeu5w6e7b" path="res://player_character/GoblinHead.tscn" id="2_wfdko"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ty04"]
+size = Vector3(0.665, 0.23, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wg1ha"]
+radius = 0.4
+height = 1.0
+
+[node name="Goblin" type="CharacterBody3D" unique_id=1038787615]
+script = ExtResource("1_rpmrw")
+
+[node name="display" type="Node3D" parent="." unique_id=1772366001]
+
+[node name="GoblinHead" parent="display" unique_id=1738023353 instance=ExtResource("2_wfdko")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.026408494, 1.135, 0.12431575)
+
+[node name="board" type="MeshInstance3D" parent="display" unique_id=847986993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021558166, 0.11528242, 0.01982826)
+mesh = SubResource("BoxMesh_1ty04")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=596336088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5658343, 0)
+shape = SubResource("CapsuleShape3D_wg1ha")
