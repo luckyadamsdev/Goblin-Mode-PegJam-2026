@@ -15,6 +15,8 @@ func _ready() -> void:
 
 func _load_map(map_name:String) -> void:
 	current_map = load(map_name).instantiate() as Map
+	add_child(current_map)
+	
 	# move two goblins to starting positions
 	goblins[0].set_start_pos(current_map.goblin_1_start)
 	goblins[1].set_start_pos(current_map.goblin_2_start)

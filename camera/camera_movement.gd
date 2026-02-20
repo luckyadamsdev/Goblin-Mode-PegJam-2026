@@ -56,3 +56,4 @@ func _physics_process(_delta : float):
 func set_target(new_target:Node3D) -> void:
 	goblin = new_target
 	global_position = new_target.to_global(starting_offset)
+	look_at(goblin.global_position)

@@ -37,6 +37,9 @@ script = ExtResource("1_2g46u")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=359927576]
 environment = SubResource("Environment_2g46u")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=724154080]
+transform = Transform3D(0.36910197, -0.38532656, -0.84574664, 0.49741828, -0.6867933, 0.5299907, -0.78507245, -0.6163105, -0.06182822, -11.379129, 18.014938, -0.3470688)
+
 [node name="wedge" type="MeshInstance3D" parent="." unique_id=333930635]
 mesh = SubResource("PrismMesh_ucggl")
 surface_material_override/0 = SubResource("StandardMaterial3D_rh2f5")
@@ -67,10 +70,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rh2f5")
 shape = SubResource("ConcavePolygonShape3D_fsl5s")
 
 [node name="goblin_1_start" type="Node3D" parent="." unique_id=1501022478]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.84944, 5, -5.2388587)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.26634, 5, -6.3579893)
 
 [node name="goblin_2_start" type="Node3D" parent="." unique_id=1940118030]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.64599, 5, 4.8319583)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -19.587679, 5, 5.311247)
 
 [node name="end_zone" type="Area3D" parent="." unique_id=999484125]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 25.678804, -4.182275, -0.08111048)
