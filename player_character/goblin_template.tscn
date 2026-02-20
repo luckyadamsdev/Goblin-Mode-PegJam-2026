@@ -5,9 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://djypljg7q16s4" path="res://player_character/goblin_torso.tscn" id="3_s1kpo"]
 [ext_resource type="PackedScene" uid="uid://bt02xft5cy32n" path="res://player_character/goblin_hand.tscn" id="4_s1kpo"]
 [ext_resource type="ArrayMesh" uid="uid://bm8o4am88t4wk" path="res://player_character/GoblinFoot.obj" id="5_47rv7"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_1ty04"]
-size = Vector3(0.665, 0.23, 1)
+[ext_resource type="PackedScene" uid="uid://bsmdjr8ppc0tl" path="res://LogBoard.tscn" id="6_4bcv1"]
 
 [node name="Goblin" type="Node3D" unique_id=1640529471]
 script = ExtResource("1_wg1ha")
@@ -18,10 +16,10 @@ script = ExtResource("1_wg1ha")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.026408494, 1.135, 0.12431575)
 
 [node name="GoblinTorso" parent="display" unique_id=2020290949 instance=ExtResource("3_s1kpo")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.15059, 0.02785623)
+transform = Transform3D(0.09999999, 0, -0.17320509, 0, 0.2, 0, 0.17320509, 0, 0.09999999, 0, 1.15059, 0.02785623)
 
 [node name="Hands" type="Node3D" parent="display" unique_id=375090163]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7760783, 0)
+transform = Transform3D(0.13369203, 0, -0.99102294, 0, 1, 0, 0.99102294, 0, 0.13369203, 0, 0.7760783, 0)
 
 [node name="GoblinHand1" parent="display/Hands" unique_id=1970537479 instance=ExtResource("4_s1kpo")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.28826994, 0)
@@ -30,7 +28,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.28826994, 0)
 transform = Transform3D(-0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.28826994, 0)
 
 [node name="Feet" type="Node3D" parent="display" unique_id=521034080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25711644, 0)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0.22224522, 0)
 
 [node name="GoblinFoot1" type="MeshInstance3D" parent="display/Feet" unique_id=1751663125]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.96936154, 0)
@@ -42,7 +40,5 @@ transform = Transform3D(-0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.96936154, 0)
 mesh = ExtResource("5_47rv7")
 skeleton = NodePath("../..")
 
-[node name="board" type="MeshInstance3D" parent="display" unique_id=847986993]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021558166, 0.11528242, 0.01982826)
-mesh = SubResource("BoxMesh_1ty04")
-skeleton = NodePath("../..")
+[node name="LogBoard" parent="display" unique_id=1714975431 instance=ExtResource("6_4bcv1")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0.0950737, 0)
