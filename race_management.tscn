@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://y0l0hha6sqin"]
+[gd_scene format=3 uid="uid://bcteyb3cn041j"]
 
 [ext_resource type="Script" uid="uid://d1tx7u565xame" path="res://game_management/game_manager.gd" id="1_cawbs"]
 [ext_resource type="Script" uid="uid://ca8jh3bihcqqa" path="res://camera/camera_movement.gd" id="1_olp4a"]
@@ -100,3 +100,31 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_g82c4")
+
+[node name="Goblin1Wins" type="Label" parent="." unique_id=2069573312]
+visible = false
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.37100002
+anchor_right = 0.2
+anchor_bottom = 0.37100002
+offset_left = -89.160034
+offset_top = -56.40802
+offset_right = 89.839966
+offset_bottom = 56.59198
+text = "GOBLIN 1 WINS!"
+horizontal_alignment = 1
+
+[node name="Goblin2Wins" type="Label" parent="." unique_id=225495531]
+visible = false
+anchors_preset = -1
+anchor_left = 0.70500004
+anchor_top = 0.37100002
+anchor_right = 0.70500004
+anchor_bottom = 0.37100002
+offset_left = -89.160034
+offset_top = -56.40802
+offset_right = 89.839966
+offset_bottom = 56.59198
+text = "GOBLIN 2 WINS!"
+horizontal_alignment = 1
