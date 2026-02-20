@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Goblin
 
+@export var player_id:int = 1
+
 # movement 
 
 @export var controller:GoblinController
