@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://tn5kasr05k8a"]
 
-[ext_resource type="ArrayMesh" uid="uid://cyyb8jn63384h" path="res://Tree.obj" id="1_nbyt5"]
+[ext_resource type="ArrayMesh" uid="uid://cyyb8jn63384h" path="res://models/tree/Tree.obj" id="1_nbyt5"]
 
 [node name="Node3D" type="Node3D" unique_id=1068342320]
 

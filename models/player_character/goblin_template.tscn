@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://q5n8lo7wgo38"]
 
-[ext_resource type="PackedScene" uid="uid://bjjfjeu5w6e7b" path="res://player_character/goblin_head.tscn" id="3_27x8l"]
-[ext_resource type="PackedScene" uid="uid://djypljg7q16s4" path="res://player_character/goblin_torso.tscn" id="3_s1kpo"]
-[ext_resource type="PackedScene" uid="uid://bt02xft5cy32n" path="res://player_character/goblin_hand.tscn" id="4_s1kpo"]
-[ext_resource type="PackedScene" uid="uid://dx6f1cp66jedi" path="res://player_character/goblin_foot.tscn" id="5_4bcv1"]
-[ext_resource type="PackedScene" uid="uid://bsmdjr8ppc0tl" path="res://LogBoard.tscn" id="6_4bcv1"]
+[ext_resource type="PackedScene" uid="uid://bjjfjeu5w6e7b" path="res://models/player_character/goblin_head.tscn" id="3_27x8l"]
+[ext_resource type="PackedScene" uid="uid://djypljg7q16s4" path="res://models/player_character/goblin_torso.tscn" id="3_s1kpo"]
+[ext_resource type="PackedScene" uid="uid://bt02xft5cy32n" path="res://models/player_character/goblin_hand.tscn" id="4_s1kpo"]
+[ext_resource type="PackedScene" uid="uid://dx6f1cp66jedi" path="res://models/player_character/goblin_foot.tscn" id="5_4bcv1"]
+[ext_resource type="PackedScene" uid="uid://bsmdjr8ppc0tl" path="res://models/board/LogBoard.tscn" id="6_4bcv1"]
 
 [node name="GoblinTemplate" type="Node3D" unique_id=1640529471]
 

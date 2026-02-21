@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djypljg7q16s4"]
 
-[ext_resource type="ArrayMesh" uid="uid://dx5sagdl880p0" path="res://player_character/GoblinTorso.obj" id="1_vlte5"]
+[ext_resource type="ArrayMesh" uid="uid://dx5sagdl880p0" path="res://models/player_character/GoblinTorso.obj" id="1_vlte5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vlte5"]
 albedo_color = Color(0.38937354, 0.14340195, 0.1278379, 1)

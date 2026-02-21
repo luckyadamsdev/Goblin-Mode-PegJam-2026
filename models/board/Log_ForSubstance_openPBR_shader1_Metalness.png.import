@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do843e6nacln5"
-path="res://.godot/imported/Log_ForSubstance_openPBR_shader1_Metalness.png-fff340066388b27126009e96c2b2ed6b.ctex"
+path="res://.godot/imported/Log_ForSubstance_openPBR_shader1_Metalness.png-d4a22cbcd578b64201052937f52c362b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Log_ForSubstance_openPBR_shader1_Metalness.png"
-dest_files=["res://.godot/imported/Log_ForSubstance_openPBR_shader1_Metalness.png-fff340066388b27126009e96c2b2ed6b.ctex"]
+source_file="res://models/board/Log_ForSubstance_openPBR_shader1_Metalness.png"
+dest_files=["res://.godot/imported/Log_ForSubstance_openPBR_shader1_Metalness.png-d4a22cbcd578b64201052937f52c362b.ctex"]
 
 [params]
 

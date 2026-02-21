@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cxp6jn1eqokf5"]
 
-[ext_resource type="Script" uid="uid://dbq532uplrdfd" path="res://player_character/goblin.gd" id="1_rpmrw"]
-[ext_resource type="PackedScene" uid="uid://q5n8lo7wgo38" path="res://player_character/goblin_template.tscn" id="2_rpmrw"]
-[ext_resource type="Script" uid="uid://cyuth76wtnipy" path="res://player_character/goblin_controller.gd" id="3_wfdko"]
-[ext_resource type="Script" uid="uid://cqpwou5hciv81" path="res://player_character/goblin_control_definition.gd" id="4_je6la"]
+[ext_resource type="Script" uid="uid://dbq532uplrdfd" path="res://models/player_character/goblin.gd" id="1_rpmrw"]
+[ext_resource type="PackedScene" uid="uid://q5n8lo7wgo38" path="res://models/player_character/goblin_template.tscn" id="2_rpmrw"]
+[ext_resource type="Script" uid="uid://cyuth76wtnipy" path="res://models/player_character/goblin_controller.gd" id="3_wfdko"]
+[ext_resource type="Script" uid="uid://cqpwou5hciv81" path="res://models/player_character/goblin_control_definition.gd" id="4_je6la"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wg1ha"]
 radius = 0.1821289
