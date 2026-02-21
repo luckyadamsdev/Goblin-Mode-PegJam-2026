@@ -2,8 +2,27 @@
 
 [ext_resource type="Script" uid="uid://d1tx7u565xame" path="res://game_management/game_manager.gd" id="1_cawbs"]
 [ext_resource type="Script" uid="uid://ca8jh3bihcqqa" path="res://camera/camera_movement.gd" id="1_olp4a"]
+[ext_resource type="Shader" uid="uid://b1x16aospbech" path="res://shadow/shadow.gdshader" id="2_g82c4"]
+[ext_resource type="Script" uid="uid://ehrs6gbdgps" path="res://shadow/shadow.gd" id="2_rgvqj"]
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
+size = Vector2(1.1, 2.7)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc4ne"]
+render_priority = 0
+shader = ExtResource("2_g82c4")
+shader_parameter/surface_normal = Vector3(0, 0, 0)
+shader_parameter/forward = Vector3(0, 0, 0)
+shader_parameter/shadow_mult = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g82c4"]
+render_priority = 0
+shader = ExtResource("2_g82c4")
+shader_parameter/surface_normal = Vector3(0, 1, 0)
+shader_parameter/forward = Vector3(1, 0, 0)
+shader_parameter/shadow_mult = 1.0
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
@@ -19,9 +38,27 @@ metadata/_custom_type_script = "uid://d1tx7u565xame"
 
 [node name="MenuLight" type="DirectionalLight3D" parent="." unique_id=867891742]
 
+[node name="Goblin1Shadow" type="MeshInstance3D" parent="." unique_id=2078833400 node_paths=PackedStringArray("goblin")]
+mesh = SubResource("QuadMesh_fkyaf")
+skeleton = NodePath("../Goblin1")
+surface_material_override/0 = SubResource("ShaderMaterial_fc4ne")
+script = ExtResource("2_rgvqj")
+goblin = NodePath("../Goblin1")
+shadow_materal = SubResource("ShaderMaterial_fc4ne")
+
 [node name="Goblin1" parent="." unique_id=697638060 instance=ExtResource("2_srorr")]
+collision_layer = 2
+
+[node name="Goblin2Shadow" type="MeshInstance3D" parent="." unique_id=1332210659 node_paths=PackedStringArray("goblin")]
+mesh = SubResource("QuadMesh_fkyaf")
+skeleton = NodePath("../Goblin1")
+surface_material_override/0 = SubResource("ShaderMaterial_g82c4")
+script = ExtResource("2_rgvqj")
+goblin = NodePath("../Goblin2")
+shadow_materal = SubResource("ShaderMaterial_g82c4")
 
 [node name="Goblin2" parent="." unique_id=1005389590 instance=ExtResource("2_srorr")]
+collision_layer = 2
 player_id = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=950106236]
@@ -46,7 +83,6 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
 script = ExtResource("1_olp4a")
-follow_height = 3.0
 goblin = NodePath("../../../../Goblin1")
 starting_offset = Vector3(0, 2, -5)
 
@@ -63,7 +99,6 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
 script = ExtResource("1_olp4a")
-follow_height = 3.0
 goblin = NodePath("../../../../Goblin2")
 starting_offset = Vector3(0, 2, -5)
 
