@@ -79,7 +79,9 @@ func _handle_rotation_controls(delta: float) -> void:
 
 		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
 		var slope_rotate_strength:float = clamp(0.2 * (5.0 + get_real_velocity().y), 0.5, 2.0)
-		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength
+		var speed_rotate_strenght:float = clamp(0.5 + 0.03 * velocity.z, 0.5, 2.0)
+
+		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strenght
 
 		# TODO need to smooth out the slope rotation 
 		# maybe use .slerp with - b + (a - b) * 2.71828 ** (-decay * dt)
