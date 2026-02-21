@@ -119,8 +119,9 @@ func unpause() -> void:
 	
 # reset any parameters on the goblin that need resetting when starting the race again
 func reset() -> void:
-	velocity = Vector3(0.0, 0.0, MIN_SPEED) #
+	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	current_speed = MIN_SPEED
+	goblin_template.rotation.x = 0
 	
 func enter_track() -> void:
 	on_track = true
