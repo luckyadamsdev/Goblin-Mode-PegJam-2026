@@ -53,7 +53,7 @@ func _load_map(map_name:String) -> void:
 	cameras[0].set_target(goblins[0])
 	cameras[1].set_target(goblins[1])
 	for goblin in goblins:
-		pass # TODO pause the goblins for the timer?
+		goblin.pause() # TODO pause the goblins for the timer?
 	start_timer()
 	
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race)
@@ -69,6 +69,7 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 
 func start_timer() -> void:
 	# TODO play a start light
+	
 	print("ready")
 	timer_label.show_message("ready")
 	await get_tree().create_timer(1.0).timeout
@@ -79,9 +80,8 @@ func start_timer() -> void:
 	print("go")
 	
 	for goblin in goblins:
-		pass # TODO we need functions to pause and unpause goblins
-		#goblin.unpause()
-	timer_label.start()
+		goblin.unpause()
+	#timer_label.start()
 	
 	
 func clean_up_old_map() -> void:
