@@ -148,3 +148,6 @@ What noises do we need
 - build up sound when going off ramp
 	- Change the slide sound to sound like the ramp?
 	- 
+
+### Miscellaneous
+- how to explain paused goblins hanging in air, or do I need to remove the countdown at start? Maybe letting players override the countdown is gobliny?
