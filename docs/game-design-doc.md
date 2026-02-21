@@ -8,6 +8,9 @@ Goblins are escaping down hill! They've stolen a valuable staff from a wizard, t
 ## Inspiration
 ![Snowboard Kids 2 gameplay screenshot](./assets/snowboard-kids.png)
 
+## Environment Items Colours
+![Sketch](./assets/Environment_Items_Colours.png)
+
 ## Minimum Viable Product
 - Two goblins going down hill
 - Split screen camera 
