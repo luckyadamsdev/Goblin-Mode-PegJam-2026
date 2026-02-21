@@ -6,6 +6,8 @@ class_name CameraMovement
 
 @export var follow_height := 2.0
 
+@export var vertical_offset := 1.0
+
 @export var goblin : Node3D
 
 @export var starting_offset:Vector3 = Vector3(0.0, 2.0, -4.0)
@@ -31,8 +33,10 @@ func _physics_process(_delta : float):
 	if goblin == null:
 		return
 	
-	var delta_v := target_position - goblin.global_position
-	delta_v.y = 0.0
+	var global_look_at_position := goblin.global_position
+	global_look_at_position.y += vertical_offset
+	var delta_v := target_position - global_look_at_position
+	delta_v.y = 3.0
 	var follow_distance_with_speed := follow_distance
 	
 	if (delta_v.length() > follow_distance_with_speed):
@@ -40,13 +44,13 @@ func _physics_process(_delta : float):
 		delta_v.y = follow_height
 		
 		last_target_position = target_position
-		target_position = goblin.global_position + delta_v
+		target_position = global_look_at_position + delta_v
 		
 		global_position = target_position
 		
 		last_target_velocity = (target_position - last_target_position)
 	
-	var look_position:Vector3 = goblin.global_position
+	var look_position:Vector3 = global_look_at_position
 	
 	look_at(look_position + Vector3.UP, Vector3.UP)
 
