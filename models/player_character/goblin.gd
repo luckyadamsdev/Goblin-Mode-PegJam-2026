@@ -46,8 +46,6 @@ func _physics_process(delta: float) -> void:
 
 func apply_jump_force() -> void:
 	velocity.y += JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT)
-	if player_id == 1:
-		print(JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT))
 
 func _handle_jumps(delta: float) -> void:
 	# lets player jump even if they pressed the button too early or too late
