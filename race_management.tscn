@@ -15,11 +15,11 @@ win_screens = [NodePath("../Goblin1Wins"), NodePath("../Goblin2Wins")]
 timer_label = NodePath("../Control/Timer")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
+[node name="MenuLight" type="DirectionalLight3D" parent="." unique_id=867891742]
+
 [node name="Goblin1" parent="." unique_id=697638060 instance=ExtResource("2_srorr")]
-visible = false
 
 [node name="Goblin2" parent="." unique_id=1005389590 instance=ExtResource("2_srorr")]
-visible = false
 player_id = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=950106236]
@@ -41,8 +41,11 @@ handle_input_locally = false
 size = Vector2i(574, 648)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600]
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
 script = ExtResource("1_olp4a")
+goblin = NodePath("../../../../Goblin1")
+starting_offset = Vector3(0, 2, -5)
 
 [node name="player2screen" type="SubViewportContainer" parent="HBoxContainer" unique_id=1149187065]
 layout_mode = 2
@@ -54,8 +57,11 @@ handle_input_locally = false
 size = Vector2i(574, 648)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298]
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
+transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
 script = ExtResource("1_olp4a")
+goblin = NodePath("../../../../Goblin2")
+starting_offset = Vector3(0, 2, -5)
 
 [node name="Control" type="Control" parent="." unique_id=1049987464]
 layout_mode = 3
