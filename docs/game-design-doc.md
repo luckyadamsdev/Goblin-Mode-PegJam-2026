@@ -79,12 +79,14 @@ https://store.steampowered.com/app/2533600/Bloodthief/
 How do we want to adjust movement, cameras, sounds, character movement to create the feel we want
 
 ### Player Movement
+- smooth the ground alignment
 
 ### Camera
 Simple implementations
 - Acceleration
 	- Pull camera back and reduce FOV
 - Have the camera sway behind the player in response to which direction the player is moving towards, and return to centered while player has no change in direction. This is including up and down
+- Raycast downward to prevent clipping through ground
 
 Complex implementations
 - Turning
