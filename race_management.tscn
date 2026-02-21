@@ -7,11 +7,12 @@
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "timer_label")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "timer_label")]
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
 cameras = [NodePath("../HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../HBoxContainer/player2screen/SubViewport/Camera3D")]
 win_screens = [NodePath("../Goblin1Wins"), NodePath("../Goblin2Wins")]
+ready_screens = [NodePath("../Goblin1Ready"), NodePath("../Goblin2Ready")]
 timer_label = NodePath("../Control/Timer")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
