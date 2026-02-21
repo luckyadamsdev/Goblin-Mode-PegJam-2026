@@ -58,7 +58,6 @@ https://store.steampowered.com/app/2533600/Bloodthief/
 ## What Programmer Needs
 - A simple goblin object
 - separate board object
-- Models have standard names placed on a map so they can be automatically 
 - One level
 
 ## What Artist Needs
