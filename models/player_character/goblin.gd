@@ -1,12 +1,18 @@
 extends CharacterBody3D
 class_name Goblin
 
+signal jumped()
+signal landed()
+
+
 const BASE_ACCELERATION := 0.1
 const COYOTE_TIME := 0.2
 const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 1.0
 const MIN_SPEED := 3.0
 const MAX_SPEED := 50.0
+
+const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the air this long
 
 @export var player_id:int = 1
 @export var controller:GoblinController
@@ -21,6 +27,7 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
 
+var on_track:bool = false
 @onready var goblin_template:Node3D = $GoblinTemplate
 
 func _ready() -> void:
@@ -43,19 +50,17 @@ func apply_jump_force() -> void:
 func _handle_jumps(delta: float) -> void:
 	# lets player jump even if they pressed the button too early or too late
 	if is_on_floor():
+		if time_since_on_floor > LAND_THRESHOLD_TIME:
+			landed.emit()
 		time_since_on_floor = 0.0
 		if time_since_jumped_in_air < COYOTE_TIME:
-			apply_jump_force()
-			time_since_jumped_in_air = COYOTE_TIME
-			time_since_on_floor = COYOTE_TIME
+			jump()
 	else:
 		time_since_on_floor += delta
 	time_since_jumped_in_air += delta
 	if controller.button_one_just_pressed():
 		if time_since_on_floor < COYOTE_TIME:
-			apply_jump_force()
-			time_since_on_floor = COYOTE_TIME
-			time_since_jumped_in_air = COYOTE_TIME
+			jump()
 		else:
 			time_since_jumped_in_air = 0.0
 
@@ -112,6 +117,12 @@ func set_start_pos(new_pos:Node3D) -> void:
 	global_rotation = new_pos.global_rotation
 	print("setting start position ", global_rotation, ", ", new_pos.global_rotation)
 
+func jump() -> void:
+	apply_jump_force()
+	time_since_jumped_in_air = COYOTE_TIME
+	time_since_on_floor = COYOTE_TIME
+	jumped.emit()
+
 func pause() -> void:
 	goblin_paused = true
 	
@@ -123,3 +134,8 @@ func reset() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED) #
 	current_speed = MIN_SPEED
 	
+func enter_track() -> void:
+	on_track = true
+	
+func exit_track() -> void:
+	on_track = false
