@@ -80,6 +80,11 @@ How do we want to adjust movement, cameras, sounds, character movement to create
 
 ### Player Movement
 - smooth the ground alignment
+- goblin needs to recognize certain events and provide signals for the camera to respond to:
+	- impacts
+	- landing
+	- direction the player is moving towards
+- similar questions for what events the goblin needs to respond to with animations
 
 ### Camera
 Simple implementations
@@ -99,6 +104,14 @@ Complex implementations
 	- Have the camera raise slightly during start up frames, then move slightly above character during jumping and air time
 - Landing
 	- Have the camera "bounce" downwards before returning to normal horizontal
+
+### Menus & Overlays
+- start race animation (Ready Set Go?)
+- Goblin One Wins! type display (maybe 3D effects for celebration? does it shoot out skulls & bones in place of confetti?)
+- Goblin Ready display to help players understand they have to push a button to start (Might be assisted with animation on Goblin / camera)
+- Press Button to Start display for same reason
+	- But don't put too much into this because we might have to redesign for map select screen
+- Timer: shows seconds of race
 
 ### Animation/Particle Effects
 - Puffs of snow/dust on landing
