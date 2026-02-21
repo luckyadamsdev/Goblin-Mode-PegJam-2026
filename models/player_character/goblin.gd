@@ -4,7 +4,6 @@ class_name Goblin
 signal jumped()
 signal landed()
 
-
 const BASE_ACCELERATION := 0.1
 const COYOTE_TIME := 0.2
 const JUMP_VELOCITY_ADD := 6.0
@@ -30,6 +29,7 @@ var time_since_on_floor := 10.0
 
 var on_track:bool = false
 @onready var goblin_template:Node3D = $GoblinTemplate
+@onready var anim:AnimationPlayer = goblin_template.get_animation_player()
 
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
@@ -110,6 +110,8 @@ func jump() -> void:
 	time_since_jumped_in_air = COYOTE_TIME
 	time_since_on_floor = COYOTE_TIME
 	jumped.emit()
+	anim.play('jump')
+	anim.queue('idle')
 
 func pause() -> void:
 	goblin_paused = true
