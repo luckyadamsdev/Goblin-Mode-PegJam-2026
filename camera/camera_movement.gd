@@ -32,9 +32,12 @@ func _ready():
 	last_target_velocity = Vector3.ZERO
 
 func _physics_process(_delta : float):
+	if goblin == null:
+		return
+	
 	var delta_v := target_position - goblin.global_position
 	delta_v.y = 0.0
-	var follow_distance_with_speed := follow_distance # + clampf(car_body.linear_velocity.length(), 0.0, 2.0)
+	var follow_distance_with_speed := follow_distance
 	
 	if (delta_v.length() > follow_distance_with_speed):
 		delta_v = delta_v.normalized() * follow_distance_with_speed
