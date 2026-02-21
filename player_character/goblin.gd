@@ -8,6 +8,8 @@ const MIN_SPEED := 3.0
 @export var controller:GoblinController
 @export var follow_pivot:Node3D
 
+var goblin_paused:bool = true
+
 var current_speed := MIN_SPEED
 var follow_direction:Node3D = null
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
@@ -18,6 +20,8 @@ func _ready() -> void:
 	follow_direction = follow_pivot.get_child(0)
 
 func _physics_process(delta: float) -> void:
+	if goblin_paused:
+		return
 	# movement logic
 	handle_accelerate(delta)
 	move_and_slide()
@@ -37,3 +41,10 @@ func set_start_pos(new_pos:Node3D) -> void:
 	visible = true
 	global_position = new_pos.global_position
 	global_rotation = new_pos.global_rotation
+	print("setting start position ", global_rotation, ", ", new_pos.global_rotation)
+
+func pause() -> void:
+	goblin_paused = true
+	
+func unpause() -> void:
+	goblin_paused = false

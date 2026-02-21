@@ -12,8 +12,6 @@ class_name CameraMovement
 
 @export var look_curve:Curve
 
-var start_rotation : Vector3
-var start_position : Vector3
 
 ## position that the camera would be 
 var target_position: Vector3
@@ -25,16 +23,17 @@ var last_target_velocity: Vector3
 var max_accel:float = 3.0
 
 func _ready():
-	start_rotation = global_rotation
-	start_position = global_position
 	target_position = global_position
 	last_target_position = target_position
 	last_target_velocity = Vector3.ZERO
 
 func _physics_process(_delta : float):
+	if goblin == null:
+		return
+	
 	var delta_v := target_position - goblin.global_position
 	delta_v.y = 0.0
-	var follow_distance_with_speed := follow_distance # + clampf(car_body.linear_velocity.length(), 0.0, 2.0)
+	var follow_distance_with_speed := follow_distance
 	
 	if (delta_v.length() > follow_distance_with_speed):
 		delta_v = delta_v.normalized() * follow_distance_with_speed
@@ -54,4 +53,5 @@ func _physics_process(_delta : float):
 func set_target(new_target:Node3D) -> void:
 	goblin = new_target
 	global_position = new_target.to_global(starting_offset)
+	target_position = global_position
 	look_at(goblin.global_position)
