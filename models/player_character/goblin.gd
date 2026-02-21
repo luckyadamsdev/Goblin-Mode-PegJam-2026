@@ -8,7 +8,8 @@ signal landed()
 const BASE_ACCELERATION := 0.1
 const COYOTE_TIME := 0.2
 const JUMP_VELOCITY_ADD := 6.0
-const JUMP_VELOCITY_MULT := 1.0
+const JUMP_VELOCITY_MULT := 10.0
+const MAX_JUMP_MULT := 12.0
 const MIN_SPEED := 3.0
 const MAX_SPEED := 50.0
 
@@ -45,7 +46,9 @@ func _physics_process(delta: float) -> void:
 	_handle_rotation_controls(delta)
 
 func apply_jump_force() -> void:
-	velocity.y += JUMP_VELOCITY_ADD + get_real_velocity().y * JUMP_VELOCITY_MULT
+	velocity.y += JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT)
+	if player_id == 1:
+		print(JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT))
 
 func _handle_jumps(delta: float) -> void:
 	# lets player jump even if they pressed the button too early or too late
