@@ -9,6 +9,8 @@
 radius = 0.1821289
 height = 1.3
 
+[sub_resource type="BoxMesh" id="BoxMesh_5pikr"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_rpmrw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpmrw"]
@@ -36,6 +38,9 @@ visible = false
 
 [node name="FollowDirection" type="Node3D" parent="FollowPivot" unique_id=1577394401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.127)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FollowPivot/FollowDirection" unique_id=1300586678]
+mesh = SubResource("BoxMesh_5pikr")
 
 [node name="LookDirection" type="Node3D" parent="FollowPivot" unique_id=578761197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.127)

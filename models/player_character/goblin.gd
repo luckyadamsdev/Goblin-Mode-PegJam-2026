@@ -85,13 +85,6 @@ func _get_speed_rotate_strength() -> float:
 
 func _handle_rotation_controls(delta: float) -> void:
 	if is_on_floor():
-		var floor_normal := quaternion.inverse() * get_floor_normal()
-		# I'm using quaternion which is local to parent but if we always keep goblins out of rotated parents that's fine
-		# floor_normal is now in goblin space
-		# we create a quaternion that rotates from our up to the floor normal
-		var axis := -floor_normal.cross(Vector3.UP).normalized()
-		var angle := Vector3.UP.angle_to(floor_normal)
-
 		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
 		var slope_rotate_strength:float = clamp(0.2 * (6.5 + get_real_velocity().y), 0.5, 2.0)
 		# going fast means you turn faster
@@ -99,19 +92,12 @@ func _handle_rotation_controls(delta: float) -> void:
 
 		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
 
-		# TODO need to smooth out the slope rotation 
-		# maybe use .slerp with - b + (a - b) * 2.71828 ** (-decay * dt)
-		# - expDecay(a, b, decay = 16, delta) # stole from Freya Holmer's lerp smoothing video
-		# or just slerp at constant rate, whichever looks better
-		var slope_rotation := Quaternion.IDENTITY if angle == 0.0 else Quaternion(axis, angle)
 		self.look_at(to_global(follow_pivot.quaternion * follow_direction.position))
-		goblin_template.look_at(slope_rotation * follow_direction.position)
-		goblin_template.rotation.y = 0.0
 	else:
-		#var look_vec := follow_direction.global_position
-		#look_vec.y = 0.0
-		#self.look_at(to_global(look_vec))
 		self.rotate(Vector3.UP, -controller.h_axis * delta)
+
+	# TODO need to smooth out the slope rotation
+	goblin_template.rotation.x = deg_to_rad(-1.0 * get_real_velocity().y)
 
 func set_start_pos(new_pos:Node3D) -> void:
 	visible = true
