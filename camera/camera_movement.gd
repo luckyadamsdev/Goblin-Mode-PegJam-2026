@@ -17,6 +17,9 @@ class_name CameraMovement
 @export var look_curve:Curve
 
 
+var game_mode:GameManager.GameMode = GameManager.GameMode.MENU
+
+
 ## position that the camera would be 
 var target_position: Vector3
 
@@ -39,7 +42,25 @@ func _ready():
 func _physics_process(delta : float):
 	if goblin == null:
 		return
-	
+	match game_mode:
+		GameManager.GameMode.MENU:
+			_menu_process(delta)
+		GameManager.GameMode.RACING:
+			_main_process(delta)
+		GameManager.GameMode.WON:
+			_win_process(delta)
+
+func _menu_process(delta:float):
+	look_at(goblin.global_position + Vector3.UP * vertical_look_offset, Vector3.UP)
+
+func _win_process(delta:float):
+	(target_position - goblin.position).rotated(Vector3.UP, delta)
+	var global_track_position := goblin.global_position
+	global_track_position.y += vertical_offset
+	var look_at_offset:Vector3 = Vector3.UP * vertical_look_offset
+	look_at(global_track_position + look_at_offset, Vector3.UP)
+
+func _main_process(delta:float):	
 	## track old velocities of goblin
 	remember_counter -= delta
 	if remember_counter <= 0.0:
