@@ -7,17 +7,46 @@ var current_map:Map
 
 @export var goblins:Array[Goblin]
 
+## whether the players have pressed buttons to start
+var buttons_pressed:Array[bool] = [false, false]
+
 @export var cameras:Array[CameraMovement]
 
 @export var win_screens:Array[Label]
 
 @export var timer_label:TimerLabel
 
+var selected_nap_path:String = "res://map/map01.tscn"
+
 var winner:int = 0
+
+enum GameMode {
+	MENU,
+	RACING,
+	WON,
+}
+
+var game_mode:GameMode = GameMode.MENU
 
 func _ready() -> void:
 	instance = self
-	_load_map("res://map/map01.tscn")
+
+func _process(delta: float) -> void:
+	match game_mode:
+		GameMode.MENU:
+			# TODO wait for both players to press start?
+			# TODO if we have map select, let them select different maps?
+			var all_buttons_pressed:bool = true
+			for bp in buttons_pressed:
+				if bp == false:
+					all_buttons_pressed = false
+			if all_buttons_pressed:
+				_load_map(selected_map_path)
+			pass
+		GameMode.RACING:
+			pass
+		GameMode.WON:
+			pass
 
 func _load_map(map_name:String) -> void:
 	if current_map != null:
@@ -31,6 +60,8 @@ func _load_map(map_name:String) -> void:
 	goblins[1].set_start_pos(current_map.goblin_2_start)
 	cameras[0].set_target(goblins[0])
 	cameras[1].set_target(goblins[1])
+	for goblin in goblins:
+		pass # TODO pause the goblins for the timer?
 	start_timer()
 	
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race)
