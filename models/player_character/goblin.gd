@@ -87,7 +87,8 @@ func _handle_rotation_controls(delta: float) -> void:
 
 		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
 		# going fast means you turn faster
-		var slope_rotate_strength:float = clamp(0.2 * (5.0 + get_real_velocity().y), 0.5, 2.0)
+		
+		var slope_rotate_strength:float = clamp(0.2 * (6.5 + get_real_velocity().y), 0.5, 2.0)
 		var speed_rotate_strength:float = _get_speed_rotate_strength()
 
 		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
@@ -97,7 +98,7 @@ func _handle_rotation_controls(delta: float) -> void:
 		# - expDecay(a, b, decay = 16, delta) # stole from Freya Holmer's lerp smoothing video
 		# or just slerp at constant rate, whichever looks better
 		var slope_rotation := Quaternion.IDENTITY if angle == 0.0 else Quaternion(axis, angle)
-		self.look_at(to_global( follow_pivot.quaternion * follow_direction.position))
+		self.look_at(to_global(follow_pivot.quaternion * follow_direction.position))
 		goblin_template.look_at(slope_rotation * follow_direction.position)
 		goblin_template.rotation.y = 0.0
 	else:
