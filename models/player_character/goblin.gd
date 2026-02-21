@@ -106,3 +106,9 @@ func pause() -> void:
 	
 func unpause() -> void:
 	goblin_paused = false
+	
+# reset any parameters on the goblin that need resetting when starting the race again
+func reset() -> void:
+	velocity = Vector3(0.0, 0.0, MIN_SPEED) #
+	current_speed = MIN_SPEED
+	
