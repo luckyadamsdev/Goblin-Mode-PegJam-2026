@@ -3,7 +3,8 @@ class_name Goblin
 
 const ACCELERATION := 0.2
 const COYOTE_TIME := 0.2
-const JUMP_VELOCITY := 8.0
+const JUMP_VELOCITY_ADD := 6.0
+const JUMP_VELOCITY_MULT := 1.0
 const MIN_SPEED := 3.0
 
 @export var player_id:int = 1
@@ -28,24 +29,29 @@ func _physics_process(delta: float) -> void:
 		return
 	# movement logic
 	_handle_accelerate(delta)
-	_handle_jumps(delta)
 	move_and_slide()
+	_handle_jumps(delta)
 	_handle_rotation_controls(delta)
+
+func apply_jump_force() -> void:
+	velocity.y += JUMP_VELOCITY_ADD + get_real_velocity().y * JUMP_VELOCITY_MULT
 
 func _handle_jumps(delta: float) -> void:
 	# lets player jump even if they pressed the button too early or too late
 	if is_on_floor():
 		time_since_on_floor = 0.0
 		if time_since_jumped_in_air < COYOTE_TIME:
-			velocity.y += JUMP_VELOCITY
+			apply_jump_force()
 			time_since_jumped_in_air = COYOTE_TIME
+			time_since_on_floor = COYOTE_TIME
 	else:
 		time_since_on_floor += delta
 	time_since_jumped_in_air += delta
 	if controller.button_one_just_pressed():
 		if time_since_on_floor < COYOTE_TIME:
-			velocity.y += JUMP_VELOCITY
+			apply_jump_force()
 			time_since_on_floor = COYOTE_TIME
+			time_since_jumped_in_air = COYOTE_TIME
 		else:
 			time_since_jumped_in_air = 0.0
 
