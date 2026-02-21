@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Goblin
 
 signal jumped()
-signal landed(strength:float)
+signal landed()
 
 
 const BASE_ACCELERATION := 0.1
@@ -10,6 +10,8 @@ const COYOTE_TIME := 0.2
 const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 1.0
 const MIN_SPEED := 3.0
+
+const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the air this long
 
 @export var player_id:int = 1
 @export var controller:GoblinController
@@ -45,7 +47,8 @@ func apply_jump_force() -> void:
 func _handle_jumps(delta: float) -> void:
 	# lets player jump even if they pressed the button too early or too late
 	if is_on_floor():
-		landed.emit()
+		if time_since_on_floor > LAND_THRESHOLD_TIME:
+			landed.emit()
 		time_since_on_floor = 0.0
 		if time_since_jumped_in_air < COYOTE_TIME:
 			jump()
