@@ -127,7 +127,7 @@ offset_left = -89.160034
 offset_top = -56.40802
 offset_right = 89.839966
 offset_bottom = 56.59198
-text = "GOBLIN 1 WINS!"
+text = "GOBLIN 1 READY!"
 horizontal_alignment = 1
 
 [node name="Goblin2Ready" type="Label" parent="." unique_id=428366604]
@@ -141,7 +141,7 @@ offset_left = -89.160034
 offset_top = -56.40802
 offset_right = 89.839966
 offset_bottom = 56.59198
-text = "GOBLIN 2 WINS!"
+text = "GOBLIN 2 READY!"
 horizontal_alignment = 1
 
 [node name="Goblin1PressToStart" type="Label" parent="." unique_id=1248262924]
