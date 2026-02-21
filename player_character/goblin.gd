@@ -8,6 +8,7 @@ const MIN_SPEED := 3.0
 @export var controller:GoblinController
 @export var follow_pivot:Node3D
 
+# whether the goblin is currently paused and waiting to move
 var goblin_paused:bool = true
 
 var current_speed := MIN_SPEED
@@ -35,7 +36,21 @@ func handle_accelerate(delta: float) -> void:
 
 func handle_rotation_controls(delta: float) -> void:
 	follow_pivot.rotation.y = -1.0 * controller.h_axis * delta
-	self.look_at(follow_direction.global_position)
+	if is_on_floor():
+		var floor_normal := quaternion.inverse() * get_floor_normal()
+		# I'm using quaternion which is local to parent but if we always keep goblins out of rotated parents that's fine
+		# floor_normal is now in goblin space
+		# we create a quaternion that rotates from our up to the floor normal
+		var axis := -floor_normal.cross(Vector3.UP).normalized()
+		var angle := Vector3.UP.angle_to(floor_normal)
+		var slope_rotation := Quaternion.IDENTITY if angle == 0.0 else Quaternion(axis, angle)
+		self.look_at(to_global( slope_rotation * follow_pivot.quaternion * follow_direction.position))
+	else:
+		#var look_vec := follow_direction.global_position
+		#look_vec.y = 0.0
+		#self.look_at(to_global(look_vec))
+		self.rotate(Vector3.UP, -controller.h_axis * delta)
+	
 
 func set_start_pos(new_pos:Node3D) -> void:
 	visible = true
