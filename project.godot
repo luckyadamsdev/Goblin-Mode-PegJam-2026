@@ -94,6 +94,10 @@ p2_b2={
 ]
 }
 
+[physics]
+
+3d/default_gravity=16.0
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
