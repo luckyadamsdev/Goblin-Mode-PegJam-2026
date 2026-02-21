@@ -18,3 +18,9 @@ var end_zone:Area3D:
 		if end_zone == null:
 			end_zone = find_child("end_zone")
 		return end_zone
+
+var track_zone:Area3D:
+	get:
+		if track_zone == null:
+			track_zone = find_child("track_zone")
+		return track_zone

@@ -20,6 +20,8 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
 
+var on_track:bool = false
+
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	controller.set_player_id(player_id)
@@ -113,3 +115,8 @@ func reset() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED) #
 	current_speed = MIN_SPEED
 	
+func enter_track() -> void:
+	on_track = true
+	
+func exit_track() -> void:
+	on_track = false
