@@ -24,6 +24,7 @@ var goblin_paused:bool = true
 
 var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
+var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
 var was_on_floor := false
@@ -103,8 +104,9 @@ func _handle_rotation_controls(delta: float) -> void:
 	else:
 		self.rotate(Vector3.UP, -controller.h_axis * delta)
 
-	# TODO need to smooth out the slope rotation
 	goblin_template.rotation.x = deg_to_rad(-1.0 * get_real_velocity().y)
+	tilt_turn_target = controller.h_axis * 0.5
+	goblin_template.rotation.z = lerpf(goblin_template.rotation.z, tilt_turn_target, 0.03)
 
 func set_start_pos(new_pos:Node3D) -> void:
 	visible = true
