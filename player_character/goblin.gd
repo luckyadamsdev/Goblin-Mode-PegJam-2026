@@ -18,16 +18,18 @@ func _ready() -> void:
 	follow_direction = follow_pivot.get_child(0)
 
 func _physics_process(delta: float) -> void:
-	#poll status from controller
-	if controller != null:
-		pass
+	# movement logic
+	handle_accelerate(delta)
+	move_and_slide()
+	handle_rotation_controls(delta)
 
-	# apply physics
+func handle_accelerate(delta: float) -> void:
 	current_speed += ACCELERATION * delta
 	var new_velocity: Vector3 = basis.z * current_speed
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
-	move_and_slide()
+
+func handle_rotation_controls(delta: float) -> void:
 	follow_pivot.rotation.y = -1.0 * controller.h_axis * delta
 	self.look_at(follow_direction.global_position)
 
