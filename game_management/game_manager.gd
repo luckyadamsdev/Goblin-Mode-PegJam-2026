@@ -20,7 +20,7 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var timer_label:TimerLabel
 
-var selected_map_path:String = "res://map/map03.tscn"
+var selected_map_path:String = "res://map/short_map.tscn"
 
 var winner:int = 0
 
@@ -82,6 +82,10 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 			win_screens[winner - 1].visible = true
 			timer_label.counting = false # we can stop counting
 			game_mode = GameMode.WON
+		else:
+			print("goblinb mode ", game_mode)
+	else:
+		print("is not goblin")
 
 func start_timer() -> void:
 	# TODO play a start light
