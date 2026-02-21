@@ -24,6 +24,14 @@ var last_target_velocity: Vector3
 
 var max_accel:float = 3.0
 
+const REMEMBER_TIME:float = 1.0 / 15.0
+
+const MAX_MEMORY:int = 20
+
+var remember_counter:float = REMEMBER_TIME
+
+var remember_velocity:Array[Vector3]
+
 func _ready():
 	target_position = global_position
 	last_target_position = target_position
@@ -31,9 +39,17 @@ func _ready():
 	goblin.landed.connect(_on_landed)
 	goblin.jumped.connect(_on_jumped)
 
-func _physics_process(_delta : float):
+func _physics_process(delta : float):
 	if goblin == null:
 		return
+	
+	## track old velocities of goblin
+	remember_counter -= delta
+	if remember_counter <= 0.0:
+		remember_counter = REMEMBER_TIME
+		remember_velocity.append(goblin.velocity)
+		if remember_velocity.size() > MAX_MEMORY:
+			remember_velocity.pop_front()
 	
 	var global_look_at_position := goblin.global_position
 	global_look_at_position.y += vertical_offset
