@@ -21,6 +21,8 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
 
+@onready var goblin_template:Node3D = $GoblinTemplate
+
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	controller.set_player_id(player_id)
@@ -84,8 +86,8 @@ func _handle_rotation_controls(delta: float) -> void:
 		var angle := Vector3.UP.angle_to(floor_normal)
 
 		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
+		var slope_rotate_strength:float = clamp(0.2 * (6.5 + get_real_velocity().y), 0.5, 2.0)
 		# going fast means you turn faster
-		var slope_rotate_strength:float = clamp(0.2 * (5.0 + get_real_velocity().y), 0.5, 2.0)
 		var speed_rotate_strength:float = _get_speed_rotate_strength()
 
 		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
@@ -95,7 +97,9 @@ func _handle_rotation_controls(delta: float) -> void:
 		# - expDecay(a, b, decay = 16, delta) # stole from Freya Holmer's lerp smoothing video
 		# or just slerp at constant rate, whichever looks better
 		var slope_rotation := Quaternion.IDENTITY if angle == 0.0 else Quaternion(axis, angle)
-		self.look_at(to_global( slope_rotation * follow_pivot.quaternion * follow_direction.position))
+		self.look_at(to_global(follow_pivot.quaternion * follow_direction.position))
+		goblin_template.look_at(slope_rotation * follow_direction.position)
+		goblin_template.rotation.y = 0.0
 	else:
 		#var look_vec := follow_direction.global_position
 		#look_vec.y = 0.0
