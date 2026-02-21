@@ -16,7 +16,7 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var timer_label:TimerLabel
 
-var selected_nap_path:String = "res://map/map01.tscn"
+var selected_map_path:String = "res://map/map01.tscn"
 
 var winner:int = 0
 
@@ -31,18 +31,10 @@ var game_mode:GameMode = GameMode.MENU
 func _ready() -> void:
 	instance = self
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	match game_mode:
 		GameMode.MENU:
-			# TODO wait for both players to press start?
-			# TODO if we have map select, let them select different maps?
-			var all_buttons_pressed:bool = true
-			for bp in buttons_pressed:
-				if bp == false:
-					all_buttons_pressed = false
-			if all_buttons_pressed:
-				_load_map(selected_map_path)
-			pass
+			_handle_menu_mode()
 		GameMode.RACING:
 			pass
 		GameMode.WON:
@@ -85,9 +77,9 @@ func start_timer() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	print("go")
-	# TODO unpause goblins
+	
 	for goblin in goblins:
-		pass
+		pass # TODO we need functions to pause and unpause goblins
 		#goblin.unpause()
 	timer_label.start()
 	
@@ -96,3 +88,16 @@ func clean_up_old_map() -> void:
 	current_map.end_zone.body_entered.disconnect(_on_check_player_finished_race)
 	remove_child(current_map)
 	current_map.queue_free()
+	
+func _handle_menu_mode() -> void:
+	# TODO wait for both players to press start?
+	# TODO if we have map select, let them select different maps?
+	var all_buttons_pressed:bool = true
+	for bp in buttons_pressed:
+		if bp == false:
+			all_buttons_pressed = false
+	if all_buttons_pressed:
+		game_mode = GameMode.RACING
+		_load_map(selected_map_path)
+	else:
+		pass # TODO check what 
