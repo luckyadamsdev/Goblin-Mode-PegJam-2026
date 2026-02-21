@@ -33,7 +33,7 @@ https://store.steampowered.com/app/2533600/Bloodthief/
 	- Rock/tree
 
 ## What Medium Product
-- Power-up / weapons?
+- Power-up / weapons
 ## Controls
 | Button | Action                                         |
 | ------ | ---------------------------------------------- |
@@ -58,7 +58,6 @@ https://store.steampowered.com/app/2533600/Bloodthief/
 ## What Programmer Needs
 - A simple goblin object
 - separate board object
-- Models have standard names placed on a map so they can be automatically 
 - One level
 
 ## What Artist Needs
@@ -75,3 +74,101 @@ https://store.steampowered.com/app/2533600/Bloodthief/
 |                               | Ramp        |
 |                               | Rail        |
 |                               |             |
+
+## Juice
+How do we want to adjust movement, cameras, sounds, character movement to create the feel we want
+
+### Player Movement
+- smooth the ground alignment
+- goblin needs to recognize certain events and provide signals for the camera to respond to:
+	- impacts
+	- landing
+	- direction the player is moving towards
+- similar questions for what events the goblin needs to respond to with animations
+
+### Camera
+Simple implementations
+- Acceleration
+	- Pull camera back and reduce FOV
+- Have the camera sway behind the player in response to which direction the player is moving towards, and return to centered while player has no change in direction. This is including up and down
+- Raycast downward to prevent clipping through ground
+
+Complex implementations
+- Turning
+	- Have camera away from the direction the player is turning
+- Impacts
+	- Shake the camera
+	- When both players collide freeze the game for an instant
+	- When a player hits another with a melee weapon freeze the game for an instant and make the player who was hurt have screen shake
+- Jumping
+	- Have the camera raise slightly during start up frames, then move slightly above character during jumping and air time
+- Landing
+	- Have the camera "bounce" downwards before returning to normal horizontal
+
+### Menus & Overlays
+- start race animation (Ready Set Go?)
+- Goblin One Wins! type display (maybe 3D effects for celebration? does it shoot out skulls & bones in place of confetti?)
+- Goblin Ready display to help players understand they have to push a button to start (Might be assisted with animation on Goblin / camera)
+- Press Button to Start display for same reason
+	- But don't put too much into this because we might have to redesign for map select screen
+- Timer: shows seconds of race
+
+### Animation/Particle Effects
+- Puffs of snow/dust on landing
+- a wake behind the snowboard
+- crushed grass
+- power up particles
+- pain stars
+- Speed trails
+- 
+### Sounds
+If a sound is constant it needs to change enough to not be annoying. We want our game to sound?
+- Cartoony
+- 
+What noises do we need
+- Sliding noise 
+	- Variable for different terrains/grinds
+	- Not monotonous 
+	- hushed when riding through grass
+- impact thuds
+	- bumping players
+	- bumping obstacles
+	- landing a jump
+- goblin voice lines and grunts
+	- Taunt?
+	- bumping player
+	- successfully using item
+	- whiffing item
+- wipe-out sounds
+- race start
+- winner!
+- race over
+- power up sounds
+- grinding sounds
+- build up sound when going off ramp
+	- Change the slide sound to sound like the ramp?
+
+## TODO Task list
+- Web export to itch.io
+- Goblin animations hooked up to code with AnimationPlayer
+- Main menu
+- Music (free, not AI)
+- Environment asset creation
+- Title
+- Credits
+- Tutorial/playground area (1 track)
+- Sound effects
+- Design the itch.io page
+- Pause menu
+- Volume settings
+- Goblin animations looking good
+- Slowdown if going off track
+- Track selection (3 tracks)
+- Texures/colours added to 3D models
+- 1 Trick (spin)
+- Full UI navigation
+- Items
+- File organization
+
+### Miscellaneous
+- how to explain paused goblins hanging in air, or do I need to remove the countdown at start? Maybe letting players override the countdown is gobliny?
