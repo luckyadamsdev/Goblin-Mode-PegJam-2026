@@ -147,7 +147,28 @@ What noises do we need
 - grinding sounds
 - build up sound when going off ramp
 	- Change the slide sound to sound like the ramp?
-	- 
+
+## TODO Task list
+- Web export to itch.io
+- Goblin animations hooked up to code with AnimationPlayer
+- Main menu
+- Music (free, not AI)
+- Environment asset creation
+- Title
+- Credits
+- Tutorial/playground area (1 track)
+- Sound effects
+- Design the itch.io page
+- Pause menu
+- Volume settings
+- Goblin animations looking good
+- Slowdown if going off track
+- Track selection (3 tracks)
+- Texures/colours added to 3D models
+- 1 Trick (spin)
+- Full UI navigation
+- Items
+- File organization
 
 ### Miscellaneous
 - how to explain paused goblins hanging in air, or do I need to remove the countdown at start? Maybe letting players override the countdown is gobliny?

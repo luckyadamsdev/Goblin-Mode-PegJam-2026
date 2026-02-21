@@ -20,7 +20,7 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var timer_label:TimerLabel
 
-var selected_map_path:String = "res://map/map02.tscn"
+var selected_map_path:String = "res://map/map03.tscn"
 
 var winner:int = 0
 
@@ -66,13 +66,14 @@ func _load_map(map_name:String) -> void:
 	cameras[1].set_target(goblins[1])
 	for goblin in goblins:
 		goblin.pause() # pause the goblins for the timer to complete
+		goblin.reset()
 	start_timer()
 	
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race) # listen for a goblin reaching the finish line
 
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
-		if winner == 0: # no winner yet
+		if game_mode != GameMode.WON: # no winner yet
 			winner = (body as Goblin).player_id
 			print("is goblin! ", winner)
 			win_screens[winner - 1].visible = true

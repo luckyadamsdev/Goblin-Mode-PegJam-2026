@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cej8l7e5h45mw"]
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_2tu2m"]
-[ext_resource type="PackedScene" uid="uid://cgqbilex2g8bc" path="res://Track.tscn" id="2_buojc"]
+[ext_resource type="PackedScene" uid="uid://cgqbilex2g8bc" path="res://tracks/Track.tscn" id="2_buojc"]
 
 [sub_resource type="Environment" id="Environment_2g46u"]
 
