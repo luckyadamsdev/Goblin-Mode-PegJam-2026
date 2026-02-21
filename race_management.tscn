@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
-size = Vector2(1.2, 3)
+size = Vector2(1.1, 2.7)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fc4ne"]
 render_priority = 0
@@ -19,8 +19,8 @@ shader_parameter/forward = Vector3(0, 0, 0)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g82c4"]
 render_priority = 0
 shader = ExtResource("2_g82c4")
-shader_parameter/surface_normal = Vector3(0, 0, 0)
-shader_parameter/forward = Vector3(0, 0, 0)
+shader_parameter/surface_normal = Vector3(0, 1, 0)
+shader_parameter/forward = Vector3(1, 0, 0)
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
