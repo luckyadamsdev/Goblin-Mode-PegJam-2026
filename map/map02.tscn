@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cej8l7e5h45mw"]
+
+[ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_2tu2m"]
+[ext_resource type="PackedScene" uid="uid://cgqbilex2g8bc" path="res://Track.tscn" id="2_buojc"]
+
+[sub_resource type="Environment" id="Environment_2g46u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
+size = Vector3(18.135864, 5, 5)
+
+[node name="Map02" type="Node3D" unique_id=317521660]
+script = ExtResource("1_2tu2m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=359927576]
+environment = SubResource("Environment_2g46u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=724154080]
+transform = Transform3D(0.7850723, 0.61631054, 0.061828256, 0.49741828, -0.6867932, 0.5299906, 0.36910194, -0.3853264, -0.84574676, -3.703802, 18.014938, -7.7496643)
+
+[node name="goblin_1_start" type="Node3D" parent="." unique_id=1501022478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3071187, 5, -15.636875)
+
+[node name="goblin_2_start" type="Node3D" parent="." unique_id=1940118030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.362118, 5, -15.958214)
+
+[node name="end_zone" type="Area3D" parent="." unique_id=999484125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.969762, -4.182275, 29.30827)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="end_zone" unique_id=867850013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.975165, -136.14723, 1196.5643)
+shape = SubResource("BoxShape3D_rh2f5")
+
+[node name="Track" parent="." unique_id=1584739391 instance=ExtResource("2_buojc")]

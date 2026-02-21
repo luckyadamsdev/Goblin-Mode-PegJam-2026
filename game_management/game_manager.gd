@@ -42,6 +42,7 @@ func _process(_delta: float) -> void:
 		GameMode.WON:
 			_handle_menu_mode()
 
+
 func _load_map(map_name:String) -> void:
 	if current_map != null:
 		clean_up_old_map()
