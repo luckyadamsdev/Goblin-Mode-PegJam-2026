@@ -17,7 +17,7 @@ var winner:int = 0
 
 func _ready() -> void:
 	instance = self
-	_load_map("res://map/map01.tscn")
+	_load_map("res://map/map02.tscn")
 
 func _load_map(map_name:String) -> void:
 	if current_map != null:
