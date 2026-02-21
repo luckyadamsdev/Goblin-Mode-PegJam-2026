@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	_handle_rotation_controls(delta)
 
 func apply_jump_force() -> void:
+	# TODO turning speed should also be affected by slopes (i.e. get_real_velocity().y and is_on_floor())
 	velocity.y += JUMP_VELOCITY_ADD + get_real_velocity().y * JUMP_VELOCITY_MULT
 
 func _handle_jumps(delta: float) -> void:
@@ -58,6 +59,12 @@ func _handle_jumps(delta: float) -> void:
 
 func _handle_accelerate(delta: float) -> void:
 	current_speed += ACCELERATION * delta
+	if is_on_floor():
+		var realVelocityY := get_real_velocity().y
+		if realVelocityY < 0.0:
+			current_speed -= get_real_velocity().y * delta
+		else:
+			current_speed -= get_real_velocity().y * delta * 0.1
 	var new_velocity: Vector3 = basis.z * current_speed
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
