@@ -20,6 +20,8 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
 
+@onready var goblin_template:Node3D = $GoblinTemplate
+
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	controller.set_player_id(player_id)
@@ -83,8 +85,11 @@ func _handle_rotation_controls(delta: float) -> void:
 		# maybe use .slerp with - b + (a - b) * 2.71828 ** (-decay * dt)
 		# - expDecay(a, b, decay = 16, delta) # stole from Freya Holmer's lerp smoothing video
 		# or just slerp at constant rate, whichever looks better
+		
 		var slope_rotation := Quaternion.IDENTITY if angle == 0.0 else Quaternion(axis, angle)
-		self.look_at(to_global( slope_rotation * follow_pivot.quaternion * follow_direction.position))
+		self.look_at(to_global( follow_pivot.quaternion * follow_direction.position))
+		goblin_template.look_at(slope_rotation * follow_direction.position)
+		goblin_template.rotation.y = 0.0
 	else:
 		#var look_vec := follow_direction.global_position
 		#look_vec.y = 0.0
