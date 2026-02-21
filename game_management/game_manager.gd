@@ -73,7 +73,8 @@ func _load_map(map_name:String) -> void:
 		current_map.track_zone.body_entered.connect(_on_entered_track_zone)
 		current_map.track_zone.body_exited.connect(_on_exited_track_zone)
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race) # listen for a goblin reaching the finish line
-
+	current_map.end_zone.collision_mask ^= 2
+	
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
 		if game_mode != GameMode.WON: # no winner yet
