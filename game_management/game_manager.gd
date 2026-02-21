@@ -66,6 +66,7 @@ func _load_map(map_name:String) -> void:
 	cameras[1].set_target(goblins[1])
 	for goblin in goblins:
 		goblin.pause() # pause the goblins for the timer to complete
+		goblin.reset()
 	start_timer()
 	
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race) # listen for a goblin reaching the finish line
