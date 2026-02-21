@@ -72,7 +72,7 @@ func _load_map(map_name:String) -> void:
 
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
-		if winner == 0: # no winner yet
+		if game_mode != GameMode.WON: # no winner yet
 			winner = (body as Goblin).player_id
 			print("is goblin! ", winner)
 			win_screens[winner - 1].visible = true
