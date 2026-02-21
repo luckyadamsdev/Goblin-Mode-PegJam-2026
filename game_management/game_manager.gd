@@ -100,4 +100,8 @@ func _handle_menu_mode() -> void:
 		game_mode = GameMode.RACING
 		_load_map(selected_map_path)
 	else:
-		pass # TODO check what 
+		# check if any of the players have pressed a button
+		for goblin in goblins:
+			if goblin.controller.button_one_just_pressed() || goblin.controller.button_two_just_pressed():
+				buttons_pressed[goblin.player_id - 1] = true
+				print("goblin %d ready!"%goblin.player_id)
