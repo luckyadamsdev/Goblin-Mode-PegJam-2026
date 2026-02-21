@@ -26,10 +26,8 @@ func _process(_delta: float) -> void:
 	if raycast.is_colliding():
 		var normal := raycast.get_collision_normal()
 		global_position = raycast.get_collision_point() + normal * 0.01
-		#look_at(global_position + normal)
 		shadow_materal.set_shader_parameter("surface_normal", normal)
 		shadow_materal.set_shader_parameter("forward", goblin.basis.z)
 		visible = true
 	else:
-		#print("not colliding ", goblin.global_position)
 		visible = false

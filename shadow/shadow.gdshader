@@ -15,7 +15,7 @@ void vertex() {
 
 
 void fragment() {
-	float shadow_strength = max(0.0, length(UV - vec2(0.5)) * 2.0);
-	ALBEDO = vec3(shadow_strength);
+	float shadow_strength = pow(max(0.0, length(UV - vec2(0.5)) * 2.0), 2.2);
+	ALBEDO = vec3(1.0 - (1.0 - shadow_strength) * 0.4);
 }
 
