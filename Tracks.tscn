@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://r210a1gq8c6m"]
+
+[ext_resource type="ArrayMesh" uid="uid://env7utpk08fd" path="res://Tracks.obj" id="1_g1np1"]
+
+[node name="Node3D" type="Node3D" unique_id=1584739391]
+
+[node name="Tracks" type="MeshInstance3D" parent="." unique_id=1062231804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 379.883, 286.48993, 0.13631153)
+mesh = ExtResource("1_g1np1")
