@@ -21,7 +21,7 @@ transform = Transform3D(0.7850723, 0.61631054, 0.061828256, 0.49741828, -0.68679
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2701542, 5, -15.636875)
 
 [node name="goblin_2_start" type="Node3D" parent="." unique_id=1940118030]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.551285, 5, -15.958214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1578884, 5, -15.958214)
 
 [node name="end_zone" type="Area3D" parent="." unique_id=999484125]
 transform = Transform3D(0.77806777, 0, 0.6281804, 0, 1, 0, -0.6281804, 0, 0.77806777, 192.0333, -230.65561, -177.9374)
