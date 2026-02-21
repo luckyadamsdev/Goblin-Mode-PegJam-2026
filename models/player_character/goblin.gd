@@ -4,12 +4,12 @@ class_name Goblin
 signal jumped()
 signal landed()
 
-const BASE_ACCELERATION := 0.1
+const BASE_ACCELERATION := 0.05
 const COYOTE_TIME := 0.2
 const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 10.0
 const MAX_JUMP_MULT := 12.0
-const MIN_SPEED := 3.0
+const MIN_SPEED := 8.0
 const MAX_SPEED := 50.0
 const TRICK_SPEED_BOOST := 10.0
 
