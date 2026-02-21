@@ -16,6 +16,8 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var ready_screens:Array[Control]
 
+@export var press_to_start_screens:Array[Control]
+
 @export var timer_label:TimerLabel
 
 var selected_map_path:String = "res://map/map01.tscn"
@@ -115,3 +117,4 @@ func _handle_menu_mode() -> void:
 				buttons_pressed[goblin.player_id - 1] = true
 				print("goblin %d ready!" % goblin.player_id)
 				ready_screens[goblin.player_id - 1].visible = true
+				press_to_start_screens[goblin.player_id - 1].visible = false
