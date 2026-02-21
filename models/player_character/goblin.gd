@@ -87,7 +87,6 @@ func _handle_rotation_controls(delta: float) -> void:
 		# going fast means you turn faster
 		var slope_rotate_strength:float = clamp(0.2 * (5.0 + get_real_velocity().y), 0.5, 2.0)
 		var speed_rotate_strength:float = _get_speed_rotate_strength()
-		print(speed_rotate_strength)
 
 		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
 
