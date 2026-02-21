@@ -26,6 +26,7 @@ var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
+var was_on_floor := false
 
 var on_track:bool = false
 @onready var goblin_template:Node3D = $GoblinTemplate
@@ -42,10 +43,18 @@ func _physics_process(delta: float) -> void:
 	_handle_accelerate(delta)
 	move_and_slide()
 	_handle_jumps(delta)
+	_handle_lands()
 	_handle_rotation_controls(delta)
+	was_on_floor = is_on_floor()
+	goblin_template.scale.y = clamp(1.0 + 0.1 * get_real_velocity().y, 0.9, 1.2)
 
 func apply_jump_force() -> void:
 	velocity.y += JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT)
+
+func _handle_lands() -> void:
+	if not was_on_floor and is_on_floor():
+		anim.play('land')
+		anim.queue('idle')
 
 func _handle_jumps(delta: float) -> void:
 	# lets player jump even if they pressed the button too early or too late
@@ -109,7 +118,6 @@ func jump() -> void:
 	time_since_on_floor = COYOTE_TIME
 	jumped.emit()
 	anim.play('jump')
-	anim.queue('idle')
 
 func pause() -> void:
 	goblin_paused = true

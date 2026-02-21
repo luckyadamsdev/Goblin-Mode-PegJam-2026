@@ -117,6 +117,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, -1.4367028, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("display/Body/GoblinHead:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("display/Body/GoblinTorso:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.0471976, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ddw36"]
 resource_name = "idle"
@@ -273,11 +297,112 @@ tracks/8/keys = {
 "values": [Vector3(0, -1.4367028, 0), Vector3(-0.022801312, -1.4386442, 0.169865), Vector3(0, -1.4367028, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4pj2w"]
+resource_name = "land"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("display/Body/GoblinHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.65000004, 1),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(0.026, 0.9030909, 0.124), Vector3(0.026, 0.7515454, 0.124), Vector3(0.026, 0.6, 0.124), Vector3(0.026, 0.7515454, 0.124), Vector3(0.026, 0.9030909, 0.124)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("display/Body/GoblinTorso:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.65000004, 1),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(0, 0.9, 0.028), Vector3(0, 0.79999995, 0.028), Vector3(0, 0.7, 0.028), Vector3(0, 0.79999995, 0.028), Vector3(0, 0.9, 0.028)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("display/Body/Hands:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(0, 0.518, 0), Vector3(0, 0.359, 0), Vector3(0, 0.2, 0), Vector3(0, 0.35900003, 0), Vector3(0, 0.518, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("display/Body/Feet:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.02910328, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("display/Body/GoblinHead:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("display/Body/GoblinTorso:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.0471976, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("display/Body/Hands:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.4367028, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("display/Body/Feet:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5707964, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8e47"]
 _data = {
 &"RESET": SubResource("Animation_c8e47"),
 &"idle": SubResource("Animation_ddw36"),
-&"jump": SubResource("Animation_xc1av")
+&"jump": SubResource("Animation_xc1av"),
+&"land": SubResource("Animation_4pj2w")
 }
 
 [node name="GoblinTemplate" type="Node3D" unique_id=1640529471]
@@ -292,7 +417,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19314194, 0)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.026408494, 1.0057067, 0.12431575)
 
 [node name="GoblinTorso" parent="display/Body" unique_id=2020290949 instance=ExtResource("3_s1kpo")]
-transform = Transform3D(0.09999999, 0, -0.17320509, 0, 0.2, 0, 0.17320509, 0, 0.09999999, 0, 1.0212966, 0.02785623)
+transform = Transform3D(0.099999994, 0, -0.17320509, 0, 0.2, 0, 0.17320509, 0, 0.099999994, 0, 1.0212966, 0.02785623)
 
 [node name="Hands" type="Node3D" parent="display/Body" unique_id=375090163]
 transform = Transform3D(0.13369198, 0, -0.99102294, 0, 0.99999994, 0, 0.99102294, 0, 0.13369198, 0, 0.6, 0)
