@@ -149,7 +149,6 @@ What noises do we need
 	- Change the slide sound to sound like the ramp?
 
 ## TODO Task list
-- Web export to itch.io
 - Goblin animations hooked up to code with AnimationPlayer
 - Main menu
 - Music (free, not AI)
