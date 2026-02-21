@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bt02xft5cy32n"]
+
+[ext_resource type="ArrayMesh" uid="uid://sapb8hnxyyxg" path="res://models/player_character/GoblinHand.obj" id="1_i21wo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i21wo"]
+albedo_color = Color(0.3325653, 0.5568142, 0.30614233, 1)
+
+[node name="GoblinHand" type="Node3D" unique_id=1970537479]
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=62235855]
+mesh = ExtResource("1_i21wo")
+surface_material_override/0 = SubResource("StandardMaterial3D_i21wo")
