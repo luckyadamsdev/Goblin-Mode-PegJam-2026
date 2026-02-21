@@ -76,6 +76,7 @@ func set_target(new_target:Node3D) -> void:
 	global_position = new_target.to_global(starting_offset)
 	target_position = global_position
 	look_at(goblin.global_position)
+	_physics_process(0.01) # avoids initial flicker
 
 func _on_landed() -> void:
 	pass
