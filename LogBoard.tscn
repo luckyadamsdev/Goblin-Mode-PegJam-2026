@@ -12,8 +12,8 @@ normal_enabled = true
 heightmap_enabled = true
 heightmap_texture = ExtResource("3_hllf6")
 
-[node name="Node3D" type="Node3D" unique_id=1714975431]
+[node name="LogBoard" type="Node3D" unique_id=1714975431]
 
-[node name="LogBoard" type="MeshInstance3D" parent="." unique_id=1758670855]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1758670855]
 mesh = ExtResource("1_cmjnk")
 surface_material_override/0 = SubResource("StandardMaterial3D_2cq2v")

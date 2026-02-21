@@ -5,8 +5,22 @@
 ## Elevator pitch
 Goblins are escaping down hill! They've stolen a valuable staff from a wizard, there is only one staff and they don't want to share. Whoever reaches the bottom of the hill with the staff gets too keep it! But watch out, the mountain is full of hazards, and the wizard is not pleased!
 
+## Art Direction
+Low poly.
+Pointy models.
+Realistic textures.
+Accessible for people with visual impairments.
+
 ## Inspiration
 ![Snowboard Kids 2 gameplay screenshot](./assets/snowboard-kids.png)
+Zelda Majora's Mask/Ocarina of Time
+https://www.reddit.com/r/goblincore/
+Rayman (for limbs of character)
+https://vgen.co/Sarccatto/portfolio
+https://store.steampowered.com/app/2533600/Bloodthief/
+
+## Environment Items Colours
+![Sketch](./assets/Environment_Items_Colours.png)
 
 ## Minimum Viable Product
 - Two goblins going down hill

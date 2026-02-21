@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://uemp78ioxfdu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bff1n"]
+load_path = "res://.godot/imported/EyeUV.png-475b9cfb3618599d741deb2390ad9ef9.s3tc.ctex"
+
+[resource]
+albedo_color = Color(1, 1, 0.78431374, 1)
+albedo_texture = SubResource("CompressedTexture2D_bff1n")
