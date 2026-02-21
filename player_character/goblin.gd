@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
 	move_and_slide()
-	follow_pivot.look_at(self.global_position + Vector3(controller.h_axis,0.0,-1.0))
+	follow_pivot.rotation.y = -1.0 * controller.h_axis * delta
 	self.look_at(follow_direction.global_position)
 
 func set_start_pos(new_pos:Node3D) -> void:
