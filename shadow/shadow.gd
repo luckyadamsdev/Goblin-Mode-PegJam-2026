@@ -22,12 +22,16 @@ func _ready() -> void:
 	visible = false
 
 func _process(_delta: float) -> void:
-	raycast.global_position = goblin.to_global(position_offset)
 	if raycast.is_colliding():
 		var normal := raycast.get_collision_normal()
+		var shadow_dist := raycast.get_collision_point().distance_to(raycast.global_position)
+		var shadow_mult:float = clamp(shadow_range - shadow_dist, 0.0, 1.0)
 		global_position = raycast.get_collision_point() + normal * 0.01
 		shadow_materal.set_shader_parameter("surface_normal", normal)
 		shadow_materal.set_shader_parameter("forward", goblin.basis.z)
+		shadow_materal.set_shader_parameter("shadow_mult", shadow_mult)
 		visible = true
 	else:
 		visible = false
+	raycast.global_position = goblin.to_global(position_offset)
+	
