@@ -6,6 +6,7 @@ const COYOTE_TIME := 0.2
 const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 1.0
 const MIN_SPEED := 3.0
+const MAX_SPEED := 50.0
 
 @export var player_id:int = 1
 @export var controller:GoblinController
@@ -64,6 +65,7 @@ func _handle_accelerate(delta: float) -> void:
 			current_speed -= get_real_velocity().y * delta
 		else:
 			current_speed -= get_real_velocity().y * delta * 0.1
+	current_speed = min(current_speed, MAX_SPEED)
 	var new_velocity: Vector3 = basis.z * current_speed
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
@@ -100,7 +102,6 @@ func _handle_rotation_controls(delta: float) -> void:
 		#look_vec.y = 0.0
 		#self.look_at(to_global(look_vec))
 		self.rotate(Vector3.UP, -controller.h_axis * delta)
-	
 
 func set_start_pos(new_pos:Node3D) -> void:
 	visible = true
