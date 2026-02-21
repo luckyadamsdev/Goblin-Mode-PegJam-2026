@@ -20,6 +20,8 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
 
+var slope_rotation:Quaternion = Quaternion.IDENTITY
+
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	controller.set_player_id(player_id)
@@ -80,10 +82,11 @@ func _handle_rotation_controls(delta: float) -> void:
 		var angle := Vector3.UP.angle_to(floor_normal)
 		
 		# TODO need to smooth out the slope rotation 
-		# maybe use .slerp with - b + (a - b) * 2.71828 ** (-decay * dt)
+		# maybe use .slerp with - b + (a - b) * 2.71828 ** (-decay * delta)
 		# - expDecay(a, b, decay = 16, delta) # stole from Freya Holmer's lerp smoothing video
 		# or just slerp at constant rate, whichever looks better
-		var slope_rotation := Quaternion.IDENTITY if angle == 0.0 else Quaternion(axis, angle)
+		var target_slope_rotation := Quaternion.IDENTITY if angle == 0.0 else Quaternion(axis, angle)
+		slope_rotation = slope_rotation.slerp(target_slope_rotation, delta * 2.0)
 		self.look_at(to_global( slope_rotation * follow_pivot.quaternion * follow_direction.position))
 	else:
 		#var look_vec := follow_direction.global_position
