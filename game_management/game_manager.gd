@@ -104,4 +104,4 @@ func _handle_menu_mode() -> void:
 		for goblin in goblins:
 			if goblin.controller.button_one_just_pressed() || goblin.controller.button_two_just_pressed():
 				buttons_pressed[goblin.player_id - 1] = true
-				print("goblin %d ready!"%goblin.player_id)
+				print("goblin %d ready!" % goblin.player_id)
