@@ -6,9 +6,6 @@ class_name GoblinController
 var v_axis:float = 0.0
 var h_axis:float = 0.0
 
-func _ready() -> void:
-	pass
-
 func _physics_process(_delta: float) -> void:
 	update_inputs()
 
@@ -24,7 +21,6 @@ func set_player_id(id: int):
 	control_def.right   = 'p' + str(id) + '_' + control_def.right
 	control_def.button1 = 'p' + str(id) + '_' + control_def.button1
 	control_def.button2 = 'p' + str(id) + '_' + control_def.button2
-
 
 func button_one_pressed() -> bool:
 	return Input.is_action_pressed(control_def.button1)
