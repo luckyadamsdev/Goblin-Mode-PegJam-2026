@@ -151,13 +151,11 @@ What noises do we need
 ## TODO Task list
 - Goblin animations hooked up to code with AnimationPlayer
 - Main menu
-- Music (free, not AI)
+- Music (free, not AI) - Being worked on
 - Environment asset creation
 - Title
-- Credits
 - Tutorial/playground area (1 track)
-- Sound effects
-- Design the itch.io page
+- Sound effects - Being worked on
 - Pause menu
 - Volume settings
 - Goblin animations looking good
