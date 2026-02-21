@@ -8,7 +8,7 @@ class_name CameraMovement
 
 @export var vertical_offset := 1.0
 
-@export var goblin : Node3D
+@export var goblin : Goblin
 
 @export var starting_offset:Vector3 = Vector3(0.0, 2.0, -4.0)
 
@@ -28,6 +28,8 @@ func _ready():
 	target_position = global_position
 	last_target_position = target_position
 	last_target_velocity = Vector3.ZERO
+	goblin.landed.connect(_on_landed)
+	goblin.jumped.connect(_on_jumped)
 
 func _physics_process(_delta : float):
 	if goblin == null:
@@ -59,3 +61,9 @@ func set_target(new_target:Node3D) -> void:
 	global_position = new_target.to_global(starting_offset)
 	target_position = global_position
 	look_at(goblin.global_position)
+
+func _on_landed() -> void:
+	pass
+
+func _on_jumped() -> void:
+	pass
