@@ -18,12 +18,12 @@ const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the
 @export var player_id:int = 1
 @export var controller:GoblinController
 @export var follow_pivot:Node3D
+@export var follow_direction:Node3D
 
 # whether the goblin is currently paused and waiting to move
 var goblin_paused:bool = true
 
 var current_speed := MIN_SPEED
-var follow_direction:Node3D = null
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
@@ -34,7 +34,6 @@ var on_track:bool = false
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	controller.set_player_id(player_id)
-	follow_direction = follow_pivot.get_child(0)
 
 func _physics_process(delta: float) -> void:
 	if goblin_paused:
