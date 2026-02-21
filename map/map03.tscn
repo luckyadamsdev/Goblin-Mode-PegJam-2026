@@ -31,4 +31,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.94632, 47.766083, 0.14497
 shape = SubResource("BoxShape3D_rh2f5")
 
 [node name="Course" parent="." unique_id=1464157065 instance=ExtResource("2_0dh05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15475464, -43.489697, -20.878586)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.15475464, -150.86032, -20.878586)
