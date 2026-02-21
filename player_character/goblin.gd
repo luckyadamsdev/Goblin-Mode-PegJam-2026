@@ -3,7 +3,7 @@ class_name Goblin
 
 const ACCELERATION := 0.2
 const COYOTE_TIME := 0.2
-const JUMP_VELOCITY := 5.0
+const JUMP_VELOCITY := 8.0
 const MIN_SPEED := 3.0
 
 @export var player_id:int = 1
@@ -54,6 +54,8 @@ func _handle_accelerate(delta: float) -> void:
 	var new_velocity: Vector3 = basis.z * current_speed
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
+	if player_id == 2:
+		print(velocity.y)
 
 func _handle_rotation_controls(delta: float) -> void:
 	follow_pivot.rotation.y = -1.0 * controller.h_axis * delta
