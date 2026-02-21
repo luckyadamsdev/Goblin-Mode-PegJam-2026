@@ -12,7 +12,9 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var cameras:Array[CameraMovement]
 
-@export var win_screens:Array[Label]
+@export var win_screens:Array[Control]
+
+@export var ready_screens:Array[Control]
 
 @export var timer_label:TimerLabel
 
@@ -38,11 +40,13 @@ func _process(_delta: float) -> void:
 		GameMode.RACING:
 			pass
 		GameMode.WON:
-			pass
+			_handle_menu_mode()
 
 func _load_map(map_name:String) -> void:
 	if current_map != null:
 		clean_up_old_map()
+	
+	buttons_pressed.fill(false)
 	
 	current_map = load(map_name).instantiate() as Map
 	add_child(current_map)
@@ -65,7 +69,7 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 			print("is goblin! ", winner)
 			win_screens[winner - 1].visible = true
 			timer_label.counting = false # we can stop counting
-			# open a menu to play again?
+			game_mode = GameMode.WON
 
 func start_timer() -> void:
 	# TODO play a start light
