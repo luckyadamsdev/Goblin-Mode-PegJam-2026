@@ -33,7 +33,7 @@ https://store.steampowered.com/app/2533600/Bloodthief/
 	- Rock/tree
 
 ## What Medium Product
-- Power-up / weapons?
+- Power-up / weapons
 ## Controls
 | Button | Action                                         |
 | ------ | ---------------------------------------------- |
@@ -75,3 +75,63 @@ https://store.steampowered.com/app/2533600/Bloodthief/
 |                               | Ramp        |
 |                               | Rail        |
 |                               |             |
+
+## Juice
+How do we want to adjust movement, cameras, sounds, character movement to create the feel we want
+
+### Player Movement
+
+### Camera
+Simple implementations
+- Acceleration
+	- Pull camera back and reduce FOV
+- Have the camera sway behind the player in response to which direction the player is moving towards, and return to centered while player has no change in direction. This is including up and down
+
+Complex implementations
+- Turning
+	- Have camera away from the direction the player is turning
+- Impacts
+	- Shake the camera
+	- When both players collide freeze the game for an instant
+	- When a player hits another with a melee weapon freeze the game for an instant and make the player who was hurt have screen shake
+- Jumping
+	- Have the camera raise slightly during start up frames, then move slightly above character during jumping and air time
+- Landing
+	- Have the camera "bounce" downwards before returning to normal horizontal
+
+### Animation/Particle Effects
+- Puffs of snow/dust on landing
+- a wake behind the snowboard
+- crushed grass
+- power up particles
+- pain stars
+- Speed trails
+- 
+### Sounds
+If a sound is constant it needs to change enough to not be annoying. We want our game to sound?
+- Cartoony
+- 
+What noises do we need
+- Sliding noise 
+	- Variable for different terrains/grinds
+	- Not monotonous 
+	- hushed when riding through grass
+- impact thuds
+	- bumping players
+	- bumping obstacles
+	- landing a jump
+- goblin voice lines and grunts
+	- Taunt?
+	- bumping player
+	- successfully using item
+	- whiffing item
+- wipe-out sounds
+- race start
+- winner!
+- race over
+- power up sounds
+- grinding sounds
+- build up sound when going off ramp
+	- Change the slide sound to sound like the ramp?
+	- 
+
