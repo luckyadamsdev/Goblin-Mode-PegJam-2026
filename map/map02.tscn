@@ -6,7 +6,7 @@
 [sub_resource type="Environment" id="Environment_2g46u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
-size = Vector3(18.135864, 5, 5)
+size = Vector3(34.421936, 14.734253, 5)
 
 [node name="Map02" type="Node3D" unique_id=317521660]
 script = ExtResource("1_2tu2m")
@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.362118, 5, -15.958214)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.969762, -4.182275, 29.30827)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="end_zone" unique_id=867850013]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.975165, -136.14723, 1196.5643)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.69383, -255.86722, 1270.85)
 shape = SubResource("BoxShape3D_rh2f5")
 
 [node name="Track" parent="." unique_id=1584739391 instance=ExtResource("2_buojc")]
