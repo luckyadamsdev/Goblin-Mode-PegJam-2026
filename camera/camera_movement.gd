@@ -12,8 +12,6 @@ class_name CameraMovement
 
 @export var look_curve:Curve
 
-var start_rotation : Vector3
-var start_position : Vector3
 
 ## position that the camera would be 
 var target_position: Vector3
@@ -25,8 +23,6 @@ var last_target_velocity: Vector3
 var max_accel:float = 3.0
 
 func _ready():
-	start_rotation = global_rotation
-	start_position = global_position
 	target_position = global_position
 	last_target_position = target_position
 	last_target_velocity = Vector3.ZERO
