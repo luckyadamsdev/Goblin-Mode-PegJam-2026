@@ -20,7 +20,7 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var timer_label:TimerLabel
 
-var selected_map_path:String = "res://map/map03.tscn"
+var selected_map_path:String = "res://map/short_map.tscn"
 
 var winner:int = 0
 
