@@ -10,6 +10,7 @@ const COYOTE_TIME := 0.2
 const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 1.0
 const MIN_SPEED := 3.0
+const MAX_SPEED := 50.0
 
 const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the air this long
 
@@ -41,7 +42,6 @@ func _physics_process(delta: float) -> void:
 	_handle_rotation_controls(delta)
 
 func apply_jump_force() -> void:
-	# TODO turning speed should also be affected by slopes (i.e. get_real_velocity().y and is_on_floor())
 	velocity.y += JUMP_VELOCITY_ADD + get_real_velocity().y * JUMP_VELOCITY_MULT
 
 func _handle_jumps(delta: float) -> void:
@@ -69,12 +69,16 @@ func _handle_accelerate(delta: float) -> void:
 			current_speed -= get_real_velocity().y * delta
 		else:
 			current_speed -= get_real_velocity().y * delta * 0.1
+	current_speed = min(current_speed, MAX_SPEED)
 	var new_velocity: Vector3 = basis.z * current_speed
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
 
+func _get_speed_rotate_strength() -> float:
+	var normalized_velocity := Vector2(abs(velocity.x), abs(velocity.z)).normalized()
+	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 2.0)
+
 func _handle_rotation_controls(delta: float) -> void:
-	follow_pivot.rotation.y = -1.0 * controller.h_axis * delta
 	if is_on_floor():
 		var floor_normal := quaternion.inverse() * get_floor_normal()
 		# I'm using quaternion which is local to parent but if we always keep goblins out of rotated parents that's fine
@@ -82,7 +86,14 @@ func _handle_rotation_controls(delta: float) -> void:
 		# we create a quaternion that rotates from our up to the floor normal
 		var axis := -floor_normal.cross(Vector3.UP).normalized()
 		var angle := Vector3.UP.angle_to(floor_normal)
-		
+
+		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
+		# going fast means you turn faster
+		var slope_rotate_strength:float = clamp(0.2 * (5.0 + get_real_velocity().y), 0.5, 2.0)
+		var speed_rotate_strength:float = _get_speed_rotate_strength()
+
+		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
+
 		# TODO need to smooth out the slope rotation 
 		# maybe use .slerp with - b + (a - b) * 2.71828 ** (-decay * dt)
 		# - expDecay(a, b, decay = 16, delta) # stole from Freya Holmer's lerp smoothing video
@@ -94,7 +105,6 @@ func _handle_rotation_controls(delta: float) -> void:
 		#look_vec.y = 0.0
 		#self.look_at(to_global(look_vec))
 		self.rotate(Vector3.UP, -controller.h_axis * delta)
-	
 
 func set_start_pos(new_pos:Node3D) -> void:
 	visible = true
