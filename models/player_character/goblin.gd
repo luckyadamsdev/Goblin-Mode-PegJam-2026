@@ -86,9 +86,8 @@ func _handle_rotation_controls(delta: float) -> void:
 		var angle := Vector3.UP.angle_to(floor_normal)
 
 		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
-		# going fast means you turn faster
-		
 		var slope_rotate_strength:float = clamp(0.2 * (6.5 + get_real_velocity().y), 0.5, 2.0)
+		# going fast means you turn faster
 		var speed_rotate_strength:float = _get_speed_rotate_strength()
 
 		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
