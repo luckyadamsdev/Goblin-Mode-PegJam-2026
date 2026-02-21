@@ -23,9 +23,9 @@ var target_position: Vector3
 
 
 
-const REMEMBER_TIME:float = 1.0 / 15.0
+const REMEMBER_TIME:float = 1.0 / 60.0
 
-const MAX_MEMORY:int = 20
+const MAX_MEMORY:int = 90
 
 var remember_counter:float = REMEMBER_TIME
 
@@ -49,7 +49,9 @@ func _physics_process(delta : float):
 			remember_velocity.pop_front()
 	
 	var velocity_change := Vector3.ZERO
-	# TODO use remember velocity to lag 
+	if remember_velocity.size() > 6:
+		velocity_change = goblin.velocity - remember_velocity[remember_velocity.size() - 6]
+ 
 	
 	var global_track_position := goblin.global_position
 	global_track_position.y += vertical_offset
@@ -67,7 +69,7 @@ func _physics_process(delta : float):
 		
 	var look_position:Vector3 = global_track_position
 	var look_at_offset:Vector3 = Vector3.UP * vertical_look_offset
-	
+	#look_at_offset += velocity_change * 0.1
 	# TODO maybe use velocity_change to offset look_at_offset?
 	look_at(look_position + look_at_offset, Vector3.UP)
 
