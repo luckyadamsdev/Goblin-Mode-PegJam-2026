@@ -8,10 +8,19 @@
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
+size = Vector2(1.2, 3)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fc4ne"]
 render_priority = 0
 shader = ExtResource("2_g82c4")
+shader_parameter/surface_normal = Vector3(0, 0, 0)
+shader_parameter/forward = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g82c4"]
+render_priority = 0
+shader = ExtResource("2_g82c4")
+shader_parameter/surface_normal = Vector3(0, 0, 0)
+shader_parameter/forward = Vector3(0, 0, 0)
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
@@ -33,6 +42,7 @@ skeleton = NodePath("../Goblin1")
 surface_material_override/0 = SubResource("ShaderMaterial_fc4ne")
 script = ExtResource("2_rgvqj")
 goblin = NodePath("../Goblin1")
+shadow_materal = SubResource("ShaderMaterial_fc4ne")
 
 [node name="Goblin1" parent="." unique_id=697638060 instance=ExtResource("2_srorr")]
 collision_layer = 2
@@ -40,9 +50,10 @@ collision_layer = 2
 [node name="Goblin2Shadow" type="MeshInstance3D" parent="." unique_id=1332210659 node_paths=PackedStringArray("goblin")]
 mesh = SubResource("QuadMesh_fkyaf")
 skeleton = NodePath("../Goblin1")
-surface_material_override/0 = SubResource("ShaderMaterial_fc4ne")
+surface_material_override/0 = SubResource("ShaderMaterial_g82c4")
 script = ExtResource("2_rgvqj")
 goblin = NodePath("../Goblin2")
+shadow_materal = SubResource("ShaderMaterial_g82c4")
 
 [node name="Goblin2" parent="." unique_id=1005389590 instance=ExtResource("2_srorr")]
 collision_layer = 2
