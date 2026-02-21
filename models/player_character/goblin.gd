@@ -68,6 +68,10 @@ func _handle_accelerate(delta: float) -> void:
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
 
+func _get_speed_rotate_strength() -> float:
+	var normalized_velocity := Vector2(abs(velocity.x), abs(velocity.z)).normalized()
+	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 2.0)
+
 func _handle_rotation_controls(delta: float) -> void:
 	if is_on_floor():
 		var floor_normal := quaternion.inverse() * get_floor_normal()
@@ -78,10 +82,12 @@ func _handle_rotation_controls(delta: float) -> void:
 		var angle := Vector3.UP.angle_to(floor_normal)
 
 		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
+		# going fast means you turn faster
 		var slope_rotate_strength:float = clamp(0.2 * (5.0 + get_real_velocity().y), 0.5, 2.0)
-		var speed_rotate_strenght:float = clamp(0.5 + 0.03 * velocity.z, 0.5, 2.0)
+		var speed_rotate_strength:float = _get_speed_rotate_strength()
+		print(speed_rotate_strength)
 
-		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strenght
+		follow_pivot.rotation.y = -1.0 * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
 
 		# TODO need to smooth out the slope rotation 
 		# maybe use .slerp with - b + (a - b) * 2.71828 ** (-decay * dt)
