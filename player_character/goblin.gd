@@ -80,8 +80,9 @@ func _handle_rotation_controls(delta: float) -> void:
 		var angle := Vector3.UP.angle_to(floor_normal)
 		
 		# TODO need to smooth out the slope rotation 
-		# maybe use .slerp with - b + (a - b) * exp(-decay * dt)
-		# - expDecay(a, b, decay = 16, delta) # stole from Freya Holmer'ss lerp smoothing video
+		# maybe use .slerp with - b + (a - b) * 2.71828 ** (-decay * dt)
+		# - expDecay(a, b, decay = 16, delta) # stole from Freya Holmer's lerp smoothing video
+		# or just slerp at constant rate, whichever looks better
 		var slope_rotation := Quaternion.IDENTITY if angle == 0.0 else Quaternion(axis, angle)
 		self.look_at(to_global( slope_rotation * follow_pivot.quaternion * follow_direction.position))
 	else:
