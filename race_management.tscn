@@ -46,6 +46,7 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
 script = ExtResource("1_olp4a")
+follow_height = 3.0
 goblin = NodePath("../../../../Goblin1")
 starting_offset = Vector3(0, 2, -5)
 
@@ -62,6 +63,7 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
 script = ExtResource("1_olp4a")
+follow_height = 3.0
 goblin = NodePath("../../../../Goblin2")
 starting_offset = Vector3(0, 2, -5)
 
