@@ -1,0 +1,17 @@
+[gd_resource type="Environment" format=3 uid="uid://8fyu7pbgixg"]
+
+[ext_resource type="Shader" uid="uid://dk4afbsdochwi" path="res://environments/sky.gdshader" id="1_8wnj7"]
+[ext_resource type="Texture2D" uid="uid://bj5sknsojwp6e" path="res://environments/sky_panorama.png" id="2_yotdk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yh2kp"]
+shader = ExtResource("1_8wnj7")
+shader_parameter/horizonColor = Color(0.18955204, 0.24338064, 0.14239836, 1)
+shader_parameter/skyColor = Color(0.93509644, 0.6028517, 0.5372214, 1)
+shader_parameter/skyTexture = ExtResource("2_yotdk")
+
+[sub_resource type="Sky" id="Sky_nl3ne"]
+sky_material = SubResource("ShaderMaterial_yh2kp")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_nl3ne")
