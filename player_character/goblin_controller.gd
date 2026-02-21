@@ -5,11 +5,6 @@ class_name GoblinController
 
 var v_axis:float = 0.0
 var h_axis:float = 0.0
-var button1:bool = false
-var button2:bool = false
-
-var button1changed:bool = false
-var button2changed:bool = false
 
 func _ready() -> void:
 	pass
@@ -29,3 +24,22 @@ func set_player_id(id: int):
 	control_def.right   = 'p' + str(id) + '_' + control_def.right
 	control_def.button1 = 'p' + str(id) + '_' + control_def.button1
 	control_def.button2 = 'p' + str(id) + '_' + control_def.button2
+
+
+func button_one_pressed() -> bool:
+	return Input.is_action_pressed(control_def.button1)
+	
+func button_two_pressed() -> bool:
+	return Input.is_action_pressed(control_def.button1)
+	
+func button_one_just_pressed() -> bool:
+	return Input.is_action_just_pressed(control_def.button1)
+	
+func button_two_just_pressed() -> bool:
+	return Input.is_action_just_pressed(control_def.button2)
+	
+func button_one_just_released() -> bool:
+	return Input.is_action_just_released(control_def.button1)
+	
+func button_two_just_released() -> bool:
+	return Input.is_action_just_released(control_def.button2)

@@ -7,19 +7,21 @@
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "timer_label")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label")]
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
 cameras = [NodePath("../HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../HBoxContainer/player2screen/SubViewport/Camera3D")]
 win_screens = [NodePath("../Goblin1Wins"), NodePath("../Goblin2Wins")]
+ready_screens = [NodePath("../Goblin1Ready"), NodePath("../Goblin2Ready")]
+press_to_start_screens = [NodePath("../Goblin1PressToStart"), NodePath("../Goblin2PressToStart")]
 timer_label = NodePath("../Control/Timer")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
+[node name="MenuLight" type="DirectionalLight3D" parent="." unique_id=867891742]
+
 [node name="Goblin1" parent="." unique_id=697638060 instance=ExtResource("2_srorr")]
-visible = false
 
 [node name="Goblin2" parent="." unique_id=1005389590 instance=ExtResource("2_srorr")]
-visible = false
 player_id = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=950106236]
@@ -41,8 +43,11 @@ handle_input_locally = false
 size = Vector2i(574, 648)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600]
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
 script = ExtResource("1_olp4a")
+goblin = NodePath("../../../../Goblin1")
+starting_offset = Vector3(0, 2, -5)
 
 [node name="player2screen" type="SubViewportContainer" parent="HBoxContainer" unique_id=1149187065]
 layout_mode = 2
@@ -54,8 +59,11 @@ handle_input_locally = false
 size = Vector2i(574, 648)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298]
+[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
+transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
 script = ExtResource("1_olp4a")
+goblin = NodePath("../../../../Goblin2")
+starting_offset = Vector3(0, 2, -5)
 
 [node name="Control" type="Control" parent="." unique_id=1049987464]
 layout_mode = 3
@@ -106,4 +114,58 @@ offset_top = -56.40802
 offset_right = 89.839966
 offset_bottom = 56.59198
 text = "GOBLIN 2 WINS!"
+horizontal_alignment = 1
+
+[node name="Goblin1Ready" type="Label" parent="." unique_id=771146662]
+visible = false
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.37100002
+anchor_right = 0.2
+anchor_bottom = 0.37100002
+offset_left = -89.160034
+offset_top = -56.40802
+offset_right = 89.839966
+offset_bottom = 56.59198
+text = "GOBLIN 1 WINS!"
+horizontal_alignment = 1
+
+[node name="Goblin2Ready" type="Label" parent="." unique_id=428366604]
+visible = false
+anchors_preset = -1
+anchor_left = 0.70500004
+anchor_top = 0.37100002
+anchor_right = 0.70500004
+anchor_bottom = 0.37100002
+offset_left = -89.160034
+offset_top = -56.40802
+offset_right = 89.839966
+offset_bottom = 56.59198
+text = "GOBLIN 2 WINS!"
+horizontal_alignment = 1
+
+[node name="Goblin1PressToStart" type="Label" parent="." unique_id=1248262924]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.37100002
+anchor_right = 0.2
+anchor_bottom = 0.37100002
+offset_left = 5.599991
+offset_top = -147.40802
+offset_right = 184.59999
+offset_bottom = -34.40802
+text = "Press Button To Start"
+horizontal_alignment = 1
+
+[node name="Goblin2PressToStart" type="Label" parent="." unique_id=868951667]
+anchors_preset = -1
+anchor_left = 0.70500004
+anchor_top = 0.37100002
+anchor_right = 0.70500004
+anchor_bottom = 0.37100002
+offset_left = -11.160034
+offset_top = -153.40802
+offset_right = 167.83997
+offset_bottom = -40.40802
+text = "Press Button To Start"
 horizontal_alignment = 1
