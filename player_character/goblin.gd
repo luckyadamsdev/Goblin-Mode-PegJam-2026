@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Goblin
 
-const ACCELERATION := 0.2
+const BASE_ACCELERATION := 0.1
 const COYOTE_TIME := 0.2
 const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 1.0
@@ -58,7 +58,7 @@ func _handle_jumps(delta: float) -> void:
 			time_since_jumped_in_air = 0.0
 
 func _handle_accelerate(delta: float) -> void:
-	current_speed += ACCELERATION * delta
+	current_speed += BASE_ACCELERATION * delta
 	if is_on_floor():
 		var realVelocityY := get_real_velocity().y
 		if realVelocityY < 0.0:
