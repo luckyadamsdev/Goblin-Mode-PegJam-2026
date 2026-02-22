@@ -87,7 +87,7 @@ func _handle_jumps(delta: float) -> void:
 
 func _handle_accelerate(delta: float) -> void:
 	current_speed += BASE_ACCELERATION * delta
-	current_speed -= (-1 + _get_brake_amount()) * FRICTION
+	current_speed -= _get_brake_speed_change()
 	current_speed = max(MIN_SPEED, current_speed)
 	if is_on_floor():
 		var realVelocityY := get_real_velocity().y
@@ -104,7 +104,10 @@ func _get_speed_rotate_strength() -> float:
 	var normalized_velocity := Vector2(abs(velocity.x), abs(velocity.z)).normalized()
 	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 2.0)
 
-func _get_brake_amount() -> float:
+func _get_brake_speed_change() -> float:
+	return (-1 + _get_brake_turn_change()) * FRICTION
+
+func _get_brake_turn_change() -> float:
 	if is_on_floor():
 		return clamp(1.0 + 2.0 * controller.v_axis, 1.0, 3.0)
 	else:
@@ -117,7 +120,7 @@ func _handle_rotation_controls(delta: float) -> void:
 		# going fast means you turn faster
 		var speed_rotate_strength:float = _get_speed_rotate_strength()
 
-		follow_pivot.rotation.y = -1.0 * _get_brake_amount() * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
+		follow_pivot.rotation.y = -1.0 * _get_brake_turn_change() * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
 
 		self.look_at(to_global(follow_pivot.quaternion * follow_direction.position))
 	else:
