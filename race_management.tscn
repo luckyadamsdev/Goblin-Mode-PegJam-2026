@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dybmv0rolppc3" path="res://menus/main_menu.tscn" id="8_krumh"]
 [ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
 [ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="9_mqc7d"]
+[ext_resource type="Environment" uid="uid://8fyu7pbgixg" path="res://environments/cloud_environment.tres" id="10_mqc7d"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
@@ -182,6 +183,7 @@ offset_top = -235.0
 offset_right = 253.0
 offset_bottom = -16.0
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 160
 text = "1st"
 horizontal_alignment = 1
@@ -201,6 +203,7 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 160
 text = "2nd"
 horizontal_alignment = 1
@@ -345,3 +348,6 @@ horizontal_alignment = 1
 places = NodePath("../Hud/Overlay/Places")
 
 [node name="PauseMenu" parent="." unique_id=1185998907 instance=ExtResource("9_dfv8i")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113658327]
+environment = ExtResource("10_mqc7d")
