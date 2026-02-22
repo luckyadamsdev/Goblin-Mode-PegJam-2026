@@ -226,7 +226,7 @@ func finished_trick() -> void:
 
 func _on_track_area_entered(area: Area3D) -> void:
 	if area.name == 'ItemArea3D':
-		area.get_parent().queue_free()# TODO replace with event. This is an anti-pattern
+		area.claim()
 		_enter_item_state_anvil()
 	else:
 		is_on_track = true
