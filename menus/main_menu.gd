@@ -32,14 +32,14 @@ func _on_vs1_button_pressed() -> void:
 func _on_vs2_button_pressed() -> void:
 	places.visible = true
 	laps.visible = true
-	GameManager.instance.selected_map_path = "res://map/map05.tscn"
+	GameManager.instance.selected_map_path = "res://map/map09.tscn"
 	GameManager.instance.set_map_tile($"Panel/VS Race Button2".text)
 	GameManager.instance.go_to_start_screen()
 
 func _on_vs3_button_pressed() -> void:
 	places.visible = true
 	laps.visible = true
-	GameManager.instance.selected_map_path = "res://map/map01.tscn"
+	GameManager.instance.selected_map_path = "res://map/map06.tscn"
 	GameManager.instance.set_map_tile($"Panel/VS Race Button3".text)
 	GameManager.instance.go_to_start_screen()
 

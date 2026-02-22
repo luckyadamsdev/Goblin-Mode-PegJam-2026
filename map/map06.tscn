@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cjojmua6obdn7"]
+
+[ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_ypc7b"]
+[ext_resource type="PackedScene" path="res://models/props/item.tscn" id="3_c5nrj"]
+[ext_resource type="PackedScene" uid="uid://cpk2n7mvw6mmw" path="res://Course3.tscn" id="3_ypc7b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
+size = Vector3(300.4899, 107.03613, 5)
+
+[node name="Map06" type="Node3D" unique_id=317521660]
+script = ExtResource("1_ypc7b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=724154080]
+transform = Transform3D(0.7850723, 0.61631054, 0.061828256, 0.49741828, -0.6867932, 0.5299906, 0.36910194, -0.3853264, -0.84574676, -3.703802, 18.014938, -7.7496643)
+
+[node name="goblin_1_start" type="Node3D" parent="." unique_id=1501022478]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.912058, -35.864822, -15.637)
+
+[node name="goblin_2_start" type="Node3D" parent="." unique_id=1940118030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.88707, -35.865, -15.958)
+
+[node name="end_zone" type="Area3D" parent="." unique_id=999484125]
+transform = Transform3D(0.5933346, 0, -0.80495596, 0, 1, 0, 0.80495596, 0, 0.5933346, 555.2849, -530.5702, -987.21875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="end_zone" unique_id=867850013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.585724, 195.06967, 8.529541)
+shape = SubResource("BoxShape3D_rh2f5")
+
+[node name="Item1" parent="." unique_id=2065320669 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -55.676323, 32.3738)
+
+[node name="Course3" parent="." unique_id=1464157065 instance=ExtResource("3_ypc7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.801046, -25.319431, -31.759502)
