@@ -8,6 +8,7 @@ var current_map:Map
 const TOTAL_LAPS:int = 3
 
 @export var goblins:Array[Goblin]
+@export var whiteFlashArr:Array[AnimationPlayer]
 
 ## whether the players have pressed buttons to start
 var buttons_pressed:Array[bool] = [false, false]
@@ -52,12 +53,16 @@ enum GameMode {
 	STARTING,
 	PAUSE_MENU,
 	MAIN_MENU,
+	TELEPORTING, # using this also for camera modes, sorry
 }
 
 var game_mode:GameMode = GameMode.MAIN_MENU
 
 func _ready() -> void:
 	instance = self
+	goblins[0].enemy = goblins[1]
+	goblins[1].enemy = goblins[0]
+	Global.game_manager = self
 
 func _process(_delta: float) -> void:
 	match game_mode:
@@ -77,6 +82,18 @@ func _process(_delta: float) -> void:
 				unpause()
 		GameMode.MAIN_MENU:
 			pass # don't need to do anything else
+
+func explode(position: Vector3) -> void:
+	var distances := Vector2(
+		position.distance_to(goblins[0].global_position),
+		position.distance_to(goblins[1].global_position)
+	)
+	if distances[0] < 19.0:
+		goblins[0].fall()
+		whiteFlashArr[0].play('flash')
+	if distances[1] < 19.0:
+		goblins[1].fall()
+		whiteFlashArr[1].play('flash')
 
 func _load_map(map_name:String) -> void:
 	if current_map != null:
@@ -122,18 +139,16 @@ func _load_map(map_name:String) -> void:
 	
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
-		
-		if body.current_lap < TOTAL_LAPS:
-			body.current_lap += 1
-			if body.player_id == 1:
-				set_lap_display(lapLeft, body.current_lap, true)
+		var goblin := body as Goblin
+		if goblin.current_lap < TOTAL_LAPS:
+			goblin.current_lap += 1
+			if goblin.player_id == 1:
+				set_lap_display(lapLeft, goblin.current_lap, true)
 			else:
-				set_lap_display(lapRight, body.current_lap, true)
-			# TODO need a teleport effect
-			current_map.retart_player(body)
+				set_lap_display(lapRight, goblin.current_lap, true)
+			current_map.restart_player(goblin)
 		elif game_mode != GameMode.WON: # no winner yet
-			winner = (body as Goblin).player_id
-			print("is goblin! ", winner)
+			winner = goblin.player_id
 			win_screens[winner - 1].visible = true
 			timer_label.counting = false # we can stop counting
 			game_mode = GameMode.WON

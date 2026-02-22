@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://ehrs6gbdgps" path="res://shadow/shadow.gd" id="2_rgvqj"]
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
-[ext_resource type="PackedScene" uid="uid://dybmv0rolppc3" path="res://menus/main_menu.tscn" id="8_krumh"]
-[ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
+[ext_resource type="PackedScene" uid="uid://dxump8b7q41bq" path="res://menus/main_menu.tscn" id="8_krumh"]
+[ext_resource type="PackedScene" uid="uid://bd72dwb7m4ov7" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
 [ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="9_mqc7d"]
 [ext_resource type="Environment" uid="uid://8fyu7pbgixg" path="res://environments/cloud_environment.tres" id="10_mqc7d"]
 
@@ -41,12 +41,76 @@ shader_parameter/pan_value = 0.0
 shader_parameter/speed = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_dfv8i")
 
+[sub_resource type="Animation" id="Animation_dfv8i"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mqc7d"]
+resource_name = "flash"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.78431374), Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfv8i"]
+_data = {
+&"RESET": SubResource("Animation_dfv8i"),
+&"flash": SubResource("Animation_mqc7d")
+}
+
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "lapLeft", "lapRight", "placeLeft", "placeRight", "map_title", "hud", "racing_overlay")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "whiteFlashArr", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "lapLeft", "lapRight", "placeLeft", "placeRight", "map_title", "hud", "racing_overlay")]
 process_mode = 3
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
+whiteFlashArr = [NodePath("../Hud/HBoxContainer/player1screen/SubViewport/WhiteColor/AnimationPlayer"), NodePath("../Hud/HBoxContainer/player2screen/SubViewport/WhiteColor/AnimationPlayer")]
 cameras = [NodePath("../Hud/HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../Hud/HBoxContainer/player2screen/SubViewport/Camera3D")]
 win_screens = [NodePath("../Hud/Goblin1Wins"), NodePath("../Hud/Goblin2Wins")]
 ready_screens = [NodePath("../Hud/Goblin1Ready"), NodePath("../Hud/Goblin2Ready")]
@@ -91,7 +155,6 @@ collision_layer = 2
 player_id = 2
 
 [node name="Hud" type="Control" parent="." unique_id=198289351]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,8 +182,24 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 0
+size = Vector2i(958, 1080)
+render_target_update_mode = 4
+
+[node name="WhiteColor" type="ColorRect" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=1676473725]
+visible = false
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hud/HBoxContainer/player1screen/SubViewport/WhiteColor" unique_id=41333835]
+libraries/ = SubResource("AnimationLibrary_dfv8i")
+autoplay = &"RESET"
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
@@ -134,8 +213,24 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 0
+size = Vector2i(958, 1080)
+render_target_update_mode = 4
+
+[node name="WhiteColor" type="ColorRect" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1251445294]
+visible = false
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hud/HBoxContainer/player2screen/SubViewport/WhiteColor" unique_id=724076679]
+libraries/ = SubResource("AnimationLibrary_dfv8i")
+autoplay = &"RESET"
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
