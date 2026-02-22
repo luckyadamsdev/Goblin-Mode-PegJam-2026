@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ehrs6gbdgps" path="res://shadow/shadow.gd" id="2_rgvqj"]
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
+[ext_resource type="Script" uid="uid://0k454u7ibwwe" path="res://menus/main_menu.gd" id="7_fc4ne"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
@@ -24,16 +25,20 @@ shader_parameter/surface_normal = Vector3(0, 1, 0)
 shader_parameter/forward = Vector3(1, 0, 0)
 shader_parameter/shadow_mult = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc4ne"]
+
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "hud")]
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
-cameras = [NodePath("../HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../HBoxContainer/player2screen/SubViewport/Camera3D")]
-win_screens = [NodePath("../Goblin1Wins"), NodePath("../Goblin2Wins")]
-ready_screens = [NodePath("../Goblin1Ready"), NodePath("../Goblin2Ready")]
-press_to_start_screens = [NodePath("../Goblin1PressToStart"), NodePath("../Goblin2PressToStart")]
-timer_label = NodePath("../Control/Timer")
+cameras = [NodePath("../Hud/HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../Hud/HBoxContainer/player2screen/SubViewport/Camera3D")]
+win_screens = [NodePath("../Hud/Goblin1Wins"), NodePath("../Hud/Goblin2Wins")]
+ready_screens = [NodePath("../Hud/Goblin1Ready"), NodePath("../Hud/Goblin2Ready")]
+press_to_start_screens = [NodePath("../Hud/Goblin1PressToStart"), NodePath("../Hud/Goblin2PressToStart")]
+timer_label = NodePath("../Hud/Overlay/Timer")
+main_menu = NodePath("../MainMenu")
+hud = NodePath("../Hud")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
 [node name="MenuLight" type="DirectionalLight3D" parent="." unique_id=867891742]
@@ -61,7 +66,9 @@ shadow_materal = SubResource("ShaderMaterial_g82c4")
 collision_layer = 2
 player_id = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=950106236]
+[node name="Hud" type="Control" parent="." unique_id=198289351]
+visible = false
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,49 +77,57 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="player1screen" type="SubViewportContainer" parent="HBoxContainer" unique_id=1117159721]
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud" unique_id=950106236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="player1screen" type="SubViewportContainer" parent="Hud/HBoxContainer" unique_id=1117159721]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HBoxContainer/player1screen" unique_id=1853581293]
+[node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
 size = Vector2i(958, 1080)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
-[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
+[node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
 script = ExtResource("1_olp4a")
-goblin = NodePath("../../../../Goblin1")
-starting_offset = Vector3(0, 2, -5)
+goblin = NodePath("../../../../../Goblin1")
 
-[node name="player2screen" type="SubViewportContainer" parent="HBoxContainer" unique_id=1149187065]
+[node name="player2screen" type="SubViewportContainer" parent="Hud/HBoxContainer" unique_id=1149187065]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HBoxContainer/player2screen" unique_id=1234907876]
+[node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
 size = Vector2i(958, 1080)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
-[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
+[node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
 script = ExtResource("1_olp4a")
-goblin = NodePath("../../../../Goblin2")
-starting_offset = Vector3(0, 2, -5)
+goblin = NodePath("../../../../../Goblin2")
 
-[node name="Control" type="Control" parent="." unique_id=1049987464]
-layout_mode = 3
+[node name="Overlay" type="Control" parent="Hud" unique_id=1049987464]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -60.0
-offset_right = 60.0
+offset_left = -20.0
+offset_right = 100.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="Timer" type="Label" parent="Control" unique_id=1507618113]
+[node name="Timer" type="Label" parent="Hud/Overlay" unique_id=1507618113]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -125,84 +140,118 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_g82c4")
 
-[node name="Goblin1Wins" type="Label" parent="." unique_id=2069573312]
-visible = false
+[node name="Goblin1Wins" type="Label" parent="Hud" unique_id=2069573312]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 0.37100002
 anchor_right = 0.2
 anchor_bottom = 0.37100002
-offset_left = -89.160034
-offset_top = -56.40802
-offset_right = 89.839966
-offset_bottom = 56.59198
+offset_left = 128.0
+offset_top = -120.68002
+offset_right = 307.0
+offset_bottom = -7.680023
 text = "GOBLIN 1 WINS!"
 horizontal_alignment = 1
 
-[node name="Goblin2Wins" type="Label" parent="." unique_id=225495531]
-visible = false
+[node name="Goblin2Wins" type="Label" parent="Hud" unique_id=225495531]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.70500004
 anchor_top = 0.37100002
 anchor_right = 0.70500004
 anchor_bottom = 0.37100002
-offset_left = -89.160034
-offset_top = -56.40802
-offset_right = 89.839966
-offset_bottom = 56.59198
+offset_left = 345.3999
+offset_top = 192.31998
+offset_right = 524.3999
+offset_bottom = 305.31998
 text = "GOBLIN 2 WINS!"
 horizontal_alignment = 1
 
-[node name="Goblin1Ready" type="Label" parent="." unique_id=771146662]
-visible = false
+[node name="Goblin1Ready" type="Label" parent="Hud" unique_id=771146662]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 0.37100002
 anchor_right = 0.2
 anchor_bottom = 0.37100002
-offset_left = -89.160034
-offset_top = -56.40802
-offset_right = 89.839966
-offset_bottom = 56.59198
+offset_left = -291.0
+offset_top = -16.680023
+offset_right = -112.0
+offset_bottom = 96.31998
 text = "GOBLIN 1 READY!"
 horizontal_alignment = 1
 
-[node name="Goblin2Ready" type="Label" parent="." unique_id=428366604]
-visible = false
+[node name="Goblin2Ready" type="Label" parent="Hud" unique_id=428366604]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.70500004
 anchor_top = 0.37100002
 anchor_right = 0.70500004
 anchor_bottom = 0.37100002
-offset_left = -89.160034
-offset_top = -56.40802
-offset_right = 89.839966
-offset_bottom = 56.59198
+offset_left = 263.3999
+offset_top = -77.68002
+offset_right = 442.3999
+offset_bottom = 35.319977
 text = "GOBLIN 2 READY!"
 horizontal_alignment = 1
 
-[node name="Goblin1PressToStart" type="Label" parent="." unique_id=1248262924]
+[node name="Goblin1PressToStart" type="Label" parent="Hud" unique_id=1248262924]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 0.37100002
 anchor_right = 0.2
 anchor_bottom = 0.37100002
-offset_left = 5.599991
-offset_top = -147.40802
-offset_right = 184.59999
-offset_bottom = -34.40802
+offset_left = -26.0
+offset_top = -217.68002
+offset_right = 153.0
+offset_bottom = -104.68002
 text = "Press Button To Start"
 horizontal_alignment = 1
 
-[node name="Goblin2PressToStart" type="Label" parent="." unique_id=868951667]
+[node name="Goblin2PressToStart" type="Label" parent="Hud" unique_id=868951667]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.70500004
 anchor_top = 0.37100002
 anchor_right = 0.70500004
 anchor_bottom = 0.37100002
-offset_left = -11.160034
-offset_top = -153.40802
-offset_right = 167.83997
-offset_bottom = -40.40802
+offset_left = 61.399902
+offset_top = -259.68002
+offset_right = 240.3999
+offset_bottom = -146.68002
 text = "Press Button To Start"
 horizontal_alignment = 1
+
+[node name="MainMenu" type="Control" parent="." unique_id=207238431]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_fc4ne")
+
+[node name="Panel" type="Panel" parent="MainMenu" unique_id=819293416]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fc4ne")
+
+[node name="StartButton" type="Button" parent="MainMenu/Panel" unique_id=913794560]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "START"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="MainMenu/Panel/StartButton" to="MainMenu" method="_on_start_button_down"]

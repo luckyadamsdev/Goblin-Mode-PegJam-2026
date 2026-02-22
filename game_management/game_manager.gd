@@ -20,6 +20,10 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var timer_label:TimerLabel
 
+@export var main_menu:MainMenu
+
+@export var hud:Control
+
 var selected_map_path:String = "res://map/map03.tscn"
 
 var winner:int = 0
@@ -145,3 +149,9 @@ func _on_exited_track_zone(body: Node3D) -> void:
 	if body is Goblin:
 		var goblin := body as Goblin
 		goblin.exit_track()
+
+func go_to_start_screen() -> void:
+	#hide main menu
+	main_menu.visible = false
+	# show hud
+	hud.visible = true
