@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dx6f1cp66jedi" path="res://models/player_character/goblin_foot.tscn" id="5_4bcv1"]
 [ext_resource type="PackedScene" uid="uid://bc8quaotr3mqn" path="res://models/props/bomb.tscn" id="5_4pj2w"]
 [ext_resource type="PackedScene" uid="uid://bsmdjr8ppc0tl" path="res://models/board/LogBoard.tscn" id="6_4bcv1"]
-[ext_resource type="PackedScene" uid="uid://bmr5vrkp0v8w" path="res://models/props/potion_mesh.tscn" id="7_qn6hm"]
+[ext_resource type="PackedScene" path="res://models/props/potion_mesh.tscn" id="7_qn6hm"]
 [ext_resource type="PackedScene" uid="uid://c2h62dfwjru50" path="res://models/player_character/anvil.tscn" id="7_xc1av"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qn6hm"]

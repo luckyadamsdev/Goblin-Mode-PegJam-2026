@@ -157,7 +157,8 @@ func _handle_lands() -> void:
 			else:
 				anim.play('land')
 				current_speed += TRICK_SPEED_BOOST * num_tricks_in_air
-				speed_increased.emit(current_speed)
+				if num_tricks_in_air > 0:
+					speed_increased.emit(current_speed)
 			anim.queue('idle')
 			num_tricks_in_air = 0
 
