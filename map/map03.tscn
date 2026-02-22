@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_0dh05"]
 [ext_resource type="PackedScene" uid="uid://dj7awkeccg37u" path="res://Course.tscn" id="2_0dh05"]
 [ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_nl3ne"]
+[ext_resource type="PackedScene" uid="uid://tn5kasr05k8a" path="res://models/tree/Tree.tscn" id="4_yh2kp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
 size = Vector3(300.4899, 107.03613, 5)
@@ -29,32 +30,37 @@ shape = SubResource("BoxShape3D_rh2f5")
 [node name="Course" parent="." unique_id=1464157065 instance=ExtResource("2_0dh05")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 195.89551, -92.865814, -20.533249)
 
-[node name="Item1" parent="." unique_id=2065320669 instance=ExtResource("3_nl3ne")]
+[node name="Items" type="Node3D" parent="." unique_id=1819369645]
+
+[node name="Item1" parent="Items" unique_id=2065320669 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -55.676323, 32.3738)
 
-[node name="Item2" parent="." unique_id=1806393712 instance=ExtResource("3_nl3ne")]
+[node name="Item2" parent="Items" unique_id=1806393712 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.95266, -81.74569, 130.64983)
 
-[node name="Item3" parent="." unique_id=1071257862 instance=ExtResource("3_nl3ne")]
+[node name="Item3" parent="Items" unique_id=1071257862 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2978354, -92.52832, 284.5495)
 
-[node name="Item4" parent="." unique_id=1253320907 instance=ExtResource("3_nl3ne")]
+[node name="Item4" parent="Items" unique_id=1253320907 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.38785, -109.24122, 547.39935)
 
-[node name="Item5" parent="." unique_id=55641462 instance=ExtResource("3_nl3ne")]
+[node name="Item5" parent="Items" unique_id=55641462 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.301018, -153.94023, 836.5216)
 
-[node name="Item6" parent="." unique_id=485446074 instance=ExtResource("3_nl3ne")]
+[node name="Item6" parent="Items" unique_id=485446074 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.430698, -150.54205, 840.4613)
 
-[node name="Item7" parent="." unique_id=302119012 instance=ExtResource("3_nl3ne")]
+[node name="Item7" parent="Items" unique_id=302119012 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.391, -187.79396, 782.519)
 
-[node name="Item8" parent="." unique_id=671628268 instance=ExtResource("3_nl3ne")]
+[node name="Item8" parent="Items" unique_id=671628268 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588.5243, -205.38287, 401.7917)
 
-[node name="Item9" parent="." unique_id=1661978024 instance=ExtResource("3_nl3ne")]
+[node name="Item9" parent="Items" unique_id=1661978024 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 742.15076, -234.05562, 87.22925)
 
-[node name="Item10" parent="." unique_id=1719364774 instance=ExtResource("3_nl3ne")]
+[node name="Item10" parent="Items" unique_id=1719364774 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.04257, -298.80957, -360.77036)
+
+[node name="Tree" parent="." unique_id=1068342320 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.923458, -91.34365, 220.61024)

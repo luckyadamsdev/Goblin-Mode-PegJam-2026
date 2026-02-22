@@ -1,8 +1,33 @@
 [gd_scene format=3 uid="uid://tn5kasr05k8a"]
 
 [ext_resource type="ArrayMesh" uid="uid://cyyb8jn63384h" path="res://models/tree/Tree.obj" id="1_nbyt5"]
+[ext_resource type="Texture2D" uid="uid://dtxhhadrtc5vt" path="res://models/tree/Tree_ForSubstance_openPBR_shader1_BaseColor.png" id="3_ks74m"]
+[ext_resource type="Texture2D" uid="uid://cueuk0we2da4m" path="res://models/tree/Tree_ForSubstance_openPBR_shader1_Normal.png" id="4_7hf2a"]
 
-[node name="Node3D" type="Node3D" unique_id=1068342320]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wda0"]
+albedo_color = Color(0.3529412, 0.3529412, 0.3529412, 1)
+albedo_texture = ExtResource("4_7hf2a")
 
-[node name="Tree" type="MeshInstance3D" parent="." unique_id=1351856112]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hf2a"]
+albedo_color = Color(0.59919906, 0.599199, 0.59919894, 1)
+albedo_texture = ExtResource("3_ks74m")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ks74m"]
+height = 17.0
+radius = 1.5
+
+[node name="Tree" type="Node3D" unique_id=1068342320]
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1351856112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012199402, 0.033228397, -0.0004696846)
 mesh = ExtResource("1_nbyt5")
+surface_material_override/0 = SubResource("StandardMaterial3D_6wda0")
+surface_material_override/1 = SubResource("StandardMaterial3D_7hf2a")
+surface_material_override/2 = SubResource("StandardMaterial3D_6wda0")
+surface_material_override/3 = SubResource("StandardMaterial3D_6wda0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1434803529]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1586473187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.687091, -0.35943747)
+shape = SubResource("CylinderShape3D_ks74m")
