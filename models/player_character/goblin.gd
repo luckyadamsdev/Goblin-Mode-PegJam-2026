@@ -36,7 +36,7 @@ var current_lap := 1
 var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
-var item_state:ItemStateKeys = ItemStateKeys.ANVIL
+var item_state:ItemStateKeys = ItemStateKeys.NONE
 var num_tricks_in_air := 0
 var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
@@ -60,7 +60,23 @@ func _physics_process(delta: float) -> void:
 	_handle_lands()
 	_handle_rotation_controls(delta)
 	_handle_stretching()
+	_hand_item_usage()
 	was_on_floor = is_on_floor()
+
+func _hand_item_usage() -> void:
+	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed():
+		_enter_item_state_none()
+
+func _enter_item_state_none() -> void:
+	item_state = ItemStateKeys.NONE
+	goblin_template.normal_hands.visible = true
+	goblin_template.item_hands.visible = false
+
+func _enter_item_state_anvil() -> void:
+	item_state = ItemStateKeys.ANVIL
+	goblin_template.normal_hands.visible = false
+	goblin_template.item_hands.visible = true
+	goblin_template.item_anvil.visible = true
 
 func _apply_jump_force() -> void:
 	velocity.y += JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT)
@@ -207,12 +223,6 @@ func finished_trick() -> void:
 	if 1 < banked_spins:
 		banked_spins -= 1
 		_do_spin_trick()
-
-func _enter_item_state_anvil() -> void:
-	item_state = ItemStateKeys.ANVIL
-	goblin_template.normal_hands.visible = false
-	goblin_template.item_hands.visible = true
-	goblin_template.item_anvil.visible = true
 
 func _on_track_area_entered(area: Area3D) -> void:
 	if area.name == 'ItemArea3D':
