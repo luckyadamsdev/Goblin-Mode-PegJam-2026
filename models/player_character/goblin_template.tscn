@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dx6f1cp66jedi" path="res://models/player_character/goblin_foot.tscn" id="5_4bcv1"]
 [ext_resource type="PackedScene" uid="uid://bsmdjr8ppc0tl" path="res://models/board/LogBoard.tscn" id="6_4bcv1"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_c8e47"]
+
 [sub_resource type="Animation" id="Animation_c8e47"]
 length = 0.001
 tracks/0/type = "value"
@@ -188,6 +190,131 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("display/AnvilMesh:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("display/AnvilMesh:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 20, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wid8x"]
+resource_name = "anvil"
+length = 2.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("display/Body/GoblinTorso:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector3(0, 1.05, 0.028)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("display/Body/GoblinHead:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector3(0.026, 1.05, 0.124)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("display/Body/Hands:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.6, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("display:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("display:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("display/Body:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 2.1, 2.2000003, 2.3000002, 2.5, 2.6999998),
+"transitions": PackedFloat32Array(1, 2, 1, 2, 0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1.5, 0.3, 1), Vector3(1.5, 0.3, 1), Vector3(1.1999999, 0.70000005, 1), Vector3(0.9, 1.1, 1), Vector3(0.9499999, 1.0500001, 1), Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("display/AnvilMesh:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("display/AnvilMesh:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1.3000001, 1.5),
+"transitions": PackedFloat32Array(2, 2, 1, 2, 1),
+"update": 0,
+"values": [Vector3(0, 20, 0), Vector3(0, 1.9, 0), Vector3(0, 0.7, 0), Vector3(0, 0.7, 0), Vector3(0, 3, -5)]
 }
 
 [sub_resource type="Animation" id="Animation_n3frc"]
@@ -879,6 +1006,7 @@ tracks/13/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8e47"]
 _data = {
 &"RESET": SubResource("Animation_c8e47"),
+&"anvil": SubResource("Animation_wid8x"),
 &"fall": SubResource("Animation_n3frc"),
 &"idle": SubResource("Animation_ddw36"),
 &"jump": SubResource("Animation_xc1av"),
@@ -920,6 +1048,11 @@ transform = Transform3D(-0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.9709482, 0)
 
 [node name="LogBoard" parent="display" unique_id=1714975431 instance=ExtResource("6_4bcv1")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0.0950737, 0)
+
+[node name="AnvilMesh" type="MeshInstance3D" parent="display" unique_id=1653435347]
+transform = Transform3D(0.875539, 0, 0, 0, 0.7707623, 0, 0, 0, 1.4700336, 0, 20, 0)
+visible = false
+mesh = SubResource("BoxMesh_c8e47")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1958736017]
 libraries/ = SubResource("AnimationLibrary_c8e47")
