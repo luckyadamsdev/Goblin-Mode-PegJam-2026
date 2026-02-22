@@ -256,7 +256,14 @@ func set_leading(player_id:int) -> void:
 		1:
 			placeLeft.text = '1st'
 			placeRight.text = '2nd'
-			
+			var tween := create_tween()
+			tween.set_parallel(false)
+			tween.tween_property(placeLeft, "scale", Vector2.ONE * 1.5, 0.02)
+			tween.tween_property(placeLeft, "scale", Vector2.ONE * 1.0, 0.3)
 		2:
 			placeLeft.text = '2nd'
 			placeRight.text = '1st'
+			var tween := create_tween()
+			tween.set_parallel(false)
+			tween.tween_property(placeRight, "scale", Vector2.ONE * 1.5, 0.02)
+			tween.tween_property(placeRight, "scale", Vector2.ONE * 1.0, 0.3)
