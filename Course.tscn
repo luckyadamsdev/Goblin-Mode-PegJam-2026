@@ -14,6 +14,7 @@ data = PackedVector3Array(-257.0942, -91.600494, -324.3524, -251.4916, -91.7947,
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aakl2"]
 transparency = 1
+albedo_color = Color(1, 1, 1, 0.39215687)
 albedo_texture = ExtResource("3_aakl2")
 roughness_texture = ExtResource("5_fn8hb")
 normal_enabled = true
@@ -35,7 +36,7 @@ mesh = ExtResource("1_wfvhn")
 shape = SubResource("ConcavePolygonShape3D_wfvhn")
 
 [node name="Track2" type="MeshInstance3D" parent="." unique_id=1493138482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.387, 1.146, -2.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74, 1.147, -2.621)
 mesh = ExtResource("2_ssftj")
 surface_material_override/0 = SubResource("StandardMaterial3D_aakl2")
 
