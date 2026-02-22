@@ -92,7 +92,7 @@ func _handle_jumps(delta: float) -> void:
 			_do_spin_trick()
 	time_since_jumped_in_air += delta
 	if controller.button_one_just_pressed():
-		if time_since_on_floor < COYOTE_TIME:
+		if time_since_on_floor < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin':
 			jump()
 		else:
 			time_since_jumped_in_air = 0.0
