@@ -244,8 +244,8 @@ func _handle_racing_mode() -> void:
 					# I'm very sorry
 					var other_goblin_id := (goblin.player_id) % 2
 					var other_goblin := goblins[other_goblin_id]
-					# needs to exceed other by half a metre before it counts as taking the lead
-					if (goblin.global_position.y < other_goblin.global_position.y - 0.5):
+					# needs to exceed other by a little before it counts as taking the lead
+					if (goblin.global_position.y < other_goblin.global_position.y - 0.2):
 						set_leading(goblin.player_id)
 
 func set_leading(player_id:int) -> void:
@@ -256,6 +256,14 @@ func set_leading(player_id:int) -> void:
 		1:
 			placeLeft.text = '1st'
 			placeRight.text = '2nd'
+			var tween := create_tween()
+			tween.set_parallel(false)
+			tween.tween_property(placeLeft, "scale", Vector2.ONE * 1.5, 0.02)
+			tween.tween_property(placeLeft, "scale", Vector2.ONE * 1.0, 0.3)
 		2:
 			placeLeft.text = '2nd'
 			placeRight.text = '1st'
+			var tween := create_tween()
+			tween.set_parallel(false)
+			tween.tween_property(placeRight, "scale", Vector2.ONE * 1.5, 0.02)
+			tween.tween_property(placeRight, "scale", Vector2.ONE * 1.0, 0.3)
