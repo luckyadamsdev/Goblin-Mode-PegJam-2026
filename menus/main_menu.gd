@@ -1,6 +1,8 @@
 extends Control
 class_name MainMenu
 
+signal level_selected()
+
 @export var places:Control
 
 @export var laps:Control
@@ -30,7 +32,7 @@ func _on_vs1_button_pressed() -> void:
 func _on_vs2_button_pressed() -> void:
 	places.visible = true
 	laps.visible = true
-	GameManager.instance.selected_map_path = "res://map/map02.tscn"
+	GameManager.instance.selected_map_path = "res://map/map05.tscn"
 	GameManager.instance.set_map_tile($"Panel/VS Race Button2".text)
 	GameManager.instance.go_to_start_screen()
 
