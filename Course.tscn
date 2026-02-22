@@ -29,7 +29,7 @@ mesh = ExtResource("1_wfvhn")
 shape = SubResource("ConcavePolygonShape3D_wfvhn")
 
 [node name="Track2" type="MeshInstance3D" parent="." unique_id=1493138482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.47165, 1.1459875, -2.5599508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.387, 1.146, -2.6)
 mesh = ExtResource("2_ssftj")
 surface_material_override/0 = SubResource("StandardMaterial3D_aakl2")
 
