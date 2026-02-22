@@ -60,11 +60,13 @@ shadow_materal = SubResource("ShaderMaterial_fc4ne")
 collision_layer = 2
 
 [node name="Goblin2Shadow" type="MeshInstance3D" parent="." unique_id=1332210659 node_paths=PackedStringArray("goblin")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("QuadMesh_fkyaf")
 skeleton = NodePath("../Goblin1")
 surface_material_override/0 = SubResource("ShaderMaterial_g82c4")
 script = ExtResource("2_rgvqj")
 goblin = NodePath("../Goblin2")
+position_offset = Vector3(0, 1, 0.5)
 shadow_materal = SubResource("ShaderMaterial_g82c4")
 
 [node name="Goblin2" parent="." unique_id=1005389590 instance=ExtResource("2_srorr")]
