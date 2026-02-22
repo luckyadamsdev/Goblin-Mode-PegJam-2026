@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_0dh05"]
 [ext_resource type="PackedScene" uid="uid://dj7awkeccg37u" path="res://Course.tscn" id="2_0dh05"]
-[ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_nl3ne"]
+[ext_resource type="PackedScene" path="res://models/props/item.tscn" id="3_nl3ne"]
 [ext_resource type="PackedScene" uid="uid://tn5kasr05k8a" path="res://models/tree/Tree.tscn" id="4_yh2kp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
