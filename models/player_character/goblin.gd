@@ -58,7 +58,7 @@ var was_on_floor := false
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	controller.set_player_id(player_id)
-	goblin_template.finish_item.connect(_end_anvil)
+	goblin_template.finish_item.connect(_end_item)
 
 func _physics_process(delta: float) -> void:
 	if goblin_paused:
@@ -73,10 +73,11 @@ func _physics_process(delta: float) -> void:
 	_handle_item_usage(delta)
 	was_on_floor = is_on_floor()
 
-func _end_anvil() -> void:
+func _end_item() -> void:
 	if is_instance_valid(enemy):
-		enemy.anim.play('anvil_crush')
-		enemy.anim.queue('idle')
+		if item_state == ItemStateKeys.ANVIL:
+			enemy.anim.play('anvil_crush')
+			enemy.anim.queue('idle')
 	else:
 		print('ERROR 109238')
 	_enter_item_state_none()
@@ -86,8 +87,10 @@ func _handle_item_usage(delta: float) -> void:
 		match item_state:
 			ItemStateKeys.ANVIL:
 				anim.play('anvil_throw')
+				anim.queue('idle')
 			ItemStateKeys.BOMB:
 				anim.play('bomb_throw')
+				anim.queue('idle')
 			ItemStateKeys.POTION:
 				item_potion_timer = POTION_DURATION
 				_enter_item_state_none()

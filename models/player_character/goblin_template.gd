@@ -23,6 +23,7 @@ func emit_finish_item() -> void:
 
 func spawn_bomb() -> void:
 	var bombInst = bombRes.instantiate()
-	Global.add_child(bombInst)
+	Global.game_manager.get_child(0).add_child(bombInst)
 	bombInst.global_position = bombSpawnPoint.global_position
 	bombInst.play_flash_animation()
+	emit_finish_item()
