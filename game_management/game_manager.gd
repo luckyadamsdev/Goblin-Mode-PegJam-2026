@@ -67,6 +67,11 @@ func _process(_delta: float) -> void:
 			_handle_racing_mode()
 		GameMode.WON:
 			_handle_menu_mode()
+			if Input.is_action_just_pressed("pause"):
+				game_mode = GameMode.PAUSE_MENU
+				pause_menu.visible = true
+				pause_menu.set_focus()
+				get_tree().paused = true
 		GameMode.PAUSE_MENU:
 			if Input.is_action_just_pressed("pause"):
 				unpause()
@@ -88,6 +93,9 @@ func _load_map(map_name:String) -> void:
 	
 	racing_overlay.visible = true
 	
+	set_lap_display(lapLeft, 1, false)
+	set_lap_display(lapRight, 1, false)
+	
 	current_map = load(map_name).instantiate() as Map
 	add_child(current_map)
 	
@@ -101,7 +109,7 @@ func _load_map(map_name:String) -> void:
 	cameras[1].set_target(goblins[1])
 	for goblin in goblins:
 		goblin.pause() # pause the goblins for the timer to complete
-		goblin.reset()
+		goblin.reset(true)
 	start_timer()
 	
 	placeLeft.text = ""
