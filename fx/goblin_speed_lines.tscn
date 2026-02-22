@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://0qhf5t8q8a88"]
+
+[ext_resource type="Shader" uid="uid://dp7r1sstfiiox" path="res://fx/speedlines.gdshader" id="1_ev5kp"]
+[ext_resource type="Script" uid="uid://dysucyw8bikpc" path="res://fx/goblin_speed_lines.gd" id="1_fe7mg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n3frc"]
+frequency = 0.0103
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wid8x"]
+noise = SubResource("FastNoiseLite_n3frc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qn6hm"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_ev5kp")
+shader_parameter/velocity = Vector3(0, 0, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_wid8x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i888i"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ubn8t"]
+resource_name = "goblin_speed_goblin_speed_lines"
+_surfaces = [{
+"aabb": AABB(-2.3859475, -5.0188746, -7.536006, 4.764093, 5.998986, 7.333115),
+"attribute_data": PackedByteArray("AAAA/3x/gL0NSU0//////xkSnT7mbbQ+AAAA/5OaaD4ynEw//////zYkEr7yhbY+AAAA/1b/5b5+L04//////zYkEr7yhbY+AAAA/3x/gL0NSU0//////8jwPb+SULk+AAAA/6Wyaj+wgmg//////zJtAD/Q6AI+AAAA/9LTBj+4N2c//////0L3cT/Q6AI+AAAA/4KFQD/MWWY//////45MHz8Obq4+AAAA/yqUJj9WQ2E//////z6NPj+iI7M+/////1Dp8D54Mrw+AAAA/yEGBj8cYGM/AAAA/1MbKT/+CUw//////4Yo/z7AWog+AAAA/4qmCT+8VEc//////4xsJD+EnZM+/////67HqD4oMmI+AAAA/9CvzD5WIUo/AAAA/y4YIT+EmUs//////9e4Jz8oc7k+AAAA/7kxLj80sUo///////cqGD9ofLs+AAAA/5OaaD4ynEw//////5DDaD9wn7E+AAAA/1KeHT+FtEs//////xkSnT7mbbQ+AAAA/0D0YT4ZjXE//////1o1Cj+UNYA+AAAA/2Yi6D4loms//////yiQzD3WlZY+AAAA/5r8FD8kP2U//////0QEWz9SuIs+AAAA/5zMQz/+AF8//////5iDAj8oU6M+AAAA/6QrxD4kRVU///////cKCT+4eYU+AAAA/2vuBz8C7Fo//////9j7gj7QNWA+AAAA/zJtQj9CbVk//////8ZdNj9QGmM+AAAA/0PKNj/SJGE//////61dTD+Qvig+"),
+"format": 34359742495,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0ADgANABAADgAQABEAEgATABQAEgAVABMAFAATABYAFAAWABcAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0A"),
+"material": SubResource("StandardMaterial3D_i888i"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("3v/vvlfPTT+9NBG/4LM1P5Loej+ZXHLAgGHpPq9cTz/pCha/j0s5v3iAeD+kfHDAYTbFv6zFRz4sERS/j0s5v3iAeD+kfHDA3v/vvlfPTT+9NBG/XbMYwABd2jyPmHHAyKeNP5+aoMASo2DA5XeEv5+aoMD2JvHAOepnv5+aoMDtTWLAL2egP5+aoMD2JvHAVu8bP6g1k8BkJ2e/ZIoyP14wicDk+DvAVu8bPzkJiMDeP3G/ZIoyPxUal8Bd1DjAZIoyPxgMbcBrdTbAVu8bP3IXcsChiV+/1qynPXIXcsCiiV+/hJQnPV4wicBxy0DA2aynPTkJiMDkXoC/fJQnPRgMbcBrdTbA9A87v9kXl8BdCUrA3K4Jv90zk8AQN4+/tgMYPnIXcsA533+/CkLZPhgMbcAphkDAspPHPnIXcsA433+/tpL9PRgMbcAphkDAgGHpPq9cTz/pCha/iTMYQABd2jxJbXTAexLEP6zFRz7IXhu/4LM1P5Loej+ZXHLALEOTPxL11b9wR7m+lxGPP2DxdcCupF/AYqZZP0KGNcAxJoy+1LzXP0ME0r/4TmrAFGGVvgZ0NsCSwk++pnRUvxhp/b8GN3/AP004vvfo7L9b3wi/x0aFv+Syd8B0ElfArqKNvtAlnb+RxyS/NWMaP0i/9b589nzAV/YTPxxeh7+NGwS/z52Bvzs6Tb/YM4bA4vuAP6pGjr+sTv++z3x3P1gx577tRmrA3TRFP2lxhb9rJbm+Ri61P9L+FL+R23rAVH/1+Ev/WMBUf/X4S/9YwFR/9fhL/1jAVH/1+Ev/WMBMVMnMBNCh1kxUycwE0KHWTFTJzATQodZMVMnMBNCh1le4twCX/po//38AAP///z/AtBkAzP/xP/9/AAD///8/SuYl2/SnJ4aRApCt3HulfU0axht0jRps0iTWOpahW2SvBC+sbXgBfTkayfDPXxN+lt1P9Z58zxM68UhnqI8kDLXqaedLg+AOUvumqO9/UAdxvO0mStAyKSMECj1RzIHt/38q+4j31r//fyr7MvjZv/9/Kvt199a//38q+0L42b/kq4zMHNG5qOSrjMwc0bmo5KuMzBzRuajkq4zMHNG5qBzU318DX1CXy934elZ0XpD49VFzgnfjjEPRB2mvYymVpgyZnM+ggfj1KbmI3ZS1/UsRBH1RaXH97DTeqbi4le33YEjeGuDPzztoTNQf49PNfWVZ277iSc66eObt//fkxI37cR+jxttP7UtTKeTPB1YqYYDwQe/yyeZNqAzt3MpK")
+}]
+blend_shape_mode = 0
+
+[node name="goblin_speed" type="Node3D" unique_id=85550158]
+script = ExtResource("1_fe7mg")
+speed_material = SubResource("ShaderMaterial_qn6hm")
+
+[node name="goblin_wake" type="MeshInstance3D" parent="." unique_id=463049850]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.0482326, 1.2124697, -0.100487605)
+cast_shadow = 0
+extra_cull_margin = 10.0
+ignore_occlusion_culling = true
+mesh = SubResource("ArrayMesh_ubn8t")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_qn6hm")

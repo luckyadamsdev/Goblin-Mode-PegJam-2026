@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://d1tx7u565xame" path="res://game_management/game_manager.gd" id="1_cawbs"]
 [ext_resource type="Script" uid="uid://ca8jh3bihcqqa" path="res://camera/camera_movement.gd" id="1_olp4a"]
+[ext_resource type="PackedScene" uid="uid://0qhf5t8q8a88" path="res://fx/goblin_speed_lines.tscn" id="2_dfv8i"]
 [ext_resource type="Shader" uid="uid://b1x16aospbech" path="res://shadow/shadow.gdshader" id="2_g82c4"]
 [ext_resource type="Script" uid="uid://ehrs6gbdgps" path="res://shadow/shadow.gd" id="2_rgvqj"]
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
+[ext_resource type="Shader" uid="uid://dp7r1sstfiiox" path="res://fx/speedlines.gdshader" id="3_fnib8"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
 [ext_resource type="PackedScene" uid="uid://dxump8b7q41bq" path="res://menus/main_menu.tscn" id="8_krumh"]
 [ext_resource type="PackedScene" uid="uid://bd72dwb7m4ov7" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
@@ -16,6 +18,26 @@
 [ext_resource type="AudioStream" uid="uid://crbuym6djwh8h" path="res://sound/announcer/Race Over.wav" id="13_5l855"]
 [ext_resource type="AudioStream" uid="uid://hi7vlviveut2" path="res://sound/announcer/Winner.wav" id="14_llaj5"]
 [ext_resource type="AudioStream" uid="uid://1ecbi35ikuxc" path="res://sound/music/Kerey Harper- Goblin Racing Drum n Bass.wav" id="16_5l855"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n3frc"]
+frequency = 0.0103
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wid8x"]
+noise = SubResource("FastNoiseLite_n3frc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hyuga"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_fnib8")
+shader_parameter/velocity = Vector3(0, 0, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_wid8x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjocv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_fnib8")
+shader_parameter/velocity = Vector3(0, 0, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_wid8x")
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
@@ -134,6 +156,16 @@ racing_overlay = NodePath("../Hud/Overlay")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
 [node name="MenuLight" type="DirectionalLight3D" parent="." unique_id=867891742]
+
+[node name="goblin_speed1" parent="." unique_id=85550158 node_paths=PackedStringArray("goblin") instance=ExtResource("2_dfv8i")]
+visible = false
+goblin = NodePath("../Goblin1")
+speed_material = SubResource("ShaderMaterial_hyuga")
+
+[node name="goblin_speed2" parent="." unique_id=1259304052 node_paths=PackedStringArray("goblin") instance=ExtResource("2_dfv8i")]
+visible = false
+goblin = NodePath("../Goblin2")
+speed_material = SubResource("ShaderMaterial_xjocv")
 
 [node name="Goblin1Shadow" type="MeshInstance3D" parent="." unique_id=2078833400 node_paths=PackedStringArray("goblin")]
 mesh = SubResource("QuadMesh_fkyaf")
