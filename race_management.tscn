@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
 [ext_resource type="Script" uid="uid://0k454u7ibwwe" path="res://menus/main_menu.gd" id="7_fc4ne"]
-[ext_resource type="Script" uid="uid://dksx4thyce0qb" path="res://menus/pause_menu.gd" id="8_aauw6"]
+[ext_resource type="Script" path="res://menus/pause_menu.gd" id="8_aauw6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
@@ -97,7 +97,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
-size = Vector2i(958, 1080)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
@@ -112,7 +112,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
-size = Vector2i(958, 1080)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
@@ -234,8 +234,11 @@ horizontal_alignment = 1
 [node name="MainMenu" type="Control" parent="." unique_id=207238431]
 process_mode = 3
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("7_fc4ne")
@@ -266,8 +269,11 @@ metadata/_edit_use_anchors_ = true
 process_mode = 3
 visible = false
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("8_aauw6")
@@ -309,6 +315,6 @@ grow_vertical = 2
 text = "BACK"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="button_down" from="MainMenu/Panel/StartButton" to="MainMenu" method="_on_start_button_down"]
+[connection signal="pressed" from="MainMenu/Panel/StartButton" to="MainMenu" method="_on_start_button_pressed"]
 [connection signal="button_down" from="PauseMenu/Panel/ContinuePlaying" to="PauseMenu" method="_on_continue_playing_button_down"]
 [connection signal="button_down" from="PauseMenu/Panel/Back" to="PauseMenu" method="_on_back_button_down"]
