@@ -54,6 +54,7 @@ skeleton = NodePath("../Goblin1")
 surface_material_override/0 = SubResource("ShaderMaterial_fc4ne")
 script = ExtResource("2_rgvqj")
 goblin = NodePath("../Goblin1")
+shadow_range = 9.0
 shadow_materal = SubResource("ShaderMaterial_fc4ne")
 
 [node name="Goblin1" parent="." unique_id=697638060 instance=ExtResource("2_srorr")]
@@ -65,6 +66,7 @@ skeleton = NodePath("../Goblin1")
 surface_material_override/0 = SubResource("ShaderMaterial_g82c4")
 script = ExtResource("2_rgvqj")
 goblin = NodePath("../Goblin2")
+shadow_range = 9.0
 shadow_materal = SubResource("ShaderMaterial_g82c4")
 
 [node name="Goblin2" parent="." unique_id=1005389590 instance=ExtResource("2_srorr")]

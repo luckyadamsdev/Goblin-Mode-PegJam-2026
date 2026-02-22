@@ -7,7 +7,7 @@ class_name CameraMovement
 # used for extra follow distance during start
 var bonus_follow_distance:float = 0.0
 
-@export var follow_height := 2.0
+@export var follow_height := 3.0# Ryan please please please stop changing this back to 2.0
 
 @export var vertical_offset := 1.0
 
