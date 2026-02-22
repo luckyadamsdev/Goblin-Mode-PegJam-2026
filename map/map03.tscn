@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_0dh05"]
 [ext_resource type="PackedScene" uid="uid://dj7awkeccg37u" path="res://Course.tscn" id="2_0dh05"]
-[ext_resource type="Script" uid="uid://bpqxumqro7qph" path="res://models/props/item.gd" id="4_nl3ne"]
-[ext_resource type="Script" uid="uid://gxgxpdwl82ro" path="res://models/props/item_area_3d.gd" id="4_yh2kp"]
+[ext_resource type="Script" path="res://models/props/item.gd" id="4_nl3ne"]
+[ext_resource type="Script" path="res://models/props/item_area_3d.gd" id="4_yh2kp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
 size = Vector3(300.4899, 107.03613, 5)
