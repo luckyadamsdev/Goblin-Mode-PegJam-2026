@@ -59,7 +59,7 @@ func _physics_process(delta : float):
 			bonus_follow_distance = max(0.0, bonus_follow_distance - delta * 3.0)
 			_main_process(delta)
 
-func _menu_process(delta:float):
+func _menu_process(_delta:float):
 	# TODO what else?
 	# react when someone presses button?
 	if global_position.distance_to(goblin.global_position) > 2.0:

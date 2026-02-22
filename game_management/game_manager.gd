@@ -52,6 +52,7 @@ func _process(_delta: float) -> void:
 			if Input.is_action_just_pressed("pause"):
 				game_mode = GameMode.PAUSE_MENU
 				pause_menu.visible = true
+				pause_menu.set_focus()
 				get_tree().paused = true
 		GameMode.WON:
 			_handle_menu_mode()
@@ -181,6 +182,7 @@ func go_to_main_menu() -> void:
 func go_to_pause_menu() -> void:
 	# show main menu
 	pause_menu.visible = true
+	pause_menu.set_focus()
 	# hide hud
 	hud.visible = false
 	game_mode = GameMode.PAUSE_MENU

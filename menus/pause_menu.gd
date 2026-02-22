@@ -1,7 +1,7 @@
 extends Control
 class_name PauseMenu
 
-func _ready() -> void:
+func set_focus() -> void:
 	$Panel/ContinuePlaying.grab_focus()
 
 func _on_continue_playing_button_down() -> void:
