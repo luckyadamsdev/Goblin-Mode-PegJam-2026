@@ -57,7 +57,7 @@ var was_on_floor := false
 @onready var goblin_template:Node3D = $GoblinTemplate
 @onready var anim:AnimationPlayer = goblin_template.get_animation_player()
 
-# var sparkles_effect:SparkleEffect
+var sparkles_effect:SparkleEffect
 
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)

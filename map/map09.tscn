@@ -30,34 +30,34 @@ shape = SubResource("BoxShape3D_rh2f5")
 [node name="Items" type="Node3D" parent="." unique_id=1819369645]
 
 [node name="Item1" parent="Items" unique_id=2065320669 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -55.676323, 32.3738)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -57.85513, 79.12747)
 
-[node name="Item2" parent="Items" unique_id=1806393712 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.95266, -81.74569, 130.64983)
+[node name="Item2" parent="Items" unique_id=1919449726 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.493164, -73.101036, 173.64783)
 
-[node name="Item3" parent="Items" unique_id=1071257862 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2978354, -92.52832, 284.5495)
+[node name="Item3" parent="Items" unique_id=1035764668 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.22427, -105.11733, 293.26282)
 
-[node name="Item4" parent="Items" unique_id=1253320907 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.38785, -109.24122, 547.39935)
+[node name="Item4" parent="Items" unique_id=995554568 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.186703, -103.80784, 293.26282)
 
-[node name="Item5" parent="Items" unique_id=55641462 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.301018, -153.94023, 836.5216)
+[node name="Item5" parent="Items" unique_id=1704964713 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.26586, -176.22044, 566.6108)
 
-[node name="Item6" parent="Items" unique_id=485446074 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.430698, -150.54205, 840.4613)
+[node name="Item6" parent="Items" unique_id=2063118622 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.107761, -204.38304, 801.0476)
 
-[node name="Item7" parent="Items" unique_id=302119012 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.391, -187.79396, 782.519)
+[node name="Item7" parent="Items" unique_id=1195750389 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.781235, -234.2367, 1077.6221)
 
-[node name="Item8" parent="Items" unique_id=671628268 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588.5243, -205.38287, 401.7917)
+[node name="Item8" parent="Items" unique_id=2045207328 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.12498, -262.4629, 1101.7485)
 
-[node name="Item9" parent="Items" unique_id=1661978024 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 742.15076, -234.05562, 87.22925)
+[node name="Item9" parent="Items" unique_id=2076440595 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 561.87573, -308.3044, 1164.0303)
 
-[node name="Item10" parent="Items" unique_id=1719364774 instance=ExtResource("3_s47gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.04257, -298.80957, -360.77036)
+[node name="Item10" parent="Items" unique_id=110914844 instance=ExtResource("3_s47gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.77304, -337.42648, 1343.5676)
 
 [node name="Tree1" parent="." unique_id=1068342320 instance=ExtResource("4_h6x6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.923458, -91.34365, 220.61024)
