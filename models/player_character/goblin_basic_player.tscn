@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://cyuth76wtnipy" path="res://models/player_character/goblin_controller.gd" id="3_wfdko"]
 [ext_resource type="Script" uid="uid://cqpwou5hciv81" path="res://models/player_character/goblin_control_definition.gd" id="4_je6la"]
 [ext_resource type="Script" uid="uid://t8h2unjnfuaw" path="res://sound/goblin_audio_player.gd" id="5_lj84d"]
+[ext_resource type="AudioStream" uid="uid://ca65ot6rvfskw" path="res://sound/goblin/landing.wav" id="6_w8f5h"]
+[ext_resource type="AudioStream" uid="uid://bs326jx5b25nc" path="res://sound/goblin/jump.wav" id="7_lb7ny"]
+[ext_resource type="AudioStream" uid="uid://b1masjggbaoas" path="res://sound/goblin/surf.wav" id="8_v5tbf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wg1ha"]
 radius = 0.1821289
@@ -64,6 +67,10 @@ metadata/_custom_type_script = "uid://cyuth76wtnipy"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1982983189]
 script = ExtResource("5_lj84d")
+landed_sound = ExtResource("6_w8f5h")
+jump_sound = ExtResource("7_lb7ny")
+surf_sound = ExtResource("8_v5tbf")
 
 [connection signal="jumped" from="." to="AudioStreamPlayer" method="_on_goblin_jumped"]
 [connection signal="landed" from="." to="AudioStreamPlayer" method="_on_goblin_landed"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
