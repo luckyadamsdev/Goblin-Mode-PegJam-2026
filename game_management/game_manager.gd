@@ -115,6 +115,8 @@ func _load_map(map_name:String) -> void:
 	placeLeft.text = ""
 	placeRight.text = ""
 	
+	winner = 0
+	
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race) # listen for a goblin reaching the finish line
 	current_map.end_zone.collision_mask ^= 2
 	
@@ -221,7 +223,10 @@ func go_to_pause_menu() -> void:
 	game_mode = GameMode.PAUSE_MENU
 
 func unpause() -> void:
-	game_mode = GameMode.RACING
+	if winner == 0:
+		game_mode = GameMode.RACING
+	else:
+		game_mode = GameMode.WON
 	main_menu.visible = false
 	pause_menu.visible = false
 	get_tree().paused = false
