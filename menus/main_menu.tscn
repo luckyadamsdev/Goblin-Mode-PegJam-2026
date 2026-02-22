@@ -32,45 +32,75 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fc4ne")
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.8138889
-anchor_right = 0.4
-anchor_bottom = 0.8138889
-offset_left = -150.0
-offset_top = -50.0
-offset_right = 150.0
-offset_bottom = 50.0
+anchor_left = 0.70600003
+anchor_top = 0.20500001
+anchor_right = 0.86200005
+anchor_bottom = 0.29700002
+offset_left = 14.079834
+offset_top = -36.40004
+offset_right = 14.559814
+offset_bottom = -35.76004
 grow_horizontal = 2
 grow_vertical = 2
 text = "Practice"
-metadata/_edit_use_anchors_ = true
 
-[node name="VS Race Button" type="Button" parent="Panel" unique_id=723383330]
+[node name="VS Race Button1" type="Button" parent="Panel" unique_id=1003390764]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.6
-anchor_top = 0.8138889
-anchor_right = 0.6
-anchor_bottom = 0.8138889
-offset_left = -150.0
-offset_top = -50.0
-offset_right = 150.0
-offset_bottom = 50.0
+anchor_left = 0.65400004
+anchor_top = 0.46400002
+anchor_right = 0.91400003
+anchor_bottom = 0.55600005
+offset_left = 13.9198
+offset_top = 19.879974
+offset_right = 14.719727
+offset_bottom = 20.519958
 grow_horizontal = 2
 grow_vertical = 2
-text = "VS Race"
-metadata/_edit_use_anchors_ = true
+text = "Mount Scramble"
+
+[node name="VS Race Button2" type="Button" parent="Panel" unique_id=2028779321]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65400004
+anchor_top = 0.605
+anchor_right = 0.91400003
+anchor_bottom = 0.697
+offset_left = 13.9198
+offset_top = 19.599976
+offset_right = 14.719849
+offset_bottom = 20.23999
+grow_horizontal = 2
+grow_vertical = 2
+text = "Scram Hill"
+
+[node name="VS Race Button3" type="Button" parent="Panel" unique_id=723383330]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65400004
+anchor_top = 0.73800004
+anchor_right = 0.91400003
+anchor_bottom = 0.83100003
+offset_left = 13.9198
+offset_top = 19.95996
+offset_right = 14.719727
+offset_bottom = 19.519958
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shredder"
 
 [node name="Test Map" type="Button" parent="Panel" unique_id=1021836246]
 visible = false
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.8208333
-anchor_top = 0.81574076
-anchor_right = 0.8208333
-anchor_bottom = 0.81574076
+anchor_left = 0.6098958
+anchor_top = 0.912037
+anchor_right = 0.6921875
+anchor_bottom = 0.912037
 offset_left = -150.0
 offset_top = -50.0
 offset_right = 150.0
@@ -83,14 +113,36 @@ metadata/_edit_use_anchors_ = true
 [node name="TitleRect" type="TextureRect" parent="Panel" unique_id=2045702579]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.13
-anchor_right = 0.9
-anchor_bottom = 0.7
+anchor_left = 0.05
+anchor_top = 0.08
+anchor_right = 0.7
+anchor_bottom = 0.6
+offset_left = -39.999992
+offset_right = -40.0
+rotation = -0.3159046
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_oblsv")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Label" type="Label" parent="." unique_id=1207381644]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.716
+anchor_top = 0.37500003
+anchor_right = 0.85200006
+anchor_bottom = 0.439
+offset_left = 14.879761
+offset_top = -19.0
+offset_right = 13.759766
+offset_bottom = -19.119995
+theme_override_colors/font_color = Color(0.23137255, 0.08235294, 0.078431375, 1)
+theme_override_colors/font_shadow_color = Color(0.19215687, 0.13725491, 0.11764706, 0)
+text = "VS Racing"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Panel/PracticeButton" to="." method="_on_practice_button_pressed"]
-[connection signal="pressed" from="Panel/VS Race Button" to="." method="_on_vs_button_pressed"]
+[connection signal="pressed" from="Panel/VS Race Button1" to="." method="_on_vs1_button_pressed"]
+[connection signal="pressed" from="Panel/VS Race Button2" to="." method="_on_vs2_button_pressed"]
+[connection signal="pressed" from="Panel/VS Race Button3" to="." method="_on_vs3_button_pressed"]
 [connection signal="pressed" from="Panel/Test Map" to="." method="_on_test_map_pressed"]
