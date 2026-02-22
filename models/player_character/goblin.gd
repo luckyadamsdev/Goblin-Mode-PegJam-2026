@@ -236,8 +236,9 @@ func _on_track_area_entered(area: Area3D) -> void:
 	else:
 		is_on_track = true
 
-func _on_track_area_exited(_area: Area3D) -> void:
-	is_on_track = false
+func _on_track_area_exited(area: Area3D) -> void:
+	if area.name != 'ItemArea3D':
+		is_on_track = false
 
 func print_p1(value_given) -> void:
 	if player_id == 1:
