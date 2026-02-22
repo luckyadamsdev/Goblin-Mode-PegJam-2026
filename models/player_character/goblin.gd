@@ -14,7 +14,9 @@ const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 10.0
 const MAX_JUMP_MULT := 5.0
 const MIN_SPEED := 16.0
-const MAX_SPEED := 50.0
+const MAX_SPEED_DEFAULT := 50.0
+const MAX_SPEED_POTION := 100.0
+const POTION_DURATION := 0.5
 const TRICK_SPEED_BOOST := 10.0
 
 const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the air this long
@@ -37,9 +39,11 @@ var goblin_paused:bool = true
 var banked_spins := 0
 var current_lap := 1
 var current_speed := MIN_SPEED
+var current_max_speed := MAX_SPEED_DEFAULT
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
 var item_state:ItemStateKeys = ItemStateKeys.NONE
+var item_potion_timer := 0.0
 var num_tricks_in_air := 0
 var place := 1
 var tilt_turn_target := 0.0
@@ -64,12 +68,21 @@ func _physics_process(delta: float) -> void:
 	_handle_lands()
 	_handle_rotation_controls(delta)
 	_handle_stretching()
-	_handle_item_usage()
+	_handle_item_usage(delta)
 	was_on_floor = is_on_floor()
 
-func _handle_item_usage() -> void:
+func _handle_item_usage(delta: float) -> void:
 	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed():
+		# TODO use item
+		item_potion_timer = POTION_DURATION
 		_enter_item_state_none()
+	if 0.0 < item_potion_timer:
+		item_potion_timer -= delta
+		current_max_speed = MAX_SPEED_POTION
+		current_speed = current_max_speed
+	if item_potion_timer <= 0.0:
+		current_max_speed = MAX_SPEED_DEFAULT
+		item_potion_timer = 0.0
 
 func _enter_item_state_none() -> void:
 	item_state = ItemStateKeys.NONE
@@ -167,7 +180,7 @@ func _handle_accelerate(delta: float) -> void:
 			current_speed -= get_real_velocity().y * delta
 		else:
 			current_speed -= get_real_velocity().y * delta * 0.1
-	current_speed = clamp(current_speed, MIN_SPEED, MAX_SPEED)
+	current_speed = clamp(current_speed, MIN_SPEED, current_max_speed)
 
 	if _get_combined_real_velocity_value() < MIN_SPEED * 0.5:
 		current_speed = MIN_SPEED
