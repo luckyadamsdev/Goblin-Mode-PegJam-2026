@@ -8,6 +8,7 @@ var current_map:Map
 const TOTAL_LAPS:int = 3
 
 @export var goblins:Array[Goblin]
+@export var whiteFlashArr:Array[AnimationPlayer]
 
 ## whether the players have pressed buttons to start
 var buttons_pressed:Array[bool] = [false, false]
@@ -80,6 +81,18 @@ func _process(_delta: float) -> void:
 				unpause()
 		GameMode.MAIN_MENU:
 			pass # don't need to do anything else
+
+func explode(position: Vector3) -> void:
+	var distances := Vector2(
+		position.distance_to(goblins[0].global_position),
+		position.distance_to(goblins[1].global_position)
+	)
+	if distances[0] < 19.0:
+		goblins[0].fall()
+		whiteFlashArr[0].play('flash')
+	if distances[1] < 19.0:
+		goblins[1].fall()
+		whiteFlashArr[1].play('flash')
 
 func _load_map(map_name:String) -> void:
 	if current_map != null:

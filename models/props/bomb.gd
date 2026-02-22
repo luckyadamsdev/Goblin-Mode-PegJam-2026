@@ -4,3 +4,6 @@ extends Node3D
 
 func play_flash_animation() -> void:
 	anim.play('flash')
+
+func try_to_hurt() -> void:
+	Global.game_manager.explode(global_position)
