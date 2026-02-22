@@ -71,7 +71,7 @@ func _handle_jumps(delta: float) -> void:
 		if time_since_on_floor > LAND_THRESHOLD_TIME:
 			landed.emit()
 		time_since_on_floor = 0.0
-		if time_since_jumped_in_air < COYOTE_TIME:
+		if time_since_jumped_in_air < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin':
 			jump()
 	else:
 		time_since_on_floor += delta
