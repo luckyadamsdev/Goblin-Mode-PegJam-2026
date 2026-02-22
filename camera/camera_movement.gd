@@ -4,6 +4,9 @@ class_name CameraMovement
 
 @export var follow_distance := 5.0
 
+# used for extra follow distance during start
+var bonus_follow_distance:float = 0.0
+
 @export var follow_height := 2.0
 
 @export var vertical_offset := 1.0
@@ -12,9 +15,14 @@ class_name CameraMovement
 
 @export var goblin : Goblin
 
-@export var starting_offset:Vector3 = Vector3(0.0, 2.0, -4.0)
+var starting_offset:Vector3 = Vector3(0.0, 2.0, -24.0)
 
 @export var look_curve:Curve
+
+
+
+
+var game_mode:GameManager.GameMode = GameManager.GameMode.MENU
 
 
 ## position that the camera would be 
@@ -39,7 +47,35 @@ func _ready():
 func _physics_process(delta : float):
 	if goblin == null:
 		return
+	match game_mode:
+		GameManager.GameMode.MENU:
+			_menu_process(delta)
+		GameManager.GameMode.RACING:
+			_main_process(delta)
+		GameManager.GameMode.WON:
+			#_main_process(delta)
+			_win_process(delta)
+		GameManager.GameMode.STARTING:
+			bonus_follow_distance = max(0.0, bonus_follow_distance - delta * 3.0)
+			_main_process(delta)
+
+func _menu_process(delta:float):
+	# TODO what else?
+	# react when someone presses button?
+	look_at(goblin.global_position + Vector3.UP * vertical_look_offset, Vector3.UP)
+
+func _win_process(delta:float):
+	# orbits around winning goblin
+	var new_position := (target_position - goblin.position).rotated(Vector3.UP, delta * 3.0)
 	
+	target_position = new_position + goblin.position
+	global_position = target_position
+	var global_track_position := goblin.global_position
+	global_track_position.y += vertical_offset
+	var look_at_offset:Vector3 = Vector3.UP * vertical_look_offset
+	look_at(global_track_position + look_at_offset, Vector3.UP)
+
+func _main_process(delta:float):	
 	## track old velocities of goblin
 	remember_counter -= delta
 	if remember_counter <= 0.0:
@@ -52,7 +88,7 @@ func _physics_process(delta : float):
 	global_track_position.y += vertical_offset
 	var delta_v := target_position - global_track_position
 	delta_v.y = 3.0
-	var follow_distance_with_speed := follow_distance
+	var follow_distance_with_speed := follow_distance + bonus_follow_distance
 	
 	if (delta_v.length() > follow_distance_with_speed):
 		delta_v = delta_v.normalized() * follow_distance_with_speed
@@ -72,7 +108,7 @@ func set_target(new_target:Node3D) -> void:
 	global_position = new_target.to_global(starting_offset)
 	target_position = global_position
 	look_at(goblin.global_position)
-	_physics_process(0.01) # avoids initial flicker
+	_main_process(0.01) # avoids initial flicker
 
 func _on_landed() -> void:
 	pass
