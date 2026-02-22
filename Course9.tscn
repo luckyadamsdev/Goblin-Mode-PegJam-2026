@@ -14,6 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://dvpa40u7yww5k" path="res://models/props/Materials/rock0_initialShadingGroup_BaseColor.png" id="12_hmv0q"]
 [ext_resource type="ArrayMesh" uid="uid://bukt8x2u36bja" path="res://models/props/mushroom3.obj" id="13_xu8db"]
 [ext_resource type="Texture2D" uid="uid://b357scb0prtce" path="res://models/props/Materials/mushroom3_initialShadingGroup_BaseColor.png" id="14_h600i"]
+[ext_resource type="ArrayMesh" uid="uid://1e07kngv7l2q" path="res://models/props/rock5.obj" id="15_4m7vp"]
+[ext_resource type="Texture2D" uid="uid://cg1o7rb8b6wom" path="res://models/props/Materials/rock5_initialShadingGroup_BaseColor.png" id="16_1kt7i"]
+[ext_resource type="ArrayMesh" uid="uid://b3ujdcplqs32u" path="res://models/props/rock4.obj" id="17_k40nm"]
+[ext_resource type="Texture2D" uid="uid://cvg81ph0ynu81" path="res://models/props/Materials/rock4_initialShadingGroup_BaseColor.png" id="18_b85a3"]
+[ext_resource type="ArrayMesh" uid="uid://dghg5frt04llm" path="res://models/props/mushroom4.obj" id="19_n7136"]
+[ext_resource type="Texture2D" uid="uid://b265fcge57hrm" path="res://models/props/Materials/mushroom4_initialShadingGroup_BaseColor.png" id="20_w456u"]
+[ext_resource type="ArrayMesh" uid="uid://btushhfvmrivq" path="res://models/props/rock3.obj" id="21_bon6a"]
+[ext_resource type="Texture2D" uid="uid://bfskjxurd7xq4" path="res://models/props/Materials/rock3_initialShadingGroup_BaseColor.png" id="22_85npq"]
+[ext_resource type="ArrayMesh" uid="uid://djw012iqomysi" path="res://models/props/mushroom0.obj" id="23_1kt7i"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f2x1d"]
 size = Vector2(100, 100)
@@ -52,6 +61,18 @@ albedo_texture = ExtResource("12_hmv0q")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu4r7"]
 albedo_texture = ExtResource("14_h600i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7drfk"]
+albedo_texture = ExtResource("16_1kt7i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbdde"]
+albedo_texture = ExtResource("18_b85a3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65pth"]
+albedo_texture = ExtResource("20_w456u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu2iu"]
+albedo_texture = ExtResource("22_85npq")
 
 [node name="Course9" type="Node3D" unique_id=1464157065]
 
@@ -111,3 +132,27 @@ surface_material_override/0 = SubResource("StandardMaterial3D_o6mnd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140.60318, -100.378075, 336.06085)
 mesh = ExtResource("13_xu8db")
 surface_material_override/0 = SubResource("StandardMaterial3D_vu4r7")
+
+[node name="Rock5" type="MeshInstance3D" parent="." unique_id=601493601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.272354, -170.34355, 568.1565)
+mesh = ExtResource("15_4m7vp")
+surface_material_override/0 = SubResource("StandardMaterial3D_7drfk")
+
+[node name="Rock4" type="MeshInstance3D" parent="." unique_id=1327609894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.908672, -179.29315, 660.75635)
+mesh = ExtResource("17_k40nm")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbdde")
+
+[node name="Mushroom4" type="MeshInstance3D" parent="." unique_id=1781652120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.09165, -132.30554, 469.96185)
+mesh = ExtResource("19_n7136")
+surface_material_override/0 = SubResource("StandardMaterial3D_65pth")
+
+[node name="Rock3" type="MeshInstance3D" parent="." unique_id=926499782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.918749, -189.88457, 789.8875)
+mesh = ExtResource("21_bon6a")
+surface_material_override/0 = SubResource("StandardMaterial3D_pu2iu")
+
+[node name="Mushroom0" type="MeshInstance3D" parent="." unique_id=946675205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.430212, -196.50464, 808.462)
+mesh = ExtResource("23_1kt7i")
