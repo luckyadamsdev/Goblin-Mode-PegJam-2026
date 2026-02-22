@@ -7,7 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dx6f1cp66jedi" path="res://models/player_character/goblin_foot.tscn" id="5_4bcv1"]
 [ext_resource type="PackedScene" uid="uid://bc8quaotr3mqn" path="res://models/props/bomb.tscn" id="5_4pj2w"]
 [ext_resource type="PackedScene" uid="uid://bsmdjr8ppc0tl" path="res://models/board/LogBoard.tscn" id="6_4bcv1"]
+[ext_resource type="PackedScene" uid="uid://bmr5vrkp0v8w" path="res://models/props/potion_mesh.tscn" id="7_qn6hm"]
 [ext_resource type="PackedScene" uid="uid://c2h62dfwjru50" path="res://models/player_character/anvil.tscn" id="7_xc1av"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qn6hm"]
+albedo_color = Color(1, 0.28627452, 0.9529412, 1)
 
 [sub_resource type="Animation" id="Animation_c8e47"]
 length = 0.001
@@ -1014,11 +1018,12 @@ _data = {
 &"spin": SubResource("Animation_qn6hm")
 }
 
-[node name="GoblinTemplate" type="Node3D" unique_id=1640529471 node_paths=PackedStringArray("displayHolder", "item_anvil", "item_hands", "normal_hands")]
+[node name="GoblinTemplate" type="Node3D" unique_id=1640529471 node_paths=PackedStringArray("displayHolder", "item_anvil", "item_hands", "item_potion", "normal_hands")]
 script = ExtResource("1_c8e47")
 displayHolder = NodePath("DisplayHolder")
 item_anvil = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/AnvilMesh")
 item_hands = NodePath("DisplayHolder/display/Body/Hands/ItemPosition")
+item_potion = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/PotionMesh")
 normal_hands = NodePath("DisplayHolder/display/Body/Hands/NormalPosition")
 
 [node name="DisplayHolder" type="Node3D" parent="." unique_id=235164219]
@@ -1055,7 +1060,13 @@ visible = false
 
 [node name="AnvilMesh" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=604271163 instance=ExtResource("7_xc1av")]
 transform = Transform3D(0.040107597, 0, 0.49848458, 0, 0.264, 0, -0.29730707, 0, 0.06724703, 0.59544295, -0.01079303, 0.08343461)
+visible = false
 skeleton = NodePath("../..")
+
+[node name="PotionMesh" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=847762156 instance=ExtResource("7_qn6hm")]
+transform = Transform3D(0.13369185, 0, 0.9910229, 0, 0.9999998, 0, -0.9910229, 0, 0.13369185, 0.5423119, 0.047846198, 0.07626709)
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_qn6hm")
 
 [node name="GoblinHand1" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=1174280060 instance=ExtResource("4_s1kpo")]
 transform = Transform3D(-0.19013706, -0.02053461, 0.058534484, 0.032388035, 0.12809438, 0.15014285, -0.0529053, 0.15221761, -0.118452035, -0.040204924, 0.28826988, 0.29802838)

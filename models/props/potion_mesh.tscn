@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bmr5vrkp0v8w"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4pj2w"]
+top_radius = 0.03
+bottom_radius = 0.2
+height = 0.5
+radial_segments = 8
+
+[node name="PotionMesh" type="MeshInstance3D" unique_id=847762156]
+transform = Transform3D(0.13369185, 0, 0.9910229, 0, 0.99999994, 0, -0.9910229, 0, 0.13369185, 0, 0, 0)
+mesh = SubResource("CylinderMesh_4pj2w")
+skeleton = NodePath("../..")
