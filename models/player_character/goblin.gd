@@ -12,7 +12,7 @@ const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 10.0
 const MAX_JUMP_MULT := 5.0
 const MIN_SPEED := 16.0
-const MAX_SPEED := 50.0
+const MAX_SPEED := 500.0
 const TRICK_SPEED_BOOST := 10.0
 
 const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the air this long
@@ -26,6 +26,7 @@ const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the
 var goblin_paused:bool = true
 
 var banked_spins := 0
+var current_lap := 1
 var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true

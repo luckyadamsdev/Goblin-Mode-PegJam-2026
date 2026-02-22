@@ -58,7 +58,13 @@ func _process(_delta: float) -> void:
 				pause_menu.set_focus()
 				get_tree().paused = true
 			else:
-				if goblins[0].global_position.y <= goblins[1].global_position.y:
+				if goblins[1].current_lap < goblins[0].current_lap:
+					placeLeft.text = '1st'
+					placeRight.text = '2nd'
+				elif goblins[0].current_lap < goblins[1].current_lap:
+					placeLeft.text = '2nd'
+					placeRight.text = '1st'
+				elif goblins[0].global_position.y <= goblins[1].global_position.y:
 					placeLeft.text = '1st'
 					placeRight.text = '2nd'
 				else:
@@ -105,7 +111,10 @@ func _load_map(map_name:String) -> void:
 	
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
-		if game_mode != GameMode.WON: # no winner yet
+		if body.current_lap < 3:
+			body.current_lap += 1
+			current_map.retart_player(body)
+		elif game_mode != GameMode.WON: # no winner yet
 			winner = (body as Goblin).player_id
 			print("is goblin! ", winner)
 			win_screens[winner - 1].visible = true
