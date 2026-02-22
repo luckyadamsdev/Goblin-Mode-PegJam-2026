@@ -1,6 +1,10 @@
 extends Node3D
 class_name Map
 
+# whether this map should track the leading goblin
+@export var is_race:bool = true
+
+
 var goblin_1_start:Node3D:
 	get:
 		if goblin_1_start == null:

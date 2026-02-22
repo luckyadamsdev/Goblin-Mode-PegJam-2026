@@ -37,7 +37,11 @@ var buttons_pressed:Array[bool] = [false, false]
 
 var selected_map_path:String = "res://map/map03.tscn"
 
+# player_id of a the player that reached the finish line
 var winner:int = 0
+
+# player_id of player leading the race
+var leading_player:int = 0
 
 enum GameMode {
 	MENU,
@@ -58,24 +62,7 @@ func _process(_delta: float) -> void:
 		GameMode.MENU:
 			_handle_menu_mode()
 		GameMode.RACING:
-			if Input.is_action_just_pressed("pause"):
-				game_mode = GameMode.PAUSE_MENU
-				pause_menu.visible = true
-				pause_menu.set_focus()
-				get_tree().paused = true
-			else:
-				if goblins[1].current_lap < goblins[0].current_lap:
-					placeLeft.text = '1st'
-					placeRight.text = '2nd'
-				elif goblins[0].current_lap < goblins[1].current_lap:
-					placeLeft.text = '2nd'
-					placeRight.text = '1st'
-				elif goblins[0].global_position.y <= goblins[1].global_position.y:
-					placeLeft.text = '1st'
-					placeRight.text = '2nd'
-				else:
-					placeLeft.text = '2nd'
-					placeRight.text = '1st'
+			_handle_racing_mode()
 		GameMode.WON:
 			_handle_menu_mode()
 		GameMode.PAUSE_MENU:
@@ -165,6 +152,8 @@ func clean_up_old_map() -> void:
 	remove_child(current_map)
 	current_map.queue_free()
 
+
+
 ## when in menu mode, wait for both goblins to press a button
 func _handle_menu_mode() -> void:
 	
@@ -231,3 +220,32 @@ func back_to_main_menu() -> void:
 func set_map_tile(title:String) -> void:
 	map_title.text = title
 	map_title.visible = true
+
+func _handle_racing_mode() -> void:
+	if Input.is_action_just_pressed("pause"):
+		game_mode = GameMode.PAUSE_MENU
+		pause_menu.visible = true
+		pause_menu.set_focus()
+		get_tree().paused = true
+	else:
+		if current_map.is_race:
+			if goblins[1].current_lap < goblins[0].current_lap:
+				set_leading(1)
+			elif goblins[0].current_lap < goblins[1].current_lap:
+				set_leading(2)
+			elif goblins[0].global_position.y <= goblins[1].global_position.y:
+				set_leading(1)
+			else:
+				set_leading(2)
+
+func set_leading(player_id:int) -> void:
+	if player_id == leading_player:
+		return
+	leading_player = player_id
+	match player_id:
+		1:
+			placeLeft.text = '1st'
+			placeRight.text = '2nd'
+		2:
+			placeLeft.text = '2nd'
+			placeRight.text = '1st'
