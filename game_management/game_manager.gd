@@ -112,6 +112,12 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 			timer_label.counting = false # we can stop counting
 			game_mode = GameMode.WON
 			cameras[winner - 1].game_mode = GameMode.WON
+			if winner == 1:
+				placeLeft.text = '1st'
+				placeRight.text = '2nd'
+			else:
+				placeLeft.text = '2nd'
+				placeRight.text = '1st'
 
 func start_timer() -> void:
 	# TODO play a start light
