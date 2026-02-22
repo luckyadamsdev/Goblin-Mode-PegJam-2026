@@ -824,6 +824,20 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
 }
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_trick"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8e47"]
 _data = {

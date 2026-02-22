@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
 [ext_resource type="Script" uid="uid://0k454u7ibwwe" path="res://menus/main_menu.gd" id="7_fc4ne"]
-[ext_resource type="Script" path="res://menus/pause_menu.gd" id="8_aauw6"]
+[ext_resource type="Script" uid="uid://dksx4thyce0qb" path="res://menus/pause_menu.gd" id="8_aauw6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)

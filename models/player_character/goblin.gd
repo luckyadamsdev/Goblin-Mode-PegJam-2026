@@ -28,6 +28,7 @@ var goblin_paused:bool = true
 var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
+var num_tricks_in_air := 0
 var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
@@ -67,8 +68,9 @@ func _handle_lands() -> void:
 			current_speed = MIN_SPEED
 		else:
 			anim.play('land')
-			current_speed += TRICK_SPEED_BOOST
+			current_speed += TRICK_SPEED_BOOST * num_tricks_in_air
 		anim.queue('idle')
+		num_tricks_in_air = 0
 
 func _handle_jumps(delta: float) -> void:
 	# lets player jump even if they pressed the button too early or too late
@@ -162,6 +164,9 @@ func reset() -> void:
 	current_speed = MIN_SPEED
 	goblin_template.rotation.x = 0
 	anim.play('idle')
+
+func finished_trick() -> void:
+	num_tricks_in_air += 1
 
 func _on_track_area_entered(_area: Area3D) -> void:
 	is_on_track = true
