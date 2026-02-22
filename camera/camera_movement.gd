@@ -43,6 +43,7 @@ func _ready():
 	target_position = global_position
 	goblin.landed.connect(_on_landed)
 	goblin.jumped.connect(_on_jumped)
+	goblin.teleported.connect(_on_teleported)
 
 func _physics_process(delta : float):
 	if goblin == null:
@@ -117,3 +118,10 @@ func _on_landed() -> void:
 
 func _on_jumped() -> void:
 	pass
+
+func _on_teleported() -> void:
+	game_mode = GameManager.GameMode.TELEPORTING
+	await get_tree().create_timer(0.5).timeout # how long?
+	game_mode = GameManager.GameMode.RACING
+	set_target(goblin)
+	

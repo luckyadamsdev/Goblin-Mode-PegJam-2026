@@ -70,7 +70,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nl3ne"]
-radius = 1.0
+radius = 1.5
 
 [node name="Item" type="Node3D" unique_id=2065320669]
 script = ExtResource("1_kqs0v")

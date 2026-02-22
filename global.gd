@@ -1,6 +1,7 @@
 extends Node
 
-var rng = RandomNumberGenerator.new()
+var game_manager:GameManager
+var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	rng.randomize()
