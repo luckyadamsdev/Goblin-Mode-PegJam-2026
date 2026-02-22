@@ -22,3 +22,10 @@ func _on_vs_button_pressed() -> void:
 	GameManager.instance.selected_map_path = "res://map/map03.tscn"
 	GameManager.instance.set_map_tile("VS Race")
 	GameManager.instance.go_to_start_screen()
+
+
+func _on_test_map_pressed() -> void:
+	places.visible = true
+	GameManager.instance.selected_map_path = "res://map/short_map.tscn"
+	GameManager.instance.set_map_tile("Secret Third Map")
+	GameManager.instance.go_to_start_screen()

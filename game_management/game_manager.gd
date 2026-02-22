@@ -5,6 +5,8 @@ static var instance:GameManager
 
 var current_map:Map 
 
+const TOTAL_LAPS:int = 3
+
 @export var goblins:Array[Goblin]
 
 ## whether the players have pressed buttons to start
@@ -65,6 +67,11 @@ func _process(_delta: float) -> void:
 			_handle_racing_mode()
 		GameMode.WON:
 			_handle_menu_mode()
+			if Input.is_action_just_pressed("pause"):
+				game_mode = GameMode.PAUSE_MENU
+				pause_menu.visible = true
+				pause_menu.set_focus()
+				get_tree().paused = true
 		GameMode.PAUSE_MENU:
 			if Input.is_action_just_pressed("pause"):
 				unpause()
@@ -86,6 +93,9 @@ func _load_map(map_name:String) -> void:
 	
 	racing_overlay.visible = true
 	
+	set_lap_display(lapLeft, 1, false)
+	set_lap_display(lapRight, 1, false)
+	
 	current_map = load(map_name).instantiate() as Map
 	add_child(current_map)
 	
@@ -99,23 +109,27 @@ func _load_map(map_name:String) -> void:
 	cameras[1].set_target(goblins[1])
 	for goblin in goblins:
 		goblin.pause() # pause the goblins for the timer to complete
-		goblin.reset()
+		goblin.reset(true)
 	start_timer()
 	
 	placeLeft.text = ""
 	placeRight.text = ""
+	
+	winner = 0
 	
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race) # listen for a goblin reaching the finish line
 	current_map.end_zone.collision_mask ^= 2
 	
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
-		if body.current_lap < 3:
+		
+		if body.current_lap < TOTAL_LAPS:
 			body.current_lap += 1
 			if body.player_id == 1:
-				lapLeft.text = 'Lap ' + str(body.current_lap)
+				set_lap_display(lapLeft, body.current_lap, true)
 			else:
-				lapRight.text = 'Lap ' + str(body.current_lap)
+				set_lap_display(lapRight, body.current_lap, true)
+			# TODO need a teleport effect
 			current_map.retart_player(body)
 		elif game_mode != GameMode.WON: # no winner yet
 			winner = (body as Goblin).player_id
@@ -134,6 +148,8 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 				goblins[1].place = 1
 				placeLeft.text = '2nd'
 				placeRight.text = '1st'
+
+
 
 func start_timer() -> void:
 	# TODO play a start light
@@ -207,7 +223,10 @@ func go_to_pause_menu() -> void:
 	game_mode = GameMode.PAUSE_MENU
 
 func unpause() -> void:
-	game_mode = GameMode.RACING
+	if winner == 0:
+		game_mode = GameMode.RACING
+	else:
+		game_mode = GameMode.WON
 	main_menu.visible = false
 	pause_menu.visible = false
 	get_tree().paused = false
@@ -275,3 +294,12 @@ func set_leading(player_id:int) -> void:
 			tween.set_parallel(false)
 			tween.tween_property(placeRight, "scale", Vector2.ONE * 2.0, 0.02)
 			tween.tween_property(placeRight, "scale", Vector2.ONE * 1.0, 0.3)
+
+
+func set_lap_display(display:Label, current_lap:int, juice_it:bool = false) -> void:
+	display.text = "Lap %d/%d" % [current_lap, TOTAL_LAPS]
+	if juice_it:
+		var tween := create_tween()
+		tween.set_parallel(false)
+		tween.tween_property(display, "scale", Vector2.ONE * 1.5, 0.02)
+		tween.tween_property(display, "scale", Vector2.ONE * 1.0, 0.3)
