@@ -106,7 +106,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
-size = Vector2i(958, 1080)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
@@ -121,7 +121,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
-size = Vector2i(958, 1080)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
@@ -337,11 +337,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fc4ne")
 
-[node name="GoblinGameTitle" type="Sprite2D" parent="MainMenu/Panel" unique_id=1151580268]
-position = Vector2(977, 455.99997)
-scale = Vector2(0.3837353, 0.3837353)
-texture = ExtResource("8_krumh")
-
 [node name="StartButton" type="Button" parent="MainMenu/Panel" unique_id=913794560]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
@@ -358,6 +353,17 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "START"
 metadata/_edit_use_anchors_ = true
+
+[node name="TitleRect" type="TextureRect" parent="MainMenu/Panel" unique_id=1756226927]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.13
+anchor_right = 0.9
+anchor_bottom = 0.7
+texture = ExtResource("8_krumh")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PauseMenu" type="Control" parent="." unique_id=633248837]
 process_mode = 3
