@@ -95,12 +95,6 @@ func _handle_accelerate(delta: float) -> void:
 	current_speed -= _get_brake_speed_change()
 	if is_on_floor() and not is_on_track:
 		current_speed -= FRICTION_OFF_TRACK
-		if player_id == 1:
-			print('slow')
-	elif player_id == 1:
-		print('fast')
-	if player_id == 1:
-		print(current_speed)
 	current_speed = max(MIN_SPEED, current_speed)
 	if is_on_floor():
 		var realVelocityY := get_real_velocity().y
