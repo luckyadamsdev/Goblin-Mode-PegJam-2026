@@ -3,6 +3,8 @@ class_name Goblin
 
 signal jumped()
 signal landed()
+signal speed_increased(new_speed:float)
+signal fell_down()
 
 const BASE_ACCELERATION := 0.05
 const COYOTE_TIME := 0.2
@@ -97,9 +99,11 @@ func _handle_lands() -> void:
 		if anim.current_animation == 'spin':
 			anim.play('fall')
 			current_speed = MIN_SPEED
+			fell_down.emit()
 		else:
 			anim.play('land')
 			current_speed += TRICK_SPEED_BOOST * num_tricks_in_air
+			speed_increased.emit(current_speed)
 		anim.queue('idle')
 		num_tricks_in_air = 0
 
