@@ -28,6 +28,7 @@ enum ItemStateKeys {
 	NONE,
 	ANVIL,
 	BOMB,
+	POTION,
 }
 
 # whether the goblin is currently paused and waiting to move
@@ -78,8 +79,26 @@ func _enter_item_state_none() -> void:
 func _enter_item_state_anvil() -> void:
 	item_state = ItemStateKeys.ANVIL
 	goblin_template.normal_hands.visible = false
-	goblin_template.item_hands.visible = true
-	goblin_template.item_anvil.visible = true
+	goblin_template.item_hands.visible   = true
+	goblin_template.item_anvil.visible   = true
+	goblin_template.item_bomb.visible    = false
+	goblin_template.item_potion.visible  = false
+
+func _enter_item_state_bomb() -> void:
+	item_state = ItemStateKeys.BOMB
+	goblin_template.normal_hands.visible = false
+	goblin_template.item_hands.visible   = true
+	goblin_template.item_anvil.visible   = false
+	goblin_template.item_bomb.visible    = true
+	goblin_template.item_potion.visible  = false
+
+func _enter_item_state_potion() -> void:
+	item_state = ItemStateKeys.POTION
+	goblin_template.normal_hands.visible = false
+	goblin_template.item_hands.visible   = true
+	goblin_template.item_anvil.visible   = false
+	goblin_template.item_bomb.visible    = false
+	goblin_template.item_potion.visible  = true
 
 func _apply_jump_force() -> void:
 	velocity.y += JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT)
@@ -234,13 +253,12 @@ func _on_track_area_entered(area: Area3D) -> void:
 	if area.name == 'ItemArea3D':
 		area.claim()
 		if Global.rng.randi() % 2 == 0:
-			print_p1('_enter_item_state_potion()')
+			_enter_item_state_potion()
 		else:
 			if place == 1:
-				print_p1('_enter_item_state_bomb()')
+				_enter_item_state_bomb()
 			else:
 				_enter_item_state_anvil()
-				print_p1('_enter_item_state_anvil()')
 	else:
 		is_on_track = true
 
