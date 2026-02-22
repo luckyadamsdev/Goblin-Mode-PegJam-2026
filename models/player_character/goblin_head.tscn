@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://bjjfjeu5w6e7b"]
 
 [ext_resource type="ArrayMesh" uid="uid://c8cb8s16exado" path="res://models/player_character/GoblinHead.obj" id="1_4wyjv"]
-[ext_resource type="Material" uid="uid://uemp78ioxfdu" path="res://models/player_character/EyeStandardMaterial3D.tres" id="2_3mfvl"]
+[ext_resource type="Texture2D" uid="uid://dx8tieyu0ul84" path="res://models/player_character/EyeUV.png" id="2_efk0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpd3v"]
+albedo_color = Color(1, 1, 0.78431374, 1)
+albedo_texture = ExtResource("2_efk0n")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0lg2"]
 albedo_color = Color(0.31413093, 0.70513713, 0.36559832, 1)
@@ -11,6 +15,6 @@ albedo_color = Color(0.31413093, 0.70513713, 0.36559832, 1)
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1399409821]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.241163, 0, -0.502438)
 mesh = ExtResource("1_4wyjv")
-surface_material_override/0 = ExtResource("2_3mfvl")
+surface_material_override/0 = SubResource("StandardMaterial3D_gpd3v")
 surface_material_override/1 = SubResource("StandardMaterial3D_l0lg2")
-surface_material_override/2 = ExtResource("2_3mfvl")
+surface_material_override/2 = SubResource("StandardMaterial3D_gpd3v")
