@@ -25,6 +25,7 @@ const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the
 # whether the goblin is currently paused and waiting to move
 var goblin_paused:bool = true
 
+var banked_spins := 0
 var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
@@ -63,6 +64,7 @@ func apply_jump_force() -> void:
 func _handle_lands() -> void:
 	if not was_on_floor and is_on_floor():
 		time_since_jumped_in_air = 10.0
+		banked_spins = 0
 		if anim.current_animation == 'spin':
 			anim.play('fall')
 			current_speed = MIN_SPEED
@@ -71,6 +73,10 @@ func _handle_lands() -> void:
 			current_speed += TRICK_SPEED_BOOST * num_tricks_in_air
 		anim.queue('idle')
 		num_tricks_in_air = 0
+
+func _do_spin_trick():
+	anim.play('spin')
+	anim.queue('idle')
 
 func _handle_jumps(delta: float) -> void:
 	# lets player jump even if they pressed the button too early or too late
@@ -82,15 +88,15 @@ func _handle_jumps(delta: float) -> void:
 			jump()
 	else:
 		time_since_on_floor += delta
-		if COYOTE_TIME < time_since_jumped_in_air and time_since_jumped_in_air < 1.0:
-			anim.play('spin')
-			anim.queue('idle')
+		if COYOTE_TIME < time_since_jumped_in_air and time_since_jumped_in_air < 0.5:
+			_do_spin_trick()
 	time_since_jumped_in_air += delta
 	if controller.button_one_just_pressed():
 		if time_since_on_floor < COYOTE_TIME:
 			jump()
 		else:
 			time_since_jumped_in_air = 0.0
+			banked_spins += 1
 
 func _handle_accelerate(delta: float) -> void:
 	current_speed += BASE_ACCELERATION * delta
@@ -167,9 +173,16 @@ func reset() -> void:
 
 func finished_trick() -> void:
 	num_tricks_in_air += 1
+	if 1 < banked_spins:
+		banked_spins -= 1
+		_do_spin_trick()
 
 func _on_track_area_entered(_area: Area3D) -> void:
 	is_on_track = true
 
 func _on_track_area_exited(_area: Area3D) -> void:
 	is_on_track = false
+
+func print_p1(string_given: String) -> void:
+	if player_id == 1:
+		print(string_given)

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://1e07kngv7l2q"
+path="res://.godot/imported/rock5.obj-73ef97e27d73f3106de4c61b60691bb6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rock5.obj-73ef97e27d73f3106de4c61b60691bb6.mesh"]
+
+source_file="res://models/props/rock5.obj"
+dest_files=["res://.godot/imported/rock5.obj-73ef97e27d73f3106de4c61b60691bb6.mesh", "res://.godot/imported/rock5.obj-73ef97e27d73f3106de4c61b60691bb6.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

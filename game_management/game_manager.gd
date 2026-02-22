@@ -90,9 +90,6 @@ func _load_map(map_name:String) -> void:
 		goblin.reset()
 	start_timer()
 	
-	if current_map.track_zone != null:
-		current_map.track_zone.area_entered.connect(_on_entered_track_zone)
-		current_map.track_zone.body_exited.connect(_on_exited_track_zone)
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race) # listen for a goblin reaching the finish line
 	current_map.end_zone.collision_mask ^= 2
 	
@@ -126,9 +123,6 @@ func start_timer() -> void:
 	
 ## deletes the current map before we laod a new one
 func clean_up_old_map() -> void:
-	if current_map.track_zone != null:
-		current_map.track_zone.body_entered.disconnect(_on_entered_track_zone)
-		current_map.track_zone.body_exited.disconnect(_on_exited_track_zone)
 	current_map.end_zone.body_entered.disconnect(_on_check_player_finished_race)
 	remove_child(current_map)
 	current_map.queue_free()
@@ -152,17 +146,6 @@ func _handle_menu_mode() -> void:
 				print("goblin %d ready!" % goblin.player_id)
 				ready_screens[goblin.player_id - 1].visible = true
 				press_to_start_screens[goblin.player_id - 1].visible = false
-
-
-func _on_entered_track_zone(body: Node3D) -> void:
-	if body is Goblin:
-		var goblin := body as Goblin
-		goblin.enter_track()
-	
-func _on_exited_track_zone(body: Node3D) -> void:
-	if body is Goblin:
-		var goblin := body as Goblin
-		goblin.exit_track()
 
 func go_to_start_screen() -> void:
 	#hide main menu
