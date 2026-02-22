@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cjfyhcuf8ol5e"]
+
+[ext_resource type="ArrayMesh" uid="uid://b3tissfwwdlyk" path="res://FullCourse(Terrain+Track) 2.obj" id="1_tgcui"]
+
+[node name="Node3D" type="Node3D" unique_id=1489176660]
+
+[node name="FullCourse(terrain+track)2" type="MeshInstance3D" parent="." unique_id=1450247947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29557467, -117.33496, 101.967926)
+mesh = ExtResource("1_tgcui")
