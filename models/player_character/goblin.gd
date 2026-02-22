@@ -40,6 +40,7 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
 var item_state:ItemStateKeys = ItemStateKeys.NONE
 var num_tricks_in_air := 0
+var place := 1
 var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
@@ -62,10 +63,10 @@ func _physics_process(delta: float) -> void:
 	_handle_lands()
 	_handle_rotation_controls(delta)
 	_handle_stretching()
-	_hand_item_usage()
+	_handle_item_usage()
 	was_on_floor = is_on_floor()
 
-func _hand_item_usage() -> void:
+func _handle_item_usage() -> void:
 	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed():
 		_enter_item_state_none()
 
@@ -232,7 +233,14 @@ func finished_trick() -> void:
 func _on_track_area_entered(area: Area3D) -> void:
 	if area.name == 'ItemArea3D':
 		area.claim()
-		_enter_item_state_anvil()
+		if Global.rng.randi() % 2 == 0:
+			print_p1('_enter_item_state_potion()')
+		else:
+			if place == 1:
+				print_p1('_enter_item_state_bomb()')
+			else:
+				_enter_item_state_anvil()
+				print_p1('_enter_item_state_anvil()')
 	else:
 		is_on_track = true
 

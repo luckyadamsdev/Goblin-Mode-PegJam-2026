@@ -125,9 +125,13 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 			game_mode = GameMode.WON
 			cameras[winner - 1].game_mode = GameMode.WON
 			if winner == 1:
+				goblins[0].place = 1
+				goblins[1].place = 2
 				placeLeft.text = '1st'
 				placeRight.text = '2nd'
 			else:
+				goblins[0].place = 2
+				goblins[1].place = 1
 				placeLeft.text = '2nd'
 				placeRight.text = '1st'
 
@@ -254,9 +258,12 @@ func set_leading(player_id:int) -> void:
 	leading_player = player_id
 	match player_id:
 		1:
+			goblins[0].place = 1
+			goblins[1].place = 2
 			placeLeft.text = '1st'
 			placeRight.text = '2nd'
-			
 		2:
+			goblins[0].place = 2
+			goblins[1].place = 1
 			placeLeft.text = '2nd'
 			placeRight.text = '1st'
