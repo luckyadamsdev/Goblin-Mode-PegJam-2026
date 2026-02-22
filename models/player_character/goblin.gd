@@ -28,6 +28,7 @@ enum ItemStateKeys {
 	NONE,
 	ANVIL,
 	BOMB,
+	POTION,
 }
 
 # whether the goblin is currently paused and waiting to move
@@ -40,6 +41,7 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
 var item_state:ItemStateKeys = ItemStateKeys.NONE
 var num_tricks_in_air := 0
+var place := 1
 var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
@@ -62,10 +64,10 @@ func _physics_process(delta: float) -> void:
 	_handle_lands()
 	_handle_rotation_controls(delta)
 	_handle_stretching()
-	_hand_item_usage()
+	_handle_item_usage()
 	was_on_floor = is_on_floor()
 
-func _hand_item_usage() -> void:
+func _handle_item_usage() -> void:
 	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed():
 		_enter_item_state_none()
 
@@ -77,8 +79,26 @@ func _enter_item_state_none() -> void:
 func _enter_item_state_anvil() -> void:
 	item_state = ItemStateKeys.ANVIL
 	goblin_template.normal_hands.visible = false
-	goblin_template.item_hands.visible = true
-	goblin_template.item_anvil.visible = true
+	goblin_template.item_hands.visible   = true
+	goblin_template.item_anvil.visible   = true
+	goblin_template.item_bomb.visible    = false
+	goblin_template.item_potion.visible  = false
+
+func _enter_item_state_bomb() -> void:
+	item_state = ItemStateKeys.BOMB
+	goblin_template.normal_hands.visible = false
+	goblin_template.item_hands.visible   = true
+	goblin_template.item_anvil.visible   = false
+	goblin_template.item_bomb.visible    = true
+	goblin_template.item_potion.visible  = false
+
+func _enter_item_state_potion() -> void:
+	item_state = ItemStateKeys.POTION
+	goblin_template.normal_hands.visible = false
+	goblin_template.item_hands.visible   = true
+	goblin_template.item_anvil.visible   = false
+	goblin_template.item_bomb.visible    = false
+	goblin_template.item_potion.visible  = true
 
 func _apply_jump_force() -> void:
 	velocity.y += JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT)
@@ -232,7 +252,13 @@ func finished_trick() -> void:
 func _on_track_area_entered(area: Area3D) -> void:
 	if area.name == 'ItemArea3D':
 		area.claim()
-		_enter_item_state_anvil()
+		if Global.rng.randi() % 2 == 0:
+			_enter_item_state_potion()
+		else:
+			if place == 1:
+				_enter_item_state_bomb()
+			else:
+				_enter_item_state_anvil()
 	else:
 		is_on_track = true
 

@@ -2,6 +2,7 @@ extends Node3D
 
 @export var displayHolder: Node3D
 @export var item_anvil: Node3D
+@export var item_bomb : Node3D
 @export var item_hands: Node3D
 @export var item_potion: Node3D
 @export var normal_hands: Node3D

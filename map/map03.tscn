@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_0dh05"]
 [ext_resource type="PackedScene" uid="uid://dj7awkeccg37u" path="res://Course.tscn" id="2_0dh05"]
-[ext_resource type="Environment" uid="uid://8fyu7pbgixg" path="res://environments/cloud_environment.tres" id="2_d6362"]
 [ext_resource type="Script" uid="uid://bpqxumqro7qph" path="res://models/props/item.gd" id="4_nl3ne"]
 [ext_resource type="Script" uid="uid://gxgxpdwl82ro" path="res://models/props/item_area_3d.gd" id="4_yh2kp"]
 
@@ -80,9 +79,6 @@ _data = {
 [node name="Map03" type="Node3D" unique_id=317521660]
 script = ExtResource("1_0dh05")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=359927576]
-environment = ExtResource("2_d6362")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=724154080]
 transform = Transform3D(0.7850723, 0.61631054, 0.061828256, 0.49741828, -0.6867932, 0.5299906, 0.36910194, -0.3853264, -0.84574676, -3.703802, 18.014938, -7.7496643)
 
@@ -102,27 +98,77 @@ shape = SubResource("BoxShape3D_rh2f5")
 [node name="Course" parent="." unique_id=1464157065 instance=ExtResource("2_0dh05")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 195.89551, -92.865814, -20.533249)
 
-[node name="Item" type="Node3D" parent="." unique_id=442059321]
+[node name="Item1" type="Node3D" parent="." unique_id=442059321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -55.676323, 32.3738)
 script = ExtResource("4_nl3ne")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Item" unique_id=232801288]
+[node name="OmniLight3D" type="OmniLight3D" parent="Item1" unique_id=232801288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
 light_energy = 10.0
 omni_range = 10.0
 
-[node name="Mesh" type="MeshInstance3D" parent="Item" unique_id=687624876]
+[node name="Mesh" type="MeshInstance3D" parent="Item1" unique_id=687624876]
 mesh = SubResource("SphereMesh_d6362")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Item" unique_id=1959943226]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Item1" unique_id=1959943226]
 libraries/ = SubResource("AnimationLibrary_yh2kp")
 autoplay = &"default"
 
-[node name="ItemArea3D" type="Area3D" parent="Item" unique_id=1338066482]
+[node name="ItemArea3D" type="Area3D" parent="Item1" unique_id=1338066482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21592808, 0)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_yh2kp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Item/ItemArea3D" unique_id=1724277788]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Item1/ItemArea3D" unique_id=1724277788]
+shape = SubResource("SphereShape3D_nl3ne")
+
+[node name="Item2" type="Node3D" parent="." unique_id=1197292835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.677494, -79.97015, 126.906906)
+script = ExtResource("4_nl3ne")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Item2" unique_id=966705419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Item2" unique_id=1073084062]
+mesh = SubResource("SphereMesh_d6362")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Item2" unique_id=1715790512]
+libraries/ = SubResource("AnimationLibrary_yh2kp")
+autoplay = &"default"
+
+[node name="ItemArea3D" type="Area3D" parent="Item2" unique_id=361823061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21592808, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_yh2kp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Item2/ItemArea3D" unique_id=1110123978]
+shape = SubResource("SphereShape3D_nl3ne")
+
+[node name="Item3" type="Node3D" parent="." unique_id=2021068833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.666832, -92.33108, 324.6233)
+script = ExtResource("4_nl3ne")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Item3" unique_id=1069850197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="Mesh" type="MeshInstance3D" parent="Item3" unique_id=834064176]
+mesh = SubResource("SphereMesh_d6362")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Item3" unique_id=1217566051]
+libraries/ = SubResource("AnimationLibrary_yh2kp")
+autoplay = &"default"
+
+[node name="ItemArea3D" type="Area3D" parent="Item3" unique_id=1416728823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21592808, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_yh2kp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Item3/ItemArea3D" unique_id=1305512466]
 shape = SubResource("SphereShape3D_nl3ne")

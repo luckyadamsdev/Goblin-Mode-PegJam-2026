@@ -1018,10 +1018,11 @@ _data = {
 &"spin": SubResource("Animation_qn6hm")
 }
 
-[node name="GoblinTemplate" type="Node3D" unique_id=1640529471 node_paths=PackedStringArray("displayHolder", "item_anvil", "item_hands", "item_potion", "normal_hands")]
+[node name="GoblinTemplate" type="Node3D" unique_id=1640529471 node_paths=PackedStringArray("displayHolder", "item_anvil", "item_bomb", "item_hands", "item_potion", "normal_hands")]
 script = ExtResource("1_c8e47")
 displayHolder = NodePath("DisplayHolder")
 item_anvil = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/AnvilMesh")
+item_bomb = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/Bomb")
 item_hands = NodePath("DisplayHolder/display/Body/Hands/ItemPosition")
 item_potion = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/PotionMesh")
 normal_hands = NodePath("DisplayHolder/display/Body/Hands/NormalPosition")

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ieaxyyaph2x4"]
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_n4x0f"]
-[ext_resource type="Environment" uid="uid://8fyu7pbgixg" path="res://environments/cloud_environment.tres" id="2_ppgrl"]
 [ext_resource type="PackedScene" uid="uid://dgoc04dsdami2" path="res://PracticeCourse.tscn" id="3_n4x0f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
@@ -10,9 +9,6 @@ size = Vector3(300.4899, 107.03613, 5)
 [node name="Map03" type="Node3D" unique_id=317521660]
 script = ExtResource("1_n4x0f")
 is_race = false
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=359927576]
-environment = ExtResource("2_ppgrl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=724154080]
 transform = Transform3D(0.7850723, 0.61631054, 0.061828256, 0.49741828, -0.6867932, 0.5299906, 0.36910194, -0.3853264, -0.84574676, -3.703802, 18.014938, -7.7496643)

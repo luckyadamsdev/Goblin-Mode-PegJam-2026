@@ -356,4 +356,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jckff")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=95936690]
 libraries/ = SubResource("AnimationLibrary_ctu4q")
-autoplay = &"flash"
+autoplay = &"RESET"
