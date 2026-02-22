@@ -3,9 +3,9 @@ class_name Shadow
 
 @export var goblin:Goblin
 
-@export var shadow_range:float = 3.0
+@export var shadow_range:float = 3.2
 
-@export var position_offset:Vector3 = Vector3(0.0, 0.0, 0.4)
+@export var position_offset:Vector3 = Vector3(0.0, 0.2, 0.4)
 
 @export var shadow_materal:ShaderMaterial
 
