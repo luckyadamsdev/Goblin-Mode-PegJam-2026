@@ -1,5 +1,10 @@
 extends Node3D
 
+@export var displayHolder: Node3D
+@export var item_anvil: Node3D
+@export var item_hands: Node3D
+@export var normal_hands: Node3D
+
 func get_animation_player() -> AnimationPlayer:
 	return $AnimationPlayer
 

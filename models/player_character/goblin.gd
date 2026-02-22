@@ -22,6 +22,12 @@ const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the
 @export var follow_pivot:Node3D
 @export var follow_direction:Node3D
 
+enum ItemStateKeys {
+	NONE,
+	ANVIL,
+	BOMB,
+}
+
 # whether the goblin is currently paused and waiting to move
 var goblin_paused:bool = true
 
@@ -30,6 +36,7 @@ var current_lap := 1
 var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
+var item_state:ItemStateKeys = ItemStateKeys.NONE
 var num_tricks_in_air := 0
 var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
@@ -53,16 +60,35 @@ func _physics_process(delta: float) -> void:
 	_handle_lands()
 	_handle_rotation_controls(delta)
 	_handle_stretching()
+	_hand_item_usage()
 	was_on_floor = is_on_floor()
+
+func _hand_item_usage() -> void:
+	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed():
+		_enter_item_state_none()
+
+func _enter_item_state_none() -> void:
+	item_state = ItemStateKeys.NONE
+	goblin_template.normal_hands.visible = true
+	goblin_template.item_hands.visible = false
+
+func _enter_item_state_anvil() -> void:
+	item_state = ItemStateKeys.ANVIL
+	goblin_template.normal_hands.visible = false
+	goblin_template.item_hands.visible = true
+	goblin_template.item_anvil.visible = true
 
 func _apply_jump_force() -> void:
 	velocity.y += JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT)
 
 func _handle_stretching() -> void:
 	# when rising and falling
-	goblin_template.scale.y = clamp(1.0 + 0.1 * get_real_velocity().y, 0.9, 1.2)
+	var target_rise_fall_stretch = clamp(1.0 + 0.1 * get_real_velocity().y, 0.9, 1.2)
+	goblin_template.scale.y = lerpf(goblin_template.scale.y, target_rise_fall_stretch, 0.1)
 	# crouching for speed boost
-	self.scale.y = clamp(_get_brake_turn_change(true), 0.75, 1.0)
+	var target_crouch_squash = clamp(_get_brake_turn_change(true), 0.5, 1.0)
+	self.scale.y = lerpf(self.scale.y, target_crouch_squash, 0.1)
+	self.scale.x = lerpf(self.scale.x, 1.0 + 0.5 * (1.0 - target_crouch_squash), 0.1)
 
 func _handle_lands() -> void:
 	if not was_on_floor and is_on_floor():
@@ -101,6 +127,10 @@ func _handle_jumps(delta: float) -> void:
 			time_since_jumped_in_air = 0.0
 			banked_spins += 1
 
+func _get_combined_real_velocity_value() -> float:
+	var real_velocity = get_real_velocity()
+	return abs(real_velocity.normalized().x * real_velocity.x) + abs(real_velocity.normalized().z * real_velocity.z)
+
 func _handle_accelerate(delta: float) -> void:
 	current_speed += BASE_ACCELERATION * delta
 	current_speed -= _get_brake_speed_change()
@@ -115,9 +145,7 @@ func _handle_accelerate(delta: float) -> void:
 			current_speed -= get_real_velocity().y * delta * 0.1
 	current_speed = clamp(current_speed, MIN_SPEED, MAX_SPEED)
 
-	var real_velocity = get_real_velocity()
-	var combined_real_velocity_value: float = abs(real_velocity.normalized().x * real_velocity.x) + abs(real_velocity.normalized().z * real_velocity.z)
-	if combined_real_velocity_value < MIN_SPEED * 0.5:
+	if _get_combined_real_velocity_value() < MIN_SPEED * 0.5:
 		current_speed = MIN_SPEED
 
 	var new_velocity: Vector3 = basis.z * current_speed
@@ -129,7 +157,7 @@ func _get_speed_rotate_strength() -> float:
 	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 2.0)
 
 func _get_brake_speed_change() -> float:
-	return (-1 + clamp(_get_brake_turn_change(), 0.9, 2.6)) * FRICTION
+	return (-1 + clamp(_get_brake_turn_change(true), 0.9, 2.6)) * FRICTION
 
 func _get_brake_turn_change(ignore_floor:=false) -> float:
 	if is_on_floor() or ignore_floor:
@@ -153,8 +181,12 @@ func _handle_rotation_controls(delta: float) -> void:
 		self.rotate(Vector3.UP, -controller.h_axis * delta)
 
 	goblin_template.rotation.x = deg_to_rad(-1.0 * get_real_velocity().y)
-	tilt_turn_target = controller.h_axis * 0.5
+	tilt_turn_target = 0.02 * controller.h_axis * _get_combined_real_velocity_value()
+	goblin_template.displayHolder.position.x = lerpf(goblin_template.displayHolder.position.x, 0.4 * tilt_turn_target, 0.03)
 	goblin_template.rotation.z = lerpf(goblin_template.rotation.z, tilt_turn_target, 0.03)
+	goblin_template.normal_hands.rotation.y = goblin_template.rotation.z * -1.0
+	goblin_template.item_hands.rotation.y = goblin_template.rotation.z * 1.2
+	goblin_template.item_hands.position.x = -0.5 * abs(goblin_template.rotation.z)
 
 func set_start_pos(new_pos:Node3D) -> void:
 	visible = true
@@ -192,8 +224,12 @@ func finished_trick() -> void:
 		banked_spins -= 1
 		_do_spin_trick()
 
-func _on_track_area_entered(_area: Area3D) -> void:
-	is_on_track = true
+func _on_track_area_entered(area: Area3D) -> void:
+	if area.name == 'ItemArea3D':
+		area.get_parent().queue_free()# TODO replace with event. This is an anti-pattern
+		_enter_item_state_anvil()
+	else:
+		is_on_track = true
 
 func _on_track_area_exited(_area: Area3D) -> void:
 	is_on_track = false
