@@ -24,6 +24,8 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var pause_menu:PauseMenu
 
+@export var lapLeft: Label
+@export var lapRight: Label
 @export var placeLeft: Label
 @export var placeRight: Label
 
@@ -78,7 +80,6 @@ func _process(_delta: float) -> void:
 		GameMode.MAIN_MENU:
 			pass # don't need to do anything else
 
-
 func _load_map(map_name:String) -> void:
 	if current_map != null:
 		clean_up_old_map()
@@ -113,6 +114,10 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
 		if body.current_lap < 3:
 			body.current_lap += 1
+			if body.player_id == 1:
+				lapLeft.text = 'Lap ' + str(body.current_lap)
+			else:
+				lapRight.text = 'Lap ' + str(body.current_lap)
 			current_map.retart_player(body)
 		elif game_mode != GameMode.WON: # no winner yet
 			winner = (body as Goblin).player_id

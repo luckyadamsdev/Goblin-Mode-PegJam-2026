@@ -32,7 +32,7 @@ shader_parameter/shadow_mult = 1.0
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "placeLeft", "placeRight", "hud")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "lapLeft", "lapRight", "placeLeft", "placeRight", "hud")]
 process_mode = 3
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
@@ -43,6 +43,8 @@ press_to_start_screens = [NodePath("../Hud/Goblin1PressToStart"), NodePath("../H
 timer_label = NodePath("../Hud/Overlay/Timer")
 main_menu = NodePath("../MainMenu")
 pause_menu = NodePath("../PauseMenu")
+lapLeft = NodePath("../Hud/Overlay/Laps/LapLeft")
+lapRight = NodePath("../Hud/Overlay/Laps/LapRight")
 placeLeft = NodePath("../Hud/Overlay/Places/PlaceLeft")
 placeRight = NodePath("../Hud/Overlay/Places/PlaceRight")
 hud = NodePath("../Hud")
@@ -76,7 +78,6 @@ collision_layer = 2
 player_id = 2
 
 [node name="Hud" type="Control" parent="." unique_id=198289351]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,7 +106,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
 size = Vector2i(958, 1080)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
@@ -120,7 +121,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
 size = Vector2i(958, 1080)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
@@ -163,8 +164,8 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = -85.0
-offset_right = 103.0
+offset_top = -235.0
+offset_right = 253.0
 offset_bottom = -16.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 160
@@ -180,8 +181,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -109.0
-offset_top = -85.0
+offset_left = -313.0
+offset_top = -235.0
 offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 0
@@ -190,6 +191,39 @@ theme_override_font_sizes/font_size = 160
 text = "2nd"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_g82c4")
+
+[node name="Laps" type="Control" parent="Hud/Overlay" unique_id=1163537929]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LapLeft" type="Label" parent="Hud/Overlay/Laps" unique_id=291618190]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 226.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 80
+text = "Lap 1"
+script = ExtResource("6_g82c4")
+
+[node name="LapRight" type="Label" parent="Hud/Overlay/Laps" unique_id=560110168]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -226.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 126.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 80
+text = "Lap 1"
+horizontal_alignment = 2
 script = ExtResource("6_g82c4")
 
 [node name="Goblin1Wins" type="Label" parent="Hud" unique_id=2069573312]
