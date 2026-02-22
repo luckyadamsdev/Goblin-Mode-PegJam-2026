@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
 [ext_resource type="Script" uid="uid://0k454u7ibwwe" path="res://menus/main_menu.gd" id="7_fc4ne"]
+[ext_resource type="Script" uid="uid://dksx4thyce0qb" path="res://menus/pause_menu.gd" id="8_aauw6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
@@ -29,7 +30,8 @@ shader_parameter/shadow_mult = 1.0
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "hud")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "hud")]
+process_mode = 3
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
 cameras = [NodePath("../Hud/HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../Hud/HBoxContainer/player2screen/SubViewport/Camera3D")]
@@ -38,6 +40,7 @@ ready_screens = [NodePath("../Hud/Goblin1Ready"), NodePath("../Hud/Goblin2Ready"
 press_to_start_screens = [NodePath("../Hud/Goblin1PressToStart"), NodePath("../Hud/Goblin2PressToStart")]
 timer_label = NodePath("../Hud/Overlay/Timer")
 main_menu = NodePath("../MainMenu")
+pause_menu = NodePath("../PauseMenu")
 hud = NodePath("../Hud")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
@@ -141,6 +144,7 @@ vertical_alignment = 1
 script = ExtResource("6_g82c4")
 
 [node name="Goblin1Wins" type="Label" parent="Hud" unique_id=2069573312]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -155,6 +159,7 @@ text = "GOBLIN 1 WINS!"
 horizontal_alignment = 1
 
 [node name="Goblin2Wins" type="Label" parent="Hud" unique_id=225495531]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.70500004
@@ -169,6 +174,7 @@ text = "GOBLIN 2 WINS!"
 horizontal_alignment = 1
 
 [node name="Goblin1Ready" type="Label" parent="Hud" unique_id=771146662]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -183,6 +189,7 @@ text = "GOBLIN 1 READY!"
 horizontal_alignment = 1
 
 [node name="Goblin2Ready" type="Label" parent="Hud" unique_id=428366604]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.70500004
@@ -225,6 +232,7 @@ text = "Press Button To Start"
 horizontal_alignment = 1
 
 [node name="MainMenu" type="Control" parent="." unique_id=207238431]
+process_mode = 3
 layout_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -254,4 +262,53 @@ grow_vertical = 2
 text = "START"
 metadata/_edit_use_anchors_ = true
 
+[node name="PauseMenu" type="Control" parent="." unique_id=633248837]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("8_aauw6")
+
+[node name="Panel" type="Panel" parent="PauseMenu" unique_id=2056002117]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fc4ne")
+
+[node name="ContinuePlaying" type="Button" parent="PauseMenu/Panel" unique_id=1519729210]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONTINUE"
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Button" parent="PauseMenu/Panel" unique_id=1167295177]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+text = "BACK"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="button_down" from="MainMenu/Panel/StartButton" to="MainMenu" method="_on_start_button_down"]
+[connection signal="button_down" from="PauseMenu/Panel/ContinuePlaying" to="PauseMenu" method="_on_continue_playing_button_down"]
+[connection signal="button_down" from="PauseMenu/Panel/Back" to="PauseMenu" method="_on_back_button_down"]
