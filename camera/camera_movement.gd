@@ -84,9 +84,6 @@ func _main_process(delta:float):
 		if remember_velocity.size() > MAX_MEMORY:
 			remember_velocity.pop_front()
 	
-	var velocity_change := Vector3.ZERO
-	# TODO use remember velocity to lag 
-	
 	var global_track_position := goblin.global_position
 	global_track_position.y += vertical_offset
 	var delta_v := target_position - global_track_position
@@ -104,7 +101,6 @@ func _main_process(delta:float):
 	var look_position:Vector3 = global_track_position
 	var look_at_offset:Vector3 = Vector3.UP * vertical_look_offset
 	
-	# TODO maybe use velocity_change to offset look_at_offset?
 	look_at(look_position + look_at_offset, Vector3.UP)
 
 func set_target(new_target:Node3D) -> void:
