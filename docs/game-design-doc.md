@@ -149,22 +149,21 @@ What noises do we need
 	- Change the slide sound to sound like the ramp?
 
 ## TODO Task list
-- Goblin animations hooked up to code with AnimationPlayer
 - Main menu
-- Music (free, not AI) - Being worked on
-- Environment asset creation
-- Title
-- Tutorial/playground area (1 track)
-- Sound effects - Being worked on
+	- Ryan + Katarina
 - Pause menu
-- Volume settings
-- Goblin animations looking good
-- Slowdown if going off track
-- Track selection (3 tracks)
-- Texures/colours added to 3D models
-- 1 Trick (spin)
 - Full UI navigation
+- Slowdown if going off track
+- Environment asset creation
+- Music (free, not AI) - Being worked on
 - Items
+	- Lucky
+- Tutorial/playground area (1 track)
+	- Katrina
+- Sound effects - Being worked on
+- Volume settings
+- Texures/colours added to 3D models
+- Track selection (3 tracks)
 - File organization
 
 ### Miscellaneous
