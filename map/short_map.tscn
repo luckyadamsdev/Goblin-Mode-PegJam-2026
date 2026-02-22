@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://dcdpg7qgcscgk"]
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_6bckw"]
-
-[sub_resource type="Environment" id="Environment_2g46u"]
+[ext_resource type="Environment" uid="uid://8fyu7pbgixg" path="res://environments/cloud_environment.tres" id="2_mh4ms"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_ucggl"]
 left_to_right = 0.0
@@ -35,7 +34,7 @@ size = Vector3(18.135864, 5, 5)
 script = ExtResource("1_6bckw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=359927576]
-environment = SubResource("Environment_2g46u")
+environment = ExtResource("2_mh4ms")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=724154080]
 transform = Transform3D(0.7850723, 0.61631054, 0.061828256, 0.49741828, -0.6867932, 0.5299906, 0.36910194, -0.3853264, -0.84574676, -3.703802, 18.014938, -7.7496643)
