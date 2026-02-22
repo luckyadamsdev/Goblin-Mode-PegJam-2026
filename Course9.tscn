@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cnfdhkj7kxvtu" path="res://models/props/Materials/mushroom0_initialShadingGroup_BaseColor.png" id="24_n7136"]
 [ext_resource type="ArrayMesh" uid="uid://du4sf5ugokn10" path="res://models/props/rock2.obj" id="25_w456u"]
 [ext_resource type="Texture2D" uid="uid://d3sl3a8cfesap" path="res://models/props/Materials/rock2_initialShadingGroup_BaseColor.png" id="26_bon6a"]
+[ext_resource type="Texture2D" uid="uid://lqcs1xuejejc" path="res://models/props/Materials/rock1_initialShadingGroup_BaseColor.png" id="27_w456u"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f2x1d"]
 size = Vector2(100, 100)
@@ -91,6 +92,15 @@ albedo_texture = ExtResource("16_1kt7i")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7136"]
 albedo_texture = ExtResource("6_1uvyh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bon6a"]
+albedo_texture = ExtResource("24_n7136")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ov8ee"]
+albedo_texture = ExtResource("27_w456u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w456u"]
+albedo_texture = ExtResource("16_1kt7i")
 
 [node name="Course9" type="Node3D" unique_id=1464157065]
 
@@ -195,3 +205,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8ilwr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.36717, -227.22964, 1081.4298)
 mesh = ExtResource("5_4y64l")
 surface_material_override/0 = SubResource("StandardMaterial3D_n7136")
+
+[node name="Mushroom7" type="MeshInstance3D" parent="." unique_id=743012989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 264.82187, -253.80501, 989.88275)
+mesh = ExtResource("23_1kt7i")
+surface_material_override/0 = SubResource("StandardMaterial3D_bon6a")
+
+[node name="Rock7" type="MeshInstance3D" parent="." unique_id=1529942267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 328.02765, -239.75067, 854.2032)
+mesh = ExtResource("7_amw2b")
+surface_material_override/0 = SubResource("StandardMaterial3D_ov8ee")
+
+[node name="Rock8" type="MeshInstance3D" parent="." unique_id=240346504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 227.72606, -257.03894, 1046.9257)
+mesh = ExtResource("15_4m7vp")
+surface_material_override/0 = SubResource("StandardMaterial3D_w456u")
