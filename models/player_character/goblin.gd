@@ -22,6 +22,12 @@ const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the
 @export var follow_pivot:Node3D
 @export var follow_direction:Node3D
 
+enum ItemStateKeys {
+	NONE,
+	ANVIL,
+	BOMB,
+}
+
 # whether the goblin is currently paused and waiting to move
 var goblin_paused:bool = true
 
@@ -30,6 +36,7 @@ var current_lap := 1
 var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
+var item_state:ItemStateKeys = ItemStateKeys.ANVIL
 var num_tricks_in_air := 0
 var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
@@ -134,7 +141,7 @@ func _get_speed_rotate_strength() -> float:
 	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 2.0)
 
 func _get_brake_speed_change() -> float:
-	return (-1 + clamp(_get_brake_turn_change(), 0.9, 2.6)) * FRICTION
+	return (-1 + clamp(_get_brake_turn_change(true), 0.9, 2.6)) * FRICTION
 
 func _get_brake_turn_change(ignore_floor:=false) -> float:
 	if is_on_floor() or ignore_floor:
@@ -162,6 +169,8 @@ func _handle_rotation_controls(delta: float) -> void:
 	goblin_template.displayHolder.position.x = lerpf(goblin_template.displayHolder.position.x, 0.4 * tilt_turn_target, 0.03)
 	goblin_template.rotation.z = lerpf(goblin_template.rotation.z, tilt_turn_target, 0.03)
 	goblin_template.normal_hands.rotation.y = goblin_template.rotation.z * -1.0
+	goblin_template.item_hands.rotation.y = goblin_template.rotation.z * 1.2
+	goblin_template.item_hands.position.x = -0.5 * abs(goblin_template.rotation.z)
 
 func set_start_pos(new_pos:Node3D) -> void:
 	visible = true
@@ -199,8 +208,18 @@ func finished_trick() -> void:
 		banked_spins -= 1
 		_do_spin_trick()
 
-func _on_track_area_entered(_area: Area3D) -> void:
-	is_on_track = true
+func _enter_item_state_anvil() -> void:
+	item_state = ItemStateKeys.ANVIL
+	goblin_template.normal_hands.visible = false
+	goblin_template.item_hands.visible = true
+	goblin_template.item_anvil.visible = true
+
+func _on_track_area_entered(area: Area3D) -> void:
+	if area.name == 'ItemArea3D':
+		area.get_parent().queue_free()# TODO replace with event. This is an anti-pattern
+		_enter_item_state_anvil()
+	else:
+		is_on_track = true
 
 func _on_track_area_exited(_area: Area3D) -> void:
 	is_on_track = false
