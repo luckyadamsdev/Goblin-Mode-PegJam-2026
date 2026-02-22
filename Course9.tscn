@@ -23,6 +23,9 @@
 [ext_resource type="ArrayMesh" uid="uid://btushhfvmrivq" path="res://models/props/rock3.obj" id="21_bon6a"]
 [ext_resource type="Texture2D" uid="uid://bfskjxurd7xq4" path="res://models/props/Materials/rock3_initialShadingGroup_BaseColor.png" id="22_85npq"]
 [ext_resource type="ArrayMesh" uid="uid://djw012iqomysi" path="res://models/props/mushroom0.obj" id="23_1kt7i"]
+[ext_resource type="Texture2D" uid="uid://cnfdhkj7kxvtu" path="res://models/props/Materials/mushroom0_initialShadingGroup_BaseColor.png" id="24_n7136"]
+[ext_resource type="ArrayMesh" uid="uid://du4sf5ugokn10" path="res://models/props/rock2.obj" id="25_w456u"]
+[ext_resource type="Texture2D" uid="uid://d3sl3a8cfesap" path="res://models/props/Materials/rock2_initialShadingGroup_BaseColor.png" id="26_bon6a"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f2x1d"]
 size = Vector2(100, 100)
@@ -73,6 +76,21 @@ albedo_texture = ExtResource("20_w456u")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu2iu"]
 albedo_texture = ExtResource("22_85npq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85npq"]
+albedo_texture = ExtResource("24_n7136")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7judw"]
+albedo_texture = ExtResource("26_bon6a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkhpf"]
+albedo_texture = ExtResource("14_h600i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ilwr"]
+albedo_texture = ExtResource("16_1kt7i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7136"]
+albedo_texture = ExtResource("6_1uvyh")
 
 [node name="Course9" type="Node3D" unique_id=1464157065]
 
@@ -156,3 +174,24 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pu2iu")
 [node name="Mushroom0" type="MeshInstance3D" parent="." unique_id=946675205]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.430212, -196.50464, 808.462)
 mesh = ExtResource("23_1kt7i")
+surface_material_override/0 = SubResource("StandardMaterial3D_85npq")
+
+[node name="Rock2" type="MeshInstance3D" parent="." unique_id=1819959134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.93258, -210.57312, 944.51294)
+mesh = ExtResource("25_w456u")
+surface_material_override/0 = SubResource("StandardMaterial3D_7judw")
+
+[node name="Mushroom5" type="MeshInstance3D" parent="." unique_id=1493599916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.6578, -211.69029, 959.20496)
+mesh = ExtResource("13_xu8db")
+surface_material_override/0 = SubResource("StandardMaterial3D_nkhpf")
+
+[node name="Rock6" type="MeshInstance3D" parent="." unique_id=1308474996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.34709, -205.04321, 848.0018)
+mesh = ExtResource("15_4m7vp")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ilwr")
+
+[node name="Mushroom6" type="MeshInstance3D" parent="." unique_id=1432519950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.36717, -227.22964, 1081.4298)
+mesh = ExtResource("5_4y64l")
+surface_material_override/0 = SubResource("StandardMaterial3D_n7136")
