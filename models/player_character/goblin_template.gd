@@ -1,5 +1,7 @@
 extends Node3D
 
+signal finish_item()
+
 @export var displayHolder: Node3D
 @export var item_anvil: Node3D
 @export var item_bomb : Node3D
@@ -12,3 +14,6 @@ func get_animation_player() -> AnimationPlayer:
 
 func finished_trick() -> void:
 	get_parent().finished_trick()# TODO replace with event. This is an anti-pattern
+
+func emit_finish_item() -> void:
+	finish_item.emit()

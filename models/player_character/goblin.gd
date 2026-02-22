@@ -57,6 +57,7 @@ var was_on_floor := false
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	controller.set_player_id(player_id)
+	goblin_template.finish_item.connect(_enter_item_state_none)
 
 func _physics_process(delta: float) -> void:
 	if goblin_paused:
@@ -73,9 +74,14 @@ func _physics_process(delta: float) -> void:
 
 func _handle_item_usage(delta: float) -> void:
 	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed():
-		# TODO use item
-		item_potion_timer = POTION_DURATION
-		_enter_item_state_none()
+		match item_state:
+			ItemStateKeys.ANVIL:
+				anim.play('anvil_throw')
+			ItemStateKeys.BOMB:
+				item_potion_timer = POTION_DURATION
+			ItemStateKeys.POTION:
+				item_potion_timer = POTION_DURATION
+				_enter_item_state_none()
 	if 0.0 < item_potion_timer:
 		item_potion_timer -= delta
 		current_max_speed = MAX_SPEED_POTION

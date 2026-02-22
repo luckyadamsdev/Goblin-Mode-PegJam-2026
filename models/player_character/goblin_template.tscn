@@ -219,9 +219,33 @@ tracks/16/keys = {
 "update": 0,
 "values": [Vector3(0, 20, 0)]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/AnvilMesh:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.59544295, -0.01079303, 0.08343461)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/AnvilMesh:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_wid8x"]
-resource_name = "anvil"
+resource_name = "anvil_crush"
 length = 2.7
 step = 0.1
 tracks/0/type = "value"
@@ -319,6 +343,120 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(2, 2, 1, 2, 1),
 "update": 0,
 "values": [Vector3(0, 20, 0), Vector3(0, 1.9, 0), Vector3(0, 0.7, 0), Vector3(0, 0.7, 0), Vector3(0, 3, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_ayle4"]
+resource_name = "anvil_throw"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisplayHolder/display/Body/GoblinHead:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.026, 1.0468888, 0.124)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayHolder/display/Body/GoblinTorso:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.05, 0.028)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DisplayHolder/display/Body/Hands:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(2, 0, 2, 0, 0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(0, 0.582, 0), Vector3(0, 0.291, 0), Vector3(0, 0, 0), Vector3(0, 0.5205, 0), Vector3(0, 1.041, 0), Vector3(0, 1.5, 0), Vector3(0, 1.041, 0), Vector3(0, 0.582, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DisplayHolder/display:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DisplayHolder/display:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DisplayHolder/display/Body:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/AnvilMesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.59544295, -0.01079303, 0.08343461), Vector3(0.59544295, -0.01079303, 0.08343461), Vector3(0.595, 10, 0.083)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/AnvilMesh:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_finish_item"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_n3frc"]
@@ -1010,7 +1148,8 @@ tracks/13/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8e47"]
 _data = {
 &"RESET": SubResource("Animation_c8e47"),
-&"anvil": SubResource("Animation_wid8x"),
+&"anvil_crush": SubResource("Animation_wid8x"),
+&"anvil_throw": SubResource("Animation_ayle4"),
 &"fall": SubResource("Animation_n3frc"),
 &"idle": SubResource("Animation_ddw36"),
 &"jump": SubResource("Animation_xc1av"),
@@ -1044,6 +1183,7 @@ transform = Transform3D(0.099999994, 0, -0.17320509, 0, 0.2, 0, 0.17320509, 0, 0
 transform = Transform3D(0.13369198, 0, -0.99102294, 0, 0.99999994, 0, 0.99102294, 0, 0.13369198, 0, 0.6, 0)
 
 [node name="NormalPosition" type="Node3D" parent="DisplayHolder/display/Body/Hands" unique_id=1268352409]
+visible = false
 
 [node name="GoblinHand1" parent="DisplayHolder/display/Body/Hands/NormalPosition" unique_id=1970537479 instance=ExtResource("4_s1kpo")]
 transform = Transform3D(0.20000002, 0, 1.8626451e-09, 0, 0.20000002, 0, -1.8626451e-09, 0, 0.20000002, 0, 0.28826988, 0)
@@ -1053,7 +1193,6 @@ transform = Transform3D(-0.20000002, 0, 1.8626451e-09, 0, 0.20000002, 0, 1.86264
 
 [node name="ItemPosition" type="Node3D" parent="DisplayHolder/display/Body/Hands" unique_id=1412157416]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.33613744, 0.24063504, 0.045345947)
-visible = false
 
 [node name="Bomb" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=475266171 instance=ExtResource("5_4pj2w")]
 transform = Transform3D(0.053476747, 0, 0.39640918, 0, 0.4, 0, -0.39640918, 0, 0.053476747, 0.5954429, -0.010792971, 0.08343461)
