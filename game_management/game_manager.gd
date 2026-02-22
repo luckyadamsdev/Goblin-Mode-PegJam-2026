@@ -102,6 +102,9 @@ func _load_map(map_name:String) -> void:
 		goblin.reset()
 	start_timer()
 	
+	placeLeft.text = ""
+	placeRight.text = ""
+	
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race) # listen for a goblin reaching the finish line
 	current_map.end_zone.collision_mask ^= 2
 	
@@ -233,10 +236,17 @@ func _handle_racing_mode() -> void:
 				set_leading(1)
 			elif goblins[0].current_lap < goblins[1].current_lap:
 				set_leading(2)
-			elif goblins[0].global_position.y <= goblins[1].global_position.y:
-				set_leading(1)
 			else:
-				set_leading(2)
+				for goblin in goblins:
+					# player_id of 2 had index of 1, but player_id mod 2 gets index of 0 which is player 1
+					# player_id of 1 had index of 0, and player_id mod 2 gets index of 1 which is player 2
+					# so this gets the other goblin
+					# I'm very sorry
+					var other_goblin_id := (goblin.player_id) % 2
+					var other_goblin := goblins[other_goblin_id]
+					# needs to exceed other by half a metre before it counts as taking the lead
+					if (goblin.global_position.y < other_goblin.global_position.y - 0.5):
+						set_leading(goblin.player_id)
 
 func set_leading(player_id:int) -> void:
 	if player_id == leading_player:
