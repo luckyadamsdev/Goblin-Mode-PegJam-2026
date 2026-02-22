@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://q5n8lo7wgo38" path="res://models/player_character/goblin_template.tscn" id="2_rpmrw"]
 [ext_resource type="Script" uid="uid://cyuth76wtnipy" path="res://models/player_character/goblin_controller.gd" id="3_wfdko"]
 [ext_resource type="Script" uid="uid://cqpwou5hciv81" path="res://models/player_character/goblin_control_definition.gd" id="4_je6la"]
+[ext_resource type="Script" uid="uid://t8h2unjnfuaw" path="res://sound/goblin_audio_player.gd" id="5_lj84d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wg1ha"]
 radius = 0.1821289
@@ -60,3 +61,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rpmrw")
 script = ExtResource("3_wfdko")
 control_def = SubResource("Resource_je6la")
 metadata/_custom_type_script = "uid://cyuth76wtnipy"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1982983189]
+script = ExtResource("5_lj84d")
+
+[connection signal="jumped" from="." to="AudioStreamPlayer" method="_on_goblin_jumped"]
+[connection signal="landed" from="." to="AudioStreamPlayer" method="_on_goblin_landed"]
