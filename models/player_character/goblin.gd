@@ -113,7 +113,14 @@ func _handle_accelerate(delta: float) -> void:
 			current_speed -= get_real_velocity().y * delta
 		else:
 			current_speed -= get_real_velocity().y * delta * 0.1
-	current_speed = min(current_speed, MAX_SPEED)
+	current_speed = clamp(current_speed, MIN_SPEED, MAX_SPEED)
+
+	var real_velocity = get_real_velocity()
+	var combined_real_velocity_value: float = abs(real_velocity.normalized().x * real_velocity.x) + abs(real_velocity.normalized().z * real_velocity.z)
+	print_p1(combined_real_velocity_value)
+	if combined_real_velocity_value < MIN_SPEED * 0.5:
+		current_speed = MIN_SPEED
+
 	var new_velocity: Vector3 = basis.z * current_speed
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
@@ -123,7 +130,7 @@ func _get_speed_rotate_strength() -> float:
 	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 2.0)
 
 func _get_brake_speed_change() -> float:
-	return (-1 + max(0.9, _get_brake_turn_change())) * FRICTION
+	return (-1 + clamp(_get_brake_turn_change(), 0.9, 2.6)) * FRICTION
 
 func _get_brake_turn_change(ignore_floor:=false) -> float:
 	if is_on_floor() or ignore_floor:
