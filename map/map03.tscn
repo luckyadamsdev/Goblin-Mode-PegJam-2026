@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_0dh05"]
 [ext_resource type="PackedScene" uid="uid://dj7awkeccg37u" path="res://Course.tscn" id="2_0dh05"]
-[ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_nl3ne"]
-[ext_resource type="PackedScene" uid="uid://tn5kasr05k8a" path="res://models/tree/Tree.tscn" id="4_yh2kp"]
+[ext_resource type="PackedScene" path="res://models/props/item.tscn" id="3_nl3ne"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
 size = Vector3(300.4899, 107.03613, 5)
@@ -61,24 +60,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 742.15076, -234.05562, 87.229
 
 [node name="Item10" parent="Items" unique_id=1719364774 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.04257, -298.80957, -360.77036)
-
-[node name="Tree1" parent="." unique_id=1068342320 instance=ExtResource("4_yh2kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.923458, -91.34365, 220.61024)
-
-[node name="Tree2" parent="." unique_id=1124461190 instance=ExtResource("4_yh2kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.391804, -89.28513, 189.06929)
-
-[node name="Tree3" parent="." unique_id=1953166390 instance=ExtResource("4_yh2kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.697178, -79.999146, 109.234184)
-
-[node name="Tree4" parent="." unique_id=1227809627 instance=ExtResource("4_yh2kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.643507, -93.96596, 301.3524)
-
-[node name="Tree5" parent="." unique_id=1446195860 instance=ExtResource("4_yh2kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.892766, -93.96596, 287.527)
-
-[node name="Tree6" parent="." unique_id=470310832 instance=ExtResource("4_yh2kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.553894, -94.982056, 355.75998)
-
-[node name="Tree7" parent="." unique_id=1986267838 instance=ExtResource("4_yh2kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.835594, -94.46935, 361.51608)
