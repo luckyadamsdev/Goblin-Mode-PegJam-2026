@@ -232,7 +232,8 @@ func unpause() -> void:
 	goblin_paused = false
 	
 # reset any parameters on the goblin that need resetting when starting the race again
-func reset() -> void:
+# restarting_race indicates we're starting the race from the start rather than teleporting to the top
+func reset(restarting_race:bool = false) -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	current_speed = MIN_SPEED
 	goblin_template.rotation.x = 0
@@ -241,7 +242,9 @@ func reset() -> void:
 	tilt_turn_target = 0.0
 	time_since_jumped_in_air = 10.0
 	time_since_on_floor = 10.0
-	_enter_item_state_none()
+	if restarting_race:
+		_enter_item_state_none()
+		current_lap = 1
 
 func finished_trick() -> void:
 	num_tricks_in_air += 1
