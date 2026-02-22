@@ -20,11 +20,25 @@ func _on_practice_button_pressed() -> void:
 	# do we need ot show title of selected map somewhere?
 	GameManager.instance.go_to_start_screen()
 
-func _on_vs_button_pressed() -> void:
+func _on_vs1_button_pressed() -> void:
 	places.visible = true
 	laps.visible = true
 	GameManager.instance.selected_map_path = "res://map/map03.tscn"
-	GameManager.instance.set_map_tile("VS Race")
+	GameManager.instance.set_map_tile($"Panel/VS Race Button1".text)
+	GameManager.instance.go_to_start_screen()
+
+func _on_vs2_button_pressed() -> void:
+	places.visible = true
+	laps.visible = true
+	GameManager.instance.selected_map_path = "res://map/map02.tscn"
+	GameManager.instance.set_map_tile($"Panel/VS Race Button2".text)
+	GameManager.instance.go_to_start_screen()
+
+func _on_vs3_button_pressed() -> void:
+	places.visible = true
+	laps.visible = true
+	GameManager.instance.selected_map_path = "res://map/map01.tscn"
+	GameManager.instance.set_map_tile($"Panel/VS Race Button3".text)
 	GameManager.instance.go_to_start_screen()
 
 
