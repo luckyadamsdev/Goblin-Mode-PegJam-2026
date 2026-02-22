@@ -24,6 +24,9 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var pause_menu:PauseMenu
 
+@export var placeLeft: Label
+@export var placeRight: Label
+
 @export var hud:Control
 
 var selected_map_path:String = "res://map/map03.tscn"
@@ -54,6 +57,13 @@ func _process(_delta: float) -> void:
 				pause_menu.visible = true
 				pause_menu.set_focus()
 				get_tree().paused = true
+			else:
+				if goblins[0].global_position.y <= goblins[1].global_position.y:
+					placeLeft.text = '1st'
+					placeRight.text = '2nd'
+				else:
+					placeLeft.text = '2nd'
+					placeRight.text = '1st'
 		GameMode.WON:
 			_handle_menu_mode()
 		GameMode.PAUSE_MENU:

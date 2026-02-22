@@ -32,7 +32,7 @@ shader_parameter/shadow_mult = 1.0
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "hud")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "placeLeft", "placeRight", "hud")]
 process_mode = 3
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
@@ -43,6 +43,8 @@ press_to_start_screens = [NodePath("../Hud/Goblin1PressToStart"), NodePath("../H
 timer_label = NodePath("../Hud/Overlay/Timer")
 main_menu = NodePath("../MainMenu")
 pause_menu = NodePath("../PauseMenu")
+placeLeft = NodePath("../Hud/Overlay/Places/PlaceLeft")
+placeRight = NodePath("../Hud/Overlay/Places/PlaceRight")
 hud = NodePath("../Hud")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
@@ -74,7 +76,6 @@ collision_layer = 2
 player_id = 2
 
 [node name="Hud" type="Control" parent="." unique_id=198289351]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,8 +103,8 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 0
+size = Vector2i(958, 1080)
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
@@ -117,8 +118,8 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 0
+size = Vector2i(958, 1080)
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
@@ -127,23 +128,65 @@ goblin = NodePath("../../../../../Goblin2")
 
 [node name="Overlay" type="Control" parent="Hud" unique_id=1049987464]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Label" parent="Hud/Overlay" unique_id=1507618113]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 100.0
-offset_bottom = 40.0
+offset_left = -43.5
+offset_right = 43.5
+offset_bottom = 69.0
 grow_horizontal = 2
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_g82c4")
 
-[node name="Timer" type="Label" parent="Hud/Overlay" unique_id=1507618113]
-visible = false
+[node name="Places" type="Control" parent="Hud/Overlay" unique_id=1733799076]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "100"
+
+[node name="PlaceLeft" type="Label" parent="Hud/Overlay/Places" unique_id=958216352]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -85.0
+offset_right = 103.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 160
+text = "1st"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_g82c4")
+
+[node name="PlaceRight" type="Label" parent="Hud/Overlay/Places" unique_id=265309954]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = -85.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 160
+text = "2nd"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_g82c4")
