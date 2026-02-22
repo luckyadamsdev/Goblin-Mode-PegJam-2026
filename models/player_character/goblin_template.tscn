@@ -5,14 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://djypljg7q16s4" path="res://models/player_character/goblin_torso.tscn" id="3_s1kpo"]
 [ext_resource type="PackedScene" uid="uid://bt02xft5cy32n" path="res://models/player_character/goblin_hand.tscn" id="4_s1kpo"]
 [ext_resource type="PackedScene" uid="uid://dx6f1cp66jedi" path="res://models/player_character/goblin_foot.tscn" id="5_4bcv1"]
+[ext_resource type="PackedScene" uid="uid://bc8quaotr3mqn" path="res://models/props/bomb.tscn" id="5_4pj2w"]
 [ext_resource type="PackedScene" uid="uid://bsmdjr8ppc0tl" path="res://models/board/LogBoard.tscn" id="6_4bcv1"]
+[ext_resource type="PackedScene" uid="uid://bmr5vrkp0v8w" path="res://models/props/potion_mesh.tscn" id="7_qn6hm"]
+[ext_resource type="PackedScene" uid="uid://c2h62dfwjru50" path="res://models/player_character/anvil.tscn" id="7_xc1av"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qn6hm"]
+albedo_color = Color(1, 0.28627452, 0.9529412, 1)
 
 [sub_resource type="Animation" id="Animation_c8e47"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("display/Body/GoblinTorso:position")
+tracks/0/path = NodePath("DisplayHolder/display/Body/GoblinTorso:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("display/Body/GoblinHead:position")
+tracks/1/path = NodePath("DisplayHolder/display/Body/GoblinHead:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +42,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("display/Body/Hands:position")
+tracks/2/path = NodePath("DisplayHolder/display/Body/Hands:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -48,7 +54,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("display/LogBoard:position")
+tracks/3/path = NodePath("DisplayHolder/display/LogBoard:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -60,7 +66,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("display/LogBoard:rotation")
+tracks/4/path = NodePath("DisplayHolder/display/LogBoard:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -72,7 +78,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("display/Body:position")
+tracks/5/path = NodePath("DisplayHolder/display/Body:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -84,7 +90,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("display/Body/Feet:position")
+tracks/6/path = NodePath("DisplayHolder/display/Body/Feet:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -96,7 +102,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("display/Body/Feet:rotation")
+tracks/7/path = NodePath("DisplayHolder/display/Body/Feet:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -108,7 +114,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("display/Body/Hands:rotation")
+tracks/8/path = NodePath("DisplayHolder/display/Body/Hands:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -120,7 +126,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("display/Body/GoblinHead:rotation")
+tracks/9/path = NodePath("DisplayHolder/display/Body/GoblinHead:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -132,7 +138,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("display/Body/GoblinTorso:rotation")
+tracks/10/path = NodePath("DisplayHolder/display/Body/GoblinTorso:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -144,7 +150,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("display:rotation")
+tracks/11/path = NodePath("DisplayHolder/display:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -156,7 +162,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("display/Body:scale")
+tracks/12/path = NodePath("DisplayHolder/display/Body:scale")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -168,7 +174,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("display:position")
+tracks/13/path = NodePath("DisplayHolder/display:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -180,7 +186,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("display:scale")
+tracks/14/path = NodePath("DisplayHolder/display:scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -189,6 +195,131 @@ tracks/14/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("DisplayHolder/display/AnvilMesh:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("DisplayHolder/display/AnvilMesh:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 20, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wid8x"]
+resource_name = "anvil"
+length = 2.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisplayHolder/display/Body/GoblinTorso:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector3(0, 1.05, 0.028)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayHolder/display/Body/GoblinHead:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Vector3(0.026, 1.05, 0.124)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DisplayHolder/display/Body/Hands:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.6, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DisplayHolder/display:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DisplayHolder/display:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DisplayHolder/display/Body:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 2.1, 2.2000003, 2.3000002, 2.5, 2.6999998),
+"transitions": PackedFloat32Array(1, 2, 1, 2, 0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1.5, 0.3, 1), Vector3(1.5, 0.3, 1), Vector3(1.1999999, 0.70000005, 1), Vector3(0.9, 1.1, 1), Vector3(0.9499999, 1.0500001, 1), Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DisplayHolder/display/AnvilMesh:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DisplayHolder/display/AnvilMesh:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1.3000001, 1.5),
+"transitions": PackedFloat32Array(2, 2, 1, 2, 1),
+"update": 0,
+"values": [Vector3(0, 20, 0), Vector3(0, 1.9, 0), Vector3(0, 0.7, 0), Vector3(0, 0.7, 0), Vector3(0, 3, -5)]
+}
 
 [sub_resource type="Animation" id="Animation_n3frc"]
 resource_name = "fall"
@@ -196,7 +327,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("display:rotation")
+tracks/0/path = NodePath("DisplayHolder/display:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -208,7 +339,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("display/Body:position")
+tracks/1/path = NodePath("DisplayHolder/display/Body:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -220,7 +351,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("display/Body/GoblinHead:position")
+tracks/2/path = NodePath("DisplayHolder/display/Body/GoblinHead:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -232,7 +363,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("display/Body/GoblinTorso:position")
+tracks/3/path = NodePath("DisplayHolder/display/Body/GoblinTorso:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -244,7 +375,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("display/Body/Hands:position")
+tracks/4/path = NodePath("DisplayHolder/display/Body/Hands:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -256,7 +387,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("display/Body/Feet:position")
+tracks/5/path = NodePath("DisplayHolder/display/Body/Feet:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -268,7 +399,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("display/LogBoard:position")
+tracks/6/path = NodePath("DisplayHolder/display/LogBoard:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -280,7 +411,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("display/Body/GoblinHead:rotation")
+tracks/7/path = NodePath("DisplayHolder/display/Body/GoblinHead:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -292,7 +423,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("display/Body/GoblinTorso:rotation")
+tracks/8/path = NodePath("DisplayHolder/display/Body/GoblinTorso:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -304,7 +435,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("display/Body/Hands:rotation")
+tracks/9/path = NodePath("DisplayHolder/display/Body/Hands:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -316,7 +447,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("display/Body/Feet:rotation")
+tracks/10/path = NodePath("DisplayHolder/display/Body/Feet:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -328,7 +459,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("display/LogBoard:rotation")
+tracks/11/path = NodePath("DisplayHolder/display/LogBoard:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -340,7 +471,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("display/Body:scale")
+tracks/12/path = NodePath("DisplayHolder/display/Body:scale")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -352,7 +483,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("display:position")
+tracks/13/path = NodePath("DisplayHolder/display:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -370,7 +501,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("display/Body/GoblinTorso:position")
+tracks/0/path = NodePath("DisplayHolder/display/Body/GoblinTorso:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -382,7 +513,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("display/Body/GoblinHead:position")
+tracks/1/path = NodePath("DisplayHolder/display/Body/GoblinHead:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -394,7 +525,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("display/Body/Hands:position")
+tracks/2/path = NodePath("DisplayHolder/display/Body/Hands:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -406,7 +537,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("display:rotation")
+tracks/3/path = NodePath("DisplayHolder/display:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -418,7 +549,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("display:scale")
+tracks/4/path = NodePath("DisplayHolder/display:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -430,7 +561,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("display/Body:scale")
+tracks/5/path = NodePath("DisplayHolder/display/Body:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -447,7 +578,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("display/Body/GoblinHead:position")
+tracks/0/path = NodePath("DisplayHolder/display/Body/GoblinHead:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -459,7 +590,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("display/Body/GoblinTorso:position")
+tracks/1/path = NodePath("DisplayHolder/display/Body/GoblinTorso:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -471,7 +602,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("display/Body/Hands:position")
+tracks/2/path = NodePath("DisplayHolder/display/Body/Hands:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -483,7 +614,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("display/LogBoard:position")
+tracks/3/path = NodePath("DisplayHolder/display/LogBoard:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -495,7 +626,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("display/LogBoard:rotation")
+tracks/4/path = NodePath("DisplayHolder/display/LogBoard:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -507,7 +638,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("display/Body:position")
+tracks/5/path = NodePath("DisplayHolder/display/Body:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -519,7 +650,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("display/Body/Feet:position")
+tracks/6/path = NodePath("DisplayHolder/display/Body/Feet:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -531,7 +662,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("display/Body/Feet:rotation")
+tracks/7/path = NodePath("DisplayHolder/display/Body/Feet:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -543,7 +674,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("display/Body/Hands:rotation")
+tracks/8/path = NodePath("DisplayHolder/display/Body/Hands:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -555,7 +686,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("display:rotation")
+tracks/9/path = NodePath("DisplayHolder/display:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -564,6 +695,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("DisplayHolder/display/Body:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_4pj2w"]
 resource_name = "land"
@@ -571,43 +714,43 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("display/Body/GoblinHead:position")
+tracks/0/path = NodePath("DisplayHolder/display/Body/GoblinHead:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.3, 0.65000004, 1),
 "transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2),
 "update": 0,
-"values": [Vector3(0.026, 0.9030909, 0.124), Vector3(0.026, 0.7515454, 0.124), Vector3(0.026, 0.6, 0.124), Vector3(0.026, 0.7515454, 0.124), Vector3(0.026, 0.9030909, 0.124)]
+"values": [Vector3(0.026, 0.9030909, 0.124), Vector3(0.026, 0.7515454, 0.124), Vector3(0.026, 0.6, 0.124), Vector3(0.026, 0.7515454, 0.124), Vector3(0.026, 1.047, 0.124)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("display/Body/GoblinTorso:position")
+tracks/1/path = NodePath("DisplayHolder/display/Body/GoblinTorso:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.3, 0.65000004, 1),
 "transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2),
 "update": 0,
-"values": [Vector3(0, 0.9, 0.028), Vector3(0, 0.79999995, 0.028), Vector3(0, 0.7, 0.028), Vector3(0, 0.79999995, 0.028), Vector3(0, 0.9, 0.028)]
+"values": [Vector3(0, 0.9, 0.028), Vector3(0, 0.79999995, 0.028), Vector3(0, 0.7, 0.028), Vector3(0, 0.79999995, 0.028), Vector3(0, 1.05, 0.028)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("display/Body/Hands:position")
+tracks/2/path = NodePath("DisplayHolder/display/Body/Hands:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2),
 "update": 0,
-"values": [Vector3(0, 0.518, 0), Vector3(0, 0.359, 0), Vector3(0, 0.2, 0), Vector3(0, 0.35900003, 0), Vector3(0, 0.518, 0)]
+"values": [Vector3(0, 0.518, 0), Vector3(0, 0.359, 0), Vector3(0, 0.2, 0), Vector3(0, 0.35900003, 0), Vector3(0, 0.582, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("display/Body/Feet:position")
+tracks/3/path = NodePath("DisplayHolder/display/Body/Feet:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -619,7 +762,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("display/Body/GoblinHead:rotation")
+tracks/4/path = NodePath("DisplayHolder/display/Body/GoblinHead:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -631,7 +774,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("display/Body/GoblinTorso:rotation")
+tracks/5/path = NodePath("DisplayHolder/display/Body/GoblinTorso:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -643,7 +786,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("display/Body/Hands:rotation")
+tracks/6/path = NodePath("DisplayHolder/display/Body/Hands:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -655,7 +798,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("display/Body/Feet:rotation")
+tracks/7/path = NodePath("DisplayHolder/display/Body/Feet:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -667,7 +810,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("display:rotation")
+tracks/8/path = NodePath("DisplayHolder/display:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -676,18 +819,31 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DisplayHolder/display/Body:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_qn6hm"]
 resource_name = "spin"
+length = 0.5
 step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("display/Body/GoblinTorso:position")
+tracks/0/path = NodePath("DisplayHolder/display/Body/GoblinTorso:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 1.0212966, 0.02785623), Vector3(0, 1.0212966, 0.02785623)]
@@ -695,11 +851,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("display/Body/GoblinHead:position")
+tracks/1/path = NodePath("DisplayHolder/display/Body/GoblinHead:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.026408494, 1.0057067, 0.12431575), Vector3(0.026408494, 1.0057067, 0.12431575)]
@@ -707,11 +863,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("display/Body/Hands:position")
+tracks/2/path = NodePath("DisplayHolder/display/Body/Hands:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0.6, 0), Vector3(0, 0.6, 0)]
@@ -719,11 +875,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("display/LogBoard:position")
+tracks/3/path = NodePath("DisplayHolder/display/LogBoard:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0.0950737, 0), Vector3(0, 0.0950737, 0)]
@@ -731,11 +887,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("display/LogBoard:rotation")
+tracks/4/path = NodePath("DisplayHolder/display/LogBoard:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0)]
@@ -743,11 +899,11 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("display/Body:position")
+tracks/5/path = NodePath("DisplayHolder/display/Body:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0.19314194, 0), Vector3(0, 0.19314194, 0)]
@@ -755,11 +911,11 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("display/Body/Feet:position")
+tracks/6/path = NodePath("DisplayHolder/display/Body/Feet:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0.02910328, 0), Vector3(0, 0.02910328, 0)]
@@ -767,11 +923,11 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("display/Body/Feet:rotation")
+tracks/7/path = NodePath("DisplayHolder/display/Body/Feet:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -1.5707964, 0), Vector3(0, -1.5707964, 0)]
@@ -779,11 +935,11 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("display/Body/Hands:rotation")
+tracks/8/path = NodePath("DisplayHolder/display/Body/Hands:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -1.4367028, 0), Vector3(0, -1.4367028, 0)]
@@ -791,11 +947,11 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("display/Body/GoblinHead:rotation")
+tracks/9/path = NodePath("DisplayHolder/display/Body/GoblinHead:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
@@ -803,11 +959,11 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("display/Body/GoblinTorso:rotation")
+tracks/10/path = NodePath("DisplayHolder/display/Body/GoblinTorso:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -1.0471976, 0), Vector3(0, -1.0471976, 0)]
@@ -815,19 +971,46 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("display:rotation")
+tracks/11/path = NodePath("DisplayHolder/display:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(2, 1, 0.5),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finished_trick"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DisplayHolder/display/Body:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8e47"]
 _data = {
 &"RESET": SubResource("Animation_c8e47"),
+&"anvil": SubResource("Animation_wid8x"),
 &"fall": SubResource("Animation_n3frc"),
 &"idle": SubResource("Animation_ddw36"),
 &"jump": SubResource("Animation_xc1av"),
@@ -835,40 +1018,78 @@ _data = {
 &"spin": SubResource("Animation_qn6hm")
 }
 
-[node name="GoblinTemplate" type="Node3D" unique_id=1640529471]
+[node name="GoblinTemplate" type="Node3D" unique_id=1640529471 node_paths=PackedStringArray("displayHolder", "item_anvil", "item_bomb", "item_hands", "item_potion", "normal_hands")]
 script = ExtResource("1_c8e47")
+displayHolder = NodePath("DisplayHolder")
+item_anvil = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/AnvilMesh")
+item_bomb = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/Bomb")
+item_hands = NodePath("DisplayHolder/display/Body/Hands/ItemPosition")
+item_potion = NodePath("DisplayHolder/display/Body/Hands/ItemPosition/PotionMesh")
+normal_hands = NodePath("DisplayHolder/display/Body/Hands/NormalPosition")
 
-[node name="display" type="Node3D" parent="." unique_id=1772366001]
+[node name="DisplayHolder" type="Node3D" parent="." unique_id=235164219]
 
-[node name="Body" type="Node3D" parent="display" unique_id=382461665]
+[node name="display" type="Node3D" parent="DisplayHolder" unique_id=1772366001]
+
+[node name="Body" type="Node3D" parent="DisplayHolder/display" unique_id=382461665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19314194, 0)
 
-[node name="GoblinHead" parent="display/Body" unique_id=1738023353 instance=ExtResource("3_27x8l")]
+[node name="GoblinHead" parent="DisplayHolder/display/Body" unique_id=1738023353 instance=ExtResource("3_27x8l")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.026408494, 1.0057067, 0.12431575)
 
-[node name="GoblinTorso" parent="display/Body" unique_id=2020290949 instance=ExtResource("3_s1kpo")]
+[node name="GoblinTorso" parent="DisplayHolder/display/Body" unique_id=2020290949 instance=ExtResource("3_s1kpo")]
 transform = Transform3D(0.099999994, 0, -0.17320509, 0, 0.2, 0, 0.17320509, 0, 0.099999994, 0, 1.0212966, 0.02785623)
 
-[node name="Hands" type="Node3D" parent="display/Body" unique_id=375090163]
+[node name="Hands" type="Node3D" parent="DisplayHolder/display/Body" unique_id=375090163]
 transform = Transform3D(0.13369198, 0, -0.99102294, 0, 0.99999994, 0, 0.99102294, 0, 0.13369198, 0, 0.6, 0)
 
-[node name="GoblinHand1" parent="display/Body/Hands" unique_id=1970537479 instance=ExtResource("4_s1kpo")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.28826994, 0)
+[node name="NormalPosition" type="Node3D" parent="DisplayHolder/display/Body/Hands" unique_id=1268352409]
 
-[node name="GoblinHand2" parent="display/Body/Hands" unique_id=954957364 instance=ExtResource("4_s1kpo")]
-transform = Transform3D(-0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.28826994, 0)
+[node name="GoblinHand1" parent="DisplayHolder/display/Body/Hands/NormalPosition" unique_id=1970537479 instance=ExtResource("4_s1kpo")]
+transform = Transform3D(0.20000002, 0, 1.8626451e-09, 0, 0.20000002, 0, -1.8626451e-09, 0, 0.20000002, 0, 0.28826988, 0)
 
-[node name="Feet" type="Node3D" parent="display/Body" unique_id=521034080]
+[node name="GoblinHand2" parent="DisplayHolder/display/Body/Hands/NormalPosition" unique_id=954957364 instance=ExtResource("4_s1kpo")]
+transform = Transform3D(-0.20000002, 0, 1.8626451e-09, 0, 0.20000002, 0, 1.8626451e-09, 0, 0.20000002, 0, 0.28826988, 0)
+
+[node name="ItemPosition" type="Node3D" parent="DisplayHolder/display/Body/Hands" unique_id=1412157416]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.33613744, 0.24063504, 0.045345947)
+visible = false
+
+[node name="Bomb" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=475266171 instance=ExtResource("5_4pj2w")]
+transform = Transform3D(0.053476747, 0, 0.39640918, 0, 0.4, 0, -0.39640918, 0, 0.053476747, 0.5954429, -0.010792971, 0.08343461)
+visible = false
+
+[node name="AnvilMesh" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=604271163 instance=ExtResource("7_xc1av")]
+transform = Transform3D(0.040107597, 0, 0.49848458, 0, 0.264, 0, -0.29730707, 0, 0.06724703, 0.59544295, -0.01079303, 0.08343461)
+visible = false
+skeleton = NodePath("../..")
+
+[node name="PotionMesh" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=847762156 instance=ExtResource("7_qn6hm")]
+transform = Transform3D(0.13369185, 0, 0.9910229, 0, 0.9999998, 0, -0.9910229, 0, 0.13369185, 0.5423119, 0.047846198, 0.07626709)
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_qn6hm")
+
+[node name="GoblinHand1" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=1174280060 instance=ExtResource("4_s1kpo")]
+transform = Transform3D(-0.19013706, -0.02053461, 0.058534484, 0.032388035, 0.12809438, 0.15014285, -0.0529053, 0.15221761, -0.118452035, -0.040204924, 0.28826988, 0.29802838)
+
+[node name="GoblinHand2" parent="DisplayHolder/display/Body/Hands/ItemPosition" unique_id=1687035947 instance=ExtResource("4_s1kpo")]
+transform = Transform3D(-0.1958002, 0.026135415, 0.03129277, 0.036336135, 0.042234227, 0.19208327, -0.018492747, -0.193735, 0.046095688, 0.05921502, 0.1202296, -0.4389452)
+
+[node name="Feet" type="Node3D" parent="DisplayHolder/display/Body" unique_id=521034080]
 transform = Transform3D(-4.371138e-08, 0, -1, 0, 0.9999998, 0, 0.9999998, 0, -4.371139e-08, 0, 0.02910328, 0)
 
-[node name="GoblinFoot1" parent="display/Body/Feet" unique_id=634873745 instance=ExtResource("5_4bcv1")]
+[node name="GoblinFoot1" parent="DisplayHolder/display/Body/Feet" unique_id=634873745 instance=ExtResource("5_4bcv1")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.9709482, 0)
 
-[node name="GoblinFoot2" parent="display/Body/Feet" unique_id=1553271512 instance=ExtResource("5_4bcv1")]
+[node name="GoblinFoot2" parent="DisplayHolder/display/Body/Feet" unique_id=1553271512 instance=ExtResource("5_4bcv1")]
 transform = Transform3D(-0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.9709482, 0)
 
-[node name="LogBoard" parent="display" unique_id=1714975431 instance=ExtResource("6_4bcv1")]
+[node name="LogBoard" parent="DisplayHolder/display" unique_id=1714975431 instance=ExtResource("6_4bcv1")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0.0950737, 0)
+
+[node name="AnvilMesh" parent="DisplayHolder/display" unique_id=861370413 instance=ExtResource("7_xc1av")]
+transform = Transform3D(0.875539, 0, 0, 0, 0.7707623, 0, 0, 0, 1.4700336, 0, 20, 0)
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1958736017]
 libraries/ = SubResource("AnimationLibrary_c8e47")

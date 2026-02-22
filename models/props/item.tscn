@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://d0wjc5n1xkded"]
+
+[ext_resource type="Script" uid="uid://bpqxumqro7qph" path="res://models/props/item.gd" id="1_kqs0v"]
+[ext_resource type="Script" uid="uid://gxgxpdwl82ro" path="res://models/props/item_area_3d.gd" id="2_2kvqr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_d6362"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="Animation" id="Animation_fn8hb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_f2x1d"]
+resource_name = "default"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.25, 0), Vector3(0, 0.5, 0), Vector3(0, 0.25, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector3(0, 0.5, 0), Vector3(0, 0.5, -0.5), Vector3(0, 0.5, 0), Vector3(0, 0.5, 0.5), Vector3(0, 0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yh2kp"]
+_data = {
+&"RESET": SubResource("Animation_fn8hb"),
+&"default": SubResource("Animation_f2x1d")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nl3ne"]
+radius = 1.0
+
+[node name="Item" type="Node3D" unique_id=2065320669]
+script = ExtResource("1_kqs0v")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1311917960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1352814]
+mesh = SubResource("SphereMesh_d6362")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1879569738]
+libraries/ = SubResource("AnimationLibrary_yh2kp")
+autoplay = &"default"
+
+[node name="ItemArea3D" type="Area3D" parent="." unique_id=1072441971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21592808, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_2kvqr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemArea3D" unique_id=2101600513]
+shape = SubResource("SphereShape3D_nl3ne")

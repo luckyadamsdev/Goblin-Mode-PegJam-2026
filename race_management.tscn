@@ -6,34 +6,61 @@
 [ext_resource type="Script" uid="uid://ehrs6gbdgps" path="res://shadow/shadow.gd" id="2_rgvqj"]
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
+[ext_resource type="PackedScene" uid="uid://dybmv0rolppc3" path="res://menus/main_menu.tscn" id="8_krumh"]
+[ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
+[ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="9_mqc7d"]
+[ext_resource type="Environment" uid="uid://8fyu7pbgixg" path="res://environments/cloud_environment.tres" id="10_mqc7d"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mqc7d"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dfv8i"]
+noise = SubResource("FastNoiseLite_mqc7d")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fc4ne"]
 render_priority = 0
 shader = ExtResource("2_g82c4")
+shader_parameter/shadow_colour = Color(0.6, 0.7, 0.8, 1)
 shader_parameter/surface_normal = Vector3(0, 0, 0)
 shader_parameter/forward = Vector3(0, 0, 0)
 shader_parameter/shadow_mult = 1.0
+shader_parameter/pan_value = 0.0
+shader_parameter/speed = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_dfv8i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g82c4"]
 render_priority = 0
 shader = ExtResource("2_g82c4")
+shader_parameter/shadow_colour = Color(0.6, 0.7, 0.8, 1)
 shader_parameter/surface_normal = Vector3(0, 1, 0)
 shader_parameter/forward = Vector3(1, 0, 0)
 shader_parameter/shadow_mult = 1.0
+shader_parameter/pan_value = 0.0
+shader_parameter/speed = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_dfv8i")
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "lapLeft", "lapRight", "placeLeft", "placeRight", "map_title", "hud", "racing_overlay")]
+process_mode = 3
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
-cameras = [NodePath("../HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../HBoxContainer/player2screen/SubViewport/Camera3D")]
-win_screens = [NodePath("../Goblin1Wins"), NodePath("../Goblin2Wins")]
-ready_screens = [NodePath("../Goblin1Ready"), NodePath("../Goblin2Ready")]
-press_to_start_screens = [NodePath("../Goblin1PressToStart"), NodePath("../Goblin2PressToStart")]
-timer_label = NodePath("../Control/Timer")
+cameras = [NodePath("../Hud/HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../Hud/HBoxContainer/player2screen/SubViewport/Camera3D")]
+win_screens = [NodePath("../Hud/Goblin1Wins"), NodePath("../Hud/Goblin2Wins")]
+ready_screens = [NodePath("../Hud/Goblin1Ready"), NodePath("../Hud/Goblin2Ready")]
+press_to_start_screens = [NodePath("../Hud/Goblin1PressToStart"), NodePath("../Hud/Goblin2PressToStart")]
+timer_label = NodePath("../Hud/Overlay/Timer")
+main_menu = NodePath("../MainMenu")
+pause_menu = NodePath("../PauseMenu")
+lapLeft = NodePath("../Hud/Overlay/Laps/LapLeft")
+lapRight = NodePath("../Hud/Overlay/Laps/LapRight")
+placeLeft = NodePath("../Hud/Overlay/Places/PlaceLeft")
+placeRight = NodePath("../Hud/Overlay/Places/PlaceRight")
+map_title = NodePath("../Hud/MapTitle")
+hud = NodePath("../Hud")
+racing_overlay = NodePath("../Hud/Overlay")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
 [node name="MenuLight" type="DirectionalLight3D" parent="." unique_id=867891742]
@@ -44,6 +71,7 @@ skeleton = NodePath("../Goblin1")
 surface_material_override/0 = SubResource("ShaderMaterial_fc4ne")
 script = ExtResource("2_rgvqj")
 goblin = NodePath("../Goblin1")
+shadow_range = 9.0
 shadow_materal = SubResource("ShaderMaterial_fc4ne")
 
 [node name="Goblin1" parent="." unique_id=697638060 instance=ExtResource("2_srorr")]
@@ -55,13 +83,27 @@ skeleton = NodePath("../Goblin1")
 surface_material_override/0 = SubResource("ShaderMaterial_g82c4")
 script = ExtResource("2_rgvqj")
 goblin = NodePath("../Goblin2")
+shadow_range = 9.0
 shadow_materal = SubResource("ShaderMaterial_g82c4")
 
 [node name="Goblin2" parent="." unique_id=1005389590 instance=ExtResource("2_srorr")]
 collision_layer = 2
 player_id = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=950106236]
+[node name="Hud" type="Control" parent="." unique_id=198289351]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_mqc7d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud" unique_id=950106236]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,49 +112,37 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="player1screen" type="SubViewportContainer" parent="HBoxContainer" unique_id=1117159721]
+[node name="player1screen" type="SubViewportContainer" parent="Hud/HBoxContainer" unique_id=1117159721]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HBoxContainer/player1screen" unique_id=1853581293]
+[node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
-size = Vector2i(958, 1080)
-render_target_update_mode = 4
+size = Vector2i(2, 2)
+render_target_update_mode = 0
 
-[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
+[node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
 script = ExtResource("1_olp4a")
-goblin = NodePath("../../../../Goblin1")
-starting_offset = Vector3(0, 2, -5)
+goblin = NodePath("../../../../../Goblin1")
 
-[node name="player2screen" type="SubViewportContainer" parent="HBoxContainer" unique_id=1149187065]
+[node name="player2screen" type="SubViewportContainer" parent="Hud/HBoxContainer" unique_id=1149187065]
 layout_mode = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HBoxContainer/player2screen" unique_id=1234907876]
+[node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
-size = Vector2i(958, 1080)
-render_target_update_mode = 4
+size = Vector2i(2, 2)
+render_target_update_mode = 0
 
-[node name="Camera3D" type="Camera3D" parent="HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
+[node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
 script = ExtResource("1_olp4a")
-goblin = NodePath("../../../../Goblin2")
-starting_offset = Vector3(0, 2, -5)
+goblin = NodePath("../../../../../Goblin2")
 
-[node name="Control" type="Control" parent="." unique_id=1049987464]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -60.0
-offset_right = 60.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="Timer" type="Label" parent="Control" unique_id=1507618113]
+[node name="Overlay" type="Control" parent="Hud" unique_id=1049987464]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -120,89 +150,204 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Timer" type="Label" parent="Hud/Overlay" unique_id=1507618113]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.5
+offset_right = 43.5
+offset_bottom = 69.0
+grow_horizontal = 2
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_g82c4")
 
-[node name="Goblin1Wins" type="Label" parent="." unique_id=2069573312]
+[node name="Places" type="Control" parent="Hud/Overlay" unique_id=1733799076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlaceLeft" type="Label" parent="Hud/Overlay/Places" unique_id=958216352]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -235.0
+offset_right = 253.0
+offset_bottom = -16.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 160
+text = "1st"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_g82c4")
+
+[node name="PlaceRight" type="Label" parent="Hud/Overlay/Places" unique_id=265309954]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -313.0
+offset_top = -235.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 160
+text = "2nd"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_g82c4")
+
+[node name="Laps" type="Control" parent="Hud/Overlay" unique_id=1163537929]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LapLeft" type="Label" parent="Hud/Overlay/Laps" unique_id=291618190]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 226.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 80
+text = "Lap 1"
+script = ExtResource("6_g82c4")
+
+[node name="LapRight" type="Label" parent="Hud/Overlay/Laps" unique_id=560110168]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -226.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 126.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 80
+text = "Lap 1"
+horizontal_alignment = 2
+script = ExtResource("6_g82c4")
+
+[node name="Goblin1Wins" type="Label" parent="Hud" unique_id=2069573312]
 visible = false
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 0.37100002
 anchor_right = 0.2
 anchor_bottom = 0.37100002
-offset_left = -89.160034
-offset_top = -56.40802
-offset_right = 89.839966
-offset_bottom = 56.59198
+offset_left = 128.0
+offset_top = -120.68002
+offset_right = 307.0
+offset_bottom = -7.680023
 text = "GOBLIN 1 WINS!"
 horizontal_alignment = 1
 
-[node name="Goblin2Wins" type="Label" parent="." unique_id=225495531]
+[node name="Goblin2Wins" type="Label" parent="Hud" unique_id=225495531]
 visible = false
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.70500004
 anchor_top = 0.37100002
 anchor_right = 0.70500004
 anchor_bottom = 0.37100002
-offset_left = -89.160034
-offset_top = -56.40802
-offset_right = 89.839966
-offset_bottom = 56.59198
+offset_left = 345.3999
+offset_top = 192.31998
+offset_right = 524.3999
+offset_bottom = 305.31998
 text = "GOBLIN 2 WINS!"
 horizontal_alignment = 1
 
-[node name="Goblin1Ready" type="Label" parent="." unique_id=771146662]
+[node name="Goblin1Ready" type="Label" parent="Hud" unique_id=771146662]
 visible = false
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 0.37100002
 anchor_right = 0.2
 anchor_bottom = 0.37100002
-offset_left = -89.160034
-offset_top = -56.40802
-offset_right = 89.839966
-offset_bottom = 56.59198
+offset_left = -291.0
+offset_top = -16.680023
+offset_right = -112.0
+offset_bottom = 96.31998
 text = "GOBLIN 1 READY!"
 horizontal_alignment = 1
 
-[node name="Goblin2Ready" type="Label" parent="." unique_id=428366604]
+[node name="Goblin2Ready" type="Label" parent="Hud" unique_id=428366604]
 visible = false
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.70500004
 anchor_top = 0.37100002
 anchor_right = 0.70500004
 anchor_bottom = 0.37100002
-offset_left = -89.160034
-offset_top = -56.40802
-offset_right = 89.839966
-offset_bottom = 56.59198
+offset_left = 263.3999
+offset_top = -77.68002
+offset_right = 442.3999
+offset_bottom = 35.319977
 text = "GOBLIN 2 READY!"
 horizontal_alignment = 1
 
-[node name="Goblin1PressToStart" type="Label" parent="." unique_id=1248262924]
+[node name="Goblin1PressToStart" type="Label" parent="Hud" unique_id=1248262924]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
 anchor_top = 0.37100002
 anchor_right = 0.2
 anchor_bottom = 0.37100002
-offset_left = 5.599991
-offset_top = -147.40802
-offset_right = 184.59999
-offset_bottom = -34.40802
+offset_left = -239.0
+offset_top = -196.68002
+offset_right = 282.0
+offset_bottom = -83.68002
 text = "Press Button To Start"
 horizontal_alignment = 1
 
-[node name="Goblin2PressToStart" type="Label" parent="." unique_id=868951667]
+[node name="Goblin2PressToStart" type="Label" parent="Hud" unique_id=868951667]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.70500004
 anchor_top = 0.37100002
 anchor_right = 0.70500004
 anchor_bottom = 0.37100002
-offset_left = -11.160034
-offset_top = -153.40802
-offset_right = 167.83997
-offset_bottom = -40.40802
+offset_left = -104.6001
+offset_top = -186.68002
+offset_right = 416.3999
+offset_bottom = -73.68002
 text = "Press Button To Start"
 horizontal_alignment = 1
+
+[node name="MapTitle" type="Label" parent="Hud" unique_id=127419358]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+offset_left = -300.0
+offset_right = 300.0
+theme_override_font_sizes/font_size = 90
+text = "Practice"
+horizontal_alignment = 1
+
+[node name="MainMenu" parent="." unique_id=1952390693 node_paths=PackedStringArray("places") instance=ExtResource("8_krumh")]
+places = NodePath("../Hud/Overlay/Places")
+
+[node name="PauseMenu" parent="." unique_id=1185998907 instance=ExtResource("9_dfv8i")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113658327]
+environment = ExtResource("10_mqc7d")
