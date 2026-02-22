@@ -45,21 +45,23 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if goblin_paused:
 		return
-	# if is_off_track:
-	# 	self.scale.z = 2.0
-	# else:
-	# 	self.scale.z = 1.0
 	# movement logic
 	_handle_accelerate(delta)
 	move_and_slide()
 	_handle_jumps(delta)
 	_handle_lands()
 	_handle_rotation_controls(delta)
+	_handle_stretching()
 	was_on_floor = is_on_floor()
-	goblin_template.scale.y = clamp(1.0 + 0.1 * get_real_velocity().y, 0.9, 1.2)
 
-func apply_jump_force() -> void:
+func _apply_jump_force() -> void:
 	velocity.y += JUMP_VELOCITY_ADD + clamp(get_real_velocity().y * JUMP_VELOCITY_MULT, 0.0, MAX_JUMP_MULT)
+
+func _handle_stretching() -> void:
+	# when rising and falling
+	goblin_template.scale.y = clamp(1.0 + 0.1 * get_real_velocity().y, 0.9, 1.2)
+	# crouching for speed boost
+	self.scale.y = clamp(_get_brake_turn_change(true), 0.75, 1.0)
 
 func _handle_lands() -> void:
 	if not was_on_floor and is_on_floor():
@@ -85,7 +87,7 @@ func _handle_jumps(delta: float) -> void:
 			landed.emit()
 		time_since_on_floor = 0.0
 		if time_since_jumped_in_air < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin':
-			jump()
+			_jump()
 	else:
 		time_since_on_floor += delta
 		if COYOTE_TIME < time_since_jumped_in_air and time_since_jumped_in_air < 0.5:
@@ -93,7 +95,7 @@ func _handle_jumps(delta: float) -> void:
 	time_since_jumped_in_air += delta
 	if controller.button_one_just_pressed():
 		if time_since_on_floor < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin':
-			jump()
+			_jump()
 		else:
 			time_since_jumped_in_air = 0.0
 			banked_spins += 1
@@ -120,11 +122,11 @@ func _get_speed_rotate_strength() -> float:
 	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 2.0)
 
 func _get_brake_speed_change() -> float:
-	return (-1 + _get_brake_turn_change()) * FRICTION
+	return (-1 + max(0.9, _get_brake_turn_change())) * FRICTION
 
-func _get_brake_turn_change() -> float:
-	if is_on_floor():
-		return clamp(1.0 + 2.0 * controller.v_axis, 1.0, 3.0)
+func _get_brake_turn_change(ignore_floor:=false) -> float:
+	if is_on_floor() or ignore_floor:
+		return clamp(1.0 + 2.0 * controller.v_axis, 0.5, 3.0)
 	else:
 		return 1.0
 
@@ -135,7 +137,9 @@ func _handle_rotation_controls(delta: float) -> void:
 		# going fast means you turn faster
 		var speed_rotate_strength:float = _get_speed_rotate_strength()
 
-		follow_pivot.rotation.y = -1.0 * _get_brake_turn_change() * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
+		var brake_turn_change := _get_brake_turn_change()
+
+		follow_pivot.rotation.y = -1.0 * brake_turn_change * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
 
 		self.look_at(to_global(follow_pivot.quaternion * follow_direction.position))
 	else:
@@ -151,8 +155,8 @@ func set_start_pos(new_pos:Node3D) -> void:
 	global_rotation = new_pos.global_rotation
 	print("setting start position ", global_rotation, ", ", new_pos.global_rotation)
 
-func jump() -> void:
-	apply_jump_force()
+func _jump() -> void:
+	_apply_jump_force()
 	time_since_jumped_in_air = 10.0
 	time_since_on_floor = 10.0
 	jumped.emit()
@@ -183,6 +187,6 @@ func _on_track_area_entered(_area: Area3D) -> void:
 func _on_track_area_exited(_area: Area3D) -> void:
 	is_on_track = false
 
-func print_p1(string_given: String) -> void:
+func print_p1(value_given) -> void:
 	if player_id == 1:
-		print(string_given)
+		print(value_given)
