@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cx1lgovqpwur2"
-path="res://.godot/imported/sparkles.gltf-731b8b275f40c1efbaf3308ea4a250ed.scn"
+uid="uid://bh2dtd4owf0bh"
+path="res://.godot/imported/goblin_speed.gltf-9ea4003e5bdeb407fc5d1ae641bd3825.scn"
 
 [deps]
 
-source_file="res://fx/sparkles.gltf"
-dest_files=["res://.godot/imported/sparkles.gltf-731b8b275f40c1efbaf3308ea4a250ed.scn"]
+source_file="res://fx/goblin_speed.gltf"
+dest_files=["res://.godot/imported/goblin_speed.gltf-9ea4003e5bdeb407fc5d1ae641bd3825.scn"]
 
 [params]
 
@@ -21,7 +21,7 @@ nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
-meshes/ensure_tangents=false
+meshes/ensure_tangents=true
 meshes/generate_lods=false
 meshes/create_shadow_meshes=false
 meshes/light_baking=1
