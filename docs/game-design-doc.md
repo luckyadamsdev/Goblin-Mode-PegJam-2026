@@ -150,8 +150,11 @@ What noises do we need
 
 ## TODO Task list
 - Main menu
-	- Ryan + Katarina
+	- Ryan + Lucky
+- Track speed adjustment
+	- Lucky code + Katarina colours
 - Pause menu
+	- Ryan
 - Full UI navigation
 - Slowdown if going off track
 - Environment asset creation

@@ -1,0 +1,359 @@
+[gd_scene format=3 uid="uid://bc8quaotr3mqn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tuoft"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctu4q"]
+albedo_color = Color(0.19434929, 0.19434926, 0.19434929, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tuoft"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuoft"]
+albedo_color = Color(0.59818554, 2.4065375e-07, 0.3374179, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ctu4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blimh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c78oa"]
+albedo_color = Color(1, 0.91764706, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jckff"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ctu4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GreyBombVisuals:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RedBombVisuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplosionVisuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplosionVisuals/WhiteMesh:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplosionVisuals/YellowMesh:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplosionVisuals/GreyMesh:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ExplosionVisuals/BlackMesh:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ExplosionVisuals:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(5, 5, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_blimh"]
+resource_name = "explode"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedBombVisuals:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GreyBombVisuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplosionVisuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplosionVisuals/WhiteMesh:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplosionVisuals/YellowMesh:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplosionVisuals/GreyMesh:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ExplosionVisuals/BlackMesh:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ExplosionVisuals:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.8, 1),
+"transitions": PackedFloat32Array(0.5, 2, 2, 0.5, 1),
+"update": 0,
+"values": [Vector3(5, 5, 5), Vector3(12.5, 12.5, 12.5), Vector3(20, 20, 20), Vector3(12.499999, 12.499999, 12.499999), Vector3(5, 5, 5)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tuoft"]
+resource_name = "flash"
+length = 3.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GreyBombVisuals:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1, 1.3, 1.5, 1.6999999, 1.85, 2, 2.15, 2.25, 2.35, 2.4499998, 2.5499997, 2.6499996, 2.6999998, 2.75, 2.7999997, 2.85, 2.9, 2.9499998, 3, 3.0499997, 3.1, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RedBombVisuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplosionVisuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"explode", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ctu4q"]
+_data = {
+&"RESET": SubResource("Animation_ctu4q"),
+&"explode": SubResource("Animation_blimh"),
+&"flash": SubResource("Animation_tuoft")
+}
+
+[node name="Bomb" type="Node3D" unique_id=475266171]
+
+[node name="GreyBombVisuals" type="Node3D" parent="." unique_id=1414020118]
+
+[node name="SphereMesh" type="MeshInstance3D" parent="GreyBombVisuals" unique_id=1927645266]
+mesh = SubResource("SphereMesh_tuoft")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ctu4q")
+
+[node name="CylinderMesh" type="MeshInstance3D" parent="GreyBombVisuals" unique_id=2029041349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40635127, 0)
+mesh = SubResource("CylinderMesh_tuoft")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ctu4q")
+
+[node name="RedBombVisuals" type="Node3D" parent="." unique_id=317910806]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+
+[node name="SphereMesh" type="MeshInstance3D" parent="RedBombVisuals" unique_id=1942861818]
+mesh = SubResource("SphereMesh_tuoft")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_tuoft")
+
+[node name="CylinderMesh" type="MeshInstance3D" parent="RedBombVisuals" unique_id=267542406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40635127, 0)
+mesh = SubResource("CylinderMesh_tuoft")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_tuoft")
+
+[node name="ExplosionVisuals" type="Node3D" parent="." unique_id=935510038]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+visible = false
+
+[node name="WhiteMesh" type="MeshInstance3D" parent="ExplosionVisuals" unique_id=1600142676]
+mesh = SubResource("SphereMesh_ctu4q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_blimh")
+
+[node name="YellowMesh" type="MeshInstance3D" parent="ExplosionVisuals" unique_id=2108470720]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+mesh = SubResource("SphereMesh_ctu4q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_c78oa")
+
+[node name="GreyMesh" type="MeshInstance3D" parent="ExplosionVisuals" unique_id=2002448586]
+transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 0, 0)
+mesh = SubResource("SphereMesh_ctu4q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ctu4q")
+
+[node name="BlackMesh" type="MeshInstance3D" parent="ExplosionVisuals" unique_id=722143520]
+transform = Transform3D(0.97, 0, 0, 0, 0.97, 0, 0, 0, 0.97, 0, 0, 0)
+mesh = SubResource("SphereMesh_ctu4q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_jckff")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=95936690]
+libraries/ = SubResource("AnimationLibrary_ctu4q")
+autoplay = &"flash"
