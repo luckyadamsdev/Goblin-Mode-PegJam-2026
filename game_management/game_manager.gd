@@ -187,6 +187,7 @@ func go_to_start_screen() -> void:
 func go_to_main_menu() -> void:
 	#hide main menu
 	main_menu.visible = true
+	main_menu.set_focus()
 	# show hud
 	hud.visible = false
 	game_mode = GameMode.MENU
@@ -209,6 +210,7 @@ func unpause() -> void:
 func back_to_main_menu() -> void:
 	game_mode = GameMode.MAIN_MENU
 	main_menu.visible = true
+	main_menu.set_focus()
 	pause_menu.visible = false
 	get_tree().paused = false
 	clean_up_old_map()
