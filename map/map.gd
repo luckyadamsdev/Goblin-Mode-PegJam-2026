@@ -23,12 +23,6 @@ var end_zone:Area3D:
 			end_zone = find_child("end_zone")
 		return end_zone
 
-var track_zone:Area3D:
-	get:
-		if track_zone == null:
-			track_zone = find_child("track_zone")
-		return track_zone
-
 func retart_player(player_given: Goblin) -> void:
 	var start = goblin_1_start
 	if player_given.player_id == 2:
