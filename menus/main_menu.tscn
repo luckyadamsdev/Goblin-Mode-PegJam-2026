@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dybmv0rolppc3"]
+[gd_scene format=3 uid="uid://dxump8b7q41bq"]
 
 [ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="1_yjgyn"]
 [ext_resource type="Script" uid="uid://0k454u7ibwwe" path="res://menus/main_menu.gd" id="2_rqbgu"]
@@ -62,6 +62,24 @@ grow_vertical = 2
 text = "VS Race"
 metadata/_edit_use_anchors_ = true
 
+[node name="Test Map" type="Button" parent="Panel" unique_id=1021836246]
+visible = false
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8208333
+anchor_top = 0.81574076
+anchor_right = 0.8208333
+anchor_bottom = 0.81574076
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "secret third thing"
+metadata/_edit_use_anchors_ = true
+
 [node name="TitleRect" type="TextureRect" parent="Panel" unique_id=2045702579]
 layout_mode = 1
 anchors_preset = -1
@@ -75,3 +93,4 @@ stretch_mode = 5
 
 [connection signal="pressed" from="Panel/PracticeButton" to="." method="_on_practice_button_pressed"]
 [connection signal="pressed" from="Panel/VS Race Button" to="." method="_on_vs_button_pressed"]
+[connection signal="pressed" from="Panel/Test Map" to="." method="_on_test_map_pressed"]
