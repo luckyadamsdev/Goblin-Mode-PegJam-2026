@@ -221,6 +221,7 @@ func reset() -> void:
 	tilt_turn_target = 0.0
 	time_since_jumped_in_air = 10.0
 	time_since_on_floor = 10.0
+	_enter_item_state_none()
 
 func finished_trick() -> void:
 	num_tricks_in_air += 1
