@@ -5163,7 +5163,7 @@ vn -0.672314 -0.077019 -0.736248
 vn -0.672314 -0.077019 -0.736248
 s 1
 g FullCourse1
-usemtl initialShadingGroup
+usemtl Tracks:initialShadingGroup
 f 949/1525/1 950/2/2 951/3/3 952/4/4
 s off
 f 1/5/5 439/6/6 440/7/7 3/8/8
