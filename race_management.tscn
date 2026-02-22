@@ -344,8 +344,9 @@ theme_override_font_sizes/font_size = 90
 text = "Practice"
 horizontal_alignment = 1
 
-[node name="MainMenu" parent="." unique_id=1952390693 node_paths=PackedStringArray("places") instance=ExtResource("8_krumh")]
+[node name="MainMenu" parent="." unique_id=1952390693 node_paths=PackedStringArray("places", "laps") instance=ExtResource("8_krumh")]
 places = NodePath("../Hud/Overlay/Places")
+laps = NodePath("../Hud/Overlay/Laps")
 
 [node name="PauseMenu" parent="." unique_id=1185998907 instance=ExtResource("9_dfv8i")]
 
