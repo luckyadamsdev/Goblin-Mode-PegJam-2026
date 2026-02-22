@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cbi0rtyajeef7"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyyb8jn63384h" path="res://models/tree/Tree.obj" id="1_fxwtr"]
+[ext_resource type="Texture2D" uid="uid://dtxhhadrtc5vt" path="res://models/tree/Tree_ForSubstance_openPBR_shader1_BaseColor.png" id="2_rsxdo"]
+[ext_resource type="Texture2D" uid="uid://cueuk0we2da4m" path="res://models/tree/Tree_ForSubstance_openPBR_shader1_Normal.png" id="3_3yv26"]
+[ext_resource type="Texture2D" uid="uid://cucasqa4iikof" path="res://models/tree/Tree_ForSubstance_openPBR_shader1_Roughness.png" id="4_n0j8u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mj3bj"]
+albedo_texture = ExtResource("2_rsxdo")
+roughness_texture = ExtResource("4_n0j8u")
+normal_enabled = true
+normal_texture = ExtResource("3_3yv26")
+
+[node name="Node3D" type="Node3D" unique_id=2072974621]
+
+[node name="Tree" type="MeshInstance3D" parent="." unique_id=2031640629]
+mesh = ExtResource("1_fxwtr")
+surface_material_override/0 = SubResource("StandardMaterial3D_mj3bj")
+surface_material_override/1 = SubResource("StandardMaterial3D_mj3bj")
+surface_material_override/2 = SubResource("StandardMaterial3D_mj3bj")
+surface_material_override/3 = SubResource("StandardMaterial3D_mj3bj")
