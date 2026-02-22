@@ -3,6 +3,16 @@ class_name GameManager
 
 static var instance:GameManager
 
+## SIGNALS
+signal race_countdown_started()
+signal race_start()
+signal first_finished()
+signal race_over()
+signal race_paused()
+signal race_resumed()
+signal in_main_menu()
+signal in_pause_menu()
+
 var current_map:Map 
 
 @export var goblins:Array[Goblin]
@@ -123,6 +133,8 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 			win_screens[winner - 1].visible = true
 			timer_label.counting = false # we can stop counting
 			game_mode = GameMode.WON
+			first_finished.emit();
+			race_over.emit()
 			cameras[winner - 1].game_mode = GameMode.WON
 			if winner == 1:
 				goblins[0].place = 1
@@ -136,6 +148,7 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 				placeRight.text = '1st'
 
 func start_timer() -> void:
+	race_countdown_started.emit()
 	# TODO play a start light
 	for camera in cameras:
 		camera.game_mode = GameMode.STARTING
@@ -152,6 +165,7 @@ func start_timer() -> void:
 	for goblin in goblins:
 		goblin.unpause()
 	timer_label.start()
+	race_start.emit()
 	
 ## deletes the current map before we laod a new one
 func clean_up_old_map() -> void:
@@ -196,6 +210,7 @@ func go_to_main_menu() -> void:
 	# show hud
 	hud.visible = false
 	game_mode = GameMode.MENU
+	in_main_menu.emit()
 
 
 func go_to_pause_menu() -> void:
@@ -205,12 +220,15 @@ func go_to_pause_menu() -> void:
 	# hide hud
 	hud.visible = false
 	game_mode = GameMode.PAUSE_MENU
+	race_paused.emit()
+	in_pause_menu.emit()
 
 func unpause() -> void:
 	game_mode = GameMode.RACING
 	main_menu.visible = false
 	pause_menu.visible = false
 	get_tree().paused = false
+	race_resumed.emit()
 
 func back_to_main_menu() -> void:
 	game_mode = GameMode.MAIN_MENU

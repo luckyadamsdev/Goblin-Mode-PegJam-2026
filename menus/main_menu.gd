@@ -1,6 +1,8 @@
 extends Control
 class_name MainMenu
 
+signal level_selected()
+
 @export var places:Control
 
 func _ready() -> void:
