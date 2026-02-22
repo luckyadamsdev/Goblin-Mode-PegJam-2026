@@ -29,7 +29,11 @@ var buttons_pressed:Array[bool] = [false, false]
 @export var placeLeft: Label
 @export var placeRight: Label
 
+@export var map_title : Label
+
 @export var hud:Control
+
+@export var racing_overlay:Control
 
 var selected_map_path:String = "res://map/map03.tscn"
 
@@ -90,6 +94,10 @@ func _load_map(map_name:String) -> void:
 		r.visible = false
 	for w in win_screens:
 		w.visible = false
+	
+	map_title.visible = false
+	
+	racing_overlay.visible = true
 	
 	current_map = load(map_name).instantiate() as Map
 	add_child(current_map)
@@ -182,11 +190,13 @@ func go_to_start_screen() -> void:
 	main_menu.visible = false
 	# show hud
 	hud.visible = true
+	racing_overlay.visible = false
 	game_mode = GameMode.MENU
 
 func go_to_main_menu() -> void:
 	#hide main menu
 	main_menu.visible = true
+	main_menu.set_focus()
 	# show hud
 	hud.visible = false
 	game_mode = GameMode.MENU
@@ -209,6 +219,7 @@ func unpause() -> void:
 func back_to_main_menu() -> void:
 	game_mode = GameMode.MAIN_MENU
 	main_menu.visible = true
+	main_menu.set_focus()
 	pause_menu.visible = false
 	get_tree().paused = false
 	clean_up_old_map()
@@ -216,3 +227,7 @@ func back_to_main_menu() -> void:
 		goblin.pause()
 	for camera in cameras:
 		camera.game_mode = GameMode.MENU
+
+func set_map_tile(title:String) -> void:
+	map_title.text = title
+	map_title.visible = true
