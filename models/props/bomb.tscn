@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bc8quaotr3mqn"]
 
+[ext_resource type="Script" uid="uid://dgy5b8u8vnjyu" path="res://models/props/bomb.gd" id="1_ctu4q"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_tuoft"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ctu4q"]
@@ -11,7 +13,7 @@ bottom_radius = 0.25
 height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuoft"]
-albedo_color = Color(0.59818554, 2.4065375e-07, 0.3374179, 1)
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ctu4q"]
 
@@ -299,6 +301,7 @@ _data = {
 }
 
 [node name="Bomb" type="Node3D" unique_id=475266171]
+script = ExtResource("1_ctu4q")
 
 [node name="GreyBombVisuals" type="Node3D" parent="." unique_id=1414020118]
 

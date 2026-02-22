@@ -59,6 +59,9 @@ var game_mode:GameMode = GameMode.MAIN_MENU
 
 func _ready() -> void:
 	instance = self
+	goblins[0].enemy = goblins[1]
+	goblins[1].enemy = goblins[0]
+	Global.game_manager = self
 
 func _process(_delta: float) -> void:
 	match game_mode:

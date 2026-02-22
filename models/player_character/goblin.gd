@@ -41,6 +41,7 @@ var banked_spins := 0
 var current_lap := 1
 var current_speed := MIN_SPEED
 var current_max_speed := MAX_SPEED_DEFAULT
+var enemy:Goblin
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
 var item_state:ItemStateKeys = ItemStateKeys.NONE
@@ -60,7 +61,7 @@ var sparkles_effect:SparkleEffect
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	controller.set_player_id(player_id)
-	goblin_template.finish_item.connect(_enter_item_state_none)
+	goblin_template.finish_item.connect(_end_item)
 
 func _physics_process(delta: float) -> void:
 	if goblin_paused:
@@ -75,13 +76,24 @@ func _physics_process(delta: float) -> void:
 	_handle_item_usage(delta)
 	was_on_floor = is_on_floor()
 
+func _end_item() -> void:
+	if is_instance_valid(enemy):
+		if item_state == ItemStateKeys.ANVIL:
+			enemy.anim.play('anvil_crush')
+			enemy.anim.queue('idle')
+	else:
+		print('ERROR 109238')
+	_enter_item_state_none()
+
 func _handle_item_usage(delta: float) -> void:
-	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed():
+	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed() and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 		match item_state:
 			ItemStateKeys.ANVIL:
 				anim.play('anvil_throw')
+				anim.queue('idle')
 			ItemStateKeys.BOMB:
-				item_potion_timer = POTION_DURATION
+				anim.play('bomb_throw')
+				anim.queue('idle')
 			ItemStateKeys.POTION:
 				item_potion_timer = POTION_DURATION
 				_enter_item_state_none()
@@ -138,16 +150,17 @@ func _handle_lands() -> void:
 	if not was_on_floor and is_on_floor():
 		time_since_jumped_in_air = 10.0
 		banked_spins = 0
-		if anim.current_animation == 'spin':
-			anim.play('fall')
-			current_speed = MIN_SPEED
-			fell_down.emit()
-		else:
-			anim.play('land')
-			current_speed += TRICK_SPEED_BOOST * num_tricks_in_air
-			speed_increased.emit(current_speed)
-		anim.queue('idle')
-		num_tricks_in_air = 0
+		if not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
+			if anim.current_animation == 'spin':
+				anim.play('fall')
+				current_speed = MIN_SPEED
+				fell_down.emit()
+			else:
+				anim.play('land')
+				current_speed += TRICK_SPEED_BOOST * num_tricks_in_air
+				speed_increased.emit(current_speed)
+			anim.queue('idle')
+			num_tricks_in_air = 0
 
 func _do_spin_trick():
 	anim.play('spin')
@@ -159,7 +172,7 @@ func _handle_jumps(delta: float) -> void:
 		if time_since_on_floor > LAND_THRESHOLD_TIME:
 			landed.emit()
 		time_since_on_floor = 0.0
-		if time_since_jumped_in_air < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin':
+		if time_since_jumped_in_air < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			_jump()
 	else:
 		time_since_on_floor += delta
@@ -167,7 +180,7 @@ func _handle_jumps(delta: float) -> void:
 			_do_spin_trick()
 	time_since_jumped_in_air += delta
 	if controller.button_one_just_pressed():
-		if time_since_on_floor < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin':
+		if time_since_on_floor < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			_jump()
 		else:
 			time_since_jumped_in_air = 0.0
@@ -194,6 +207,8 @@ func _handle_accelerate(delta: float) -> void:
 	if _get_combined_real_velocity_value() < MIN_SPEED * 0.5:
 		current_speed = MIN_SPEED
 
+	if anim.current_animation == 'anvil_crush' and 0.5 < anim.current_animation_position:
+		current_speed = 0.0
 	var new_velocity: Vector3 = basis.z * current_speed
 	new_velocity.y = velocity.y - gravity * delta
 	velocity = new_velocity
@@ -272,7 +287,8 @@ func finished_trick() -> void:
 	num_tricks_in_air += 1
 	if 1 < banked_spins:
 		banked_spins -= 1
-		_do_spin_trick()
+		if not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
+			_do_spin_trick()
 
 func _on_track_area_entered(area: Area3D) -> void:
 	if area.name == 'ItemArea3D':
