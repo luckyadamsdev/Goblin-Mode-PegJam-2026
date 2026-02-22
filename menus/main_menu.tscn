@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dxump8b7q41bq"]
+[gd_scene format=3 uid="uid://dybmv0rolppc3"]
 
-[ext_resource type="Theme" uid="uid://qfv5ljcqatji" path="res://menus/main_theme.tres" id="1_yjgyn"]
+[ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="1_yjgyn"]
 [ext_resource type="Script" uid="uid://0k454u7ibwwe" path="res://menus/main_menu.gd" id="2_rqbgu"]
 [ext_resource type="Texture2D" uid="uid://bcxqh5k3pviox" path="res://Goblin Game Title.png" id="3_oblsv"]
 
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fc4ne")
 
-[node name="StartButton" type="Button" parent="Panel" unique_id=337073712]
+[node name="PracticeButton" type="Button" parent="Panel" unique_id=337073712]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -73,5 +73,5 @@ texture = ExtResource("3_oblsv")
 expand_mode = 1
 stretch_mode = 5
 
-[connection signal="pressed" from="Panel/StartButton" to="." method="_on_practice_button_pressed"]
+[connection signal="pressed" from="Panel/PracticeButton" to="." method="_on_practice_button_pressed"]
 [connection signal="pressed" from="Panel/VS Race Button" to="." method="_on_vs_button_pressed"]

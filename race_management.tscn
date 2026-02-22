@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://ehrs6gbdgps" path="res://shadow/shadow.gd" id="2_rgvqj"]
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
+[ext_resource type="PackedScene" uid="uid://dybmv0rolppc3" path="res://menus/main_menu.tscn" id="8_krumh"]
+[ext_resource type="PackedScene" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
 [ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="9_mqc7d"]
-[ext_resource type="PackedScene" uid="uid://dxump8b7q41bq" path="res://menus/main_menu.tscn" id="8_krumh"]
-[ext_resource type="PackedScene" uid="uid://hfbqo807w8sb" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
@@ -118,7 +118,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
-size = Vector2i(958, 1080)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
@@ -133,7 +133,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
-size = Vector2i(958, 1080)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
@@ -341,6 +341,7 @@ theme_override_font_sizes/font_size = 90
 text = "Practice"
 horizontal_alignment = 1
 
-[node name="MainMenu" parent="." unique_id=1952390693 instance=ExtResource("8_krumh")]
+[node name="MainMenu" parent="." unique_id=1952390693 node_paths=PackedStringArray("places") instance=ExtResource("8_krumh")]
+places = NodePath("../Hud/Overlay/Places")
 
 [node name="PauseMenu" parent="." unique_id=1185998907 instance=ExtResource("9_dfv8i")]
