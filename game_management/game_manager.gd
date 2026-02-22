@@ -88,10 +88,6 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 			timer_label.counting = false # we can stop counting
 			game_mode = GameMode.WON
 			cameras[winner - 1].game_mode = GameMode.WON
-		else:
-			print("goblinb mode ", game_mode)
-	else:
-		print("is not goblin")
 
 func start_timer() -> void:
 	# TODO play a start light
