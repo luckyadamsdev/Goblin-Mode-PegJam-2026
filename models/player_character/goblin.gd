@@ -7,10 +7,11 @@ signal landed()
 const BASE_ACCELERATION := 0.05
 const COYOTE_TIME := 0.2
 const FRICTION := 0.3
+const FRICTION_OFF_TRACK := 0.2
 const JUMP_VELOCITY_ADD := 6.0
 const JUMP_VELOCITY_MULT := 10.0
 const MAX_JUMP_MULT := 5.0
-const MIN_SPEED := 8.0
+const MIN_SPEED := 16.0
 const MAX_SPEED := 50.0
 const TRICK_SPEED_BOOST := 10.0
 
@@ -26,12 +27,12 @@ var goblin_paused:bool = true
 
 var current_speed := MIN_SPEED
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
+var is_on_track := true
 var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
 var time_since_on_floor := 10.0
 var was_on_floor := false
 
-var on_track:bool = false
 @onready var goblin_template:Node3D = $GoblinTemplate
 @onready var anim:AnimationPlayer = goblin_template.get_animation_player()
 
@@ -42,6 +43,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if goblin_paused:
 		return
+	# if is_off_track:
+	# 	self.scale.z = 2.0
+	# else:
+	# 	self.scale.z = 1.0
 	# movement logic
 	_handle_accelerate(delta)
 	move_and_slide()
@@ -88,6 +93,14 @@ func _handle_jumps(delta: float) -> void:
 func _handle_accelerate(delta: float) -> void:
 	current_speed += BASE_ACCELERATION * delta
 	current_speed -= _get_brake_speed_change()
+	if is_on_floor() and not is_on_track:
+		current_speed -= FRICTION_OFF_TRACK
+		if player_id == 1:
+			print('slow')
+	elif player_id == 1:
+		print('fast')
+	if player_id == 1:
+		print(current_speed)
 	current_speed = max(MIN_SPEED, current_speed)
 	if is_on_floor():
 		var realVelocityY := get_real_velocity().y
@@ -154,9 +167,10 @@ func reset() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
 	current_speed = MIN_SPEED
 	goblin_template.rotation.x = 0
-	
-func enter_track() -> void:
-	on_track = true
-	
-func exit_track() -> void:
-	on_track = false
+	anim.play('idle')
+
+func _on_track_area_entered(_area: Area3D) -> void:
+	is_on_track = true
+
+func _on_track_area_exited(_area: Area3D) -> void:
+	is_on_track = false

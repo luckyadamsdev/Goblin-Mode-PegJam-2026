@@ -74,7 +74,7 @@ func _load_map(map_name:String) -> void:
 	start_timer()
 	
 	if current_map.track_zone != null:
-		current_map.track_zone.body_entered.connect(_on_entered_track_zone)
+		current_map.track_zone.area_entered.connect(_on_entered_track_zone)
 		current_map.track_zone.body_exited.connect(_on_exited_track_zone)
 	current_map.end_zone.body_entered.connect(_on_check_player_finished_race) # listen for a goblin reaching the finish line
 	current_map.end_zone.collision_mask ^= 2
