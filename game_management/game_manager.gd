@@ -28,6 +28,7 @@ enum GameMode {
 	MENU,
 	RACING,
 	WON,
+	STARTING,
 }
 
 var game_mode:GameMode = GameMode.MENU
@@ -62,6 +63,9 @@ func _load_map(map_name:String) -> void:
 	# move two goblins to starting positions
 	goblins[0].set_start_pos(current_map.goblin_1_start)
 	goblins[1].set_start_pos(current_map.goblin_2_start)
+	for camera in cameras:
+		camera.game_mode = GameManager.GameMode.STARTING
+		camera.bonus_follow_distance = 4.0
 	cameras[0].set_target(goblins[0])
 	cameras[1].set_target(goblins[1])
 	for goblin in goblins:
@@ -83,10 +87,12 @@ func _on_check_player_finished_race(body: Node3D) -> void:
 			win_screens[winner - 1].visible = true
 			timer_label.counting = false # we can stop counting
 			game_mode = GameMode.WON
+			cameras[winner - 1].game_mode = GameMode.WON
 
 func start_timer() -> void:
 	# TODO play a start light
-	
+	for camera in cameras:
+		camera.game_mode = GameMode.STARTING
 	print("ready")
 	timer_label.show_message("ready")
 	await get_tree().create_timer(1.0).timeout
@@ -95,6 +101,8 @@ func start_timer() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	print("go")
+	for camera in cameras:
+		camera.game_mode = GameMode.RACING
 	for goblin in goblins:
 		goblin.unpause()
 	timer_label.start()
