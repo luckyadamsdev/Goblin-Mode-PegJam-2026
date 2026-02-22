@@ -5,6 +5,7 @@ signal jumped()
 signal landed()
 signal speed_increased(new_speed:float)
 signal fell_down()
+signal teleport_swirled()
 signal teleported()
 
 const BASE_ACCELERATION := 0.05
