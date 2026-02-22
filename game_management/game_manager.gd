@@ -199,3 +199,5 @@ func back_to_main_menu() -> void:
 	clean_up_old_map()
 	for goblin in goblins:
 		goblin.pause()
+	for camera in cameras:
+		camera.game_mode = GameMode.MENU

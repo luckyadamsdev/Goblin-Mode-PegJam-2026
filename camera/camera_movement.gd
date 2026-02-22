@@ -62,6 +62,8 @@ func _physics_process(delta : float):
 func _menu_process(delta:float):
 	# TODO what else?
 	# react when someone presses button?
+	if global_position.distance_to(goblin.global_position) > 2.0:
+		global_position = goblin.global_position + Vector3(0.0, 1.0 + randf() * 0.3 - randf() * 0.3, 1.0 + randf() * 0.3 - randf() * 0.3)
 	look_at(goblin.global_position + Vector3.UP * vertical_look_offset, Vector3.UP)
 
 func _win_process(delta:float):
