@@ -2,79 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_0dh05"]
 [ext_resource type="PackedScene" uid="uid://dj7awkeccg37u" path="res://Course.tscn" id="2_0dh05"]
-[ext_resource type="Script" uid="uid://bpqxumqro7qph" path="res://models/props/item.gd" id="4_nl3ne"]
-[ext_resource type="Script" uid="uid://gxgxpdwl82ro" path="res://models/props/item_area_3d.gd" id="4_yh2kp"]
+[ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_nl3ne"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
 size = Vector3(300.4899, 107.03613, 5)
-
-[sub_resource type="SphereMesh" id="SphereMesh_d6362"]
-radius = 0.3
-height = 0.6
-
-[sub_resource type="Animation" id="Animation_fn8hb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OmniLight3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.5, -1)]
-}
-
-[sub_resource type="Animation" id="Animation_f2x1d"]
-resource_name = "default"
-loop_mode = 1
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(2, 0.5, 2, 0.5, 2),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.25, 0), Vector3(0, 0.5, 0), Vector3(0, 0.25, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OmniLight3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
-"update": 0,
-"values": [Vector3(0, 0.5, 0), Vector3(0, 0.5, -0.5), Vector3(0, 0.5, 0), Vector3(0, 0.5, 0.5), Vector3(0, 0.5, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yh2kp"]
-_data = {
-&"RESET": SubResource("Animation_fn8hb"),
-&"default": SubResource("Animation_f2x1d")
-}
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_nl3ne"]
 
 [node name="Map03" type="Node3D" unique_id=317521660]
 script = ExtResource("1_0dh05")
@@ -98,77 +29,32 @@ shape = SubResource("BoxShape3D_rh2f5")
 [node name="Course" parent="." unique_id=1464157065 instance=ExtResource("2_0dh05")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 195.89551, -92.865814, -20.533249)
 
-[node name="Item1" type="Node3D" parent="." unique_id=442059321]
+[node name="Item1" parent="." unique_id=2065320669 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -55.676323, 32.3738)
-script = ExtResource("4_nl3ne")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Item1" unique_id=232801288]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
-light_energy = 10.0
-omni_range = 10.0
+[node name="Item2" parent="." unique_id=1806393712 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.95266, -81.74569, 130.64983)
 
-[node name="Mesh" type="MeshInstance3D" parent="Item1" unique_id=687624876]
-mesh = SubResource("SphereMesh_d6362")
+[node name="Item3" parent="." unique_id=1071257862 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2978354, -92.52832, 284.5495)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Item1" unique_id=1959943226]
-libraries/ = SubResource("AnimationLibrary_yh2kp")
-autoplay = &"default"
+[node name="Item4" parent="." unique_id=1253320907 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.38785, -109.24122, 547.39935)
 
-[node name="ItemArea3D" type="Area3D" parent="Item1" unique_id=1338066482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21592808, 0)
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_yh2kp")
+[node name="Item5" parent="." unique_id=55641462 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.301018, -153.94023, 836.5216)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Item1/ItemArea3D" unique_id=1724277788]
-shape = SubResource("SphereShape3D_nl3ne")
+[node name="Item6" parent="." unique_id=485446074 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.430698, -150.54205, 840.4613)
 
-[node name="Item2" type="Node3D" parent="." unique_id=1197292835]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.677494, -79.97015, 126.906906)
-script = ExtResource("4_nl3ne")
+[node name="Item7" parent="." unique_id=302119012 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.391, -187.79396, 782.519)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Item2" unique_id=966705419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
-light_energy = 10.0
-omni_range = 10.0
+[node name="Item8" parent="." unique_id=671628268 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 588.5243, -205.38287, 401.7917)
 
-[node name="Mesh" type="MeshInstance3D" parent="Item2" unique_id=1073084062]
-mesh = SubResource("SphereMesh_d6362")
+[node name="Item9" parent="." unique_id=1661978024 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 742.15076, -234.05562, 87.22925)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Item2" unique_id=1715790512]
-libraries/ = SubResource("AnimationLibrary_yh2kp")
-autoplay = &"default"
-
-[node name="ItemArea3D" type="Area3D" parent="Item2" unique_id=361823061]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21592808, 0)
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_yh2kp")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Item2/ItemArea3D" unique_id=1110123978]
-shape = SubResource("SphereShape3D_nl3ne")
-
-[node name="Item3" type="Node3D" parent="." unique_id=2021068833]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.666832, -92.33108, 324.6233)
-script = ExtResource("4_nl3ne")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Item3" unique_id=1069850197]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
-light_energy = 10.0
-omni_range = 10.0
-
-[node name="Mesh" type="MeshInstance3D" parent="Item3" unique_id=834064176]
-mesh = SubResource("SphereMesh_d6362")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Item3" unique_id=1217566051]
-libraries/ = SubResource("AnimationLibrary_yh2kp")
-autoplay = &"default"
-
-[node name="ItemArea3D" type="Area3D" parent="Item3" unique_id=1416728823]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21592808, 0)
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_yh2kp")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Item3/ItemArea3D" unique_id=1305512466]
-shape = SubResource("SphereShape3D_nl3ne")
+[node name="Item10" parent="." unique_id=1719364774 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.04257, -298.80957, -360.77036)
