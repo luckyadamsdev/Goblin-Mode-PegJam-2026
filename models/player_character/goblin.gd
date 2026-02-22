@@ -117,7 +117,6 @@ func _handle_accelerate(delta: float) -> void:
 
 	var real_velocity = get_real_velocity()
 	var combined_real_velocity_value: float = abs(real_velocity.normalized().x * real_velocity.x) + abs(real_velocity.normalized().z * real_velocity.z)
-	print_p1(combined_real_velocity_value)
 	if combined_real_velocity_value < MIN_SPEED * 0.5:
 		current_speed = MIN_SPEED
 
