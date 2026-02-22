@@ -52,6 +52,7 @@ enum GameMode {
 	STARTING,
 	PAUSE_MENU,
 	MAIN_MENU,
+	TELEPORTING, # using this also for camera modes, sorry
 }
 
 var game_mode:GameMode = GameMode.MAIN_MENU
@@ -122,18 +123,16 @@ func _load_map(map_name:String) -> void:
 	
 func _on_check_player_finished_race(body: Node3D) -> void:
 	if body is Goblin:
-		
-		if body.current_lap < TOTAL_LAPS:
-			body.current_lap += 1
-			if body.player_id == 1:
-				set_lap_display(lapLeft, body.current_lap, true)
+		var goblin := body as Goblin
+		if goblin.current_lap < TOTAL_LAPS:
+			goblin.current_lap += 1
+			if goblin.player_id == 1:
+				set_lap_display(lapLeft, goblin.current_lap, true)
 			else:
-				set_lap_display(lapRight, body.current_lap, true)
-			# TODO need a teleport effect
-			current_map.retart_player(body)
+				set_lap_display(lapRight, goblin.current_lap, true)
+			current_map.restart_player(goblin)
 		elif game_mode != GameMode.WON: # no winner yet
-			winner = (body as Goblin).player_id
-			print("is goblin! ", winner)
+			winner = goblin.player_id
 			win_screens[winner - 1].visible = true
 			timer_label.counting = false # we can stop counting
 			game_mode = GameMode.WON
