@@ -9,6 +9,7 @@ size = Vector3(300.4899, 107.03613, 5)
 
 [node name="Map03" type="Node3D" unique_id=317521660]
 script = ExtResource("1_n4x0f")
+is_race = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=359927576]
 environment = ExtResource("2_ppgrl")

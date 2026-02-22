@@ -1,6 +1,10 @@
 extends Node3D
 class_name Map
 
+# whether this map should track the leading goblin
+@export var is_race:bool = true
+
+
 var goblin_1_start:Node3D:
 	get:
 		if goblin_1_start == null:
@@ -18,12 +22,6 @@ var end_zone:Area3D:
 		if end_zone == null:
 			end_zone = find_child("end_zone")
 		return end_zone
-
-var track_zone:Area3D:
-	get:
-		if track_zone == null:
-			track_zone = find_child("track_zone")
-		return track_zone
 
 func retart_player(player_given: Goblin) -> void:
 	var start = goblin_1_start
