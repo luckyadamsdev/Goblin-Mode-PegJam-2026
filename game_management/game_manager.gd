@@ -63,11 +63,11 @@ func _load_map(map_name:String) -> void:
 	# move two goblins to starting positions
 	goblins[0].set_start_pos(current_map.goblin_1_start)
 	goblins[1].set_start_pos(current_map.goblin_2_start)
-	cameras[0].set_target(goblins[0])
-	cameras[1].set_target(goblins[1])
 	for camera in cameras:
 		camera.game_mode = GameManager.GameMode.STARTING
-		camera.bonus_follow_distace = 4.0
+		camera.bonus_follow_distance = 4.0
+	cameras[0].set_target(goblins[0])
+	cameras[1].set_target(goblins[1])
 	for goblin in goblins:
 		goblin.pause() # pause the goblins for the timer to complete
 		goblin.reset()

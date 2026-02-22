@@ -5,7 +5,7 @@ class_name CameraMovement
 @export var follow_distance := 5.0
 
 # used for extra follow distance during start
-var bonus_follow_distace:float = 0.0
+var bonus_follow_distance:float = 0.0
 
 @export var follow_height := 2.0
 
@@ -56,7 +56,7 @@ func _physics_process(delta : float):
 			#_main_process(delta)
 			_win_process(delta)
 		GameManager.GameMode.STARTING:
-			bonus_follow_distace = max(0.0, bonus_follow_distace - delta * 2.5)
+			bonus_follow_distance = max(0.0, bonus_follow_distance - delta * 3.0)
 			_main_process(delta)
 
 func _menu_process(delta:float):
@@ -91,7 +91,7 @@ func _main_process(delta:float):
 	global_track_position.y += vertical_offset
 	var delta_v := target_position - global_track_position
 	delta_v.y = 3.0
-	var follow_distance_with_speed := follow_distance + bonus_follow_distace
+	var follow_distance_with_speed := follow_distance + bonus_follow_distance
 	
 	if (delta_v.length() > follow_distance_with_speed):
 		delta_v = delta_v.normalized() * follow_distance_with_speed
