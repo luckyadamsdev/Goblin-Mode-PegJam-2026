@@ -20,6 +20,12 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var timer_label:TimerLabel
 
+@export var main_menu:MainMenu
+
+@export var pause_menu:PauseMenu
+
+@export var hud:Control
+
 var selected_map_path:String = "res://map/map03.tscn"
 
 var winner:int = 0
@@ -29,9 +35,11 @@ enum GameMode {
 	RACING,
 	WON,
 	STARTING,
+	PAUSE_MENU,
+	MAIN_MENU,
 }
 
-var game_mode:GameMode = GameMode.MENU
+var game_mode:GameMode = GameMode.MAIN_MENU
 
 func _ready() -> void:
 	instance = self
@@ -41,9 +49,17 @@ func _process(_delta: float) -> void:
 		GameMode.MENU:
 			_handle_menu_mode()
 		GameMode.RACING:
-			pass
+			if Input.is_action_just_pressed("pause"):
+				game_mode = GameMode.PAUSE_MENU
+				pause_menu.visible = true
+				get_tree().paused = true
 		GameMode.WON:
 			_handle_menu_mode()
+		GameMode.PAUSE_MENU:
+			if Input.is_action_just_pressed("pause"):
+				unpause()
+		GameMode.MAIN_MENU:
+			pass # don't need to do anything else
 
 
 func _load_map(map_name:String) -> void:
@@ -64,7 +80,7 @@ func _load_map(map_name:String) -> void:
 	goblins[0].set_start_pos(current_map.goblin_1_start)
 	goblins[1].set_start_pos(current_map.goblin_2_start)
 	for camera in cameras:
-		camera.game_mode = GameManager.GameMode.STARTING
+		camera.game_mode = GameMode.STARTING
 		camera.bonus_follow_distance = 4.0
 	cameras[0].set_target(goblins[0])
 	cameras[1].set_target(goblins[1])
@@ -124,6 +140,7 @@ func _handle_menu_mode() -> void:
 		if bp == false:
 			all_buttons_pressed = false
 	if all_buttons_pressed:
+		buttons_pressed.fill(false)
 		game_mode = GameMode.RACING
 		_load_map(selected_map_path)
 	else:
@@ -145,3 +162,42 @@ func _on_exited_track_zone(body: Node3D) -> void:
 	if body is Goblin:
 		var goblin := body as Goblin
 		goblin.exit_track()
+
+func go_to_start_screen() -> void:
+	#hide main menu
+	main_menu.visible = false
+	# show hud
+	hud.visible = true
+	game_mode = GameMode.MENU
+
+func go_to_main_menu() -> void:
+	#hide main menu
+	main_menu.visible = true
+	# show hud
+	hud.visible = false
+	game_mode = GameMode.MENU
+
+
+func go_to_pause_menu() -> void:
+	# show main menu
+	pause_menu.visible = true
+	# hide hud
+	hud.visible = false
+	game_mode = GameMode.PAUSE_MENU
+
+func unpause() -> void:
+	game_mode = GameMode.RACING
+	main_menu.visible = false
+	pause_menu.visible = false
+	get_tree().paused = false
+
+func back_to_main_menu() -> void:
+	game_mode = GameMode.MAIN_MENU
+	main_menu.visible = true
+	pause_menu.visible = false
+	get_tree().paused = false
+	clean_up_old_map()
+	for goblin in goblins:
+		goblin.pause()
+	for camera in cameras:
+		camera.game_mode = GameMode.MENU
