@@ -67,7 +67,7 @@ func _load_map(map_name:String) -> void:
 	cameras[1].set_target(goblins[1])
 	for camera in cameras:
 		camera.game_mode = GameManager.GameMode.STARTING
-		camera.bonus_follow_distace = 3.0
+		camera.bonus_follow_distace = 4.0
 	for goblin in goblins:
 		goblin.pause() # pause the goblins for the timer to complete
 		goblin.reset()

@@ -15,7 +15,7 @@ var bonus_follow_distace:float = 0.0
 
 @export var goblin : Goblin
 
-@export var starting_offset:Vector3 = Vector3(0.0, 2.0, -4.0)
+var starting_offset:Vector3 = Vector3(0.0, 2.0, -24.0)
 
 @export var look_curve:Curve
 
@@ -53,9 +53,10 @@ func _physics_process(delta : float):
 		GameManager.GameMode.RACING:
 			_main_process(delta)
 		GameManager.GameMode.WON:
+			#_main_process(delta)
 			_win_process(delta)
 		GameManager.GameMode.STARTING:
-			bonus_follow_distace = max(0.0, bonus_follow_distace - delta)
+			bonus_follow_distace = max(0.0, bonus_follow_distace - delta * 2.5)
 			_main_process(delta)
 
 func _menu_process(delta:float):
@@ -111,7 +112,7 @@ func set_target(new_target:Node3D) -> void:
 	global_position = new_target.to_global(starting_offset)
 	target_position = global_position
 	look_at(goblin.global_position)
-	_physics_process(0.01) # avoids initial flicker
+	_main_process(0.01) # avoids initial flicker
 
 func _on_landed() -> void:
 	pass
