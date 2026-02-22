@@ -150,12 +150,16 @@ What noises do we need
 
 ## TODO Task list
 - Main menu
-	- Ryan + Katarina
+	- Ryan + Lucky
+- End of race options: Play again or go to main menu
+	- Ryan
 - Pause menu
 - Full UI navigation
 - Slowdown if going off track
 - Environment asset creation
 - Music (free, not AI) - Being worked on
+- Track speed adjustment
+	- Lucky code + Katarina colours
 - Items
 	- Lucky
 - Tutorial/playground area (1 track)
