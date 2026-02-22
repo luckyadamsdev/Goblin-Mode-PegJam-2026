@@ -1,0 +1,9 @@
+- Finish/Winner
+- Ready set go! (GO!)
+- Goblin grunt
+- Items
+	- Generic pickup noise
+	- Speed potion (rocket)
+	- Bomb (explosion) or (beeping)
+	- Anvil (whistle tone) (clang)
+- new lap

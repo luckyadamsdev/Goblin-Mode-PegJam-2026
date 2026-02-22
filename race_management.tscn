@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://bd72dwb7m4ov7" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
 [ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="9_mqc7d"]
 [ext_resource type="Environment" uid="uid://8fyu7pbgixg" path="res://environments/cloud_environment.tres" id="10_mqc7d"]
+[ext_resource type="Script" uid="uid://c6y0ykrn4ynyo" path="res://sound/announcer_audio_player.gd" id="11_fnib8"]
+[ext_resource type="AudioStream" uid="uid://dpok87ihxq6wg" path="res://sound/announcer/321GO.wav" id="12_7umed"]
+[ext_resource type="Script" uid="uid://bsnmro6xym1si" path="res://sound/music_audio_player.gd" id="12_hyuga"]
+[ext_resource type="AudioStream" uid="uid://crbuym6djwh8h" path="res://sound/announcer/Race Over.wav" id="13_5l855"]
+[ext_resource type="AudioStream" uid="uid://hi7vlviveut2" path="res://sound/announcer/Winner.wav" id="14_llaj5"]
+[ext_resource type="AudioStream" uid="uid://1ecbi35ikuxc" path="res://sound/music/Kerey Harper- Goblin Racing Drum n Bass.wav" id="16_5l855"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
@@ -449,3 +455,28 @@ laps = NodePath("../Hud/Overlay/Laps")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=113658327]
 environment = ExtResource("10_mqc7d")
+
+[node name="Announcer" type="AudioStreamPlayer" parent="." unique_id=2131791805]
+script = ExtResource("11_fnib8")
+countdown = ExtResource("12_7umed")
+race_finished = ExtResource("13_5l855")
+winner = ExtResource("14_llaj5")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1077144129]
+script = ExtResource("12_hyuga")
+race_music = ExtResource("16_5l855")
+
+[connection signal="first_finished" from="GameManager" to="Announcer" method="_on_game_manager_first_finished"]
+[connection signal="in_main_menu" from="GameManager" to="MusicPlayer" method="_on_game_manager_in_main_menu"]
+[connection signal="in_pause_menu" from="GameManager" to="MusicPlayer" method="_on_game_manager_in_pause_menu"]
+[connection signal="race_countdown_started" from="GameManager" to="Announcer" method="_on_game_manager_race_countdown_started"]
+[connection signal="race_over" from="GameManager" to="Announcer" method="_on_game_manager_race_over"]
+[connection signal="race_over" from="GameManager" to="MusicPlayer" method="_on_game_manager_race_over"]
+[connection signal="race_paused" from="GameManager" to="Announcer" method="_on_game_manager_race_paused"]
+[connection signal="race_paused" from="GameManager" to="MusicPlayer" method="_on_game_manager_race_paused"]
+[connection signal="race_resumed" from="GameManager" to="Announcer" method="_on_game_manager_race_resumed"]
+[connection signal="race_resumed" from="GameManager" to="MusicPlayer" method="_on_game_manager_race_resumed"]
+[connection signal="race_start" from="GameManager" to="Announcer" method="_on_game_manager_race_start"]
+[connection signal="race_start" from="GameManager" to="MusicPlayer" method="_on_game_manager_race_start"]
+[connection signal="finished" from="Announcer" to="Announcer" method="_on_finished"]
+[connection signal="finished" from="MusicPlayer" to="MusicPlayer" method="_on_finished"]
