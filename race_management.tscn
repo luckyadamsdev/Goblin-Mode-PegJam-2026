@@ -78,6 +78,7 @@ collision_layer = 2
 player_id = 2
 
 [node name="Hud" type="Control" parent="." unique_id=198289351]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,7 +107,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player1screen" unique_id=1853581293]
 handle_input_locally = false
 size = Vector2i(958, 1080)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
@@ -121,7 +122,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Hud/HBoxContainer/player2screen" unique_id=1234907876]
 handle_input_locally = false
 size = Vector2i(958, 1080)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)
