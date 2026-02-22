@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
 [ext_resource type="Script" uid="uid://0k454u7ibwwe" path="res://menus/main_menu.gd" id="7_fc4ne"]
 [ext_resource type="Script" uid="uid://dksx4thyce0qb" path="res://menus/pause_menu.gd" id="8_aauw6"]
+[ext_resource type="Texture2D" uid="uid://bcxqh5k3pviox" path="res://Goblin Game Title.png" id="8_krumh"]
+[ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="9_mqc7d"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_fkyaf"]
 size = Vector2(1.1, 2.7)
@@ -79,6 +81,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("9_mqc7d")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Hud" unique_id=950106236]
 layout_mode = 1
@@ -241,6 +244,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("9_mqc7d")
 script = ExtResource("7_fc4ne")
 
 [node name="Panel" type="Panel" parent="MainMenu" unique_id=819293416]
@@ -252,14 +256,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fc4ne")
 
+[node name="GoblinGameTitle" type="Sprite2D" parent="MainMenu/Panel" unique_id=1151580268]
+position = Vector2(977, 455.99997)
+scale = Vector2(0.3837353, 0.3837353)
+texture = ExtResource("8_krumh")
+
 [node name="StartButton" type="Button" parent="MainMenu/Panel" unique_id=913794560]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.8138889
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.8138889
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "START"
@@ -276,6 +289,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("9_mqc7d")
 script = ExtResource("8_aauw6")
 
 [node name="Panel" type="Panel" parent="PauseMenu" unique_id=2056002117]
@@ -297,6 +311,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "CONTINUE"
@@ -307,9 +325,13 @@ custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.6
+anchor_top = 0.7114197
 anchor_right = 0.5
-anchor_bottom = 0.6
+anchor_bottom = 0.7114197
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "BACK"

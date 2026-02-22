@@ -1,0 +1,55 @@
+[gd_resource type="Theme" format=3 uid="uid://7c42at81fc8d"]
+
+[sub_resource type="SystemFont" id="SystemFont_krumh"]
+
+[sub_resource type="FontVariation" id="FontVariation_mqc7d"]
+base_font = SubResource("SystemFont_krumh")
+variation_embolden = 0.59
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqc7d"]
+bg_color = Color(0.56078434, 0.654902, 0.39215687, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.47843137, 0.26666668, 0.09803922, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfv8i"]
+bg_color = Color(0.60784316, 0.67058825, 0.4117647, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.47843137, 0.26666668, 0.09803922, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krumh"]
+bg_color = Color(0.39215687, 0.6, 0.32156864, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.47843137, 0.26666668, 0.09803922, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[resource]
+Button/colors/font_color = Color(0.23137255, 0.08235294, 0.078431375, 1)
+Button/font_sizes/font_size = 52
+Button/fonts/font = SubResource("FontVariation_mqc7d")
+Button/styles/focus = SubResource("StyleBoxFlat_mqc7d")
+Button/styles/hover = SubResource("StyleBoxFlat_dfv8i")
+Button/styles/normal = SubResource("StyleBoxFlat_krumh")
+Label/colors/font_color = Color(0.47843137, 0.26666668, 0.09803922, 1)
+Label/colors/font_shadow_color = Color(0.09411765, 0.09411765, 0.09411765, 0.5647059)
+Label/font_sizes/font_size = 50
+Label/fonts/font = SubResource("FontVariation_mqc7d")
