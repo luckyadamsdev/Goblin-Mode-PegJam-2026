@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://cjojmua6obdn7"]
+[gd_scene format=3 uid="uid://cbxgsqvfdmwu4"]
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_ypc7b"]
-[ext_resource type="PackedScene" path="res://models/props/item.tscn" id="3_c5nrj"]
-[ext_resource type="PackedScene" uid="uid://cpk2n7mvw6mmw" path="res://Course3.tscn" id="3_ypc7b"]
+[ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_c5nrj"]
+[ext_resource type="PackedScene" uid="uid://db8gs1720yrrp" path="res://Course3.tscn" id="3_ypc7b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
-size = Vector3(300.4899, 107.03613, 5)
+size = Vector3(60, 107.036, 5)
 
 [node name="Map06" type="Node3D" unique_id=317521660]
 script = ExtResource("1_ypc7b")
@@ -20,14 +20,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.912058, -35.864822, -15.6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.88707, -35.865, -15.958)
 
 [node name="end_zone" type="Area3D" parent="." unique_id=999484125]
-transform = Transform3D(0.5933346, 0, -0.80495596, 0, 1, 0, 0.80495596, 0, 0.5933346, 555.2849, -530.5702, -987.21875)
+transform = Transform3D(0.93059015, 0, 0.36606276, 0, 1, 0, -0.36606276, 0, 0.93059015, 138.90173, -266.02377, 837.6191)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="end_zone" unique_id=867850013]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.585724, 195.06967, 8.529541)
 shape = SubResource("BoxShape3D_rh2f5")
-
-[node name="Item1" parent="." unique_id=2065320669 instance=ExtResource("3_c5nrj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -55.676323, 32.3738)
 
 [node name="Course3" parent="." unique_id=1464157065 instance=ExtResource("3_ypc7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.801046, -25.319431, -31.759502)
+
+[node name="Items" type="Node3D" parent="." unique_id=1379850902]
+
+[node name="Item1" parent="Items" unique_id=2065320669 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -74.13441, 155.0866)
+
+[node name="Item2" parent="Items" unique_id=1245933657 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.908295, -112.91975, 311.52472)
+
+[node name="Item3" parent="Items" unique_id=1834031989 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.0721, -135.03415, 363.65826)
+
+[node name="Item4" parent="Items" unique_id=2124395263 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150.59927, -124.354836, 112.127686)
+
+[node name="Item5" parent="Items" unique_id=999399833 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.15576, -162.03264, 299.74164)
+
+[node name="Item6" parent="Items" unique_id=1862797323 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.308296, -242.97736, 710.4448)
