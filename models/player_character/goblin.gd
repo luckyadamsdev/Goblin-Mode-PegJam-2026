@@ -82,12 +82,12 @@ func _end_anvil() -> void:
 	_enter_item_state_none()
 
 func _handle_item_usage(delta: float) -> void:
-	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed() and not anim.current_animation.begins_with('anvil'):
+	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed() and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 		match item_state:
 			ItemStateKeys.ANVIL:
 				anim.play('anvil_throw')
 			ItemStateKeys.BOMB:
-				item_potion_timer = POTION_DURATION
+				anim.play('bomb_throw')
 			ItemStateKeys.POTION:
 				item_potion_timer = POTION_DURATION
 				_enter_item_state_none()
@@ -144,7 +144,7 @@ func _handle_lands() -> void:
 	if not was_on_floor and is_on_floor():
 		time_since_jumped_in_air = 10.0
 		banked_spins = 0
-		if not anim.current_animation.begins_with('anvil'):
+		if not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			if anim.current_animation == 'spin':
 				anim.play('fall')
 				current_speed = MIN_SPEED
@@ -166,7 +166,7 @@ func _handle_jumps(delta: float) -> void:
 		if time_since_on_floor > LAND_THRESHOLD_TIME:
 			landed.emit()
 		time_since_on_floor = 0.0
-		if time_since_jumped_in_air < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil'):
+		if time_since_jumped_in_air < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			_jump()
 	else:
 		time_since_on_floor += delta
@@ -174,7 +174,7 @@ func _handle_jumps(delta: float) -> void:
 			_do_spin_trick()
 	time_since_jumped_in_air += delta
 	if controller.button_one_just_pressed():
-		if time_since_on_floor < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil'):
+		if time_since_on_floor < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			_jump()
 		else:
 			time_since_jumped_in_air = 0.0
@@ -281,7 +281,7 @@ func finished_trick() -> void:
 	num_tricks_in_air += 1
 	if 1 < banked_spins:
 		banked_spins -= 1
-		if not anim.current_animation.begins_with('anvil'):
+		if not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			_do_spin_trick()
 
 func _on_track_area_entered(area: Area3D) -> void:
