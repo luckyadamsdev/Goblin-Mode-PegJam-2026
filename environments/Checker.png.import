@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnt57geet33yv"
-path.s3tc="res://.godot/imported/snowboard-kids.png-ec6e2cc1aedb6748624324ca35bcd0aa.s3tc.ctex"
+uid="uid://2cg88uga3pgg"
+path.s3tc="res://.godot/imported/Checker.png-c5ea5d5aca61aec1de05b0823cc6a6cc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://docs/assets/snowboard-kids.png"
-dest_files=["res://.godot/imported/snowboard-kids.png-ec6e2cc1aedb6748624324ca35bcd0aa.s3tc.ctex"]
+source_file="res://environments/Checker.png"
+dest_files=["res://.godot/imported/Checker.png-c5ea5d5aca61aec1de05b0823cc6a6cc.s3tc.ctex"]
 
 [params]
 

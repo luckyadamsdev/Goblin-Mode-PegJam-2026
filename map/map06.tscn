@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://cbxgsqvfdmwu4"]
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_ypc7b"]
+[ext_resource type="Material" uid="uid://3u4o4exbgvvb" path="res://environments/FinishLineMaterial.tres" id="2_wvtj8"]
 [ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_c5nrj"]
+[ext_resource type="Material" uid="uid://c76k874pgguk" path="res://environments/CheckerBannerMaterial.tres" id="3_wvtj8"]
 [ext_resource type="PackedScene" uid="uid://db8gs1720yrrp" path="res://Course3.tscn" id="3_ypc7b"]
+[ext_resource type="Material" uid="uid://hot0gqsa65xw" path="res://environments/FinishPoleMaterial.tres" id="4_3uplp"]
 [ext_resource type="Script" uid="uid://diyay8j70hq5u" path="res://map/kill_player_area_3d.gd" id="4_u4vis"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u4vis"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
 size = Vector3(60, 107.036, 5)
@@ -22,6 +27,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.912058, -35.864822, -15.6
 
 [node name="goblin_2_start" type="Node3D" parent="." unique_id=1940118030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.88707, -35.865, -15.958)
+
+[node name="FinishVisual" type="Node3D" parent="." unique_id=2046596862]
+transform = Transform3D(55.10612, 0.15073588, 1.6672564, -9.132257, 0.9880162, -0.109643966, -21.571035, -0.033208765, 4.305649, 141.14996, -285.39987, 836.5667)
+
+[node name="FinishLine" type="MeshInstance3D" parent="FinishVisual" unique_id=1111684048]
+transform = Transform3D(0.9999999, -1.4551915e-11, 0, 9.536743e-07, 0.99999976, 0, -9.536743e-07, -1.3969839e-09, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_u4vis")
+skeleton = NodePath("../../end_zone")
+surface_material_override/0 = ExtResource("2_wvtj8")
+
+[node name="Banner" type="MeshInstance3D" parent="FinishVisual" unique_id=1808859727]
+transform = Transform3D(0.9580357, -0.021775302, 1.3767276e-06, 8.855016, 8.446819, -0.00027942657, -0.0011720657, 0.0012808144, 0.09032698, -0.060970068, 23.650208, -0.197052)
+mesh = SubResource("BoxMesh_u4vis")
+skeleton = NodePath("../../end_zone")
+surface_material_override/0 = ExtResource("3_wvtj8")
+
+[node name="Pole1" type="MeshInstance3D" parent="FinishVisual" unique_id=1526038587]
+transform = Transform3D(0.014042217, -0.07474668, 2.3720786e-06, 0.12979063, 28.994854, -0.00048172474, -1.7181039e-05, 0.004396528, 0.15571856, 0.4226365, 14.810059, -0.091033936)
+mesh = SubResource("BoxMesh_u4vis")
+skeleton = NodePath("../../end_zone")
+surface_material_override/0 = ExtResource("4_3uplp")
+
+[node name="Pole2" type="MeshInstance3D" parent="FinishVisual" unique_id=1160334698]
+transform = Transform3D(0.014042217, -0.056119233, 2.3790635e-06, 0.12979063, 21.76912, -0.00048294663, -1.7181039e-05, 0.0033009052, 0.15611346, -0.49615526, 10.490021, -0.1111145)
+mesh = SubResource("BoxMesh_u4vis")
+skeleton = NodePath("../../end_zone")
+surface_material_override/0 = ExtResource("4_3uplp")
 
 [node name="end_zone" type="Area3D" parent="." unique_id=999484125]
 transform = Transform3D(0.93059015, 0, 0.36606276, 0, 1, 0, -0.36606276, 0, 0.93059015, 138.90173, -266.02377, 837.6191)
