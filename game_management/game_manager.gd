@@ -101,10 +101,10 @@ func explode(position: Vector3) -> void:
 		position.distance_to(goblins[0].global_position),
 		position.distance_to(goblins[1].global_position)
 	)
-	if distances[0] < 19.0:
+	if distances[0] < 39.0:
 		goblins[0].fall()
 		whiteFlashArr[0].play('flash')
-	if distances[1] < 19.0:
+	if distances[1] < 39.0:
 		goblins[1].fall()
 		whiteFlashArr[1].play('flash')
 
