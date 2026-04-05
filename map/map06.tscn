@@ -72,17 +72,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.399923, -74.13441, 155.08
 [node name="Item2" parent="Items" unique_id=1245933657 instance=ExtResource("3_c5nrj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.908295, -112.91975, 311.52472)
 
+[node name="Item7" parent="Items" unique_id=380789739 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.27277, -139.9894, 442.87567)
+
 [node name="Item3" parent="Items" unique_id=1834031989 instance=ExtResource("3_c5nrj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.0721, -135.03415, 363.65826)
 
+[node name="Item8" parent="Items" unique_id=1441071758 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -217.55316, -124.86136, 213.8063)
+
 [node name="Item4" parent="Items" unique_id=2124395263 instance=ExtResource("3_c5nrj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150.59927, -124.354836, 112.127686)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.57455, -121.8346, 126.57184)
+
+[node name="Item9" parent="Items" unique_id=267067964 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.934784, -120.86816, 105.07206)
+
+[node name="Item10" parent="Items" unique_id=498749005 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.99419, -132.98364, 196.6336)
 
 [node name="Item5" parent="Items" unique_id=999399833 instance=ExtResource("3_c5nrj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.15576, -162.03264, 299.74164)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.81328, -153.10269, 299.74164)
+
+[node name="Item11" parent="Items" unique_id=1254980128 instance=ExtResource("3_c5nrj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.73792, -170.97931, 376.31848)
 
 [node name="Item6" parent="Items" unique_id=1862797323 instance=ExtResource("3_c5nrj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.308296, -242.97736, 710.4448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.430576, -242.97736, 734.0872)
 
 [node name="KillPlayerArea3D" type="Area3D" parent="." unique_id=592937809]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -337.4416, 416.19727)

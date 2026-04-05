@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://gxgxpdwl82ro" path="res://models/props/item_area_3d.gd" id="2_2kvqr"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_d6362"]
-radius = 0.3
-height = 0.6
+radius = 0.6
+height = 1.2
 
 [sub_resource type="Animation" id="Animation_fn8hb"]
 length = 0.001
@@ -60,7 +60,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
 "transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
 "update": 0,
-"values": [Vector3(0, 0.5, 0), Vector3(0, 0.5, -0.5), Vector3(0, 0.5, 0), Vector3(0, 0.5, 0.5), Vector3(0, 0.5, 0)]
+"values": [Vector3(0, 0.5, 0), Vector3(0, 0.5, -1), Vector3(0, 0.5, 0), Vector3(0, 0.5, 1), Vector3(0, 0.5, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yh2kp"]
@@ -70,7 +70,7 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nl3ne"]
-radius = 1.5
+radius = 2.0
 
 [node name="Item" type="Node3D" unique_id=2065320669]
 script = ExtResource("1_kqs0v")
