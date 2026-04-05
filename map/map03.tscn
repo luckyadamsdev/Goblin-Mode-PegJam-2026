@@ -81,7 +81,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.892766, -93.96596, 287.52
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.553894, -94.982056, 355.75998)
 
 [node name="Tree7" parent="." unique_id=1986267838 instance=ExtResource("4_yh2kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.835594, -94.46935, 361.51608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.21049, -93.888214, 362.68527)
+
+[node name="Tree8" parent="." unique_id=338612371 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.40912, -143.7417, 725.37054)
+
+[node name="Tree9" parent="." unique_id=1752427913 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1662674, -138.99557, 724.0564)
+
+[node name="Tree10" parent="." unique_id=154007904 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.16544, -131.24133, 661.88544)
+
+[node name="Tree11" parent="." unique_id=1224405267 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.92549, -118.7888, 599.7145)
+
+[node name="Tree12" parent="." unique_id=1716194457 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.61052, -108.76733, 537.5435)
+
+[node name="Tree13" parent="." unique_id=371151442 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.73006, -104.715294, 475.37256)
+
+[node name="Tree14" parent="." unique_id=940578283 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.150406, -100.66326, 413.2016)
+
+[node name="Tree15" parent="." unique_id=1568043370 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.882929, -150.9002, 852.8806)
+
+[node name="Tree16" parent="." unique_id=95608682 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.484398, -157.6873, 855.01654)
+
+[node name="Tree17" parent="." unique_id=1678702414 instance=ExtResource("4_yh2kp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.43321, -164.962, 933.0649)
 
 [node name="Tree" type="MeshInstance3D" parent="." unique_id=1670657751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9916849, -66.59286, 116.07863)
