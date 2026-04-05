@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dx6f1cp66jedi" path="res://models/player_character/goblin_foot.tscn" id="5_4bcv1"]
 [ext_resource type="PackedScene" uid="uid://bc8quaotr3mqn" path="res://models/props/bomb.tscn" id="5_4pj2w"]
 [ext_resource type="PackedScene" uid="uid://bsmdjr8ppc0tl" path="res://models/board/LogBoard.tscn" id="6_4bcv1"]
-[ext_resource type="PackedScene" path="res://models/props/potion_mesh.tscn" id="7_qn6hm"]
+[ext_resource type="PackedScene" uid="uid://bmr5vrkp0v8w" path="res://models/props/potion_mesh.tscn" id="7_qn6hm"]
 [ext_resource type="PackedScene" uid="uid://c2h62dfwjru50" path="res://models/player_character/anvil.tscn" id="7_xc1av"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qn6hm"]
@@ -669,6 +669,18 @@ tracks/10/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DisplayHolder/display/AnvilMesh:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_n3frc"]
 resource_name = "fall"
@@ -865,6 +877,18 @@ tracks/15/keys = {
 "update": 0,
 "values": [Vector3(0.5954429, -0.010792971, 0.08343461)]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("DisplayHolder/display/AnvilMesh:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ddw36"]
 resource_name = "idle"
@@ -966,6 +990,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.5954429, -0.010792971, 0.08343461)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DisplayHolder/display/AnvilMesh:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_xc1av"]
@@ -1128,6 +1164,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector3(0.5954429, -0.010792971, 0.08343461)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DisplayHolder/display/AnvilMesh:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4pj2w"]
 resource_name = "land"
@@ -1275,6 +1323,18 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.5954429, -0.010792971, 0.08343461)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DisplayHolder/display/AnvilMesh:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_qn6hm"]
@@ -1474,6 +1534,18 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.5954429, -0.010792971, 0.08343461)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("DisplayHolder/display/AnvilMesh:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c8e47"]

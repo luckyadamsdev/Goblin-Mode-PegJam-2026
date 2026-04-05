@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_ypc7b"]
 [ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_c5nrj"]
 [ext_resource type="PackedScene" uid="uid://db8gs1720yrrp" path="res://Course3.tscn" id="3_ypc7b"]
+[ext_resource type="Script" uid="uid://diyay8j70hq5u" path="res://map/kill_player_area_3d.gd" id="4_u4vis"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
 size = Vector3(60, 107.036, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ypc7b"]
+size = Vector3(3000, 100, 3000)
 
 [node name="Map06" type="Node3D" unique_id=317521660]
 script = ExtResource("1_ypc7b")
@@ -47,3 +51,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.15576, -162.03264, 299.74
 
 [node name="Item6" parent="Items" unique_id=1862797323 instance=ExtResource("3_c5nrj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.308296, -242.97736, 710.4448)
+
+[node name="KillPlayerArea3D" type="Area3D" parent="." unique_id=592937809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -337.4416, 416.19727)
+script = ExtResource("4_u4vis")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlayerArea3D" unique_id=499779012]
+shape = SubResource("BoxShape3D_ypc7b")
+
+[connection signal="body_entered" from="KillPlayerArea3D" to="KillPlayerArea3D" method="_on_body_entered"]
