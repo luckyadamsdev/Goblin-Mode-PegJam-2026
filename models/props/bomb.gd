@@ -7,3 +7,5 @@ func play_flash_animation() -> void:
 
 func try_to_hurt() -> void:
 	Global.game_manager.explode(global_position)
+
+# ignore me
