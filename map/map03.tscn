@@ -44,6 +44,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.95266, -81.74569, 130.649
 [node name="Item3" parent="Items" unique_id=1071257862 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2978354, -92.52832, 284.5495)
 
+[node name="Item11" parent="Items" unique_id=2039234476 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.928986, -99.519615, 435.0543)
+
 [node name="Item4" parent="Items" unique_id=1253320907 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.38785, -109.24122, 547.39935)
 
@@ -64,6 +67,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 742.15076, -234.05562, 87.229
 
 [node name="Item10" parent="Items" unique_id=1719364774 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.04257, -298.80957, -360.77036)
+
+[node name="Item12" parent="Items" unique_id=1657241280 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.15384, -329.68655, -603.7012)
+
+[node name="Item13" parent="Items" unique_id=1757807055 instance=ExtResource("3_nl3ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.13896, -335.23953, -825.2916)
 
 [node name="FinishLine" type="MeshInstance3D" parent="." unique_id=1925061184]
 transform = Transform3D(4.0049634, 0, 83.81438, 0, 1, 0, -2.9933705, 0, 112.13898, 526.3502, -362.1474, -1012.75946)
