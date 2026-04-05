@@ -8,7 +8,7 @@ signal fell_down()
 signal teleport_swirled()
 signal teleported()
 
-const BASE_ACCELERATION := 0.05
+const BASE_ACCELERATION := 2.0
 const COYOTE_TIME := 0.2
 const FRICTION := 0.3
 const FRICTION_OFF_TRACK := 0.2
