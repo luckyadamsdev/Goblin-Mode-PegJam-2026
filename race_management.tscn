@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Shader" path="res://fx/speedlines.gdshader" id="3_fnib8"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
+[ext_resource type="PackedScene" uid="uid://djinwvjdw5a7f" path="res://fx/sparlkes_effect.tscn" id="7_o5mvv"]
 [ext_resource type="PackedScene" uid="uid://vy5ccipgdpia" path="res://menus/player_indicator_hud.tscn" id="8_kbk5t"]
 [ext_resource type="PackedScene" uid="uid://dxump8b7q41bq" path="res://menus/main_menu.tscn" id="8_krumh"]
 [ext_resource type="PackedScene" uid="uid://bd72dwb7m4ov7" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
@@ -178,9 +179,10 @@ goblin = NodePath("../Goblin1")
 shadow_range = 9.0
 shadow_materal = SubResource("ShaderMaterial_fc4ne")
 
-[node name="Goblin1" parent="." unique_id=697638060 node_paths=PackedStringArray("shadow") instance=ExtResource("2_srorr")]
+[node name="Goblin1" parent="." unique_id=697638060 node_paths=PackedStringArray("shadow", "sparkles_effect") instance=ExtResource("2_srorr")]
 collision_layer = 2
 shadow = NodePath("../Goblin1Shadow")
+sparkles_effect = NodePath("../SparklesEffect1")
 
 [node name="Goblin2Shadow" type="MeshInstance3D" parent="." unique_id=1332210659 node_paths=PackedStringArray("goblin")]
 mesh = SubResource("QuadMesh_fkyaf")
@@ -191,10 +193,15 @@ goblin = NodePath("../Goblin2")
 shadow_range = 9.0
 shadow_materal = SubResource("ShaderMaterial_g82c4")
 
-[node name="Goblin2" parent="." unique_id=1005389590 node_paths=PackedStringArray("shadow") instance=ExtResource("2_srorr")]
+[node name="Goblin2" parent="." unique_id=1005389590 node_paths=PackedStringArray("shadow", "sparkles_effect") instance=ExtResource("2_srorr")]
 collision_layer = 2
 player_id = 2
 shadow = NodePath("../Goblin2Shadow")
+sparkles_effect = NodePath("../SparklesEffect2")
+
+[node name="SparklesEffect1" parent="." unique_id=947527995 instance=ExtResource("7_o5mvv")]
+
+[node name="SparklesEffect2" parent="." unique_id=315622895 instance=ExtResource("7_o5mvv")]
 
 [node name="Hud" type="Control" parent="." unique_id=198289351]
 layout_mode = 3

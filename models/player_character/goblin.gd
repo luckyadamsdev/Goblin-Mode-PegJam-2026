@@ -28,6 +28,7 @@ const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the
 @export var follow_pivot:Node3D
 @export var follow_direction:Node3D
 @export var shadow:Shadow
+@export var sparkles_effect:SparkleEffect
 
 enum ItemStateKeys {
 	NONE,
@@ -57,8 +58,6 @@ var was_on_floor := false
 
 @onready var goblin_template:Node3D = $GoblinTemplate
 @onready var anim:AnimationPlayer = goblin_template.get_animation_player()
-
-var sparkles_effect:SparkleEffect
 
 func _ready() -> void:
 	velocity = Vector3(0.0, 0.0, MIN_SPEED)
