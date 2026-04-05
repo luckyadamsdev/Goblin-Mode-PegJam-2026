@@ -315,3 +315,9 @@ func _on_track_area_exited(area: Area3D) -> void:
 func print_p1(value_given) -> void:
 	if player_id == 1:
 		print(value_given)
+
+func emit_teleported() -> void:
+	teleported.emit()
+
+func emit_teleport_swirled() -> void:
+	teleport_swirled.emit()

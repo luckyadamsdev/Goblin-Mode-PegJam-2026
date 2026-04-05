@@ -32,7 +32,7 @@ func restart_player(player_given: Goblin) -> void:
 		get_parent().add_child(player_given.sparkles_effect)
 	player_given.pause()
 	
-	player_given.teleport_swirled.emit()
+	player_given.emit_teleport_swirled()
 	player_given.sparkles_effect.global_position = player_given.global_position
 	player_given.sparkles_effect.show_sparkles()
 	# timer so teleport isn't completely instant
@@ -40,7 +40,7 @@ func restart_player(player_given: Goblin) -> void:
 		
 	player_given.global_position = start.global_position
 	player_given.rotation = start.rotation
-	player_given.teleported.emit()
+	player_given.emit_teleported()
 	
 	await get_tree().create_timer(0.5).timeout # waiting for camera
 	player_given.sparkles_effect.global_position = player_given.global_position
