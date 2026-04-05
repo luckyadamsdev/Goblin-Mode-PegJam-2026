@@ -9,8 +9,8 @@ class_name Shadow
 
 @export var shadow_materal:ShaderMaterial
 
+var is_on_floor: bool = false
 var pan_value:float = 0.0
-
 var raycast:RayCast3D
 
 func _ready() -> void:
@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 		shadow_materal.set_shader_parameter("shadow_mult", shadow_mult)
 		shadow_materal.set_shader_parameter("pan_value", pan_value)
 		shadow_materal.set_shader_parameter("speed", relative_velocity.length())
-		visible = true
+		visible = true and !is_on_floor
 	else:
 		visible = false
 	raycast.global_position = goblin.to_global(position_offset)

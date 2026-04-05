@@ -27,6 +27,7 @@ const LAND_THRESHOLD_TIME := 1.0 # don't count as "landing" unless you're in the
 @export var controller:GoblinController
 @export var follow_pivot:Node3D
 @export var follow_direction:Node3D
+@export var shadow:Shadow
 
 enum ItemStateKeys {
 	NONE,
@@ -75,7 +76,12 @@ func _physics_process(delta: float) -> void:
 	_handle_rotation_controls(delta)
 	_handle_stretching()
 	_handle_item_usage(delta)
+	_handle_shadow()
 	was_on_floor = is_on_floor()
+
+func _handle_shadow() -> void:
+	if was_on_floor != is_on_floor():
+		shadow.is_on_floor = !was_on_floor
 
 func _end_item() -> void:
 	if is_instance_valid(enemy):
