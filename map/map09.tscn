@@ -1,14 +1,19 @@
-[gd_scene format=3 uid="uid://bkbv4kx6yem3x"]
+[gd_scene format=3 uid="uid://ds2r0k85qrrpm"]
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_ubby6"]
-[ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_s47gh"]
+[ext_resource type="PackedScene" path="res://models/props/item.tscn" id="3_s47gh"]
 [ext_resource type="PackedScene" uid="uid://djs046nwqep5a" path="res://Course9.tscn" id="4_g2cni"]
 [ext_resource type="PackedScene" uid="uid://tn5kasr05k8a" path="res://models/tree/Tree.tscn" id="4_h6x6e"]
+[ext_resource type="Texture2D" uid="uid://b6smvshq3yn8x" path="res://Tree2_ForSubstance_openPBR_shader1_BaseColor.png" id="4_tg2be"]
+[ext_resource type="ArrayMesh" uid="uid://dfr2xd4gw7imb" path="res://Tree2.obj" id="5_6m0c3"]
 [ext_resource type="Material" uid="uid://3u4o4exbgvvb" path="res://environments/FinishLineMaterial.tres" id="5_akoar"]
 [ext_resource type="Material" uid="uid://c76k874pgguk" path="res://environments/CheckerBannerMaterial.tres" id="5_q0lve"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
 size = Vector3(300.4899, 107.03613, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdu00"]
+albedo_texture = ExtResource("4_tg2be")
 
 [sub_resource type="BoxMesh" id="BoxMesh_g2cni"]
 
@@ -64,28 +69,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 561.87573, -308.3044, 1164.03
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 282.77304, -337.42648, 1343.5676)
 
 [node name="Tree1" parent="." unique_id=1068342320 instance=ExtResource("4_h6x6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.923458, -91.34365, 220.61024)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.858797, -63.843517, 220.61024)
 
 [node name="Tree2" parent="." unique_id=1124461190 instance=ExtResource("4_h6x6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.391804, -89.28513, 189.06929)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.391804, -58.79695, 189.06929)
 
 [node name="Tree3" parent="." unique_id=1953166390 instance=ExtResource("4_h6x6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.697178, -79.999146, 109.234184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.19909, -38.3795, 109.234184)
 
 [node name="Tree4" parent="." unique_id=1227809627 instance=ExtResource("4_h6x6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.643507, -93.96596, 301.3524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.261023, -77.71608, 301.3524)
 
 [node name="Tree5" parent="." unique_id=1446195860 instance=ExtResource("4_h6x6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.892766, -93.96596, 287.527)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.892766, -76.511795, 287.527)
 
 [node name="Tree6" parent="." unique_id=470310832 instance=ExtResource("4_h6x6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.553894, -94.982056, 355.75998)
 
 [node name="Tree7" parent="." unique_id=1986267838 instance=ExtResource("4_h6x6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.835594, -94.46935, 361.51608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.243786, -94.85019, 361.51608)
+
+[node name="Tree8" type="MeshInstance3D" parent="." unique_id=369217008]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.1353576, -69.2513, 248.8461)
+material_override = SubResource("StandardMaterial3D_gdu00")
+mesh = ExtResource("5_6m0c3")
+
+[node name="Tree9" type="MeshInstance3D" parent="." unique_id=531118686]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.546679, -174.06473, 746.5383)
+material_override = SubResource("StandardMaterial3D_gdu00")
+mesh = ExtResource("5_6m0c3")
+skeleton = NodePath("../Tree8")
+
+[node name="Tree10" type="MeshInstance3D" parent="." unique_id=597130422]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 25.139162, -108.89743, 416.4518)
+material_override = SubResource("StandardMaterial3D_gdu00")
+mesh = ExtResource("5_6m0c3")
+skeleton = NodePath("../Tree8")
+
+[node name="Tree11" type="MeshInstance3D" parent="." unique_id=105209586]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 74.1458, -177.87544, 795.67487)
+material_override = SubResource("StandardMaterial3D_gdu00")
+mesh = ExtResource("5_6m0c3")
+skeleton = NodePath("../Tree10")
+
+[node name="Tree12" parent="." unique_id=268111708 instance=ExtResource("4_h6x6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.23217, -167.90504, 713.36743)
+
+[node name="Tree13" type="MeshInstance3D" parent="." unique_id=1950052021]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.476173, -183.99155, 839.22186)
+material_override = SubResource("StandardMaterial3D_gdu00")
+mesh = ExtResource("5_6m0c3")
+skeleton = NodePath("../Tree10")
 
 [node name="Course9" parent="." unique_id=1464157065 instance=ExtResource("4_g2cni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.280716, -11.999643, -29.404804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.339577, 11.044985, -16.83934)
 
 [node name="FinishLine" type="MeshInstance3D" parent="." unique_id=1159384637]
 transform = Transform3D(-34.10309, 0, -4.6271405, 0, 1, 0, 83.28853, 0, -1.894616, -98.25037, -340.5441, 1550.7213)
