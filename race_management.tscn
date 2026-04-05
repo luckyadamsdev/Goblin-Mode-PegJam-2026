@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Shader" path="res://fx/speedlines.gdshader" id="3_fnib8"]
 [ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
+[ext_resource type="PackedScene" uid="uid://vy5ccipgdpia" path="res://menus/player_indicator_hud.tscn" id="8_kbk5t"]
 [ext_resource type="PackedScene" uid="uid://dxump8b7q41bq" path="res://menus/main_menu.tscn" id="8_krumh"]
 [ext_resource type="PackedScene" uid="uid://bd72dwb7m4ov7" path="res://menus/pause_menu.tscn" id="9_dfv8i"]
 [ext_resource type="Theme" uid="uid://7c42at81fc8d" path="res://menus/main_theme.tres" id="9_mqc7d"]
@@ -25,14 +26,14 @@ frequency = 0.0103
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wid8x"]
 noise = SubResource("FastNoiseLite_n3frc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx4q6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbk5t"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_fnib8")
 shader_parameter/velocity = Vector3(0, 0, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_wid8x")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbk5t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5mvv"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_fnib8")
@@ -134,10 +135,11 @@ _data = {
 
 [node name="Node3D" type="Node3D" unique_id=946005891]
 
-[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "whiteFlashArr", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "lapLeft", "lapRight", "placeLeft", "placeRight", "map_title", "hud", "racing_overlay")]
+[node name="GameManager" type="Node" parent="." unique_id=942058629 node_paths=PackedStringArray("goblins", "playerIndicators", "whiteFlashArr", "cameras", "win_screens", "ready_screens", "press_to_start_screens", "timer_label", "main_menu", "pause_menu", "lapLeft", "lapRight", "placeLeft", "placeRight", "map_title", "hud", "racing_overlay")]
 process_mode = 3
 script = ExtResource("1_cawbs")
 goblins = [NodePath("../Goblin1"), NodePath("../Goblin2")]
+playerIndicators = [NodePath("../Hud/HBoxContainer/player1screen/SubViewport/PlayerIndicatorHUD"), NodePath("../Hud/HBoxContainer/player2screen/SubViewport/PlayerIndicatorHUD")]
 whiteFlashArr = [NodePath("../Hud/HBoxContainer/player1screen/SubViewport/WhiteColor/AnimationPlayer"), NodePath("../Hud/HBoxContainer/player2screen/SubViewport/WhiteColor/AnimationPlayer")]
 cameras = [NodePath("../Hud/HBoxContainer/player1screen/SubViewport/Camera3D"), NodePath("../Hud/HBoxContainer/player2screen/SubViewport/Camera3D")]
 win_screens = [NodePath("../Hud/Goblin1Wins"), NodePath("../Hud/Goblin2Wins")]
@@ -160,12 +162,12 @@ metadata/_custom_type_script = "uid://d1tx7u565xame"
 [node name="goblin_speed1" parent="." unique_id=85550158 node_paths=PackedStringArray("goblin") instance=ExtResource("2_dfv8i")]
 visible = false
 goblin = NodePath("../Goblin1")
-speed_material = SubResource("ShaderMaterial_cx4q6")
+speed_material = SubResource("ShaderMaterial_kbk5t")
 
 [node name="goblin_speed2" parent="." unique_id=1259304052 node_paths=PackedStringArray("goblin") instance=ExtResource("2_dfv8i")]
 visible = false
 goblin = NodePath("../Goblin2")
-speed_material = SubResource("ShaderMaterial_kbk5t")
+speed_material = SubResource("ShaderMaterial_o5mvv")
 
 [node name="Goblin1Shadow" type="MeshInstance3D" parent="." unique_id=2078833400 node_paths=PackedStringArray("goblin")]
 mesh = SubResource("QuadMesh_fkyaf")
@@ -241,6 +243,8 @@ color = Color(1, 1, 1, 0)
 libraries/ = SubResource("AnimationLibrary_dfv8i")
 autoplay = &"RESET"
 
+[node name="PlayerIndicatorHUD" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=1606358147 instance=ExtResource("8_kbk5t")]
+
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player1screen/SubViewport" unique_id=760150600 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1760081, 1.091122)
 script = ExtResource("1_olp4a")
@@ -271,6 +275,8 @@ color = Color(1, 1, 1, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hud/HBoxContainer/player2screen/SubViewport/WhiteColor" unique_id=724076679]
 libraries/ = SubResource("AnimationLibrary_dfv8i")
 autoplay = &"RESET"
+
+[node name="PlayerIndicatorHUD" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1195580381 instance=ExtResource("8_kbk5t")]
 
 [node name="Camera3D" type="Camera3D" parent="Hud/HBoxContainer/player2screen/SubViewport" unique_id=1497032298 node_paths=PackedStringArray("goblin")]
 transform = Transform3D(0.9909106, 0, 0.13452233, 0, 1, 0, -0.13452233, 0, 0.9909106, 0.15232575, 1.1569607, 0.8345791)

@@ -15,9 +15,11 @@ signal in_pause_menu()
 
 var current_map:Map 
 
+const PLAYER_INDICATOR_POSITION_OFFSET = Vector3(0.0, 1.5, 0.0)
 const TOTAL_LAPS:int = 3
 
 @export var goblins:Array[Goblin]
+@export var playerIndicators:Array[Control]
 @export var whiteFlashArr:Array[AnimationPlayer]
 
 ## whether the players have pressed buttons to start
@@ -291,6 +293,7 @@ func _handle_racing_mode() -> void:
 		get_tree().paused = true
 	else:
 		if current_map.is_race:
+			_handle_player_indicator_hud()
 			if goblins[1].current_lap < goblins[0].current_lap:
 				set_leading(1)
 			elif goblins[0].current_lap < goblins[1].current_lap:
@@ -306,6 +309,18 @@ func _handle_racing_mode() -> void:
 					# needs to exceed other by a little before it counts as taking the lead
 					if (goblin.global_position.y < other_goblin.global_position.y - 0.2):
 						set_leading(goblin.player_id)
+
+func _handle_player_indicator_hud() -> void:
+	var farFromEachOther: bool = true# (20.0 < goblins[0].global_position.distance_to(goblins[1].global_position))
+	var p0Behind = cameras[1].is_position_behind(goblins[0].global_position)
+	var p1Behind = cameras[0].is_position_behind(goblins[1].global_position)
+	if farFromEachOther:
+		var screenPosition: Vector2 = cameras[0].unproject_position(goblins[1].global_position + PLAYER_INDICATOR_POSITION_OFFSET)
+		playerIndicators[0].global_position = Vector2(screenPosition)
+		screenPosition = cameras[1].unproject_position(goblins[0].global_position + PLAYER_INDICATOR_POSITION_OFFSET)
+		playerIndicators[1].global_position = Vector2(screenPosition)
+	playerIndicators[0].visible = farFromEachOther and not p1Behind
+	playerIndicators[1].visible = farFromEachOther and not p0Behind
 
 func set_leading(player_id:int) -> void:
 	if player_id == leading_player:
