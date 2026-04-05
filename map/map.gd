@@ -26,10 +26,7 @@ func restart_player(player_given: Goblin) -> void:
 	var start := goblin_1_start
 	if player_given.player_id == 2:
 		start = goblin_2_start
-		
-	if player_given.sparkles_effect == null:
-		player_given.sparkles_effect = load("res://fx/sparlkes_effect.tscn").instantiate() as SparkleEffect
-		get_parent().add_child(player_given.sparkles_effect)
+
 	player_given.pause()
 	
 	player_given.emit_teleport_swirled()
