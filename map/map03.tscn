@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_0dh05"]
 [ext_resource type="PackedScene" uid="uid://dj7awkeccg37u" path="res://Course.tscn" id="2_0dh05"]
-[ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_nl3ne"]
+[ext_resource type="PackedScene" path="res://models/props/item.tscn" id="3_nl3ne"]
 [ext_resource type="PackedScene" uid="uid://tn5kasr05k8a" path="res://models/tree/Tree.tscn" id="4_yh2kp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.585724, 195.06967, 8.5295
 shape = SubResource("BoxShape3D_rh2f5")
 
 [node name="Course" parent="." unique_id=1464157065 instance=ExtResource("2_0dh05")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 195.89551, -92.865814, -20.533249)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 195.89682, -92.89795, -20.553326)
 
 [node name="Items" type="Node3D" parent="." unique_id=1819369645]
 
@@ -82,3 +82,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.553894, -94.982056, 355.75
 
 [node name="Tree7" parent="." unique_id=1986267838 instance=ExtResource("4_yh2kp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.835594, -94.46935, 361.51608)
+
+[node name="Tree" type="MeshInstance3D" parent="." unique_id=1670657751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9916849, -66.59286, 116.07863)
