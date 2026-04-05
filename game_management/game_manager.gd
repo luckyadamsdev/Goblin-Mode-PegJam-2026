@@ -93,6 +93,9 @@ func _process(_delta: float) -> void:
 		GameMode.MAIN_MENU:
 			pass # don't need to do anything else
 
+func check_is_race_finished() -> bool:
+	return game_mode == GameMode.WON
+
 func explode(position: Vector3) -> void:
 	var distances := Vector2(
 		position.distance_to(goblins[0].global_position),
