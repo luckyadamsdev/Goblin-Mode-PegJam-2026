@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dj7awkeccg37u"]
 
-[ext_resource type="ArrayMesh" uid="uid://d22bwbtmc2cei" path="res://FullCourse(Terrain+Track).obj" id="1_wfvhn"]
-[ext_resource type="ArrayMesh" uid="uid://dksplxp6b808o" path="res://Track2.obj" id="2_ssftj"]
-[ext_resource type="Texture2D" uid="uid://bef7b6butpg7j" path="res://Track2_ForSubstance_openPBR_shader1_BaseColor.png" id="3_aakl2"]
-[ext_resource type="Texture2D" uid="uid://cbtbgpealgtqf" path="res://Track2_ForSubstance_openPBR_shader1_Roughness.png" id="5_fn8hb"]
+[ext_resource type="ArrayMesh" uid="uid://d22bwbtmc2cei" path="res://tracks/FullCourse(Terrain+Track).obj" id="1_wfvhn"]
+[ext_resource type="ArrayMesh" uid="uid://dksplxp6b808o" path="res://tracks/Track2.obj" id="2_ssftj"]
+[ext_resource type="Texture2D" uid="uid://bef7b6butpg7j" path="res://tracks/Track2_ForSubstance_openPBR_shader1_BaseColor.png" id="3_aakl2"]
+[ext_resource type="Texture2D" uid="uid://cbtbgpealgtqf" path="res://tracks/Track2_ForSubstance_openPBR_shader1_Roughness.png" id="5_fn8hb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f2x1d"]
 load_path = "res://.godot/imported/Track2_ForSubstance_openPBR_shader1_BaseColor.png-8cda27d25a53522ed6f74ccbe1962c06.s3tc.ctex"

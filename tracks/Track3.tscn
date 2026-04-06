@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2e304quc2qbc"]
 
-[ext_resource type="ArrayMesh" uid="uid://bpxospwd2p21l" path="res://Track3.obj" id="1_fncuy"]
+[ext_resource type="ArrayMesh" uid="uid://bpxospwd2p21l" path="res://tracks/Track3.obj" id="1_fncuy"]
 
 [node name="Track3" type="Node3D" unique_id=1149562168]
 

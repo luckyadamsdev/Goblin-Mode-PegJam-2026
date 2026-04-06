@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://ehrs6gbdgps" path="res://shadow/shadow.gd" id="2_rgvqj"]
 [ext_resource type="PackedScene" uid="uid://cxp6jn1eqokf5" path="res://models/player_character/goblin_basic_player.tscn" id="2_srorr"]
 [ext_resource type="Shader" path="res://fx/speedlines.gdshader" id="3_fnib8"]
-[ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://timer_label.gd" id="6_g82c4"]
+[ext_resource type="Script" uid="uid://b16w43ivbwo4i" path="res://menus/timer_label.gd" id="6_g82c4"]
 [ext_resource type="PackedScene" uid="uid://djinwvjdw5a7f" path="res://fx/sparlkes_effect.tscn" id="7_o5mvv"]
 [ext_resource type="PackedScene" uid="uid://vy5ccipgdpia" path="res://menus/player_indicator_hud.tscn" id="8_kbk5t"]
 [ext_resource type="PackedScene" uid="uid://dxump8b7q41bq" path="res://menus/main_menu.tscn" id="8_krumh"]
@@ -27,14 +27,14 @@ frequency = 0.0103
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wid8x"]
 noise = SubResource("FastNoiseLite_n3frc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbk5t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5mvv"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_fnib8")
 shader_parameter/velocity = Vector3(0, 0, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_wid8x")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5mvv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sni3e"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_fnib8")
@@ -163,12 +163,12 @@ metadata/_custom_type_script = "uid://d1tx7u565xame"
 [node name="goblin_speed1" parent="." unique_id=85550158 node_paths=PackedStringArray("goblin") instance=ExtResource("2_dfv8i")]
 visible = false
 goblin = NodePath("../Goblin1")
-speed_material = SubResource("ShaderMaterial_kbk5t")
+speed_material = SubResource("ShaderMaterial_o5mvv")
 
 [node name="goblin_speed2" parent="." unique_id=1259304052 node_paths=PackedStringArray("goblin") instance=ExtResource("2_dfv8i")]
 visible = false
 goblin = NodePath("../Goblin2")
-speed_material = SubResource("ShaderMaterial_o5mvv")
+speed_material = SubResource("ShaderMaterial_sni3e")
 
 [node name="Goblin1Shadow" type="MeshInstance3D" parent="." unique_id=2078833400 node_paths=PackedStringArray("goblin")]
 mesh = SubResource("QuadMesh_fkyaf")

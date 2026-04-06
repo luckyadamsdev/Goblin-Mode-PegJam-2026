@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0quiwq6ccret"
-path="res://.godot/imported/Track2_ForSubstance_openPBR_shader1_Metallic.png-7c91adac1c9391532b9c0c5f73ee66f8.ctex"
+uid="uid://bcxqh5k3pviox"
+path="res://.godot/imported/Goblin Game Title.png-6be86fc920fb3f03cf84ebcee007c804.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Track2_ForSubstance_openPBR_shader1_Metallic.png"
-dest_files=["res://.godot/imported/Track2_ForSubstance_openPBR_shader1_Metallic.png-7c91adac1c9391532b9c0c5f73ee66f8.ctex"]
+source_file="res://menus/Goblin Game Title.png"
+dest_files=["res://.godot/imported/Goblin Game Title.png-6be86fc920fb3f03cf84ebcee007c804.ctex"]
 
 [params]
 

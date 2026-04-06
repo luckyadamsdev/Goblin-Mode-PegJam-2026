@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg8jdsvnu1fqk"
-path="res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Roughness.png-084c459ebfd03a9b3d95ecd96e4e6ee3.ctex"
+path="res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Roughness.png-39637b2bc47d2cf669b48d005942a401.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Track3_ForSubstance_openPBR_shader1_Roughness.png"
-dest_files=["res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Roughness.png-084c459ebfd03a9b3d95ecd96e4e6ee3.ctex"]
+source_file="res://tracks/Track3_ForSubstance_openPBR_shader1_Roughness.png"
+dest_files=["res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Roughness.png-39637b2bc47d2cf669b48d005942a401.ctex"]
 
 [params]
 

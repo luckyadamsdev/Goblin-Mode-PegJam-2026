@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://3u4o4exbgvvb" path="res://environments/FinishLineMaterial.tres" id="2_wvtj8"]
 [ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_c5nrj"]
 [ext_resource type="Material" uid="uid://c76k874pgguk" path="res://environments/CheckerBannerMaterial.tres" id="3_wvtj8"]
-[ext_resource type="PackedScene" uid="uid://db8gs1720yrrp" path="res://Course3.tscn" id="3_ypc7b"]
+[ext_resource type="PackedScene" uid="uid://db8gs1720yrrp" path="res://tracks/Course3.tscn" id="3_ypc7b"]
 [ext_resource type="Material" uid="uid://hot0gqsa65xw" path="res://environments/FinishPoleMaterial.tres" id="4_3uplp"]
 [ext_resource type="Script" uid="uid://diyay8j70hq5u" path="res://map/kill_player_area_3d.gd" id="4_u4vis"]
 

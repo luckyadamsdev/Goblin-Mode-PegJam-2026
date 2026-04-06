@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqm64l0bxw1ap"
-path="res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Height.png-1df56e175a79791332fbba6e815e7e42.ctex"
+uid="uid://d1dy6m7jb4n66"
+path="res://.godot/imported/Track2_ForSubstance_openPBR_shader1_Metallic 3.03.26 PM.png-f5605622de5fe6be8551976cdd10e3d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Track3_ForSubstance_openPBR_shader1_Height.png"
-dest_files=["res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Height.png-1df56e175a79791332fbba6e815e7e42.ctex"]
+source_file="res://tracks/Track2_ForSubstance_openPBR_shader1_Metallic 3.03.26 PM.png"
+dest_files=["res://.godot/imported/Track2_ForSubstance_openPBR_shader1_Metallic 3.03.26 PM.png-f5605622de5fe6be8551976cdd10e3d6.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://db8gs1720yrrp"]
 
-[ext_resource type="ArrayMesh" uid="uid://cxv3g5jjgfs03" path="res://shredder.obj" id="1_tncge"]
-[ext_resource type="Texture2D" uid="uid://bmkkyfw1qv2kj" path="res://shredder_initialShadingGroup_BaseColor.png" id="2_jjaci"]
+[ext_resource type="ArrayMesh" uid="uid://cxv3g5jjgfs03" path="res://tracks/shredder.obj" id="1_tncge"]
+[ext_resource type="Texture2D" uid="uid://bmkkyfw1qv2kj" path="res://tracks/shredder_initialShadingGroup_BaseColor.png" id="2_jjaci"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_prqea"]
 albedo_texture = ExtResource("2_jjaci")

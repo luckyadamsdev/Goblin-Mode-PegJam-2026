@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cddy8ssxx6d2i"
-path.s3tc="res://.godot/imported/Tree2_ForSubstance_openPBR_shader1_Roughness.png-f27850121ed9db6988fa10a720b796cb.s3tc.ctex"
+uid="uid://b6smvshq3yn8x"
+path.s3tc="res://.godot/imported/Tree2_ForSubstance_openPBR_shader1_BaseColor.png-b630dbbc825faad4ed7aa67f72453b82.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Tree2_ForSubstance_openPBR_shader1_Roughness.png"
-dest_files=["res://.godot/imported/Tree2_ForSubstance_openPBR_shader1_Roughness.png-f27850121ed9db6988fa10a720b796cb.s3tc.ctex"]
+source_file="res://environments/Tree2_ForSubstance_openPBR_shader1_BaseColor.png"
+dest_files=["res://.godot/imported/Tree2_ForSubstance_openPBR_shader1_BaseColor.png-b630dbbc825faad4ed7aa67f72453b82.s3tc.ctex"]
 
 [params]
 

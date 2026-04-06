@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj8hndm12d75d"
-path="res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Metallic.png-0c5bc47b6c2a1459626b55e4c92f1fd3.ctex"
+path="res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Metallic.png-00699f6b2ccccf8085a72aad8d8e2ff8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Track3_ForSubstance_openPBR_shader1_Metallic.png"
-dest_files=["res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Metallic.png-0c5bc47b6c2a1459626b55e4c92f1fd3.ctex"]
+source_file="res://tracks/Track3_ForSubstance_openPBR_shader1_Metallic.png"
+dest_files=["res://.godot/imported/Track3_ForSubstance_openPBR_shader1_Metallic.png-00699f6b2ccccf8085a72aad8d8e2ff8.ctex"]
 
 [params]
 
