@@ -92,17 +92,23 @@ func _end_item() -> void:
 	_enter_item_state_none()
 
 func _handle_item_usage(delta: float) -> void:
-	if item_state != ItemStateKeys.NONE and controller.button_two_just_pressed() and anim.current_animation != 'fall' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
-		match item_state:
-			ItemStateKeys.ANVIL:
-				anim.play('anvil_throw')
-				anim.queue('idle')
-			ItemStateKeys.BOMB:
-				anim.play('bomb_throw')
-				anim.queue('idle')
-			ItemStateKeys.POTION:
-				item_potion_timer = POTION_DURATION
-				_enter_item_state_none()
+	if controller.button_two_just_pressed() and anim.current_animation != 'fall' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
+		if item_state != ItemStateKeys.NONE:
+			match item_state:
+				ItemStateKeys.ANVIL:
+					anim.play('anvil_throw')
+					anim.queue('idle')
+				ItemStateKeys.BOMB:
+					anim.play('bomb_throw')
+					anim.queue('idle')
+				ItemStateKeys.POTION:
+					item_potion_timer = POTION_DURATION
+					_enter_item_state_none()
+		elif not is_on_floor():
+			if anim.current_animation == 'spin':
+				banked_spins += 1
+			else:
+				_do_spin_trick()
 	if 0.0 < item_potion_timer:
 		item_potion_timer -= delta
 		current_max_speed = MAX_SPEED_POTION
@@ -177,7 +183,6 @@ func _do_spin_trick():
 	anim.queue('idle')
 
 func _handle_jumps(delta: float) -> void:
-	# lets player jump even if they pressed the button too early or too late
 	if is_on_floor():
 		if time_since_on_floor > LAND_THRESHOLD_TIME:
 			landed.emit()
@@ -186,15 +191,12 @@ func _handle_jumps(delta: float) -> void:
 			_jump()
 	else:
 		time_since_on_floor += delta
-		if COYOTE_TIME < time_since_jumped_in_air and time_since_jumped_in_air < 0.5:
-			_do_spin_trick()
 	time_since_jumped_in_air += delta
 	if controller.button_one_just_pressed():
 		if time_since_on_floor < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			_jump()
 		else:
 			time_since_jumped_in_air = 0.0
-			banked_spins += 1
 
 func _get_combined_real_velocity_value() -> float:
 	var real_velocity = get_real_velocity()
@@ -295,7 +297,7 @@ func reset(restarting_race:bool = false) -> void:
 
 func finished_trick() -> void:
 	num_tricks_in_air += 1
-	if 1 < banked_spins:
+	if 1 <= banked_spins:
 		banked_spins -= 1
 		if anim.current_animation != 'fall' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			_do_spin_trick()
