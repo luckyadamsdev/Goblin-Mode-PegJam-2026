@@ -69,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 742.15076, -234.05562, 87.229
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.04257, -298.80957, -360.77036)
 
 [node name="Item12" parent="Items" unique_id=1657241280 instance=ExtResource("3_nl3ne")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.15384, -329.68655, -603.7012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.15384, -330.31253, -603.7012)
 
 [node name="Item13" parent="Items" unique_id=1757807055 instance=ExtResource("3_nl3ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.13896, -335.23953, -825.2916)
