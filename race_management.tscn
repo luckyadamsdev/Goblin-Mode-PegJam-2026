@@ -158,9 +158,28 @@ hud = NodePath("../Hud")
 racing_overlay = NodePath("../Hud/Overlay")
 metadata/_custom_type_script = "uid://d1tx7u565xame"
 
-[node name="MenuLight" type="DirectionalLight3D" parent="." unique_id=867891742]
+[node name="PrimaryLight" type="DirectionalLight3D" parent="." unique_id=867891742]
 transform = Transform3D(0.8660254, -0.4330127, -0.25000003, 0, -0.50000006, 0.8660254, -0.5, -0.75, -0.43301275, 0, 0, 0)
+light_color = Color(1, 1, 0.5019608, 1)
 light_energy = 0.1
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_max_distance = 300.0
+directional_shadow_pancake_size = 0.0
+
+[node name="SecondaryLight" type="DirectionalLight3D" parent="." unique_id=647540246]
+transform = Transform3D(0.9396926, -0.17101006, -0.2961981, 0, 0.8660254, -0.5, 0.34202012, 0.4698463, 0.81379765, 0, 0, 0)
+light_color = Color(1, 0.5686275, 1, 1)
+light_energy = 0.05
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_max_distance = 300.0
+directional_shadow_pancake_size = 0.0
+
+[node name="TertiaryLight" type="DirectionalLight3D" parent="." unique_id=375714909]
+transform = Transform3D(0.99999994, 0, 0, 0, -4.371139e-08, -0.99999994, 0, 1, -4.3711385e-08, 0, 0, 0)
+light_color = Color(0.57254905, 1, 1, 1)
+light_energy = 0.02
 shadow_enabled = true
 directional_shadow_mode = 0
 directional_shadow_max_distance = 300.0
