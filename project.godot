@@ -137,7 +137,7 @@ pause={
 
 [physics]
 
-3d/default_gravity=16.0
+3d/default_gravity=35.0
 
 [rendering]
 
