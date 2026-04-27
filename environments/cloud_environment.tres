@@ -20,7 +20,6 @@ ssao_radius = 2.0
 ssao_intensity = 5.0
 fog_enabled = true
 fog_light_color = Color(0.54535747, 0.79800534, 0.75244963, 1)
-fog_light_energy = 0.75
 fog_density = 0.0002
 fog_sky_affect = 0.3
 adjustment_enabled = true

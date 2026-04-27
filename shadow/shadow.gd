@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 		shadow_materal.set_shader_parameter("shadow_mult", shadow_mult)
 		shadow_materal.set_shader_parameter("pan_value", pan_value)
 		shadow_materal.set_shader_parameter("speed", relative_velocity.length())
-		visible = true and !is_on_floor
+		visible = false# true and !is_on_floor# I'm trying to replace this shadow with a real one
 	else:
 		visible = false
 	raycast.global_position = goblin.to_global(position_offset)
