@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dj7awkeccg37u" path="res://tracks/Course.tscn" id="2_0dh05"]
 [ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_nl3ne"]
 [ext_resource type="Material" uid="uid://3u4o4exbgvvb" path="res://environments/FinishLineMaterial.tres" id="4_nl3ne"]
+[ext_resource type="Material" uid="uid://c76k874pgguk" path="res://environments/CheckerBannerMaterial.tres" id="5_34xmp"]
 [ext_resource type="PackedScene" uid="uid://tn5kasr05k8a" path="res://models/tree/Tree.tscn" id="6_34xmp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
@@ -82,6 +83,7 @@ surface_material_override/0 = ExtResource("4_nl3ne")
 [node name="Banner" type="MeshInstance3D" parent="." unique_id=1950721243]
 transform = Transform3D(0.080099, 0, 96.39523, 0, 5, 0, -0.059867214, 0, 128.97145, 526.3502, -332.4886, -1012.75946)
 mesh = SubResource("BoxMesh_d6362")
+surface_material_override/0 = ExtResource("5_34xmp")
 
 [node name="Tree1" parent="." unique_id=1068342320 instance=ExtResource("6_34xmp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.923458, -91.34365, 220.61024)
