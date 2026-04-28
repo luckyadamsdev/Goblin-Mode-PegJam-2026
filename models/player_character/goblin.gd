@@ -8,6 +8,7 @@ signal fell_down()
 signal teleport_swirled()
 signal teleported()
 
+const AIR_ROTATE_MULT := 0.5
 const BASE_ACCELERATION := 2.0
 const COYOTE_TIME := 0.2
 const FRICTION := 0.3
@@ -227,7 +228,7 @@ func _handle_accelerate(delta: float) -> void:
 
 func _get_speed_rotate_strength() -> float:
 	var normalized_velocity := Vector2(abs(velocity.x), abs(velocity.z)).normalized()
-	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 2.0)
+	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 1.0)
 
 func _get_brake_speed_change() -> float:
 	return (-1 + clamp(_get_brake_turn_change(true), 0.9, 2.6)) * FRICTION
@@ -241,7 +242,7 @@ func _get_brake_turn_change(ignore_floor:=false) -> float:
 func _handle_rotation_controls(delta: float) -> void:
 	if is_on_floor():
 		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
-		var slope_rotate_strength:float = clamp(0.2 * (6.5 + get_real_velocity().y), 0.5, 2.0)
+		var slope_rotate_strength:float = clamp(0.2 * (6.5 + get_real_velocity().y), 0.5, 1.5)
 		# going fast means you turn faster
 		var speed_rotate_strength:float = _get_speed_rotate_strength()
 
@@ -251,10 +252,10 @@ func _handle_rotation_controls(delta: float) -> void:
 
 		self.look_at(to_global(follow_pivot.quaternion * follow_direction.position))
 	else:
-		self.rotate(Vector3.UP, -controller.h_axis * delta)
+		self.rotate(Vector3.UP, -controller.h_axis * delta * AIR_ROTATE_MULT)
 
 	goblin_template.rotation.x = deg_to_rad(-1.0 * get_real_velocity().y)
-	tilt_turn_target = 0.02 * controller.h_axis * _get_combined_real_velocity_value()
+	tilt_turn_target = 0.012 * controller.h_axis * _get_combined_real_velocity_value()
 	goblin_template.displayHolder.position.x = lerpf(goblin_template.displayHolder.position.x, 0.4 * tilt_turn_target, 0.03)
 	goblin_template.rotation.z = lerpf(goblin_template.rotation.z, tilt_turn_target, 0.03)
 	goblin_template.normal_hands.rotation.y = goblin_template.rotation.z * -1.0
