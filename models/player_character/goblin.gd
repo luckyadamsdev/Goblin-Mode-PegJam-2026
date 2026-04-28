@@ -228,7 +228,7 @@ func _handle_accelerate(delta: float) -> void:
 
 func _get_speed_rotate_strength() -> float:
 	var normalized_velocity := Vector2(abs(velocity.x), abs(velocity.z)).normalized()
-	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 1.0)
+	return clamp(0.5 + 0.015 * abs(velocity.x) * normalized_velocity.x + 0.015 * abs(velocity.z) * normalized_velocity.y, 0.5, 1.5)
 
 func _get_brake_speed_change() -> float:
 	return (-1 + clamp(_get_brake_turn_change(true), 0.9, 2.6)) * FRICTION

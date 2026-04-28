@@ -29,6 +29,8 @@ script = ExtResource("4_je6la")
 metadata/_custom_type_script = "uid://cqpwou5hciv81"
 
 [node name="Goblin" type="CharacterBody3D" unique_id=1038787615 node_paths=PackedStringArray("controller", "follow_pivot", "follow_direction")]
+floor_constant_speed = true
+floor_snap_length = 1.0
 script = ExtResource("1_rpmrw")
 controller = NodePath("GoblinController")
 follow_pivot = NodePath("FollowPivot")
