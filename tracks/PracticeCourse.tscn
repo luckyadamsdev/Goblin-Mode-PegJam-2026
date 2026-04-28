@@ -6,6 +6,9 @@ size = Vector2(100, 100)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcrkr"]
 albedo_color = Color(0.6496747, 0.5241682, 0.34481832, 1)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xu8xy"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hcrkr"]
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
@@ -30,10 +33,10 @@ size = Vector3(200, 50, 200)
 mesh = SubResource("PlaneMesh_hcrkr")
 surface_material_override/0 = SubResource("StandardMaterial3D_hcrkr")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloorMesh" unique_id=1542217739]
+[node name="StaticBody3D" type="StaticBody3D" parent="FloorMesh" unique_id=682298085]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorMesh/StaticBody3D" unique_id=1542216933]
-shape = SubResource("ConcavePolygonShape3D_hcrkr")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorMesh/StaticBody3D" unique_id=12045213]
+shape = SubResource("ConcavePolygonShape3D_xu8xy")
 
 [node name="OuterSlopeOpposites1" type="Node3D" parent="." unique_id=673838616]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
