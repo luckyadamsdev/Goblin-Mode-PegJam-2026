@@ -4,7 +4,10 @@
 size = Vector2(100, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcrkr"]
-albedo_color = Color(0.6496747, 0.5241682, 0.34481832, 1)
+albedo_color = Color(0.32378235, 0.24841675, 0.14488196, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xu8xy"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xu8xy"]
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)

@@ -137,9 +137,10 @@ pause={
 
 [physics]
 
-3d/default_gravity=16.0
+3d/default_gravity=35.0
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+lights_and_shadows/directional_shadow/size=16384
