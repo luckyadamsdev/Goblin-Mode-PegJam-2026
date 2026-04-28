@@ -256,8 +256,8 @@ func _handle_rotation_controls(delta: float) -> void:
 
 	goblin_template.rotation.x = deg_to_rad(-1.0 * get_real_velocity().y)
 	tilt_turn_target = 0.012 * controller.h_axis * _get_combined_real_velocity_value()
-	goblin_template.displayHolder.position.x = lerpf(goblin_template.displayHolder.position.x, 0.4 * tilt_turn_target, 0.03)
-	goblin_template.rotation.z = lerpf(goblin_template.rotation.z, tilt_turn_target, 0.03)
+	goblin_template.displayHolder.position.x = lerpf(goblin_template.displayHolder.position.x, 0.4 * tilt_turn_target, delta * 5.0)
+	goblin_template.rotation.z = lerpf(goblin_template.rotation.z, tilt_turn_target, delta * 5.0)
 	goblin_template.normal_hands.rotation.y = goblin_template.rotation.z * -1.0
 	goblin_template.item_hands.rotation.y = goblin_template.rotation.z * 1.2
 	goblin_template.item_hands.position.x = -0.5 * abs(goblin_template.rotation.z)
