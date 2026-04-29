@@ -17,7 +17,7 @@ func set_focus() -> void:
 func _on_practice_button_pressed() -> void:
 	places.visible = false
 	laps.visible = false
-	GameManager.instance.selected_map_path = "res://map/map04.tscn"
+	GameManager.instance.selected_map_path = "res://map/practice_full_map.tscn"
 	GameManager.instance.set_map_tile("Practice")
 	# do we need ot show title of selected map somewhere?
 	GameManager.instance.go_to_start_screen()
@@ -25,21 +25,21 @@ func _on_practice_button_pressed() -> void:
 func _on_vs1_button_pressed() -> void:
 	places.visible = true
 	laps.visible = true
-	GameManager.instance.selected_map_path = "res://map/map03.tscn"
+	GameManager.instance.selected_map_path = "res://map/mount_scramble_full_map.tscn"
 	GameManager.instance.set_map_tile($"Panel/VS Race Button1".text)
 	GameManager.instance.go_to_start_screen()
 
 func _on_vs2_button_pressed() -> void:
 	places.visible = true
 	laps.visible = true
-	GameManager.instance.selected_map_path = "res://map/map09.tscn"
+	GameManager.instance.selected_map_path = "res://map/scram_hill_full_map.tscn"
 	GameManager.instance.set_map_tile($"Panel/VS Race Button2".text)
 	GameManager.instance.go_to_start_screen()
 
 func _on_vs3_button_pressed() -> void:
 	places.visible = true
 	laps.visible = true
-	GameManager.instance.selected_map_path = "res://map/map06.tscn"
+	GameManager.instance.selected_map_path = "res://map/shredder_full_map.tscn"
 	GameManager.instance.set_map_tile($"Panel/VS Race Button3".text)
 	GameManager.instance.go_to_start_screen()
 

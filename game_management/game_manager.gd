@@ -50,7 +50,7 @@ var buttons_pressed:Array[bool] = [false, false]
 
 @export var racing_overlay:Control
 
-var selected_map_path:String = "res://map/map03.tscn"
+var selected_map_path:String = "res://map/mount_scramble_full_map.tscn"
 
 # player_id of a the player that reached the finish line
 var winner:int = 0
