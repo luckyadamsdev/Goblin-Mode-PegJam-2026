@@ -46,6 +46,7 @@ var banked_spins := 0
 var current_lap := 1
 var current_speed := MIN_SPEED
 var current_max_speed := MAX_SPEED_DEFAULT
+var debounce_wall := 0
 var enemy:Goblin
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 var is_on_track := true
@@ -74,6 +75,7 @@ func _physics_process(delta: float) -> void:
 	# movement logic
 	_handle_accelerate(delta)
 	move_and_slide()
+	_handle_hit_wall()
 	_handle_jumps(delta)
 	_handle_lands()
 	_handle_rotation_controls(delta)
@@ -186,6 +188,14 @@ func _do_spin_trick():
 	anim.play('spin')
 	anim.queue('idle')
 
+func _handle_hit_wall() -> void:
+	if is_on_wall():
+		debounce_wall += 1
+	else:
+		debounce_wall = 0
+	if debounce_wall == 4:
+		current_speed = MIN_SPEED
+
 func _handle_jumps(delta: float) -> void:
 	if is_on_floor():
 		time_since_not_on_floor += delta
@@ -219,8 +229,6 @@ func _handle_accelerate(delta: float) -> void:
 		var realVelocityY := get_real_velocity().y
 		if realVelocityY < 0.0:
 			current_speed -= get_real_velocity().y * delta
-		else:
-			current_speed -= get_real_velocity().y * delta * 0.1
 	current_speed = clamp(current_speed, MIN_SPEED, current_max_speed)
 
 	if _get_combined_real_velocity_value() < MIN_SPEED * 0.5:
