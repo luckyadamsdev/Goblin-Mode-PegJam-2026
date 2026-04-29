@@ -8,9 +8,10 @@ signal fell_down()
 signal teleport_swirled()
 signal teleported()
 
-const AIR_ROTATE_MULT := 0.5
+const AIR_ROTATE_MULT := 0.25
 const BASE_ACCELERATION := 2.0
 const COYOTE_TIME := 0.2
+const FLOOR_ROTATE_MULT := 1.5
 const FRICTION := 0.3
 const FRICTION_OFF_TRACK := 0.2
 const JUMP_VELOCITY_ADD := 12.0
@@ -54,6 +55,8 @@ var num_tricks_in_air := 0
 var place := 1
 var tilt_turn_target := 0.0
 var time_since_jumped_in_air := 10.0
+var time_since_jumped_on_floor := 10.0
+var time_since_not_on_floor := 10.0
 var time_since_on_floor := 10.0
 var was_on_floor := false
 
@@ -185,6 +188,7 @@ func _do_spin_trick():
 
 func _handle_jumps(delta: float) -> void:
 	if is_on_floor():
+		time_since_not_on_floor += delta
 		if time_since_on_floor > LAND_THRESHOLD_TIME:
 			landed.emit()
 		time_since_on_floor = 0.0
@@ -192,9 +196,11 @@ func _handle_jumps(delta: float) -> void:
 			_jump()
 	else:
 		time_since_on_floor += delta
+		time_since_not_on_floor = 0.0
 	time_since_jumped_in_air += delta
+	time_since_jumped_on_floor += delta
 	if controller.button_one_just_pressed():
-		if time_since_on_floor < COYOTE_TIME and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
+		if time_since_on_floor < COYOTE_TIME and COYOTE_TIME < time_since_jumped_on_floor and anim.current_animation != 'fall' and anim.current_animation != 'spin' and not anim.current_animation.begins_with('anvil') and anim.current_animation != 'bomb_throw':
 			_jump()
 		else:
 			time_since_jumped_in_air = 0.0
@@ -239,20 +245,26 @@ func _get_brake_turn_change(ignore_floor:=false) -> float:
 	else:
 		return 1.0
 
+func _get_floor_rotate_transition_mult() -> float:
+	return clamp(time_since_not_on_floor * 4.0, AIR_ROTATE_MULT, FLOOR_ROTATE_MULT)
+
+func _get_air_rotate_transition_mult() -> float:
+	return clamp(1.5 - time_since_on_floor * 4.0, AIR_ROTATE_MULT, FLOOR_ROTATE_MULT)
+
 func _handle_rotation_controls(delta: float) -> void:
 	if is_on_floor():
 		# going up means get_real_velocity().y = positive -> fast turning. going down means get_real_velocity().y = negative -> slow turning
-		var slope_rotate_strength:float = clamp(0.2 * (6.5 + get_real_velocity().y), 0.5, 1.5)
+		var slope_rotate_strength:float = clamp(0.2 * (6.5 + get_real_velocity().y), 0.5, 1.0)
 		# going fast means you turn faster
 		var speed_rotate_strength:float = _get_speed_rotate_strength()
 
 		var brake_turn_change := _get_brake_turn_change()
 
-		follow_pivot.rotation.y = -1.0 * brake_turn_change * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
+		follow_pivot.rotation.y = -1.0 * _get_floor_rotate_transition_mult() * brake_turn_change * controller.h_axis * delta * slope_rotate_strength * speed_rotate_strength
 
 		self.look_at(to_global(follow_pivot.quaternion * follow_direction.position))
 	else:
-		self.rotate(Vector3.UP, -controller.h_axis * delta * AIR_ROTATE_MULT)
+		self.rotate(Vector3.UP, -controller.h_axis * delta * _get_air_rotate_transition_mult())
 
 	goblin_template.rotation.x = deg_to_rad(-1.0 * get_real_velocity().y)
 	tilt_turn_target = 0.012 * controller.h_axis * _get_combined_real_velocity_value()
@@ -271,7 +283,8 @@ func set_start_pos(new_pos:Node3D) -> void:
 func _jump() -> void:
 	_apply_jump_force()
 	time_since_jumped_in_air = 10.0
-	time_since_on_floor = 10.0
+	time_since_jumped_on_floor = 0.0
+	# time_since_on_floor = 10.0
 	jumped.emit()
 	anim.play('jump')
 
