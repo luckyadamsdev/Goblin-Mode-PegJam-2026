@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://ieaxyyaph2x4"]
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_n4x0f"]
-[ext_resource type="PackedScene" uid="uid://dgoc04dsdami2" path="res://PracticeCourse.tscn" id="3_n4x0f"]
+[ext_resource type="PackedScene" uid="uid://dgoc04dsdami2" path="res://tracks/practice_only_track.tscn" id="3_n4x0f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rh2f5"]
 size = Vector3(300.4899, 107.03613, 5)
 
-[node name="Map03" type="Node3D" unique_id=317521660]
+[node name="PracticeFullMap" type="Node3D" unique_id=317521660]
 script = ExtResource("1_n4x0f")
 is_race = false
 
@@ -26,5 +26,5 @@ transform = Transform3D(0.5933346, 0, -0.80495596, 0, 1, 0, 0.80495596, 0, 0.593
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.585724, 195.06967, 8.529541)
 shape = SubResource("BoxShape3D_rh2f5")
 
-[node name="PracticeCourse" parent="." unique_id=1464157065 instance=ExtResource("3_n4x0f")]
+[node name="PracticeOnlyTrack" parent="." unique_id=1464157065 instance=ExtResource("3_n4x0f")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -37.855804, 0)

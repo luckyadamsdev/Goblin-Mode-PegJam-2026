@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ymtnk8dlqv31" path="res://map/map.gd" id="1_ubby6"]
 [ext_resource type="PackedScene" uid="uid://d0wjc5n1xkded" path="res://models/props/item.tscn" id="3_s47gh"]
-[ext_resource type="PackedScene" uid="uid://djs046nwqep5a" path="res://tracks/Course9.tscn" id="4_g2cni"]
+[ext_resource type="PackedScene" uid="uid://djs046nwqep5a" path="res://tracks/scram_hill_only_track.tscn" id="4_g2cni"]
 [ext_resource type="PackedScene" uid="uid://tn5kasr05k8a" path="res://models/tree/Tree.tscn" id="4_h6x6e"]
 [ext_resource type="Texture2D" uid="uid://b6smvshq3yn8x" path="res://environments/Tree2_ForSubstance_openPBR_shader1_BaseColor.png" id="4_tg2be"]
 [ext_resource type="ArrayMesh" uid="uid://dfr2xd4gw7imb" path="res://environments/Tree2.obj" id="5_6m0c3"]
@@ -17,7 +17,7 @@ albedo_texture = ExtResource("4_tg2be")
 
 [sub_resource type="BoxMesh" id="BoxMesh_g2cni"]
 
-[node name="Map04" type="Node3D" unique_id=317521660]
+[node name="ScramHillFullMap" type="Node3D" unique_id=317521660]
 script = ExtResource("1_ubby6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=724154080]

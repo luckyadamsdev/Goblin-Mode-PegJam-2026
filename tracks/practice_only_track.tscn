@@ -9,9 +9,6 @@ albedo_color = Color(0.32378235, 0.24841675, 0.14488196, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xu8xy"]
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xu8xy"]
-data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
-
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hcrkr"]
 data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
 
@@ -30,7 +27,7 @@ data = PackedVector3Array(-5, 5, 2.5, 5, 5, 2.5, -5, -5, 2.5, 5, 5, 2.5, 5, -5, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcrkr"]
 size = Vector3(200, 50, 200)
 
-[node name="PracticeCourse" type="Node3D" unique_id=1464157065]
+[node name="PracticeOnlyTrack" type="Node3D" unique_id=1464157065]
 
 [node name="FloorMesh" type="MeshInstance3D" parent="." unique_id=1624869238]
 mesh = SubResource("PlaneMesh_hcrkr")
